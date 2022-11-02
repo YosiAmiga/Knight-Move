@@ -12,7 +12,7 @@ public class HelloController {
     private Text branchTest;
     @FXML
     protected void onHelloButtonClick() {
-        welcomeText.setText("Welcome to JavaFX Application!");
-        branchTest.setText("Testing new branch creation!");
+        welcomeText.setText("Welcome panda team!");
+        branchTest.setText("Testing system init.");
     }
 }
