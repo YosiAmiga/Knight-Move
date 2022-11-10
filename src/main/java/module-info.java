@@ -7,4 +7,6 @@ module com.example.knightmove {
 
     opens com.example.knightmove to javafx.fxml;
     exports com.example.knightmove;
+    exports com.example.knightmove.controllers;
+    opens com.example.knightmove.controllers to javafx.fxml;
 }

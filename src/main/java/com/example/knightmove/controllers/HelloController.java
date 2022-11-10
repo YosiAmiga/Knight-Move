@@ -1,4 +1,4 @@
-package com.example.knightmove;
+package com.example.knightmove.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
@@ -10,6 +10,8 @@ public class HelloController {
 
     @FXML
     private Text branchTest;
+
+
     @FXML
     protected void onHelloButtonClick() {
         welcomeText.setText("Welcome panda team!");
