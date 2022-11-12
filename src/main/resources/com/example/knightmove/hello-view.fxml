@@ -6,12 +6,12 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Text?>
 
-<VBox alignment="CENTER" prefHeight="217.0" prefWidth="331.0" spacing="20.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/19" fx:controller="com.example.knightmove.controllers.HelloController">
+<VBox alignment="CENTER" prefHeight="217.0" prefWidth="331.0" spacing="20.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.controllers.HelloController">
     <padding>
         <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
     </padding>
 
     <Label fx:id="welcomeText" />
    <Text fx:id="branchTest" strokeType="OUTSIDE" strokeWidth="0.0" text="Branch here" />
-    <Button onAction="#onHelloButtonClick" prefHeight="90.0" prefWidth="106.0" text="Hello!" />
+    <Button  prefHeight="90.0" prefWidth="106.0" text="Hello!" />
 </VBox>
