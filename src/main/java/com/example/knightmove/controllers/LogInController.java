@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 
 public class LogInController {
@@ -32,6 +31,7 @@ public class LogInController {
         LogInTitle.setText("Logged in!\n Let's start playing!");
     }
     public void switchAppIntroPage(ActionEvent event) throws IOException {
+        setUserNameTextField();
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -39,6 +39,9 @@ public class LogInController {
         stage.show();
     }
 
+    public void setUserNameTextField(){
+        AppIntroPageController.userName = userNameTextField.getText();
+    }
 
 
 
