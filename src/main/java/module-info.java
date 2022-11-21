@@ -4,9 +4,11 @@ module com.example.knightmove {
 
     requires org.controlsfx.controls;
     requires org.kordamp.bootstrapfx.core;
+    requires java.sql;
 
     opens com.example.knightmove to javafx.fxml;
     exports com.example.knightmove;
     exports com.example.knightmove.controllers;
     opens com.example.knightmove.controllers to javafx.fxml;
+    opens com.example.knightmove.Model to javafx.base;
 }
