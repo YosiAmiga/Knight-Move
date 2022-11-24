@@ -17,7 +17,7 @@ public class Game {
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
         currentPiece = null;
-        currentPlayer = "white";
+        currentPlayer = "black";
         this.game = true;
         addEventHandlers(cb.chessBoard);
     }
@@ -111,7 +111,6 @@ public class Game {
         currentPiece.setEffect(null);
         currentPiece.showAllPossibleMoves(false);
         currentPiece = null;
-        if(changePlayer) currentPlayer = currentPlayer.equals("white") ? "black" : "white";
     }
 
     private void dropPiece(Square square){
