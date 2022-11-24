@@ -1,6 +1,7 @@
 package com.example.knightmove.controllers;
 
 import com.example.knightmove.HelloApplication;
+import com.example.knightmove.Model.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -8,6 +9,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -18,6 +20,13 @@ public class GamePageController {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    public void initialize(){
+
+        // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
+        Game game = new Game(chessBoard, "Sandcastle");
+
+    }
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -35,6 +44,8 @@ public class GamePageController {
     @FXML
     private Text timeText;
 
+    @FXML
+    GridPane chessBoard;
 
     @FXML
     private ImageView boardCurrentStateImage;

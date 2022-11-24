@@ -34,7 +34,7 @@ public class Piece extends ImageView {
     }
 
     public void setImage()  {
-        String theme1Url = getClass().getResource("/picture/"+this.color + "" + this.type + ".png").toExternalForm();
+        String theme1Url = getClass().getResource("/picture/" + this.type + ".png").toExternalForm();
         this.setPiece(new Image(theme1Url));
     }
 
@@ -104,7 +104,7 @@ public class Piece extends ImageView {
 
     @Override
     public String toString() {
-        return this.color + " " + this.type;
+        return this.type;
     }
 
 }
