@@ -69,16 +69,4 @@ public class AppIntroPageController implements Initializable {
 
 
 
-    @FXML // TODO: write a function that passes to the game rules page --> should be in resources dir
-    protected void onGameRulesButtonClick() {
-        return;
-
-    }
-    @FXML // TODO: write a function that passes to the game page --> should be in resources dir
-    protected void onPlayButtonClick() {
-        return;
-
-    }
-
-
 }
