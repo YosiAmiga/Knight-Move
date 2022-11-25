@@ -38,8 +38,6 @@ public class GamePageController {
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
         Game game = new Game(chessBoard, "Sandcastle");
         startTimeSec = 10; // Change to 60!
-
-        timeline.setCycleCount(Timeline.INDEFINITE);
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -53,22 +51,18 @@ public class GamePageController {
                 if (timeToChangeLevel) {
                     timeline.stop();
                     startTimeSec = 10;
-                    if(currentLevelText.getText().equals("1")){
+                    if (currentLevelText.getText().equals("1")) {
                         currentLevelText.setText("2");
-                    }
-                    else if(currentLevelText.getText().equals("2")){
+                    } else if (currentLevelText.getText().equals("2")) {
                         currentLevelText.setText("3");
-                    }
-                    else if(currentLevelText.getText().equals("3")){
+                    } else if (currentLevelText.getText().equals("3")) {
                         currentLevelText.setText("4");
                     }
                 }
-
                 currentTimeText.setText(String.format("%02d sec", startTimeSec));
-
+                timeline.playFromStart();
             }
         }));
-        timeline.playFromStart();
     }
 
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
@@ -80,7 +74,25 @@ public class GamePageController {
     }
 
     public void newLevel(ActionEvent event) {
-        this.initialize();
+        startTimeSec = 10; // Change to 60!
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                startTimeSec--;
+                boolean isSecondsZero = startTimeSec == 0;
+                boolean timeToChangeLevel = startTimeSec == 0;
+
+                if (isSecondsZero) {
+                    startTimeSec = 10;
+                }
+                if (timeToChangeLevel) {
+                    timeline.stop();
+                    startTimeSec = 10;
+                }
+                currentTimeText.setText(String.format("%02d sec", startTimeSec));
+            }
+        }));
+        timeline.playFromStart();
     }
 
     @FXML
