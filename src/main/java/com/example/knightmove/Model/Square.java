@@ -33,9 +33,11 @@ public class Square extends StackPane {
         for(int i = 0 ; i<specialLocations.size() ; i++){
             if(square.x == specialLocations.get(i).get(0) & square.y == specialLocations.get(i).get(1)){
                 System.out.println("this is a special location");
+                return;
             }
         }
-        // if we don't print any thing then we can say that the point is not in a special location
+        // if we don't print anything then we can say that the point is not in a special location
+        return;
 
     }
 
