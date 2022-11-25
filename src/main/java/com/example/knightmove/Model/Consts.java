@@ -32,6 +32,14 @@ public class Consts {
     public static final int QUEEN_INIT_LOCATION_Y = 0;
 
 
+    /**
+     * INIT PIECES SPEED
+     */
+    public static final float KING_INIT_SPEED = 10;
+    public static final float HORSE_INIT_SPEED = 10;
+    public static final float QUEEN_INIT_SPEED = 10;
+
+
 
 
 }
