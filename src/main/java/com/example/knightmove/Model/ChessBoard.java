@@ -91,7 +91,7 @@ public class ChessBoard {
         for(Square square : squares){
             if(square.occupied) continue;
             // set horse init location
-            if(square.x == Consts.HORSE_INIT_LOCATION_X && square.y == Consts.HORSE_INIT_LOCATION_Y){
+            if(square.x == Consts.KNIGHT_INIT_LOCATION_X && square.y == Consts.KNIGHT_INIT_LOCATION_Y){
                 addPiece(square, new Knight("black", square.x, square.y));
             }
             // set queen init location
