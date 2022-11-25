@@ -96,9 +96,6 @@ public class GamePageController {
     GridPane chessBoard;
 
     @FXML
-    private ImageView boardCurrentStateImage;
-
-    @FXML
     private Label currentLevelText;
 
     @FXML
