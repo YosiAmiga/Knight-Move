@@ -100,7 +100,7 @@ public class ChessBoard {
             }
             // set king init location
             else if(square.x == Consts.KING_INIT_LOCATION_X && square.y == Consts.KING_INIT_LOCATION_Y){
-                addPiece(square, new King("black", square.x, square.y));
+                addPiece(square, new King("black", square.x, square.y,Consts.KING_INIT_SPEED));
 
             }
 
