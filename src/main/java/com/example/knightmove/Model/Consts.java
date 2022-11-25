@@ -24,8 +24,8 @@ public class Consts {
     public static final int KING_INIT_LOCATION_Y = 0;
 
     //hourse - starts at top left corner
-    public static final int HORSE_INIT_LOCATION_X = 0;
-    public static final int HORSE_INIT_LOCATION_Y = 0;
+    public static final int KNIGHT_INIT_LOCATION_X = 0;
+    public static final int KNIGHT_INIT_LOCATION_Y = 0;
 
     //queen - starts at top right corner
     public static final int QUEEN_INIT_LOCATION_X = SQUARES_IN_ROW-1;
@@ -33,11 +33,11 @@ public class Consts {
 
 
     /**
-     * INIT PIECES SPEED
+     * INIT PIECES SPEED --> Not sure if all pieces needs speed attribute
      */
     public static final float KING_INIT_SPEED = 10;
-    public static final float HORSE_INIT_SPEED = 10;
-    public static final float QUEEN_INIT_SPEED = 10;
+//    public static final float KNIGHT_INIT_SPEED = 10;
+//    public static final float QUEEN_INIT_SPEED = 10;
 
 
 
