@@ -7,11 +7,11 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.controllers.GameRulesController">
    <children>
-      <Text fill="RED" layoutX="150.0" layoutY="61.0" strokeType="OUTSIDE" strokeWidth="0.0" text="The Game rules will be listed here:" underline="true">
+      <Button layoutX="24.0" layoutY="350.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" text="חזרה" />
+      <Text layoutX="372.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="חוקי המשחק">
          <font>
-            <Font name="System Bold" size="21.0" />
+            <Font size="38.0" />
          </font>
       </Text>
-      <Button layoutX="37.0" layoutY="342.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" text="Go back" />
    </children>
 </AnchorPane>

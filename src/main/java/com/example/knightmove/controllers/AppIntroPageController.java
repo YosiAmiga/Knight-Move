@@ -67,6 +67,14 @@ public class AppIntroPageController implements Initializable {
         stage.show();
     }
 
+    public void QuestionPage(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(HelloApplication.class.getResource("Questions.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
 
     @FXML // TODO: write a function that passes to the game rules page --> should be in resources dir
