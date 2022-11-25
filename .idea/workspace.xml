@@ -4,14 +4,6 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.laccdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GameHistoryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GameHistoryPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/LogInKnightMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/LogInKnightMove.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +33,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/Naor/IdeaProjects/demo4",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
@@ -61,15 +56,18 @@
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Naor\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
+      <recent name="C:\Users\Naor\GitHub\Knight-Move\src\main\resources" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove\controllers" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\Model" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.example.knightmove" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
-    <configuration name="Unnamed" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
       <module name="Knight-Move" />
       <method v="2">
@@ -84,20 +82,9 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Unnamed" />
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="JUnit.All in Knight-Move" />
       </list>
     </recent_temporary>
@@ -111,6 +98,21 @@
       <option name="presentableId" value="Default" />
       <updated>1667238954148</updated>
     </task>
+    <task id="LOCAL‎-00001" summary="Add ChessBoard and Game class">
+      <created>1669283771813</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL‎-00001" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1669283771813</updated>
+    </task>
+    <task id="LOCAL‎-00002" summary="Pix Gamepage fxml">
+      <created>1669286975772</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL‎-00002" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1669286975772</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +125,12 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Add King,Queen,Knight" />
+    <MESSAGE value="Add ChessBoard,Game,Knight,Queen,King" />
+    <MESSAGE value="Pix Gamepage fxml" />
+    <option name="LAST_COMMIT_MESSAGE" value="Pix Gamepage fxml" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

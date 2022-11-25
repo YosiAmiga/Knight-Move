@@ -1,20 +1,17 @@
 package com.example.knightmove;
-import com.example.knightmove.Model.Player;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import java.io.IOException;
-import java.sql.*;
-import java.util.ArrayList;
 
 
 public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("LogInKnightMove.fxml"));
+        Parent root = FXMLLoader.load(HelloApplication.class.getResource("LoginKnightMove.fxml"));
         Scene scene = new Scene(root, 600, 600);
         stage.setTitle("Team Panda");
         stage.setScene(scene);
