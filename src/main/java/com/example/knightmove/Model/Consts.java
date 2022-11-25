@@ -9,5 +9,8 @@ public class Consts {
     public static final String GET_ALL_PLAYERS =
             "{ call GET_ALL_PLAYERS }";
 
+    public static final int SQUARE_SIZE = 50;
+
+
 }
 
