@@ -5,6 +5,8 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
+import java.lang.Math;
+
 
 public class ChessBoard {
 
@@ -20,14 +22,16 @@ public class ChessBoard {
 
 
     private void makeBoard(GridPane chessBoard, String theme){
-        for(int i=0; i<8; i++){
-            for(int j=0; j<8; j++){
+        for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
+            for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
                 Square square = new Square(i,j);
                 square.setName("Square" + i + j);
                 square.setPrefHeight(Consts.SQUARE_SIZE);
                 square.setPrefWidth(Consts.SQUARE_SIZE);
+
+                // NOTE: BoardStroke args (colurOfLinesBetweenSquares, typeOfLineBetweenSquares - could be dotted or full line)
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+                        BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
                 setTheme(square, theme, i, j);
                 chessBoard.add(square, i, j, 1, 1);
                 squares.add(square);
@@ -79,7 +83,12 @@ public class ChessBoard {
         square.getChildren().add(piece);
         square.occupied = true;
     }
+
     private void addPieces(){
+        /**
+         * Add pieces with random locations using rand()
+         *         double rand = Math.random();
+         */
         for(Square square : squares){
             if(square.occupied) continue;
             if(square.x == 0 && square.y == 0){
