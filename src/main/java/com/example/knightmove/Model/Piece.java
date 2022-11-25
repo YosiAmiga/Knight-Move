@@ -102,6 +102,23 @@ public class Piece extends ImageView {
         return null;
     }
 
+
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
+    public ArrayList getRandomPieceLocation(){
+        /**
+         * return a random location for a square
+         */
+        ArrayList<Integer> randomSquareLocation = new  ArrayList<Integer>();
+        int randonXvalue = getRandomNumber(0,Consts.SQUARES_IN_ROW);
+        int randonYvalue = getRandomNumber(0,Consts.SQUARES_IN_ROW);
+        randomSquareLocation.add(randonXvalue);
+        randomSquareLocation.add(randonYvalue);
+        return randomSquareLocation;
+    }
+
     @Override
     public String toString() {
         return this.type;
