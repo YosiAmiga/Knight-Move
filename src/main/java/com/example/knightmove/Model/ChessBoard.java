@@ -86,19 +86,20 @@ public class ChessBoard {
 
     private void addPieces(){
         /**
-         * Add pieces with random locations using rand()
-         *         double rand = Math.random();
+         * Add pieces to their init location: pre-defined. (check out Const.java for enumerates).
          */
         for(Square square : squares){
             if(square.occupied) continue;
-            if(square.x == 0 && square.y == 0){
+            // set horse init location
+            if(square.x == Consts.HORSE_INIT_LOCATION_X && square.y == Consts.HORSE_INIT_LOCATION_Y){
                 addPiece(square, new Knight("black", square.x, square.y));
             }
-            else if(square.x == 7 && square.y == 0){
+            // set queen init location
+            else if(square.x == Consts.QUEEN_INIT_LOCATION_X && square.y == Consts.QUEEN_INIT_LOCATION_Y){
                 addPiece(square, new Queen("black", square.x, square.y));
-
             }
-            else if(square.x == 7 && square.y == 7){
+            // set king init location
+            else if(square.x == Consts.KING_INIT_LOCATION_X && square.y == Consts.KING_INIT_LOCATION_Y){
                 addPiece(square, new King("black", square.x, square.y));
 
             }

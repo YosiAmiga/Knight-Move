@@ -14,15 +14,22 @@ public class Consts {
     public static final int SQUARES_IN_ROW = 8;
     public static final int SQUARES_IN_COLUMN = 8;
 
-    // INIT PIECES LOCATIONS
+
+    /**
+     *     INIT PIECES LOCATIONS
+     */
+
+    //king - starts at top right corner
     public static final int KING_INIT_LOCATION_X = SQUARES_IN_ROW-1;
-    public static final int KING_INIT_LOCATION_Y = SQUARES_IN_COLUMN-1;
+    public static final int KING_INIT_LOCATION_Y = 0;
 
-    public static final int HOURSE_INIT_LOCATION_X = SQUARES_IN_ROW-1;
-    public static final int HOURSE_INIT_LOCATION_Y = SQUARES_IN_COLUMN-1;
+    //hourse - starts at top left corner
+    public static final int HORSE_INIT_LOCATION_X = 0;
+    public static final int HORSE_INIT_LOCATION_Y = 0;
 
+    //queen - starts at top right corner
     public static final int QUEEN_INIT_LOCATION_X = SQUARES_IN_ROW-1;
-    public static final int QUEEN_INIT_LOCATION_Y = SQUARES_IN_COLUMN-1;
+    public static final int QUEEN_INIT_LOCATION_Y = 0;
 
 
 
