@@ -14,6 +14,7 @@ public class HelloApplication extends Application {
         Parent root = FXMLLoader.load(HelloApplication.class.getResource("LoginKnightMove.fxml"));
         Scene scene = new Scene(root, 600, 600);
         stage.setTitle("Team Panda");
+        stage.setFullScreen(true); // set full screen
         stage.setScene(scene);
         stage.show();
     }
