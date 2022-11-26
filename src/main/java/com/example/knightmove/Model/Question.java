@@ -1,11 +1,17 @@
 package com.example.knightmove.Model;
 
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 public class Question {
-
+    private static int idCounter = 1;
+    private Integer id;
     private String Question;
     private ArrayList<String> answers;
     private Integer correctAnswer;
@@ -13,6 +19,7 @@ public class Question {
     private String team;
 
     public Question(String question, ArrayList<String> answers, Integer correctAnswer, Integer level, String team) {
+        this.id=idCounter++;
         this.Question = question;
         this.answers = answers;
         this.correctAnswer = correctAnswer;
@@ -60,4 +67,11 @@ public class Question {
         this.team = team;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 }

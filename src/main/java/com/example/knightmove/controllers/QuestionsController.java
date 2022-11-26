@@ -1,5 +1,6 @@
 package com.example.knightmove.controllers;
 import com.example.knightmove.HelloApplication;
+import com.example.knightmove.Model.Question;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,8 +13,10 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.HashMap;
 
 public class QuestionsController {
+
     private Stage stage;
     private Scene scene;
     private Parent root;
