@@ -1,4 +1,6 @@
 package com.example.knightmove;
+import com.example.knightmove.Model.Json;
+import com.example.knightmove.Model.SysData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -10,6 +12,7 @@ import java.io.IOException;
 
 public class HelloApplication extends Application {
 
+    public static SysData s = new SysData();
     @Override
     public void start(Stage stage) throws IOException {
         Parent root = FXMLLoader.load(HelloApplication.class.getResource("LoginKnightMove.fxml"));
@@ -20,6 +23,7 @@ public class HelloApplication extends Application {
     }
 
     public static void main(String[] args) throws IOException {
+        SysData s =new SysData();
         launch();
     } //TEST
 

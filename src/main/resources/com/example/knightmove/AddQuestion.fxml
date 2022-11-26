@@ -29,11 +29,11 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField layoutX="415.0" layoutY="285.0" />
-      <TextArea layoutX="355.0" layoutY="145.0" prefHeight="93.0" prefWidth="235.0" />
-      <TextField layoutX="415.0" layoutY="421.0" />
-      <TextField layoutX="415.0" layoutY="371.0" />
-      <TextField layoutX="415.0" layoutY="326.0" />
+      <TextField fx:id="Ans1" layoutX="415.0" layoutY="285.0" />
+      <TextArea fx:id="Question" layoutX="355.0" layoutY="145.0" prefHeight="93.0" prefWidth="235.0" />
+      <TextField fx:id="Ans4" layoutX="415.0" layoutY="421.0" />
+      <TextField fx:id="Ans3" layoutX="415.0" layoutY="371.0" />
+      <TextField fx:id="Ans2" layoutX="415.0" layoutY="326.0" />
       <Text layoutX="583.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 1:">
          <font>
             <Font size="18.0" />
@@ -54,7 +54,7 @@
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="121.0" layoutY="407.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="97.0" text="הוספה" />
+      <Button layoutX="121.0" layoutY="407.0" mnemonicParsing="false" onAction="#EnterAddQuestion" prefHeight="52.0" prefWidth="97.0" text="הוספה" />
       <Button layoutX="41.0" layoutY="429.0" mnemonicParsing="false" onAction="#BackPage" text="חזרה" />
       <Label layoutX="527.0" layoutY="252.0" text="יש לסמן ליד התשובה הנכונה" />
       <Text layoutX="50.0" layoutY="234.0" strokeType="OUTSIDE" strokeWidth="0.0" text="פה תהיה התפלגות של מספר שאלות בכל רמה" />

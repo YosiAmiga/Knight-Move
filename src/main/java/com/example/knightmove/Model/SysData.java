@@ -1,30 +1,34 @@
 package com.example.knightmove.Model;
 
 import java.util.HashMap;
+import java.util.HashSet;
 
 public class SysData {
-    private HashMap <Integer, Question> questions = new HashMap<>();
+    private HashSet<Question> questions = new HashSet<>();
 
 
-    public HashMap<Integer, Question> getQuestions() {
+    public HashSet<Question> getQuestions() {
         return questions;
     }
 
-    public void setQuestions(HashMap<Integer, Question> questions) {
+    public void setQuestions(HashSet<Question> questions) {
         this.questions = questions;
     }
 
     public boolean addQuestion(Question q){
-        if (q!=null&&this.getQuestions().containsKey(q.getId())){
-            return this.getQuestions().put(q.getId(),q) == null;
+        if (q!=null){
+            Json.writeToJson(q);
+            this.getQuestions().add(q);
+            return true;
         } else{
             return false;
         }
     }
 
     public boolean removeQuestion(Question q){
-        if (q != null && this.getQuestions().containsKey(q.getId())) {
-            return this.getQuestions().remove(q.getId()) != null;
+        if (q != null ) {
+            this.getQuestions().remove(q);
+            return true;
         } else {
             return false;
         }
