@@ -11,11 +11,14 @@ public class Game {
 
     public static Piece currentPiece;
     public static String currentPlayer;
+
+    public static int score;
     public static ChessBoard cb;
     private boolean game;
 
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
+        score=0;
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
