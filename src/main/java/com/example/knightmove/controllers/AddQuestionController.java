@@ -16,6 +16,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
 
 public class AddQuestionController implements Initializable {
@@ -75,9 +76,9 @@ public class AddQuestionController implements Initializable {
         answers.add(Ans2.getText());
         answers.add(Ans3.getText());
         answers.add(Ans4.getText());
-
         Question q = new Question(Question.getText(),answers,1, Level.getValue(), "Panda");
-        HelloApplication.s.addQuestion(q);
+        HelloApplication.s.getQuestions().add(q);
+        Json.writeToJson(q);
 
     }
 }

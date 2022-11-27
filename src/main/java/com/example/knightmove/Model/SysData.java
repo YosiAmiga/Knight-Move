@@ -1,11 +1,13 @@
 package com.example.knightmove.Model;
 
-import java.util.HashMap;
 import java.util.HashSet;
 
 public class SysData {
-    private HashSet<Question> questions = new HashSet<>();
+    private HashSet<Question> questions;
 
+    public SysData() {
+        this.questions = Json.readFromJSON();
+    }
 
     public HashSet<Question> getQuestions() {
         return questions;
@@ -17,7 +19,6 @@ public class SysData {
 
     public boolean addQuestion(Question q){
         if (q!=null){
-            Json.writeToJson(q);
             this.getQuestions().add(q);
             return true;
         } else{
@@ -34,4 +35,12 @@ public class SysData {
         }
     }
 
+    public HashSet<Question> getQuestionsByLevel(Integer level){ //grouping the questions by levels
+        HashSet <Question> questionsByLevel = new HashSet<>();
+        for (Question q: questions){
+            if (q.getLevel()==level)
+                questionsByLevel.add(q);
+        }
+        return questionsByLevel;
+    }
 }

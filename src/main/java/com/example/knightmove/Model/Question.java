@@ -12,27 +12,30 @@ import java.util.Iterator;
 public class Question {
     private static int idCounter = 1;
     private Integer id;
-    private String Question;
+    private String question;
     private ArrayList<String> answers;
     private Integer correctAnswer;
     private Integer level;
     private String team;
 
+    private String rightAnswer;
+
     public Question(String question, ArrayList<String> answers, Integer correctAnswer, Integer level, String team) {
         this.id=idCounter++;
-        this.Question = question;
+        this.question = question;
         this.answers = answers;
         this.correctAnswer = correctAnswer;
         this.level = level;
         this.team = team;
+        this.rightAnswer=theRightAnswer();
     }
 
     public String getQuestion() {
-        return Question;
+        return question;
     }
 
     public void setQuestion(String question) {
-        Question = question;
+        question = question;
     }
 
     public ArrayList<String> getAnswers() {
@@ -73,5 +76,46 @@ public class Question {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public void setRightAnswer(String rightAnswer) {
+        this.rightAnswer = rightAnswer;
+    }
+
+    public String getRightAnswer() {
+        return rightAnswer;
+    }
+
+    public String theRightAnswer(){
+        String ans = new String ();
+        switch (this.correctAnswer){
+            case 1:
+                ans = answers.get(0);
+                break;
+            case 2:
+                ans = answers.get(1);
+                break;
+            case 3:
+                ans = answers.get(2);
+                break;
+            case 4:
+                ans = answers.get(3);
+                break;
+        }
+
+        return ans;
+    }
+
+    @Override
+    public String toString() {
+        return "Question{" +
+                "id=" + id +
+                ", question='" + question + '\'' +
+                ", answers=" + answers +
+                ", correctAnswer=" + correctAnswer +
+                ", level=" + level +
+                ", team='" + team + '\'' +
+                ", rightAnswer='" + rightAnswer + '\'' +
+                '}';
     }
 }

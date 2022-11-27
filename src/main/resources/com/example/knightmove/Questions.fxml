@@ -22,11 +22,11 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="597.0">
                      <children>
-                        <TableView prefHeight="340.0" prefWidth="713.0">
+                        <TableView fx:id="EasyTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="322.0" text="תשובה" />
-                              <TableColumn prefWidth="339.0" text="שאלה" />
-                              <TableColumn minWidth="0.0" prefWidth="51.0" text="#" />
+                              <TableColumn fx:id="easyAnsCol" prefWidth="322.0" text="תשובה" />
+                              <TableColumn fx:id="easyQuestionCol" prefWidth="339.0" text="שאלה" />
+                              <TableColumn fx:id="EasyNumCol" minWidth="0.0" prefWidth="51.0" text="#" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -36,10 +36,10 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <TableView prefHeight="340.0" prefWidth="713.0">
+                        <TableView fx:id="MedTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="322.0" text="תשובה" />
-                              <TableColumn prefWidth="339.0" text="שאלה" />
+                              <TableColumn fx:id="medAnsCol" prefWidth="322.0" text="תשובה" />
+                              <TableColumn fx:id="medQuestionCol" prefWidth="339.0" text="שאלה" />
                               <TableColumn minWidth="0.0" prefWidth="51.0" text="#" />
                            </columns>
                         </TableView>
