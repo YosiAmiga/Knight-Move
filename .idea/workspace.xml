@@ -4,14 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Removed un used methods">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.laccdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GameHistoryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GameHistoryPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/LogInKnightMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/LogInKnightMove.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,18 +38,6 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-    &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
-    }
-    }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
@@ -61,11 +46,11 @@
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src" />
+      <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\DB" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove\controllers" />
       <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\Model" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Unnamed">
@@ -111,6 +96,77 @@
       <option name="presentableId" value="Default" />
       <updated>1667238954148</updated>
     </task>
+    <task id="LOCAL-00001" summary="added square size to Consts.java">
+      <created>1669365773174</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1669365773174</updated>
+    </task>
+    <task id="LOCAL-00002" summary="added init locations of pieces to Consts.java&#10;As defined in project task.">
+      <created>1669366962474</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1669366962474</updated>
+    </task>
+    <task id="LOCAL-00003" summary="added board init method with Consts pieces location.&#10;Working">
+      <created>1669367560538</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1669367560538</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added ready to use functions for validation of special Square locations given a specific Square&#10;under Square.java class">
+      <created>1669368897219</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1669368897219</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added return statement to get out of the loop">
+      <created>1669384572683</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1669384572683</updated>
+    </task>
+    <task id="LOCAL-00006" summary="removed imageView object from last POC">
+      <created>1669385282854</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385282854</updated>
+    </task>
+    <task id="LOCAL-00007" summary="added initial speed for all pieces">
+      <created>1669385311502</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385311502</updated>
+    </task>
+    <task id="LOCAL-00008" summary="added speed as param in class and in get all possible moves function">
+      <created>1669385337364</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385337364</updated>
+    </task>
+    <task id="LOCAL-00009" summary="initialized king speed in the constructor">
+      <created>1669385376134</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1669385376134</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Removed un used methods">
+      <created>1669386266769</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1669386266769</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -123,6 +179,19 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="added square size to Consts.java" />
+    <MESSAGE value="added init locations of pieces to Consts.java&#10;As defined in project task." />
+    <MESSAGE value="added board init method with Consts pieces location.&#10;Working" />
+    <MESSAGE value="added ready to use functions for validation of special Square locations given a specific Square&#10;under Square.java class" />
+    <MESSAGE value="added return statement to get out of the loop" />
+    <MESSAGE value="removed imageView object from last POC" />
+    <MESSAGE value="added initial speed for all pieces" />
+    <MESSAGE value="added speed as param in class and in get all possible moves function" />
+    <MESSAGE value="initialized king speed in the constructor" />
+    <MESSAGE value="Removed un used methods" />
+    <option name="LAST_COMMIT_MESSAGE" value="Removed un used methods" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
