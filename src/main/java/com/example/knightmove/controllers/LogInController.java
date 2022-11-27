@@ -43,15 +43,16 @@ public class LogInController {
         if(iAmNewUser.isSelected()){
             //check box is selected and a new player, add him
             if(isNewPlayer()){
-                addNewPlayer();
-                successAdded();
-                setUserNameTextField();
-                root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
-                stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-                scene = new Scene(root);
-                stage.setScene(scene);
-                stage.setFullScreen(true); // set full screen
-                stage.show();
+                if(addNewPlayer()){
+                    successAdded();
+                    setUserNameTextField();
+                    root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.setFullScreen(true); // set full screen
+                    stage.show();
+                }
             }//not a new player, failLogin()
             else{
                 failLogin();;
@@ -93,11 +94,21 @@ public class LogInController {
 
     public boolean addNewPlayer() throws SQLException {
         String nickname = userNameTextField.getText();
-        if(nickname.equals("")){
+        try{
+            if(nickname.equals("")){
+                throw new SQLException();
+            }else{
+                DatabaseController dbc = new DatabaseController();
+                return dbc.isUserInDatabase(nickname);
+            }
+        }
+        catch(SQLException s){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText("Error");
+            alert.setContentText("Please enter a valid nickname");
+            alert.showAndWait();
             return false;
-        }else{
-            DatabaseController dbc = new DatabaseController();
-            return dbc.isUserInDatabase(nickname);
         }
     }
 
