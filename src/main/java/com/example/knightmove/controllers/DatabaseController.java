@@ -44,7 +44,7 @@ public class DatabaseController implements Initializable {
     public boolean isUserInDatabase(String nickname) throws SQLException {
         try{
             //establish connection
-            Connection con = DriverManager.getConnection("jdbc:ucanaccess://src//Knight_Move_DB.accdb");
+            Connection con = DriverManager.getConnection(Consts.databasePath);
             //create the statement
             PreparedStatement stmt = con.prepareStatement(Consts.ADD_NEW_PLAYER);
             stmt.setString(1, nickname);
@@ -69,7 +69,7 @@ public class DatabaseController implements Initializable {
         ArrayList<Player> playerArrayList= new ArrayList<>();
         try (
                 //establish connection
-                Connection con = DriverManager.getConnection("jdbc:ucanaccess://src//Knight_Move_DB.accdb");
+                Connection con = DriverManager.getConnection(Consts.databasePath);
                 //create the statement
                 Statement stmt = con.createStatement();
                 //execute sql query
@@ -118,7 +118,7 @@ public class DatabaseController implements Initializable {
         ArrayList<GameHistory> GameHistoryList= new ArrayList<>();
         try (
                 //establish connection
-                Connection con = DriverManager.getConnection("jdbc:ucanaccess://src//Knight_Move_DB.accdb");
+                Connection con = DriverManager.getConnection(Consts.databasePath);
                 //create the statement
                 Statement stmt = con.createStatement();
                 //execute sql query

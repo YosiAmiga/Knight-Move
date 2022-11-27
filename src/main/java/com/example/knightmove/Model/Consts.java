@@ -4,6 +4,8 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class Consts {
+
+    public static final String databasePath = "jdbc:ucanaccess://src//DB//Knight_Move_DB.accdb";
     public static final String ADD_NEW_PLAYER =
             "{ call ADD_NEW_PLAYER(?) }";
     public static final String GET_ALL_PLAYERS =
