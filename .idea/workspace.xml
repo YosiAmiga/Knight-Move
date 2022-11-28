@@ -79,6 +79,10 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JUnit.All in Knight-Move" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Unnamed" />
