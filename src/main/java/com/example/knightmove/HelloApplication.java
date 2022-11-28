@@ -1,4 +1,6 @@
 package com.example.knightmove;
+import com.example.knightmove.Model.Json;
+import com.example.knightmove.Model.SysData;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -7,7 +9,10 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 
+
 public class HelloApplication extends Application {
+
+    public static SysData s = new SysData();
 
     @Override
     public void start(Stage stage) throws IOException {
@@ -19,7 +24,7 @@ public class HelloApplication extends Application {
         stage.show();
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         launch();
     } //TEST
 

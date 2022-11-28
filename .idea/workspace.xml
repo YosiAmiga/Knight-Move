@@ -4,15 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Removed un used methods">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="JSON questions">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Question.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -24,10 +27,18 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
   </component>
   <component name="ProjectId" id="2GuWSpwYoEF0RmwWXNyMa9TtlxF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -37,22 +48,77 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/user/Desktop/Software Engineering Project/Knight-Move/json-simple-1.1.1.jar",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.35402298",
+    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\java\com\example\knightmove\controllers" />
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src" />
-      <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\DB" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove\controllers" />
-      <recent name="C:\Users\user\Desktop\Software Engineering Project\Knight-Move\src\main\java\com\example\knightmove" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Unnamed">
+    <configuration name="CreateJsonFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.CreateJsonFile" />
+      <module name="Knight-Move" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Json" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.Json" />
+      <module name="Knight-Move" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="JsonEntity" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.JsonEntity" />
+      <module name="Knight-Move" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Unnamed" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
       <module name="Knight-Move" />
@@ -68,24 +134,54 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="AppJar" type="JarApplication">
+      <option name="JAR_PATH" value="target/Knight-Move-1.0-SNAPSHOT.jar" />
+      <option name="WORKING_DIRECTORY" value="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method v="2" />
     </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
+    <configuration name="Knight-Move [install,clean,package]" type="MavenRunConfiguration" factoryName="Maven" nameIsGenerated="true">
+      <MavenSettings>
+        <option name="myGeneralSettings" />
+        <option name="myRunnerSettings" />
+        <option name="myRunnerParameters">
+          <MavenRunnerParameters>
+            <option name="profiles">
+              <set />
+            </option>
+            <option name="goals">
+              <list>
+                <option value="install" />
+                <option value="clean" />
+                <option value="package" />
+              </list>
+            </option>
+            <option name="pomFileName" />
+            <option name="profilesMap">
+              <map />
+            </option>
+            <option name="resolveToWorkspace" value="false" />
+            <option name="workingDirPath" value="$PROJECT_DIR$" />
+          </MavenRunnerParameters>
+        </option>
+      </MavenSettings>
+      <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.Json" />
+      <item itemvalue="Application.JsonEntity" />
+      <item itemvalue="Application.CreateJsonFile" />
       <item itemvalue="Application.Unnamed" />
+      <item itemvalue="JAR Application.AppJar" />
       <item itemvalue="JUnit.All in Knight-Move" />
+      <item itemvalue="Maven.Knight-Move [install,clean,package]" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.Unnamed" />
+        <item itemvalue="Application.Json" />
+        <item itemvalue="Application.JsonEntity" />
+        <item itemvalue="Application.CreateJsonFile" />
         <item itemvalue="JUnit.All in Knight-Move" />
       </list>
     </recent_temporary>
@@ -99,77 +195,35 @@
       <option name="presentableId" value="Default" />
       <updated>1667238954148</updated>
     </task>
-    <task id="LOCAL-00001" summary="added square size to Consts.java">
-      <created>1669365773174</created>
+    <task id="LOCAL-00001" summary="Questions screens">
+      <created>1669380258879</created>
       <option name="number" value="00001" />
       <option name="presentableId" value="LOCAL-00001" />
       <option name="project" value="LOCAL" />
-      <updated>1669365773174</updated>
+      <updated>1669380258879</updated>
     </task>
-    <task id="LOCAL-00002" summary="added init locations of pieces to Consts.java&#10;As defined in project task.">
-      <created>1669366962474</created>
+    <task id="LOCAL-00002" summary="JSON questions">
+      <created>1669395137265</created>
       <option name="number" value="00002" />
       <option name="presentableId" value="LOCAL-00002" />
       <option name="project" value="LOCAL" />
-      <updated>1669366962474</updated>
+      <updated>1669395137265</updated>
     </task>
-    <task id="LOCAL-00003" summary="added board init method with Consts pieces location.&#10;Working">
-      <created>1669367560538</created>
+    <task id="LOCAL-00003" summary="JSON questions">
+      <created>1669481573332</created>
       <option name="number" value="00003" />
       <option name="presentableId" value="LOCAL-00003" />
       <option name="project" value="LOCAL" />
-      <updated>1669367560538</updated>
+      <updated>1669481573332</updated>
     </task>
-    <task id="LOCAL-00004" summary="added ready to use functions for validation of special Square locations given a specific Square&#10;under Square.java class">
-      <created>1669368897219</created>
+    <task id="LOCAL-00004" summary="JSON questions">
+      <created>1669481650038</created>
       <option name="number" value="00004" />
       <option name="presentableId" value="LOCAL-00004" />
       <option name="project" value="LOCAL" />
-      <updated>1669368897219</updated>
+      <updated>1669481650038</updated>
     </task>
-    <task id="LOCAL-00005" summary="added return statement to get out of the loop">
-      <created>1669384572683</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1669384572683</updated>
-    </task>
-    <task id="LOCAL-00006" summary="removed imageView object from last POC">
-      <created>1669385282854</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1669385282854</updated>
-    </task>
-    <task id="LOCAL-00007" summary="added initial speed for all pieces">
-      <created>1669385311502</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1669385311502</updated>
-    </task>
-    <task id="LOCAL-00008" summary="added speed as param in class and in get all possible moves function">
-      <created>1669385337364</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1669385337364</updated>
-    </task>
-    <task id="LOCAL-00009" summary="initialized king speed in the constructor">
-      <created>1669385376134</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1669385376134</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Removed un used methods">
-      <created>1669386266769</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1669386266769</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -184,17 +238,9 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added square size to Consts.java" />
-    <MESSAGE value="added init locations of pieces to Consts.java&#10;As defined in project task." />
-    <MESSAGE value="added board init method with Consts pieces location.&#10;Working" />
-    <MESSAGE value="added ready to use functions for validation of special Square locations given a specific Square&#10;under Square.java class" />
-    <MESSAGE value="added return statement to get out of the loop" />
-    <MESSAGE value="removed imageView object from last POC" />
-    <MESSAGE value="added initial speed for all pieces" />
-    <MESSAGE value="added speed as param in class and in get all possible moves function" />
-    <MESSAGE value="initialized king speed in the constructor" />
-    <MESSAGE value="Removed un used methods" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed un used methods" />
+    <MESSAGE value="Questions screens" />
+    <MESSAGE value="JSON questions" />
+    <option name="LAST_COMMIT_MESSAGE" value="JSON questions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
