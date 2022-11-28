@@ -138,15 +138,12 @@ public class GamePageController {
     GridPane chessBoard;
 
     @FXML
-<<<<<<< HEAD
     private ImageView boardCurrentStateImage;
 
     @FXML
     private Pane mainPane;
 
     @FXML
-=======
->>>>>>> master
     private Label currentLevelText;
 
     @FXML
