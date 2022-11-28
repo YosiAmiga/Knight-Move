@@ -27,7 +27,7 @@ public class Question {
         this.correctAnswer = correctAnswer;
         this.level = level;
         this.team = team;
-        this.rightAnswer=theRightAnswer();
+        theRightAnswer();
     }
 
     public String getQuestion() {
@@ -86,24 +86,23 @@ public class Question {
         return rightAnswer;
     }
 
-    public String theRightAnswer(){
+    public void theRightAnswer(){
         String ans = new String ();
         switch (this.correctAnswer){
             case 1:
-                ans = answers.get(0);
+                this.rightAnswer = answers.get(0);
                 break;
             case 2:
-                ans = answers.get(1);
+                this.rightAnswer = answers.get(1);
                 break;
             case 3:
-                ans = answers.get(2);
+                this.rightAnswer = answers.get(2);
                 break;
             case 4:
-                ans = answers.get(3);
+                this.rightAnswer = answers.get(3);
                 break;
         }
 
-        return ans;
     }
 
     @Override
