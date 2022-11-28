@@ -40,6 +40,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -48,6 +49,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -56,6 +58,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -64,6 +67,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -75,18 +79,6 @@ public class AppIntroPageController implements Initializable {
         stage.show();
     }
 
-
-
-    @FXML // TODO: write a function that passes to the game rules page --> should be in resources dir
-    protected void onGameRulesButtonClick() {
-        return;
-
-    }
-    @FXML // TODO: write a function that passes to the game page --> should be in resources dir
-    protected void onPlayButtonClick() {
-        return;
-
-    }
 
 
 }

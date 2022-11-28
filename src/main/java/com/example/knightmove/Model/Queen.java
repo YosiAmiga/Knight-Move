@@ -3,6 +3,9 @@ package com.example.knightmove.Model;
 import java.util.ArrayList;
 
 public class Queen extends Piece {
+    String goal = "hit the knight and disturb it's movement ";
+
+
     public Queen(String color, int posX, int posY){
         super(color, posX, posY);
         this.type = "Queen";
@@ -11,6 +14,7 @@ public class Queen extends Piece {
 
     @Override
     public void getAllPossibleMoves() {
+        // TODO: change hard coded parts to enumerations
         int x = this.posX;
         int y = this.posY;
         String name;
@@ -26,7 +30,7 @@ public class Queen extends Piece {
             if(getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
-        for(int i=x+1; i<8; i++){
+        for(int i=x+1; i<Consts.SQUARES_IN_COLUMN; i++){
             name = "Square" + i + y;
             if(getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
@@ -44,7 +48,7 @@ public class Queen extends Piece {
             if(getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
-        for(int j=y+1; j<8; j++){
+        for(int j=y+1; j<Consts.SQUARES_IN_COLUMN; j++){
             name = "Square" + x + j;
             if(getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
@@ -53,7 +57,7 @@ public class Queen extends Piece {
             if(getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
-        for(int i=x-1, j=y+1; i>=0 && j<8; i--, j++){
+        for(int i=x-1, j=y+1; i>=0 && j<Consts.SQUARES_IN_COLUMN; i--, j++){
             name = "Square" + i + j;
             if(getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
@@ -62,7 +66,7 @@ public class Queen extends Piece {
             if(getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
-        for(int i=x+1, j=y+1; i<8 && j<8; i++, j++){
+        for(int i=x+1, j=y+1; i<Consts.SQUARES_IN_COLUMN && j<Consts.SQUARES_IN_COLUMN; i++, j++){
             name = "Square" + i + j;
             if(getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
@@ -71,7 +75,7 @@ public class Queen extends Piece {
             if(getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
-        for(int i=x+1, j=y-1; i<8 && j>=0; i++, j--){
+        for(int i=x+1, j=y-1; i< Consts.SQUARES_IN_ROW && j>=0; i++, j--){
             name = "Square" + i + j;
             if(getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 

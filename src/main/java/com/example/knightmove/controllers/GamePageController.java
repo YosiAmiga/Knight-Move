@@ -76,6 +76,7 @@ public class GamePageController {
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
+        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -94,9 +95,6 @@ public class GamePageController {
 
     @FXML
     GridPane chessBoard;
-
-    @FXML
-    private ImageView boardCurrentStateImage;
 
     @FXML
     private Label currentLevelText;
