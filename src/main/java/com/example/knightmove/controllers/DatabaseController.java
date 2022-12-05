@@ -12,9 +12,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 
@@ -22,6 +20,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Optional;
 import java.util.ResourceBundle;
 
 
@@ -73,7 +72,7 @@ public class DatabaseController implements Initializable {
                 //create the statement
                 Statement stmt = con.createStatement();
                 //execute sql query
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Players_tbl")
+                ResultSet rs = stmt.executeQuery(Consts.GET_ALL_PLAYERS)
         ){
             while (rs.next()){
                 playerArrayList.add(new Player(rs.getString("nickname")));
@@ -114,6 +113,36 @@ public class DatabaseController implements Initializable {
     private TableColumn<GameHistory,Integer> scoreColumn;
 
 
+    public int deleteAllGameHistory() {
+        try (
+                //establish connection
+                Connection con = DriverManager.getConnection(Consts.databasePath);
+                //create the statement
+                Statement stmt = con.createStatement();
+                //execute sql query
+
+        ){
+            return stmt.executeUpdate(Consts.DELETE_ALL_GAME_HISTORY);
+        }
+        catch (SQLException e) {
+            e.printStackTrace();
+            return -1;
+        }
+    }
+    public void deleteAllGameHistoryConfirmation(ActionEvent event) throws IOException {
+        Alert al = new Alert(Alert.AlertType.CONFIRMATION);
+        al.setHeaderText("Are you sure you want to delete all game history?");
+        al.setTitle("Database");
+        al.setResizable(false);
+        Optional<ButtonType> result = al.showAndWait();
+        if(result.get() == ButtonType.OK){
+            deleteAllGameHistory();
+            GameHistoryFunctionsInitialized();
+        }
+        else if(result.get() == ButtonType.CANCEL || !result.isPresent()){
+            return;
+        }
+    }
     public ArrayList<GameHistory> getGameHistory() {
         ArrayList<GameHistory> GameHistoryList= new ArrayList<>();
         try (
@@ -122,7 +151,7 @@ public class DatabaseController implements Initializable {
                 //create the statement
                 Statement stmt = con.createStatement();
                 //execute sql query
-                ResultSet rs = stmt.executeQuery("SELECT * FROM Game_History_tbl")
+                ResultSet rs = stmt.executeQuery(Consts.GET_ALL_GAME_HISTORY)
         ){
             while (rs.next()){
                 GameHistoryList.add(new GameHistory(rs.getInt(1),rs.getString(2),rs.getInt(3)));
@@ -160,7 +189,6 @@ public class DatabaseController implements Initializable {
         playersFunctionsInitialized();
         //scoreboardTbl
         GameHistoryFunctionsInitialized();
-
     }
 
 }
