@@ -12,7 +12,7 @@ import javafx.scene.paint.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 
-public class Piece extends ImageView {
+public abstract class Piece extends ImageView {
     String type;
     String color;
     int posX, posY;
@@ -49,37 +49,9 @@ public class Piece extends ImageView {
 
     }
 
-    public void getAllPossibleMoves() {}
+    public abstract void getAllPossibleMoves();
 
-    public void showAllPossibleMoves(boolean val){
-        if(val){
-            Glow glow = new Glow();
-            glow.setLevel(0.3);
-            for(String move : possibleMoves){
-                Square square = getSquareByName(move);
-                square.setEffect(glow);
-
-                Piece piece = getPieceByName(move);
-                if(piece == null) continue;
-                if(piece.type.equals("King")){
-                    square.setBorder(new Border(new BorderStroke(Color.DARKRED,
-                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.5))));
-                }
-                else{
-                    square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.2))));
-                }
-            }
-        }
-        else{
-            for(String move : possibleMoves){
-                Square square = getSquareByName(move);
-                square.setEffect(null);
-                square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-            }
-        }
-    }
+    public abstract void showAllPossibleMoves();
 
     public Square getSquareByName(String name){
         for(Square square : Game.cb.squares){

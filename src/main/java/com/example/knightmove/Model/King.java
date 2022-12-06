@@ -46,6 +46,7 @@ public class King extends Piece{
             }
         }
     }
+    public void showAllPossibleMoves() {}; // need to implement
 
 
 }
