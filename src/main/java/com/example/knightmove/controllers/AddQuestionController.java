@@ -77,7 +77,13 @@ public class AddQuestionController implements Initializable {
         answers.add(Ans3.getText());
         answers.add(Ans4.getText());
         Question q = new Question(Question.getText(),answers,1, Level.getValue(), "Panda");
-        HelloApplication.s.getQuestions().add(q);
+        if (HelloApplication.s.addQuestion(q)){
+            System.out.println("added");
+            System.out.print(HelloApplication.s.getQuestions());
+        }
+//        HelloApplication.s.addQuestion(q);
+//        System.out.println("hi");
+//        HelloApplication.s.getQuestions();
         Json.writeToJson(q);
 
     }
