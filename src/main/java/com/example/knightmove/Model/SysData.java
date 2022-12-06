@@ -19,7 +19,7 @@ public class SysData {
 
     public boolean addQuestion(Question q){
         if (q!=null){
-            this.getQuestions().add(q);
+            getQuestions().add(q);
             return true;
         } else{
             return false;

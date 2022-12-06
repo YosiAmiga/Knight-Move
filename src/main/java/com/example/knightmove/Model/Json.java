@@ -21,7 +21,7 @@ public class Json {
         HashSet <Question> questions = new HashSet<>();
         JSONParser parser = new JSONParser();
         try {
-            Object obj = parser.parse(new FileReader("Questions.json"));
+            Object obj = parser.parse(new FileReader("src/Questions.json"));
             JSONObject jsonObject = (JSONObject) obj;
             JSONArray allQuestions = (JSONArray) jsonObject.get("questions");
             Iterator<Object> iterator = allQuestions.iterator();
@@ -36,8 +36,8 @@ public class Json {
                 }
                 String q = (String)jsonObject2.get("question");
                 String team = (String)jsonObject2.get("team");
-                String level = (String) jsonObject2.get("level");
-                String correctans = (String) jsonObject2.get("correct_ans");
+                String level = jsonObject2.get("level").toString();
+                String correctans = jsonObject2.get("correct_ans").toString();
                 System.out.println("question " + q);
                 System.out.println("answers " + answers);
                 System.out.println("team " + team);
@@ -61,35 +61,35 @@ public class Json {
         JSONObject newQuestion = new JSONObject();
         newQuestion.put("question",q.getQuestion());
         JSONArray answersArray = new JSONArray();
-        answersArray.add(q.getAnswers());
+        for (String answer :q.getAnswers()) {
+            answersArray.add(answer);
+        }
         newQuestion.put("answers",answersArray);
         newQuestion.put("correct_ans",q.getCorrectAnswer());
         newQuestion.put("level",q.getLevel());
         newQuestion.put("team",q.getTeam());
 
 
-        try(FileWriter file = new FileWriter("Questions.json")){
+        try(FileWriter file = new FileWriter("src/Questions.json")){
             JSONObject doc = new JSONObject();
             JSONArray questionArray = new JSONArray();
             JSONObject questObj = new JSONObject();
             for (Question question1 :HelloApplication.s.getQuestions()){
                 JSONArray answersArray2 = new JSONArray();
                 questObj.put("question", question1.getQuestion());
-                answersArray2.add(question1.getAnswers());
+                for (String answer :question1.getAnswers()) {
+                    answersArray2.add(answer);
+                }
                 questObj.put("answers", answersArray2);
                 questObj.put("correct_ans", question1.getCorrectAnswer());
                 questObj.put("level", question1.getLevel());
                 questObj.put("team", question1.getTeam());
                 questionArray.add(questObj);
-
             }
             questionArray.add(newQuestion);
             doc.put("questions",questionArray);
             file.write(doc.toJSONString());
             file.flush();
-            System.out.println(questionArray);
         }catch (IOException e){e.printStackTrace();}
-
-
-    }
+}
 }
