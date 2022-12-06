@@ -9,8 +9,11 @@ public class Consts {
     public static final String ADD_NEW_PLAYER =
             "{ call ADD_NEW_PLAYER(?) }";
     public static final String GET_ALL_PLAYERS =
-            "{ call GET_ALL_PLAYERS }";
-
+            "SELECT * FROM Players_tbl";
+    public static final String GET_ALL_GAME_HISTORY =
+            "SELECT * FROM Game_History_tbl";
+    public static final String DELETE_ALL_GAME_HISTORY =
+            "DELETE FROM Game_History_tbl";
     public static final int SQUARE_SIZE = 50;
 
     public static final int SQUARES_IN_ROW = 8;
