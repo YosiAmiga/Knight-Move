@@ -14,11 +14,14 @@ public class Game {
     public static ChessBoard cb;
     private boolean game;
 
+    public static int score;
+
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
+        score=0;
         addEventHandlers(cb.chessBoard);
     }
 
