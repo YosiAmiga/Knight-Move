@@ -59,7 +59,6 @@ public abstract class Piece extends ImageView {
                 return square;
             }
         }
-
         return null;
     }
 
