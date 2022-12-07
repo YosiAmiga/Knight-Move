@@ -49,11 +49,12 @@ public class AddQuestionController implements Initializable {
 
     @FXML
     private TextField Ans4;
+    @FXML
+    private ToggleGroup Answer;
 
 
     @FXML
     void BackPage(ActionEvent event) throws IOException {
-        System.out.println("hi");
         root = FXMLLoader.load(HelloApplication.class.getResource("Questions.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -70,21 +71,32 @@ public class AddQuestionController implements Initializable {
 
 
     @FXML
-    void EnterAddQuestion(ActionEvent event) {
+    void EnterAddQuestion(ActionEvent event) throws IOException {
         ArrayList<String> answers = new ArrayList<>();
+        Integer correctAnswer;
         answers.add(Ans1.getText());
         answers.add(Ans2.getText());
         answers.add(Ans3.getText());
         answers.add(Ans4.getText());
-        Question q = new Question(Question.getText(),answers,1, Level.getValue(), "Panda");
+        if (OptOne.isSelected()){
+            correctAnswer = 1;
+        }
+        else if (OptTwo.isSelected()){
+            correctAnswer = 2;
+        }
+        else if (OptThree.isSelected()){
+            correctAnswer = 3;
+        }
+        else{
+            correctAnswer = 4;
+        }
+        Question q = new Question(Question.getText(),answers,correctAnswer, Level.getValue(), "Panda");
         if (HelloApplication.s.addQuestion(q)){
             System.out.println("added");
             System.out.print(HelloApplication.s.getQuestions());
+            Json.updateJson();
         }
-//        HelloApplication.s.addQuestion(q);
-//        System.out.println("hi");
-//        HelloApplication.s.getQuestions();
-        Json.writeToJson(q);
+
 
     }
 }

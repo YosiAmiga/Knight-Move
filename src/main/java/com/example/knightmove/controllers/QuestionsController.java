@@ -78,6 +78,16 @@ public class QuestionsController implements Initializable {
         stage.show();
     }
 
+    @FXML
+    void deleteQuestion(ActionEvent event) {
+            ObservableList<Question> allQuestions,singleQuestion;
+            allQuestions= (ObservableList<Question>) HelloApplication.s.getQuestions();
+            if (EasyTable.getSelectionModel().getSelectedItem()!=null){
+                singleQuestion= (ObservableList<Question>) EasyTable.getSelectionModel().getSelectedItem();
+                singleQuestion.forEach(allQuestions::remove);
+            }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
                 easyQuestionCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));

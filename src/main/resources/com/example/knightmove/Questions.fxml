@@ -63,7 +63,7 @@
         </tabs>
       </TabPane>
       <Button layoutX="28.0" layoutY="474.0" mnemonicParsing="false" onAction="#BackScreen" text="חזרה" />
-      <Button layoutX="495.0" layoutY="474.0" mnemonicParsing="false" text="מחיקה" />
+      <Button layoutX="495.0" layoutY="474.0" mnemonicParsing="false" onAction="#deleteQuestion" text="מחיקה" />
       <Button layoutX="577.0" layoutY="474.0" mnemonicParsing="false" text="עריכה" />
       <Button layoutX="653.0" layoutY="474.0" mnemonicParsing="false" onAction="#addQuestionPage" text="הוספת שאלה" />
    </children>

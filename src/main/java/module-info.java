@@ -6,6 +6,7 @@ module com.example.knightmove {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires json.simple;
+    requires org.burningwave.core;
 
     opens com.example.knightmove to javafx.fxml;
     exports com.example.knightmove;

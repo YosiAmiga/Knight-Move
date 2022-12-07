@@ -85,11 +85,42 @@ public class Json {
                 questObj.put("level", question1.getLevel());
                 questObj.put("team", question1.getTeam());
                 questionArray.add(questObj);
+                System.out.println(question1);
+
             }
             questionArray.add(newQuestion);
             doc.put("questions",questionArray);
             file.write(doc.toJSONString());
             file.flush();
         }catch (IOException e){e.printStackTrace();}
+
 }
+
+        public static void updateJson(){
+
+            try(FileWriter file = new FileWriter("src/Questions.json")){
+                JSONObject doc = new JSONObject();
+                JSONArray questionArray = new JSONArray();
+
+                for (Question question1 :HelloApplication.s.getQuestions()){
+                    JSONObject questObj = new JSONObject();
+                    System.out.println("start writing to json");
+                    System.out.println("The Question " + question1);
+                    JSONArray answersArray2 = new JSONArray();
+                    questObj.put("question", question1.getQuestion());
+                    for (String answer :question1.getAnswers()) {
+                        answersArray2.add(answer);
+                    }
+                    questObj.put("answers", answersArray2);
+                    questObj.put("correct_ans", question1.getCorrectAnswer());
+                    questObj.put("level", question1.getLevel());
+                    questObj.put("team", question1.getTeam());
+                    questionArray.add(questObj);
+
+                }
+                doc.put("questions",questionArray);
+                file.write(doc.toJSONString());
+                file.flush();
+            }catch (IOException e){e.printStackTrace();}
+        }
 }

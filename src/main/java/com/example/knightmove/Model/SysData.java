@@ -1,5 +1,7 @@
 package com.example.knightmove.Model;
 
+import com.example.knightmove.HelloApplication;
+
 import java.util.HashSet;
 
 public class SysData {
@@ -19,7 +21,7 @@ public class SysData {
 
     public boolean addQuestion(Question q){
         if (q!=null){
-            getQuestions().add(q);
+            this.questions.add(q);
             return true;
         } else{
             return false;
@@ -29,11 +31,14 @@ public class SysData {
     public boolean removeQuestion(Question q){
         if (q != null ) {
             this.getQuestions().remove(q);
+            Json.updateJson();
             return true;
         } else {
             return false;
         }
     }
+
+
 
     public HashSet<Question> getQuestionsByLevel(Integer level){ //grouping the questions by levels
         HashSet <Question> questionsByLevel = new HashSet<>();
