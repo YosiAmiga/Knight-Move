@@ -104,12 +104,12 @@ public class Game {
         borderGlow.setOffsetY(0f);
         currentPiece.setEffect(borderGlow);
         currentPiece.getAllPossibleMoves();
-        currentPiece.showAllPossibleMoves(true);
+        currentPiece.showAllPossibleMoves();
     }
 
     private void deselectPiece(boolean changePlayer){
         currentPiece.setEffect(null);
-        currentPiece.showAllPossibleMoves(false);
+        currentPiece.showAllPossibleMoves();
         currentPiece = null;
     }
 
