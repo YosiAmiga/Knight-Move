@@ -29,15 +29,19 @@ public class Square extends StackPane {
         this.name = name;
     }
 
-    public void checkIfSpecialSquare(Square square, ArrayList<ArrayList<Integer>> specialLocations){
-        for(int i = 0 ; i<specialLocations.size() ; i++){
-            if(square.x == specialLocations.get(i).get(0) & square.y == specialLocations.get(i).get(1)){
-                System.out.println("this is a special location");
-                return;
+    public boolean checkIfSpecialSquare(Square square, ArrayList<point> specialLocations){
+        /**
+         * given a point (x,y) and the list of special locations of squares
+         * return true if (x,y) is a special square location
+         */
+        for(point p : specialLocations){
+            if(p.x == square.x && p.y == square.y){
+                return true; // that's a special square
             }
         }
-        // if we don't print anything then we can say that the point is not in a special location
-        return;
+
+        // not a special square if we return false
+        return false;
 
     }
 
