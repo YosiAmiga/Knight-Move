@@ -16,9 +16,9 @@
             <Font size="39.0" />
          </font>
       </Text>
-      <TabPane layoutX="28.0" layoutY="86.0" prefHeight="369.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="TabPane" layoutX="28.0" layoutY="86.0" prefHeight="369.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="קל">
+          <Tab fx:id="easyView" text="קל">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="597.0">
                      <children>
@@ -32,7 +32,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="בינוני">
+          <Tab fx:id="medView" text="בינוני">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -46,7 +46,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="קשה">
+            <Tab fx:id="hardView" text="קשה">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="748.0">
                      <children>

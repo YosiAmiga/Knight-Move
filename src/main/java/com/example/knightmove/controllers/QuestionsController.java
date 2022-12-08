@@ -1,5 +1,6 @@
 package com.example.knightmove.controllers;
 import com.example.knightmove.HelloApplication;
+import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -10,10 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -26,6 +24,9 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class QuestionsController implements Initializable {
+
+    @FXML
+    private TabPane TabPane;
     @FXML
     private TableView<Question> EasyTable;
 
@@ -45,7 +46,12 @@ public class QuestionsController implements Initializable {
 
     @FXML
     private TableColumn<Question, String> medAnsCol;
-
+    @FXML
+    private Tab easyView;
+    @FXML
+    private Tab hardView;
+    @FXML
+    private Tab medView;
     @FXML
     private TableColumn<Question,String> medQuestionCol;
     @FXML
@@ -80,12 +86,30 @@ public class QuestionsController implements Initializable {
 
     @FXML
     void deleteQuestion(ActionEvent event) {
-            ObservableList<Question> allQuestions,singleQuestion;
-            allQuestions= (ObservableList<Question>) HelloApplication.s.getQuestions();
-            if (EasyTable.getSelectionModel().getSelectedItem()!=null){
-                singleQuestion= (ObservableList<Question>) EasyTable.getSelectionModel().getSelectedItem();
-                singleQuestion.forEach(allQuestions::remove);
-            }
+                Question q;
+                if (easyView.isSelected()){
+                    int selectID = EasyTable.getSelectionModel().getSelectedIndex();
+                    q = EasyTable.getSelectionModel().getSelectedItem();
+                    EasyTable.getItems().remove(selectID);
+                }
+                else if (medView.isSelected()){
+                    int selectID = MedTable.getSelectionModel().getSelectedIndex();
+                    q = MedTable.getSelectionModel().getSelectedItem();
+                    MedTable.getItems().remove(selectID);
+
+                }
+
+                else {
+                    int selectID = HardTable.getSelectionModel().getSelectedIndex();
+                    q = HardTable.getSelectionModel().getSelectedItem();
+                    HardTable.getItems().remove(selectID);
+
+                }
+                HelloApplication.s.removeQuestion(q);
+                Json.updateJson();
+
+
+
     }
 
     @Override

@@ -30,8 +30,7 @@ public class SysData {
 
     public boolean removeQuestion(Question q){
         if (q != null ) {
-            this.getQuestions().remove(q);
-            Json.updateJson();
+            this.questions.remove(q);
             return true;
         } else {
             return false;
