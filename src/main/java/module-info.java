@@ -6,16 +6,12 @@ module com.example.knightmove {
     requires org.kordamp.bootstrapfx.core;
     requires java.sql;
     requires json.simple;
-<<<<<<< HEAD
+
     requires javafx.base;
-=======
+
     requires junit;
     requires org.junit.jupiter.api;
-    requires testfx.core;
-    requires testfx.junit;
-    requires testFx;
-    requires hamcrest.core;
->>>>>>> master
+
 
     opens com.example.knightmove to javafx.fxml;
     exports com.example.knightmove;

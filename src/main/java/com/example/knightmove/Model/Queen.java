@@ -1,11 +1,10 @@
 package com.example.knightmove.Model;
 
+import javafx.scene.image.Image;
+
 import java.util.ArrayList;
 
 public class Queen extends Piece {
-    String goal = "hit the knight and disturb it's movement ";
-
-
     public Queen(String color, int posX, int posY){
         super(color, posX, posY);
         this.type = "Queen";
@@ -94,5 +93,8 @@ public class Queen extends Piece {
         }
 
     }
-    public void showAllPossibleMoves() {};
+    public void setImage() {
+        String theme1Url = getClass().getResource("/picture/Queen.png").toExternalForm();
+        this.setPiece(new Image(theme1Url));
+    }
 }
