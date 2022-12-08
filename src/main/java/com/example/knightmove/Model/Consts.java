@@ -45,7 +45,7 @@ public class Consts {
 //    public static final float QUEEN_INIT_SPEED = 10;
 
 
-
+    public static final float NUMBER_OF_BLOCKING_SQUARES = 3;
 
 }
 
