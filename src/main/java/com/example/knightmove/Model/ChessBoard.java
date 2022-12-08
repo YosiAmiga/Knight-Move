@@ -1,6 +1,7 @@
 package com.example.knightmove.Model;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
@@ -158,6 +159,20 @@ public class ChessBoard {
         return false;
     }
 
+
+    private void specialSquareMessege(point currentPosition , ArrayList<point> specialSquaresLocations){
+        for(point p : specialSquaresLocations){
+            if(currentPosition.equals(p)){
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setContentText("GAME ENDED!");
+                al.setHeaderText("GAME ENDED!");
+                al.setTitle("GAME ENDED!");
+                al.setResizable(false);
+                al.showAndWait();;
+            }
+        }
+
+    }
 
 }
 
