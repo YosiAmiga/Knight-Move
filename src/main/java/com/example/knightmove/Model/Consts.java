@@ -1,4 +1,6 @@
 package com.example.knightmove.Model;
+import javafx.scene.paint.Color;
+
 import java.net.URLDecoder;
 import java.sql.*;
 import java.util.ArrayList;
@@ -44,8 +46,22 @@ public class Consts {
 //    public static final float KNIGHT_INIT_SPEED = 10;
 //    public static final float QUEEN_INIT_SPEED = 10;
 
-
+    /**
+     * ------------------------------------ squares amounts for each type
+     */
     public static final float NUMBER_OF_BLOCKING_SQUARES = 3;
+    public static final float NUMBER_OF_FORGETTING_SQUARES = 1;
+    public static final float NUMBER_OF_RANDOM_JUMP_SQUARES = 2;
+
+    /**
+     * ------------------------------------- board color constants
+     */
+    public static  Color color1 = Color.web("#ffffff00");
+    public static  Color color2 = Color.web("#ffffff00");
+    public static  Color colorBlockingSquare = Color.web("#FF0000");
+    public static  Color colorRandomJumpSquare = Color.web("#9ACD32");
+    public static  Color colorForgettingSquare = Color.web("#9dacff");
+
 
 }
 
