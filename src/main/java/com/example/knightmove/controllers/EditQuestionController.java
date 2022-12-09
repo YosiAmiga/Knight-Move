@@ -79,32 +79,38 @@ public class EditQuestionController implements Initializable {
             else Answer.selectToggle(OptFour);
     }
     public void EnterAddQuestion(ActionEvent event) throws NotAllFieldsFullException {
-        ArrayList<String> answers = new ArrayList<>();
-        if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
-            throw new NotAllFieldsFullException();
-        Integer correctAnswer;
-        answers.add(Ans1.getText());
-        answers.add(Ans2.getText());
-        answers.add(Ans3.getText());
-        answers.add(Ans4.getText());
-        //checking for the correct answer marked by user
-        if (OptOne.isSelected()){
-            correctAnswer = 1;
+        try{
+            ArrayList<String> answers = new ArrayList<>();
+            if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
+                throw new NotAllFieldsFullException();
+            Integer correctAnswer;
+            answers.add(Ans1.getText());
+            answers.add(Ans2.getText());
+            answers.add(Ans3.getText());
+            answers.add(Ans4.getText());
+            //checking for the correct answer marked by user
+            if (OptOne.isSelected()){
+                correctAnswer = 1;
+            }
+            else if (OptTwo.isSelected()){
+                correctAnswer = 2;
+            }
+            else if (OptThree.isSelected()){
+                correctAnswer = 3;
+            }
+            else{
+                correctAnswer = 4;
+            }
+            Question q = new Question(Question.getText(),answers,correctAnswer, Level.getValue(), "Panda"); //creating a question object with the edited filled
+            if (HelloApplication.s.editQuestion(q)){ //editing the question
+                System.out.println("UPDATED");
+                Json.updateJson(); //updating the json file
+            }
+        } catch (NotAllFieldsFullException e) {
+            AlertBox.display("ERROR" , e.getMessage());
         }
-        else if (OptTwo.isSelected()){
-            correctAnswer = 2;
-        }
-        else if (OptThree.isSelected()){
-            correctAnswer = 3;
-        }
-        else{
-            correctAnswer = 4;
-        }
-        Question q = new Question(Question.getText(),answers,correctAnswer, Level.getValue(), "Panda"); //creating a question object with the edited filled
-        if (HelloApplication.s.editQuestion(q)){ //editing the question
-            System.out.println("UPDATED");
-            Json.updateJson(); //updating the json file
-        }
+        AlertBox.display("Added", "Successfully Edited");
+
     }
 
     public void BackPage(ActionEvent event) throws IOException {
