@@ -173,6 +173,7 @@ public class GamePageController {
         Object randomQuestion = array[ThreadLocalRandom.current().nextInt(array.length)];
         Question questionObject = (Question) randomQuestion;
         String questionNameToPopUp = questionObject.getQuestion();
+        Integer questionLevel = questionObject.getLevel();
         ArrayList<String> answers = questionObject.getAnswers();
         ArrayList<ButtonType> answersOptions = new ArrayList<>();
         for(String answer : answers){
@@ -203,8 +204,12 @@ public class GamePageController {
         // check the user's response
         if (playerSelectedAnswer.equals(correctAnswerStringByIndex)) {
             correctAnswer.showAndWait();
+            Game.score += questionLevel;
+            System.out.println("Game.score " + Game.score);
         }else {
             wrongAnswer.showAndWait();
+            Game.score -= (questionLevel+1);
+            System.out.println("Game.score " + Game.score);
         }
     }
 
