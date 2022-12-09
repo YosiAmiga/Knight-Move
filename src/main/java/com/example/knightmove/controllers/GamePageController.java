@@ -103,7 +103,7 @@ public class GamePageController {
     }
 
     public void newLevel(ActionEvent event) {
-        startTimeSec = 3; // Change to 60!
+        startTimeSec = 60; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -138,8 +138,6 @@ public class GamePageController {
     @FXML
     GridPane chessBoard;
 
-    @FXML
-    private ImageView boardCurrentStateImage;
 
     @FXML
     private Pane mainPane;
