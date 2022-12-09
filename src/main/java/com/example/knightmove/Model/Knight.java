@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Knight extends Piece{
     String goal = "get max points by moving on squares and answering Questions. can't get back to square already visited";
-    ArrayList<ArrayList<Integer>> visitedSquares; // squares the knight already visited at.
+    ArrayList<point> visitedSquares; // squares the knight already visited at.
 
 
 
@@ -40,6 +40,14 @@ public class Knight extends Piece{
             }
         }
     }
-    public void showAllPossibleMoves() {}; // need to implement
+
+    @Override
+    public void showAllPossibleMoves() {
+        
+    }
+
+    public void showAllPossibleMoves(ArrayList<ArrayList<String>> possibleMoves) {
+        System.out.println(possibleMoves);
+    }; // need to implement
 
 }
