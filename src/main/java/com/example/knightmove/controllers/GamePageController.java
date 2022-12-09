@@ -183,7 +183,7 @@ public class GamePageController {
         String correctAnswerStringByIndex = answers.get(correctAnswerNumber-1);
         
         // create an Alert object
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"nevermind ",answersOptions.get(0),answersOptions.get(1),answersOptions.get(2),answersOptions.get(3));
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",answersOptions.get(0),answersOptions.get(1),answersOptions.get(2),answersOptions.get(3));
         alert.setHeaderText(questionNameToPopUp);
         // set the alert's message to the first question
         alert.setContentText("Select your answer:");
