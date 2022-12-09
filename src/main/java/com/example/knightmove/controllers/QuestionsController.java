@@ -1,4 +1,6 @@
 package com.example.knightmove.controllers;
+import com.example.knightmove.Exceptions.NeedToChoseQuestionException;
+import com.example.knightmove.Exceptions.NotAllFieldsFullException;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
@@ -18,10 +20,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.ResourceBundle;
+import java.util.*;
 
 public class QuestionsController implements Initializable {
 
@@ -88,23 +87,29 @@ public class QuestionsController implements Initializable {
     }
 
     public void editQuestion(ActionEvent event) throws IOException {
-        if (easyView.isSelected()){
-            selectedQuestion = EasyTable.getSelectionModel().getSelectedItem();
+        try{
+            if (easyView.isSelected()){
+                selectedQuestion = EasyTable.getSelectionModel().getSelectedItem();
 
-        }
-        else if (medView.isSelected()){
-            selectedQuestion = MedTable.getSelectionModel().getSelectedItem();
-        }
+            }
+            else if (medView.isSelected()){
+                selectedQuestion = MedTable.getSelectionModel().getSelectedItem();
+            }
 
-        else {
-            selectedQuestion = HardTable.getSelectionModel().getSelectedItem();
-        }
+            else {
+                selectedQuestion = HardTable.getSelectionModel().getSelectedItem();
+            }
+            if (selectedQuestion==null){
+                throw  new NeedToChoseQuestionException();
+            }
 
-        root = FXMLLoader.load(HelloApplication.class.getResource("EditQuestion.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
+            root = FXMLLoader.load(HelloApplication.class.getResource("EditQuestion.fxml"));
+            stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.show();
+        } catch (NeedToChoseQuestionException e) {
+            AlertBox.display("ERROR" , e.getMessage());        }
     }
 
     @FXML
