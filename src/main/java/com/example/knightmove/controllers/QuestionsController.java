@@ -62,6 +62,8 @@ public class QuestionsController implements Initializable {
     private Scene scene;
     private Parent root;
 
+    public static Question selectedQuestion;
+
 //    HashSet <Question> easy = new HashSet (HelloApplication.s.getQuestionsByLevel(1));
     ObservableList<Question> list = FXCollections.observableArrayList(HelloApplication.s.getQuestionsByLevel(1));
     ObservableList<Question> list2 = FXCollections.observableArrayList(HelloApplication.s.getQuestionsByLevel(2));
@@ -73,6 +75,7 @@ public class QuestionsController implements Initializable {
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+
     }
 
 
@@ -85,6 +88,18 @@ public class QuestionsController implements Initializable {
     }
 
     public void editQuestion(ActionEvent event) throws IOException {
+        if (easyView.isSelected()){
+            selectedQuestion = EasyTable.getSelectionModel().getSelectedItem();
+
+        }
+        else if (medView.isSelected()){
+            selectedQuestion = MedTable.getSelectionModel().getSelectedItem();
+        }
+
+        else {
+            selectedQuestion = HardTable.getSelectionModel().getSelectedItem();
+        }
+
         root = FXMLLoader.load(HelloApplication.class.getResource("EditQuestion.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);

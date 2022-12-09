@@ -1,6 +1,7 @@
 package com.example.knightmove.Model;
 
 import com.example.knightmove.HelloApplication;
+import com.example.knightmove.controllers.QuestionsController;
 
 import java.util.HashSet;
 
@@ -37,22 +38,22 @@ public class SysData {
         }
     }
 
-    public boolean editQuestion(Question q, Question eq){
-        if (q!=null){
-            for (Question question: this.questions){
-                if (question.getId()==q.getId()){
-                    q.setQuestion(eq.getQuestion());
-                    q.setAnswers(eq.getAnswers());
-                    q.setLevel(eq.getLevel());
-                    q.setCorrectAnswer(eq.getCorrectAnswer());
+    public boolean editQuestion(Question eq){
+        if (eq!=null){
+            for (Question question: questions){
+                if (question.getId()== QuestionsController.selectedQuestion.getId()){
+                    question.setQuestion(eq.getQuestion());
+                    question.setAnswers(eq.getAnswers());
+                    question.setLevel(eq.getLevel());
+                    question.setCorrectAnswer(eq.getCorrectAnswer());
                     return true;
                 }
+                return false;
             }
-
-            return false;
         }
          return false;
     }
+
 
     public Question getQuestionById(Question q){
         for (Question u:questions){

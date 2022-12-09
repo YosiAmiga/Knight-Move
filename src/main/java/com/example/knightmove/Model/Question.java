@@ -35,7 +35,7 @@ public class Question {
     }
 
     public void setQuestion(String question) {
-        question = question;
+        this.question = question;
     }
 
     public ArrayList<String> getAnswers() {
