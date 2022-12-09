@@ -4,8 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Edit Question - Finished">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Exceptions/NeedToChoseQuestionException.java" afterDir="false" />
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Adding Exceptions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" afterDir="false" />
     </list>
@@ -56,22 +55,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "last_directory_selection": "C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/java/com/example/knightmove",
-    "last_opened_file_path": "C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.35402298",
-    "settings.editor.selected.configurable": "reference.settingsdialog.IDE.editor.colors"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/java/com/example/knightmove&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.35402298&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.IDE.editor.colors&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
@@ -291,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670586324602</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Adding Exceptions">
+      <created>1670597752705</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670597752705</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -330,7 +336,8 @@
     <MESSAGE value="Deleting Questions" />
     <MESSAGE value="Edit Question - Not finished" />
     <MESSAGE value="Edit Question - Finished" />
-    <option name="LAST_COMMIT_MESSAGE" value="Edit Question - Finished" />
+    <MESSAGE value="Adding Exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Exceptions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

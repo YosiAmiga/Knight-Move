@@ -151,7 +151,9 @@ public class QuestionsController implements Initializable {
                 EasyTable.setItems(list);
                 medQuestionCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
                 medAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
-                  MedTable.setItems(list2);
+                MedTable.setItems(list2);
+
+
 //                  hardQuesCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
 //                   hardAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
 //                   HardTable.setItems(list3);
