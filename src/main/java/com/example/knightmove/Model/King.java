@@ -45,6 +45,7 @@ public class King extends Piece{
 
             }
         }
+        System.out.println(possibleMoves);
     }
     public void showAllPossibleMoves() {}; // need to implement
 
