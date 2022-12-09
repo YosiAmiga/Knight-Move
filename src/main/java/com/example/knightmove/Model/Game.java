@@ -14,11 +14,14 @@ public class Game {
     public static ChessBoard cb;
     private boolean game;
 
+    public static int score;
+
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
+        score=0;
         addEventHandlers(cb.chessBoard);
     }
 
@@ -104,12 +107,12 @@ public class Game {
         borderGlow.setOffsetY(0f);
         currentPiece.setEffect(borderGlow);
         currentPiece.getAllPossibleMoves();
-        currentPiece.showAllPossibleMoves(true);
+        currentPiece.showAllPossibleMoves();
     }
 
     private void deselectPiece(boolean changePlayer){
         currentPiece.setEffect(null);
-        currentPiece.showAllPossibleMoves(false);
+        currentPiece.showAllPossibleMoves();
         currentPiece = null;
     }
 

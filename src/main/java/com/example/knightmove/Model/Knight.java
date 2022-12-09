@@ -39,8 +39,7 @@ public class Knight extends Piece{
 
             }
         }
-
-
     }
+    public void showAllPossibleMoves() {}; // need to implement
 
 }
