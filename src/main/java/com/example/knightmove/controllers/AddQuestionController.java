@@ -103,8 +103,7 @@ public class AddQuestionController implements Initializable {
         } catch (NotAllFieldsFullException e){
             AlertBox.display("ERROR" , e.getMessage());
         }
-
-
+        AlertBox.display("Added", "Successfully Added");
 
 
     }

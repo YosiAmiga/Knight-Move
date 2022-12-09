@@ -84,31 +84,43 @@ public class QuestionsController implements Initializable {
         stage.show();
     }
 
+    public void editQuestion(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(HelloApplication.class.getResource("EditQuestion.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     @FXML
     void deleteQuestion(ActionEvent event) {
-                Question q;
-                if (easyView.isSelected()){
-                    int selectID = EasyTable.getSelectionModel().getSelectedIndex();
-                    q = EasyTable.getSelectionModel().getSelectedItem();
-                    EasyTable.getItems().remove(selectID);
-                }
-                else if (medView.isSelected()){
-                    int selectID = MedTable.getSelectionModel().getSelectedIndex();
-                    q = MedTable.getSelectionModel().getSelectedItem();
-                    MedTable.getItems().remove(selectID);
+        Boolean answer = ConfrimBox.display("Confrimation", "Are you sure?"); //asking for confirmation
+        Question q;
+        if (answer == true) {
 
-                }
+            if (easyView.isSelected()){
+                int selectID = EasyTable.getSelectionModel().getSelectedIndex();
+                q = EasyTable.getSelectionModel().getSelectedItem();
+                EasyTable.getItems().remove(selectID);
+            }
+            else if (medView.isSelected()){
+                int selectID = MedTable.getSelectionModel().getSelectedIndex();
+                q = MedTable.getSelectionModel().getSelectedItem();
+                MedTable.getItems().remove(selectID);
 
-                else {
-                    int selectID = HardTable.getSelectionModel().getSelectedIndex();
-                    q = HardTable.getSelectionModel().getSelectedItem();
-                    HardTable.getItems().remove(selectID);
+            }
 
-                }
-                HelloApplication.s.removeQuestion(q);
-                Json.updateJson();
+            else {
+                int selectID = HardTable.getSelectionModel().getSelectedIndex();
+                q = HardTable.getSelectionModel().getSelectedItem();
+                HardTable.getItems().remove(selectID);
 
+            }
+            HelloApplication.s.removeQuestion(q);
+            Json.updateJson();
+        }
 
+        AlertBox.display("REMOVE", "Successfully removed");
 
     }
 
@@ -124,4 +136,6 @@ public class QuestionsController implements Initializable {
 //                   hardAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
 //                   HardTable.setItems(list3);
     }
+
+
 }
