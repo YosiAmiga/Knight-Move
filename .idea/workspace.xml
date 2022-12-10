@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="dependencies">
-      <change afterPath="$PROJECT_DIR$/src/Questions.json" afterDir="false" />
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Adding Exceptions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Questions.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +19,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -67,6 +63,7 @@
     &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
     &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/java/com/example/knightmove&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
@@ -84,14 +81,14 @@
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src" />
-      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager" selected="Application.HelloApplication">
     <configuration name="CreateJsonFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.CreateJsonFile" />
       <module name="Knight-Move" />
@@ -101,6 +98,13 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
+      <module name="Knight-Move" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -131,17 +135,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
-      <module name="Knight-Move" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="All in Knight-Move" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="questionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
       <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <option name="MAIN_CLASS_NAME" value="questionTest" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -183,18 +182,18 @@
       <item itemvalue="Application.Json" />
       <item itemvalue="Application.JsonEntity" />
       <item itemvalue="Application.CreateJsonFile" />
-      <item itemvalue="Application.Unnamed" />
+      <item itemvalue="Application.HelloApplication" />
       <item itemvalue="JAR Application.AppJar" />
-      <item itemvalue="JUnit.All in Knight-Move" />
+      <item itemvalue="JUnit.questionTest" />
       <item itemvalue="Maven.Knight-Move [install,clean,package]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Unnamed" />
+        <item itemvalue="Application.HelloApplication" />
+        <item itemvalue="JUnit.questionTest" />
         <item itemvalue="Application.Json" />
         <item itemvalue="Application.JsonEntity" />
         <item itemvalue="Application.CreateJsonFile" />
-        <item itemvalue="JUnit.All in Knight-Move" />
       </list>
     </recent_temporary>
   </component>
@@ -242,7 +241,63 @@
       <option name="project" value="LOCAL" />
       <updated>1670335905017</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Write to JSON">
+      <created>1670342988001</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1670342988001</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Write to JSON - Fixed">
+      <created>1670427713787</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1670427713787</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Not all fields full excpetion - adding a question">
+      <created>1670435278548</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1670435278548</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Deleting Questions">
+      <created>1670510867898</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1670510867898</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Edit Question - Not finished">
+      <created>1670580127052</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1670580127052</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Edit Question - Finished">
+      <created>1670586055194</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1670586055194</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Edit Question - Finished">
+      <created>1670586324602</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1670586324602</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Adding Exceptions">
+      <created>1670597752705</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1670597752705</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -255,12 +310,34 @@
         </entry>
       </map>
     </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="master" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Questions screens" />
     <MESSAGE value="JSON questions" />
     <MESSAGE value="dependencies" />
-    <option name="LAST_COMMIT_MESSAGE" value="dependencies" />
+    <MESSAGE value="Write to JSON" />
+    <MESSAGE value="Write to JSON - Fixed" />
+    <MESSAGE value="Not all fields full excpetion - adding a question" />
+    <MESSAGE value="Deleting Questions" />
+    <MESSAGE value="Edit Question - Not finished" />
+    <MESSAGE value="Edit Question - Finished" />
+    <MESSAGE value="Adding Exceptions" />
+    <option name="LAST_COMMIT_MESSAGE" value="Adding Exceptions" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
