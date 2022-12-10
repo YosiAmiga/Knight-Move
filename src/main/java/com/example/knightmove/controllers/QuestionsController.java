@@ -115,7 +115,7 @@ public class QuestionsController implements Initializable {
     @FXML
     void deleteQuestion(ActionEvent event) {
         Boolean answer = ConfrimBox.display("Confrimation", "Are you sure?"); //asking for confirmation
-        Question q;
+        Question q = null;
         if (answer == true) {
 
             if (easyView.isSelected()){
@@ -130,7 +130,7 @@ public class QuestionsController implements Initializable {
 
             }
 
-            else {
+            else if(hardView.isSelected()){
                 int selectID = HardTable.getSelectionModel().getSelectedIndex();
                 q = HardTable.getSelectionModel().getSelectedItem();
                 HardTable.getItems().remove(selectID);
@@ -152,11 +152,9 @@ public class QuestionsController implements Initializable {
                 medQuestionCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
                 medAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
                 MedTable.setItems(list2);
-
-
-//                  hardQuesCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
-//                   hardAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
-//                   HardTable.setItems(list3);
+                hardQuesCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
+                hardAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
+                HardTable.setItems(list3);
     }
 
 
