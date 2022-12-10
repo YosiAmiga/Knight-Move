@@ -33,10 +33,7 @@ public abstract class Piece extends ImageView {
         this.setImage(image);
     }
 
-    public void setImage()  {
-        String theme1Url = getClass().getResource("/picture/" + this.type + ".png").toExternalForm();
-        this.setPiece(new Image(theme1Url));
-    }
+    public abstract void setImage();
 
     private void addEventHandler(){
         this.setOnMouseClicked(new EventHandler<MouseEvent>() {
@@ -51,7 +48,35 @@ public abstract class Piece extends ImageView {
 
     public abstract void getAllPossibleMoves();
 
-    public abstract void showAllPossibleMoves();
+    public void showAllPossibleMoves(boolean val){
+        if(val){
+            Glow glow = new Glow();
+            glow.setLevel(0.3);
+            for(String move : possibleMoves){
+                Square square = getSquareByName(move);
+                square.setEffect(glow);
+
+                Piece piece = getPieceByName(move);
+                if(piece == null) continue;
+                if(piece.type.equals("King")){
+                    square.setBorder(new Border(new BorderStroke(Color.DARKRED,
+                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.5))));
+                }
+                else{
+                    square.setBorder(new Border(new BorderStroke(Color.BLACK,
+                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.2))));
+                }
+            }
+        }
+        else{
+            for(String move : possibleMoves){
+                Square square = getSquareByName(move);
+                square.setEffect(null);
+                square.setBorder(new Border(new BorderStroke(Color.BLACK,
+                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+            }
+        }
+    }
 
     public Square getSquareByName(String name){
         for(Square square : Game.cb.squares){
