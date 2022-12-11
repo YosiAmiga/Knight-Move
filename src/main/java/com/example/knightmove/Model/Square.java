@@ -9,13 +9,17 @@ public class Square extends StackPane {
     int x,y;
     boolean occupied;
     String name;
+    String type;
+
+    String color;
 
     public Square(int x, int y){
         this.x = x;
         this.y = y;
         this.occupied = false;
+        this.type= "Normal";
+        this.color="White";
     }
-
     @Override
     public String toString() {
         String status;
