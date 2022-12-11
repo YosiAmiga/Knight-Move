@@ -1,11 +1,13 @@
 package com.example.knightmove.Model;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.Alert;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.lang.Math;
+import java.util.Random;
 
 
 public class ChessBoard {
@@ -22,6 +24,18 @@ public class ChessBoard {
 
 
     private void makeBoard(GridPane chessBoard, String theme){
+        /**
+         * Algo:
+         * 1. Create random locations of blocking squares
+         * 2. For each square set it's theme based on its type.
+         *
+         */
+        ArrayList<point> BlockingSquaresLocations=createBlockingSquaresLocations();
+        ArrayList<point> ForgettingSquaresLocations=createForgettingSquare();
+        ArrayList<point>  RandomJumpSquaresLocations = createRandomJumpSquare();
+
+
+
         for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
             for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
                 Square square = new Square(i,j);
@@ -32,7 +46,7 @@ public class ChessBoard {
                 // NOTE: BoardStroke args (colurOfLinesBetweenSquares, typeOfLineBetweenSquares - could be dotted or full line)
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
                         BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-                setTheme(square, theme, i, j);
+                setTheme(square, theme, i, j,BlockingSquaresLocations,ForgettingSquaresLocations,RandomJumpSquaresLocations);
                 chessBoard.add(square, i, j, 1, 1);
                 squares.add(square);
             }
@@ -40,41 +54,71 @@ public class ChessBoard {
         addPieces();
     }
 
-    private void setTheme(Square square, String theme, int i, int j){
-        Color color1 = Color.web("#ffffff00");
-        Color color2 = Color.web("#ffffff00");
+    private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations){
+        point currentPoint = new point(i,j);
+//        Color color1 = Color.web("#ffffff00");
+//        Color color2 = Color.web("#ffffff00");
+//        Color colorBlockingSquare = Color.web("#FF0000");
+//        Color colorRandomJumpSquare = Color.web("#9ACD32");
+//        Color colorForgettingSquare = Color.web("#9dacff");
+
+
 
         switch (theme) {
             case "Coral" -> {
-                color1 = Color.web("#b1e4b9");
-                color2 = Color.web("#70a2a3");
+                Consts.color1 = Color.web("#b1e4b9");
+                Consts.color2 = Color.web("#70a2a3");
             }
             case "Dusk" -> {
-                color1 = Color.web("#cbb7ae");
-                color2 = Color.web("#716677");
+                Consts.color1 = Color.web("#cbb7ae");
+                Consts.color2 = Color.web("#716677");
             }
             case "Wheat" -> {
-                color1 = Color.web("#eaefce");
-                color2 = Color.web("#bbbe65");
+                Consts.color1 = Color.web("#eaefce");
+                Consts.color2 = Color.web("#bbbe65");
             }
             case "Marine" -> {
-                color1 = Color.web("#9dacff");
-                color2 = Color.web("#6f74d2");
+                Consts.color1 = Color.web("#9dacff");
+                Consts.color2 = Color.web("#6f74d2");
             }
             case "Emerald" -> {
-                color1 = Color.web("#adbd90");
-                color2 = Color.web("#6e8f72");
+                Consts.color1 = Color.web("#adbd90");
+                Consts.color2 = Color.web("#6e8f72");
             }
             case "Sandcastle" -> {
-                color1 = Color.web("#e4c16f");
-                color2 = Color.web("#b88b4a");
+                Consts.color1 = Color.web("#e4c16f");
+                Consts.color2 = Color.web("#b88b4a");
             }
         }
 
+
+        for(point p : BlockingSquaresLocations){
+            if(currentPoint.x == p.x && currentPoint.y == p.y){
+                square.setBackground(new Background(new BackgroundFill(Consts.colorBlockingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                return;
+            }
+        }
+
+        for(point p : ForgettingSquaresLocations){
+            if(currentPoint.x == p.x && currentPoint.y == p.y){
+                square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                return;
+            }
+        }
+        for(point p : RandomJumpSquaresLocations){
+            if(currentPoint.x == p.x && currentPoint.y == p.y){
+                square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                return;
+            }
+        }
+
+
         if((i+j)%2==0){
-            square.setBackground(new Background(new BackgroundFill(color1, CornerRadii.EMPTY, Insets.EMPTY)));
+
+            square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+
         }else{
-            square.setBackground(new Background(new BackgroundFill(color2, CornerRadii.EMPTY, Insets.EMPTY)));
+            square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
         }
 
     }
@@ -107,5 +151,87 @@ public class ChessBoard {
         }
 
     }
+    private void specialSquareMessege(point currentPosition , ArrayList<point> specialSquaresLocations){
+        for(point p : specialSquaresLocations){
+            if(currentPosition.equals(p)){
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setContentText("GAME ENDED!");
+                al.setHeaderText("GAME ENDED!");
+                al.setTitle("GAME ENDED!");
+                al.setResizable(false);
+                al.showAndWait();;
+            }
+        }
+
+    }
+
+    private ArrayList<point> createForgettingSquare(){
+        ArrayList<point> ForgettingSquares = new ArrayList<point>();
+        while(ForgettingSquares.size() <Consts.NUMBER_OF_FORGETTING_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(ForgettingSquares, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                ForgettingSquares.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ ForgettingSquares.size());
+        }
+
+        for(point p : ForgettingSquares){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return ForgettingSquares;
+    }
+
+    private ArrayList<point> createRandomJumpSquare(){
+        ArrayList<point> RandomJumpSquares = new ArrayList<point>();
+        while(RandomJumpSquares.size() <Consts.NUMBER_OF_RANDOM_JUMP_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(RandomJumpSquares, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                RandomJumpSquares.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ RandomJumpSquares.size());
+        }
+
+        for(point p : RandomJumpSquares){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return RandomJumpSquares;
+    }
+
+
+    private boolean checkIfPointExist(ArrayList<point> specialSquaresLocations,int randX,int randY){
+        for(point p : specialSquaresLocations){
+            if(p.x == randX && p.y == randY){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private ArrayList<point> createBlockingSquaresLocations(){
+        ArrayList<point> specialSquaresLocations = new ArrayList<point>();
+        while(specialSquaresLocations.size() <Consts.NUMBER_OF_BLOCKING_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(specialSquaresLocations, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                specialSquaresLocations.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ specialSquaresLocations.size());
+        }
+
+        for(point p : specialSquaresLocations){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return specialSquaresLocations;
+    }
+
+
 }
 

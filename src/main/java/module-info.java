@@ -10,7 +10,7 @@ module com.example.knightmove {
     requires junit;
     requires testfx.core;
     requires testfx.junit;
-    requires hamcrest.core;
+//    requires hamcrest.core;
 
 
     opens com.example.knightmove to javafx.fxml;
