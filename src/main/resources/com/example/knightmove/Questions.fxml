@@ -16,9 +16,9 @@
             <Font size="39.0" />
          </font>
       </Text>
-      <TabPane layoutX="28.0" layoutY="86.0" prefHeight="369.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane fx:id="TabPane" layoutX="28.0" layoutY="86.0" prefHeight="369.0" prefWidth="713.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
-          <Tab text="קל">
+          <Tab fx:id="easyView" text="קל">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="339.0" prefWidth="597.0">
                      <children>
@@ -32,7 +32,7 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="בינוני">
+          <Tab fx:id="medView" text="בינוני">
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
@@ -46,14 +46,14 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-            <Tab text="קשה">
+            <Tab fx:id="hardView" text="קשה">
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="748.0">
                      <children>
-                        <TableView prefHeight="340.0" prefWidth="713.0">
+                        <TableView fx:id="HardTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
-                              <TableColumn prefWidth="322.0" text="תשובה" />
-                              <TableColumn prefWidth="339.0" text="שאלה" />
+                              <TableColumn fx:id="hardAnsCol" prefWidth="322.0" text="תשובה" />
+                              <TableColumn fx:id="hardQuesCol" prefWidth="339.0" text="שאלה" />
                               <TableColumn minWidth="0.0" prefWidth="51.0" text="#" />
                            </columns>
                         </TableView>
@@ -63,8 +63,8 @@
         </tabs>
       </TabPane>
       <Button layoutX="28.0" layoutY="474.0" mnemonicParsing="false" onAction="#BackScreen" text="חזרה" />
-      <Button layoutX="495.0" layoutY="474.0" mnemonicParsing="false" text="מחיקה" />
-      <Button layoutX="577.0" layoutY="474.0" mnemonicParsing="false" text="עריכה" />
+      <Button layoutX="495.0" layoutY="474.0" mnemonicParsing="false" onAction="#deleteQuestion" text="מחיקה" />
+      <Button layoutX="577.0" layoutY="474.0" mnemonicParsing="false" onAction="#editQuestion" text="עריכה" />
       <Button layoutX="653.0" layoutY="474.0" mnemonicParsing="false" onAction="#addQuestionPage" text="הוספת שאלה" />
    </children>
 </AnchorPane>

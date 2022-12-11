@@ -7,7 +7,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
 import java.lang.Math;
-import java.util.EventListener;
 import java.util.Random;
 
 
@@ -21,63 +20,6 @@ public class ChessBoard {
         this.chessBoard = chessBoard;
         this.theme = theme;
         makeBoard(this.chessBoard, theme);
-    }
-
-    private ArrayList<point> createBlockingSquaresLocations(){
-        ArrayList<point> specialSquaresLocations = new ArrayList<point>();
-        while(specialSquaresLocations.size() <Consts.NUMBER_OF_BLOCKING_SQUARES){
-            Random rand = new Random();
-            int randX = rand.nextInt(7); // random x value in range of (0,7)
-            int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(specialSquaresLocations, randX, randY)){
-                point specialSquarePoint = new point(randX,randY);
-                specialSquaresLocations.add(specialSquarePoint);
-            }
-            System.out.println("current list length: "+ specialSquaresLocations.size());
-        }
-
-        for(point p : specialSquaresLocations){
-            System.out.println("point coords: " + p.x +", "+ p.y);
-        }
-    return specialSquaresLocations;
-    }
-
-    private ArrayList<point> createForgettingSquare(){
-        ArrayList<point> ForgettingSquares = new ArrayList<point>();
-        while(ForgettingSquares.size() <Consts.NUMBER_OF_FORGETTING_SQUARES){
-            Random rand = new Random();
-            int randX = rand.nextInt(7); // random x value in range of (0,7)
-            int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(ForgettingSquares, randX, randY)){
-                point specialSquarePoint = new point(randX,randY);
-                ForgettingSquares.add(specialSquarePoint);
-            }
-            System.out.println("current list length: "+ ForgettingSquares.size());
-        }
-
-        for(point p : ForgettingSquares){
-            System.out.println("point coords: " + p.x +", "+ p.y);
-        }
-        return ForgettingSquares;
-    }
-
-    private ArrayList<point> createRandomJumpSquare(){
-        ArrayList<point> RandomJumpSquares = new ArrayList<point>();
-        while(RandomJumpSquares.size() <Consts.NUMBER_OF_RANDOM_JUMP_SQUARES){
-            Random rand = new Random();
-            int randX = rand.nextInt(7); // random x value in range of (0,7)
-            int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(RandomJumpSquares, randX, randY)){
-                point specialSquarePoint = new point(randX,randY);
-                RandomJumpSquares.add(specialSquarePoint);
-            }
-            System.out.println("current list length: "+ RandomJumpSquares.size());
-        }
-
-        for(point p : RandomJumpSquares){
-            System.out.println("point coords: " + p.x +", "+ p.y);
-        }
-        return RandomJumpSquares;
     }
 
 
@@ -208,17 +150,6 @@ public class ChessBoard {
         }
 
     }
-
-    private boolean checkIfPointExist(ArrayList<point> specialSquaresLocations,int randX,int randY){
-        for(point p : specialSquaresLocations){
-            if(p.x == randX && p.y == randY){
-                return true;
-            }
-        }
-        return false;
-    }
-
-
     private void specialSquareMessege(point currentPosition , ArrayList<point> specialSquaresLocations){
         for(point p : specialSquaresLocations){
             if(currentPosition.equals(p)){
@@ -232,6 +163,74 @@ public class ChessBoard {
         }
 
     }
+
+    private ArrayList<point> createForgettingSquare(){
+        ArrayList<point> ForgettingSquares = new ArrayList<point>();
+        while(ForgettingSquares.size() <Consts.NUMBER_OF_FORGETTING_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(ForgettingSquares, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                ForgettingSquares.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ ForgettingSquares.size());
+        }
+
+        for(point p : ForgettingSquares){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return ForgettingSquares;
+    }
+
+    private ArrayList<point> createRandomJumpSquare(){
+        ArrayList<point> RandomJumpSquares = new ArrayList<point>();
+        while(RandomJumpSquares.size() <Consts.NUMBER_OF_RANDOM_JUMP_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(RandomJumpSquares, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                RandomJumpSquares.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ RandomJumpSquares.size());
+        }
+
+        for(point p : RandomJumpSquares){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return RandomJumpSquares;
+    }
+
+
+    private boolean checkIfPointExist(ArrayList<point> specialSquaresLocations,int randX,int randY){
+        for(point p : specialSquaresLocations){
+            if(p.x == randX && p.y == randY){
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private ArrayList<point> createBlockingSquaresLocations(){
+        ArrayList<point> specialSquaresLocations = new ArrayList<point>();
+        while(specialSquaresLocations.size() <Consts.NUMBER_OF_BLOCKING_SQUARES){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            if(!checkIfPointExist(specialSquaresLocations, randX, randY)){
+                point specialSquarePoint = new point(randX,randY);
+                specialSquaresLocations.add(specialSquarePoint);
+            }
+            System.out.println("current list length: "+ specialSquaresLocations.size());
+        }
+
+        for(point p : specialSquaresLocations){
+            System.out.println("point coords: " + p.x +", "+ p.y);
+        }
+        return specialSquaresLocations;
+    }
+
 
 }
 

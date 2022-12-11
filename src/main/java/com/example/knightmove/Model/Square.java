@@ -46,6 +46,4 @@ public class Square extends StackPane {
     }
 
 
-
-
 }

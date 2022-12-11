@@ -1,5 +1,8 @@
 package com.example.knightmove.Model;
 
+import com.example.knightmove.HelloApplication;
+import com.example.knightmove.controllers.QuestionsController;
+
 import java.util.HashSet;
 
 public class SysData {
@@ -19,7 +22,7 @@ public class SysData {
 
     public boolean addQuestion(Question q){
         if (q!=null){
-            getQuestions().add(q);
+            this.questions.add(q);
             return true;
         } else{
             return false;
@@ -28,12 +31,39 @@ public class SysData {
 
     public boolean removeQuestion(Question q){
         if (q != null ) {
-            this.getQuestions().remove(q);
+            this.questions.remove(q);
             return true;
         } else {
             return false;
         }
     }
+
+    public boolean editQuestion(Question eq){
+        if (eq!=null){
+            for (Question question: questions){
+                if (question.getId()== QuestionsController.selectedQuestion.getId()){
+                    question.setQuestion(eq.getQuestion());
+                    question.setAnswers(eq.getAnswers());
+                    question.setLevel(eq.getLevel());
+                    question.setCorrectAnswer(eq.getCorrectAnswer());
+                    return true;
+                }
+                return false;
+            }
+        }
+         return false;
+    }
+
+
+    public Question getQuestionById(Question q){
+        for (Question u:questions){
+            if (u.getId()==q.getId())
+                return u;
+        }
+        return null;
+    }
+
+
 
     public HashSet<Question> getQuestionsByLevel(Integer level){ //grouping the questions by levels
         HashSet <Question> questionsByLevel = new HashSet<>();
