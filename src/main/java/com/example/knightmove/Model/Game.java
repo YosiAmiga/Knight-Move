@@ -34,7 +34,7 @@ public class Game {
                 // Clicked on square
                 if(target.toString().equals("Square")){
                     Square square = (Square) target;
-                    if(square.occupied){
+                    if(square.occupied ){
                         Piece newPiece = (Piece) square.getChildren().get(0);
                         // Selecting a new piece
                         if(currentPiece == null){
