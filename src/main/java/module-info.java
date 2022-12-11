@@ -8,8 +8,6 @@ module com.example.knightmove {
     requires json.simple;
     requires javafx.base;
     requires junit;
-    requires testfx.core;
-    requires testfx.junit;
 //    requires hamcrest.core;
 
 
