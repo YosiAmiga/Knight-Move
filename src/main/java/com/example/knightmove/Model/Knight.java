@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 public class Knight extends Piece{
     String goal = "get max points by moving on squares and answering Questions. can't get back to square already visited";
-    ArrayList<ArrayList<Integer>> visitedSquares; // squares the knight already visited at.
+    point currentLocation = new point(Consts.KNIGHT_INIT_LOCATION_X,Consts.KNIGHT_INIT_LOCATION_Y);
+    ArrayList<point> visitedSquares; // squares the knight already visited at.
 
 
 
@@ -218,6 +219,5 @@ public class Knight extends Piece{
         String theme1Url = getClass().getResource("/picture/knight.png").toExternalForm();
         this.setPiece(new Image(theme1Url));
     }
-    public void showAllPossibleMoves() {}; // need to implement
 
 }

@@ -34,7 +34,7 @@ public class Game {
                 // Clicked on square
                 if(target.toString().equals("Square")){
                     Square square = (Square) target;
-                    if(square.occupied){
+                    if(square.occupied ){
                         Piece newPiece = (Piece) square.getChildren().get(0);
                         // Selecting a new piece
                         if(currentPiece == null){
@@ -67,28 +67,62 @@ public class Game {
                 }
                 // Clicked on piece
                 else{
-                    Piece newPiece = (Piece) target;
-                    Square square = (Square) newPiece.getParent();
-                    // Selecting a new piece
-                    if(currentPiece == null){
-                        currentPiece = newPiece;
-                        if(!currentPiece.getColor().equals(currentPlayer)){
-                            currentPiece = null;
-                            return;
-                        }
-                        selectPiece(game);
-                    }
-                    // Selecting other piece of same color || Killing a piece
-                    else{
-                        if(currentPiece.color.equals(newPiece.color)){
-                            deselectPiece(false);
+                    if(currentPiece instanceof Queen){
+                        // random movement
+                        System.out.println("queen player pressed");
+                        Piece newPiece = (Piece) target;
+                        Square square = (Square) newPiece.getParent();
+                        // Selecting a new piece
+                        if(currentPiece == null){
                             currentPiece = newPiece;
+                            if(!currentPiece.getColor().equals(currentPlayer)){
+                                currentPiece = null;
+                                return;
+                            }
                             selectPiece(game);
                         }
+                        // Selecting other piece of same color || Killing a piece
                         else{
-                            killPiece(square);
+                            if(currentPiece.color.equals(newPiece.color)){
+                                deselectPiece(false);
+                                currentPiece = newPiece;
+                                selectPiece(game);
+                            }
+                            else{
+                                killPiece(square);
+                            }
                         }
+
+
+
                     }
+                    else{
+                        System.out.println("knight player pressed");
+                        Piece newPiece = (Piece) target;
+                        Square square = (Square) newPiece.getParent();
+                        // Selecting a new piece
+                        if(currentPiece == null){
+                            currentPiece = newPiece;
+                            if(!currentPiece.getColor().equals(currentPlayer)){
+                                currentPiece = null;
+                                return;
+                            }
+                            selectPiece(game);
+                        }
+                        // Selecting other piece of same color || Killing a piece
+                        else{
+                            if(currentPiece.color.equals(newPiece.color)){
+                                deselectPiece(false);
+                                currentPiece = newPiece;
+                                selectPiece(game);
+                            }
+                            else{
+                                killPiece(square);
+                            }
+                        }
+
+                    }
+
 
                 }
             }
