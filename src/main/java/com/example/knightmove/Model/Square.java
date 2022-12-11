@@ -29,12 +29,12 @@ public class Square extends StackPane {
         this.name = name;
     }
 
-    public boolean checkIfSpecialSquare(Square square, ArrayList<point> specialLocations){
+    public boolean checkIfSquareIsSecial(Square square, ArrayList<point> specialSquaresCoords){
         /**
          * given a point (x,y) and the list of special locations of squares
          * return true if (x,y) is a special square location
          */
-        for(point p : specialLocations){
+        for(point p : specialSquaresCoords){
             if(p.x == square.x && p.y == square.y){
                 return true; // that's a special square
             }
