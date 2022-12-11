@@ -114,6 +114,7 @@ public class ChessBoard {
 
 
         if((i+j)%2==0){
+
             square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
 
         }else{
