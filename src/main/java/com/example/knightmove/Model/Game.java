@@ -1,5 +1,6 @@
 package com.example.knightmove.Model;
 
+import com.example.knightmove.controllers.GamePageController;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.scene.effect.DropShadow;
@@ -103,7 +104,7 @@ public class Game {
                         // Selecting a new piece
                         if(currentPiece == null){
                             currentPiece = newPiece;
-                            if(!currentPiece.getColor().equals(currentPlayer)){
+                            if(!currentPiece.getColor().equals(currentPlayer)) {
                                 currentPiece = null;
                                 return;
                             }
@@ -161,6 +162,7 @@ public class Game {
         currentPiece.posX = square.x;
         currentPiece.posY = square.y;
         deselectPiece(true);
+        GamePageController.createQuestionPopUp();
     }
 
     private void killPiece(Square square){

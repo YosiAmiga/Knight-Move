@@ -53,13 +53,11 @@ public class GamePageController {
 
 
     public void initialize() {
-        createQuestionPopUp();
 
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
         Game game = new Game(chessBoard, "Sandcastle");
 
-
-        startTimeSec = 3; // Change to 60!
+        startTimeSec = 60; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -67,15 +65,12 @@ public class GamePageController {
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
 
-                //if (isSecondsZero) {
-                //    startTimeSec = 10;
-                // }
+
                 if (timeToChangeLevel) {
                     timeline.stop();
-                    startTimeSec = 3;
+                    startTimeSec = 60;
                     if (currentLevelText.getText().equals("1")) {
                         Game.score+=5;
-                        System.out.println(Game.score);
                         currentScore.setText(Integer.toString(Game.score));
                         currentLevelText.setText("2");
                     } else if (currentLevelText.getText().equals("2")) {
@@ -118,7 +113,7 @@ public class GamePageController {
     }
 
     public void newLevel(ActionEvent event) {
-        startTimeSec = 3; // Change to 60!
+        startTimeSec = 60; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -126,13 +121,6 @@ public class GamePageController {
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
 
-                if (isSecondsZero) {
-                    startTimeSec = 10;
-                }
-                if (timeToChangeLevel) {
-                    timeline.stop();
-                    startTimeSec = 10;
-                }
                 currentTimeText.setText(String.format("%02d sec", startTimeSec));
             }
         }));
@@ -165,7 +153,7 @@ public class GamePageController {
     @FXML
     private Label currentTimeText;
 
-    public void createQuestionPopUp(){
+    public static void createQuestionPopUp(){
         HashSet<Question> allQuestionsInJSON= readFromJSON();
         // convert the HashSet to an array
         Object[] array = allQuestionsInJSON.toArray();
