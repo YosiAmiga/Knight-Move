@@ -50,8 +50,4 @@ public class King extends Piece{
     }
     public void showAllPossibleMoves() {}; // need to implement
 
-    public void setImage() {
-        String theme1Url = getClass().getResource("/picture/King.png").toExternalForm();
-        this.setPiece(new Image(theme1Url));
-    }
 }

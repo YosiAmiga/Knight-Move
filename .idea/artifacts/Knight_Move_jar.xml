@@ -1,0 +1,34 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Knight-Move:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/Knight_Move_jar</output-path>
+    <root id="archive" name="Knight-Move.jar">
+      <element id="module-output" name="Knight-Move" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/json/json/20210307/json-20210307.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/net/sf/ucanaccess/ucanaccess/4.0.4/ucanaccess-4.0.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19-ea+3/javafx-fxml-19-ea+3-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/kordamp/bootstrapfx/bootstrapfx-core/0.4.0/bootstrapfx-core-0.4.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/io/github/toolfactory/jvm-driver/9.4.2/jvm-driver-9.4.2.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/googlecode/json-simple/json-simple/1.1.1/json-simple-1.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-lang/commons-lang/2.6/commons-lang-2.6.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19-ea+3/javafx-base-19-ea+3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-fxml/19-ea+3/javafx-fxml-19-ea+3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-base/19-ea+3/javafx-base-19-ea+3-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/burningwave/jvm-driver/8.14.0/jvm-driver-8.14.0.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/healthmarketscience/jackcess/jackcess/2.1.11/jackcess-2.1.11.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19-ea+3/javafx-controls-19-ea+3-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/hsqldb/hsqldb/2.3.1/hsqldb-2.3.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19-ea+3/javafx-graphics-19-ea+3-win.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/burningwave/core/12.62.5/core-12.62.5.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/controlsfx/controlsfx/11.1.1/controlsfx-11.1.1.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-controls/19-ea+3/javafx-controls-19-ea+3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/org/openjfx/javafx-graphics/19-ea+3/javafx-graphics-19-ea+3.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/junit/junit/4.4/junit-4.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.3/commons-logging-1.1.3.jar" path-in-jar="/" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/View/picture/King.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/View/picture/Knight.png" />
+      <element id="file-copy" path="$PROJECT_DIR$/src/main/View/picture/Queen.png" />
+      <element id="module-source" name="Knight-Move" />
+      <element id="dir-copy" path="$PROJECT_DIR$/src/main/View/picture" />
+    </root>
+  </artifact>
+</component>

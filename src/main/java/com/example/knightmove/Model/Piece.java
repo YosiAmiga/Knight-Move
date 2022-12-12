@@ -33,7 +33,10 @@ public abstract class Piece extends ImageView {
         this.setImage(image);
     }
 
-    public abstract void setImage();
+    public void setImage(){
+        String theme1Url = String.valueOf(getClass().getResource("/picture/"+this.type +".png"));
+        this.setPiece(new Image(theme1Url));
+    }
 
     private void addEventHandler(){
         this.setOnMouseClicked(new EventHandler<MouseEvent>() {
