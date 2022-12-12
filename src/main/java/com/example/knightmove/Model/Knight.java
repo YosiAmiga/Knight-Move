@@ -213,11 +213,5 @@ public class Knight extends Piece{
 //        moves.add("Square" + (x+1) + (y-2));
 //        moves.add("Square" + (x-1) + (y-2));
 
-
     }
-    public void setImage() {
-        String theme1Url = getClass().getResource("/picture/knight.png").toExternalForm();
-        this.setPiece(new Image(theme1Url));
-    }
-
 }
