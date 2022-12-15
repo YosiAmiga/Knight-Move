@@ -54,8 +54,7 @@ public abstract class Piece extends ImageView {
     public void showAllPossibleMoves(boolean val){
         if(val){
             Glow glow = new Glow();
-            glow.setLevel(0.3);
-            System.out.println("possibleMoves \n" + possibleMoves);
+            glow.setLevel(1);
 
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
