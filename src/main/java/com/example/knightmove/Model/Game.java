@@ -8,6 +8,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 
+import java.util.ArrayList;
+
 public class Game {
 
     public static Piece currentPiece;
@@ -68,9 +70,8 @@ public class Game {
                 }
                 // Clicked on piece
                 else{
-                    if(currentPiece instanceof Queen){
                         // random movement
-                        System.out.println("queen player pressed");
+                        System.out.println("Instance of pressed piece: " + currentPiece);
                         Piece newPiece = (Piece) target;
                         Square square = (Square) newPiece.getParent();
                         // Selecting a new piece
@@ -97,36 +98,10 @@ public class Game {
 
 
                     }
-                    else{
-                        System.out.println("knight player pressed");
-                        Piece newPiece = (Piece) target;
-                        Square square = (Square) newPiece.getParent();
-                        // Selecting a new piece
-                        if(currentPiece == null){
-                            currentPiece = newPiece;
-                            if(!currentPiece.getColor().equals(currentPlayer)) {
-                                currentPiece = null;
-                                return;
-                            }
-                            selectPiece(game);
-                        }
-                        // Selecting other piece of same color || Killing a piece
-                        else{
-                            if(currentPiece.color.equals(newPiece.color)){
-                                deselectPiece(false);
-                                currentPiece = newPiece;
-                                selectPiece(game);
-                            }
-                            else{
-                                killPiece(square);
-                            }
-                        }
-
-                    }
 
 
                 }
-            }
+
         });
     }
 
@@ -141,10 +116,40 @@ public class Game {
         borderGlow.setOffsetX(0f);
         borderGlow.setOffsetY(0f);
         currentPiece.setEffect(borderGlow);
-        currentPiece.getAllPossibleMoves();
+        ArrayList<String> possibleMoves =currentPiece.getAllPossibleMoves();
+        ArrayList<point> possibleMovesReformatted = new ArrayList<>();
+        possibleMovesReformatted = reformatMoves(possibleMoves);
+        System.out.println("******************************");
+        System.out.println("possible moves string format:\n" + possibleMoves);
+        System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
+        System.out.println("possible moves POINT format:\n" + possibleMovesReformatted);
+
+
+
         currentPiece.showAllPossibleMoves(true);
+
     }
 
+    private ArrayList<point> reformatMoves(ArrayList<String> possibleMoves){
+        ArrayList<point> possibleMovesReformatted = new ArrayList<>();
+
+        for(String move : possibleMoves){
+            int i = 0;
+            for(Character c : move.toCharArray()){
+                System.out.println(c + "  index: "+ i);
+                i++;
+            }
+            char x = move.charAt(6);
+            char y = move.charAt(7);
+            System.out.println("x is: " + x);
+            System.out.println("y is: " + y);
+
+
+
+            possibleMovesReformatted.add(new point(Character.getNumericValue(x),Character.getNumericValue(y)));
+        }
+        return possibleMovesReformatted;
+    }
     private void deselectPiece(boolean changePlayer){
         currentPiece.setEffect(null);
         currentPiece.showAllPossibleMoves(false);
