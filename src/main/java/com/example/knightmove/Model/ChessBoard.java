@@ -16,6 +16,10 @@ public class ChessBoard {
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
 
+    public ArrayList<Square> getSquares() {
+        return squares;
+    }
+
     public ChessBoard(GridPane chessBoard, String theme){
         this.chessBoard = chessBoard;
         this.theme = theme;
