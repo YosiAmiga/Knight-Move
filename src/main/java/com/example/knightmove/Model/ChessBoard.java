@@ -15,6 +15,9 @@ public class ChessBoard {
     GridPane chessBoard;
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
+    public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> randomJunpSquaresLocations = new ArrayList<>();
+    public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
 
     public ChessBoard(GridPane chessBoard, String theme){
         this.chessBoard = chessBoard;
@@ -31,8 +34,13 @@ public class ChessBoard {
          *
          */
         ArrayList<point> BlockingSquaresLocations=createBlockingSquaresLocations();
+        this.blockingSquaresLocations = BlockingSquaresLocations;
+
         ArrayList<point> ForgettingSquaresLocations=createForgettingSquare();
+        this.forgettingSquaresLocations = ForgettingSquaresLocations;
+
         ArrayList<point>  RandomJumpSquaresLocations = createRandomJumpSquare();
+        this.randomJunpSquaresLocations = RandomJumpSquaresLocations;
 
 
 
@@ -52,6 +60,7 @@ public class ChessBoard {
             }
         }
         addPieces();
+        System.out.println("Locations of the blocking squares \n" + this.blockingSquaresLocations);
     }
 
     private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations){
