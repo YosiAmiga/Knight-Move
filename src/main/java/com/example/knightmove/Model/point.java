@@ -22,4 +22,13 @@ public class point {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+
+    @Override
+    public String toString() {
+        return "point{" +
+                "x=" + x +
+                ", y=" + y +
+                '}';
+    }
 }
