@@ -17,6 +17,7 @@ public abstract class Piece extends ImageView {
     String color;
     int posX, posY;
     ArrayList<String> possibleMoves;
+    ArrayList<point> possibleMovesReformatted;
 
     public Piece(String color, int posX, int posY){
         this.color = color;
@@ -49,7 +50,7 @@ public abstract class Piece extends ImageView {
 
     }
 
-    public abstract void getAllPossibleMoves();
+    public abstract ArrayList<String> getAllPossibleMoves();
 
     public void showAllPossibleMoves(boolean val){
         if(val){

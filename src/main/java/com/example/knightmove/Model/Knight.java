@@ -18,7 +18,7 @@ public class Knight extends Piece{
     }
 
     @Override
-    public void getAllPossibleMoves() { // possible moves should take count of visitedSquares arrayList & players level {will be discessed by the course team later}
+    public ArrayList<String> getAllPossibleMoves() { // possible moves should take count of visitedSquares arrayList & players level {will be discessed by the course team later}
         int x = this.posX;
         int y = this.posY;
         // Define the x and y offsets for the possible knight moves
@@ -42,6 +42,10 @@ public class Knight extends Piece{
                 possibleMoves.add(move);
             }
         }
+
+
+        System.out.println("\n\n-------------------------------The possible mvoes of the knight: \n\n" + possibleMoves);
+        return possibleMoves;
 //        if(y==0 && (x-2)>=0 && (x+2)<=7) // 2<=X<=5 in the first row
 //        {
 //            moves.add("Square" + (x+1) + "6");
