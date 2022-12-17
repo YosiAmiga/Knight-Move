@@ -119,14 +119,33 @@ public class Game {
         ArrayList<String> possibleMoves =currentPiece.getAllPossibleMoves();
         ArrayList<point> possibleMovesReformatted = new ArrayList<>();
         possibleMovesReformatted = reformatMoves(possibleMoves);
-        System.out.println("******************************");
-        System.out.println("possible moves string format:\n" + possibleMoves);
+//        System.out.println("******************************");
+//        System.out.println("possible moves string format:\n" + possibleMoves);
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
-        System.out.println("possible moves POINT format:\n" + possibleMovesReformatted);
-
-
-
+        System.out.println("possible moves before removing squares constraints\n" + possibleMovesReformatted);
+        currentPiece.possibleMovesReformatted = possibleMovesReformatted;
         currentPiece.showAllPossibleMoves(true);
+        System.out.println("\n*********************************\n\n");
+        System.out.println("Blocking squares (red) locations: \n" + this.cb.blockingSquaresLocations);
+        ArrayList<point> blockingSquaresCoords = this.cb.blockingSquaresLocations;
+        System.out.println("Those are the valid moves --> removing the blocking squares (the red squares):\n\n");
+
+        for(point moveOption :  blockingSquaresCoords){
+            if(currentPiece.possibleMovesReformatted.contains(moveOption)){
+                currentPiece.possibleMovesReformatted.remove(moveOption);
+                System.out.println("removed this point {location of blocking square}:");
+                System.out.println(moveOption);
+            }
+        }
+
+        System.out.println(currentPiece.possibleMovesReformatted); // moves without blocking squares
+
+
+
+
+
+
+
 
     }
 
@@ -150,6 +169,7 @@ public class Game {
         }
         return possibleMovesReformatted;
     }
+
     private void deselectPiece(boolean changePlayer){
         currentPiece.setEffect(null);
         currentPiece.showAllPossibleMoves(false);
