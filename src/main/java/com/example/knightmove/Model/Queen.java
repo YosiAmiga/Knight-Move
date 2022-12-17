@@ -11,8 +11,9 @@ public class Queen extends Piece {
         setImage();
     }
 
+
     @Override
-    public void getAllPossibleMoves() {
+    public ArrayList<String> getAllPossibleMoves() {
         // TODO: change hard coded parts to enumerations
         int x = this.posX;
         int y = this.posY;
@@ -91,5 +92,6 @@ public class Queen extends Piece {
 
             if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
+        return possibleMoves;
     }
 }

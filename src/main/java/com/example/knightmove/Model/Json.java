@@ -38,10 +38,10 @@ public class Json {
                 String team = (String)jsonObject2.get("team");
                 String level = jsonObject2.get("level").toString();
                 String correctans = jsonObject2.get("correct_ans").toString();
-                System.out.println("question " + q);
-                System.out.println("answers " + answers);
-                System.out.println("team " + team);
-                System.out.println("level " + level);
+//                System.out.println("question " + q);
+//                System.out.println("answers " + answers);
+//                System.out.println("team " + team);
+//                System.out.println("level " + level);
                 Question newQuestion = new Question(q,answers,Integer.valueOf(correctans),Integer.valueOf(level),team);
                 questions.add(newQuestion);
             }
