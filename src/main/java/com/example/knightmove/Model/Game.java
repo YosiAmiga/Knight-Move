@@ -124,7 +124,6 @@ public class Game {
         System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^");
         System.out.println("possible moves before removing squares constraints\n" + possibleMovesReformatted);
         currentPiece.possibleMovesReformatted = possibleMovesReformatted;
-        currentPiece.showAllPossibleMoves(true);
         System.out.println("\n*********************************\n\n");
         System.out.println("Blocking squares (red) locations: \n" + this.cb.blockingSquaresLocations);
         ArrayList<point> blockingSquaresCoords = this.cb.blockingSquaresLocations;
@@ -140,6 +139,9 @@ public class Game {
 
         System.out.println(currentPiece.possibleMovesReformatted); // moves without blocking squares
 
+         ArrayList<String> possibleMovesFinalStringRep= reformatMovesBackToStringRepresentation(currentPiece.possibleMovesReformatted);
+        currentPiece.possibleMoves=possibleMovesFinalStringRep;
+        currentPiece.showAllPossibleMoves(true);
 
 
 
@@ -169,6 +171,18 @@ public class Game {
         }
         return possibleMovesReformatted;
     }
+
+    private ArrayList<String> reformatMovesBackToStringRepresentation(ArrayList<point> possibleMoves){
+        ArrayList<String> possibleMovesReformattedString = new ArrayList<>();
+
+        for(point move : possibleMoves){
+            String moveStringRep = "Square" + move.x+move.y;
+            System.out.println("converted point from :" + move +" To string: "+ moveStringRep);
+            possibleMovesReformattedString.add(moveStringRep);
+            }
+        return possibleMovesReformattedString;
+    }
+
 
     private void deselectPiece(boolean changePlayer){
         currentPiece.setEffect(null);
