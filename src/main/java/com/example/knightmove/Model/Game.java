@@ -126,16 +126,11 @@ public class Game {
                         dropPiece(square);
                         System.out.println("dropped piece in square" +square.getX() + " " + square.getY());
                         //knight clicked on empty square, afterwards move the queen
-                        int XRandom = -1;
-                        int YRandom = -1;
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
                         int[] knightPositions = new int[2];
                         knightPositions[0] = square.getX();
                         knightPositions[1] = square.getY();
-
-                        int knightX = square.getX();
-                        int knightY = square.getY();
                         Piece foundQueen = null;
                         for(Square sq : cb.getSquares()) {
                             if(sq.getChildren().size() > 0){
@@ -147,22 +142,19 @@ public class Game {
                                     currentPiece = newQueen;
                                     foundQueen = newQueen;
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
-//                                    System.out.println("newQueen possible moves after knight:\n"+newQueen.getAllPossibleMoves());
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
                                     System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
+                                    System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
+
+                                    ArrayList<Integer> randomMove = newQueen.getQueenRandomMove(possibleMovesInArrayOfTwo);
                                     ArrayList<Integer> bestMove = newQueen.getQueenBestMove(possibleMovesInArrayOfTwo,knightPositions);
-                                    System.out.println("bestMove:\n"+bestMove);
                                     killPiece(queenSquare);
                                     //Doing Movement with Manhattan Distance for Queen
-                                    queenNextPositionX = bestMove.get(0);
-                                    queenNextPositionY = bestMove.get(1);
+//                                    queenNextPositionX = bestMove.get(0);
+//                                    queenNextPositionY = bestMove.get(1);
                                     //Doing Random movement for Queen
-//                                    String randomMove = possibleMoves.get(new java.util.Random().nextInt(possibleMoves.size()));
-//                                    Character xChar = randomMove.charAt(6);
-//                                    XRandom = Integer.parseInt(String.valueOf(xChar));
-//                                    Character yChar = randomMove.charAt(7);
-//                                    YRandom = Integer.parseInt(String.valueOf(yChar));
-//                                    System.out.println("randomMove "+randomMove);
+                                    queenNextPositionX = randomMove.get(0);
+                                    queenNextPositionY = randomMove.get(1);
 
                                 }
                             }

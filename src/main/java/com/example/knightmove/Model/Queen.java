@@ -134,4 +134,13 @@ public class Queen extends Piece {
     private static int getManhattanDistance(int[] pos1, int[] pos2) {
         return Math.abs(pos1[0] - pos2[0]) + Math.abs(pos1[1] - pos2[1]);
     }
+    public static ArrayList<Integer> getQueenRandomMove(ArrayList<ArrayList<Integer>> possibleMoves){
+        ArrayList<Integer> selectedMove = new ArrayList<Integer>();
+        ArrayList<Integer> randomMove = possibleMoves.get(new java.util.Random().nextInt(possibleMoves.size()));
+        int xRandom = randomMove.get(0);
+        int yRandom = randomMove.get(1);
+        selectedMove.add(xRandom);
+        selectedMove.add(yRandom);
+        return selectedMove;
+    }
 }
