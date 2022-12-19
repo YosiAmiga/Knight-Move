@@ -128,16 +128,12 @@ public class Game {
                                     foundQueen = newQueen;
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
-//                                    System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
-                                    ArrayList<Integer> randomMove = newQueen.getQueenRandomMove(possibleMovesInArrayOfTwo);
-                                    ArrayList<Integer> bestMove = newQueen.getQueenBestMove(possibleMovesInArrayOfTwo,knightPositions);
+//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
+                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
                                     killPiece(queenSquare);
-                                    //Doing Movement with Manhattan Distance for Queen
-//                                    queenNextPositionX = bestMove.get(0);
-//                                    queenNextPositionY = bestMove.get(1);
-                                    //Doing Random movement for Queen
-                                    queenNextPositionX = randomMove.get(0);
-                                    queenNextPositionY = randomMove.get(1);
+                                    //Doing Random/Smart movement (with Manhattan Distance) for Queen
+                                    queenNextPositionX = movesSelector.get(0);
+                                    queenNextPositionY = movesSelector.get(1);
 
                                 }
                             }
