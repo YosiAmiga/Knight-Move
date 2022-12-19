@@ -3,6 +3,7 @@ package com.example.knightmove.Model;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Light;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -61,35 +62,7 @@ public class Game {
                     }
 
                 }
-                //Clicked on the queen - IN COMMENT TO PREVENT CLICKING
-//                if (target.toString().equals("Queen")){
-//                    Piece newPiece = (Piece) target;
-//                    currentPiece = newPiece;
-//                    Square square = (Square) newPiece.getParent();
-//                    // Selecting a new piece
-//                    if(currentPiece == null){
-//                        System.out.println("inside if");
-//                        currentPiece = newPiece;
-//                        if(!currentPiece.getColor().equals(currentPlayer)){
-//                            currentPiece = null;
-//                            return;
-//                        }
-//                        selectPiece(game);
-//                    }
-//                    // Selecting other piece of same color || Killing a piece
-//                    else{
-//                        System.out.println("inside else");
-//                        if(currentPiece.color.equals(newPiece.color)){
-//                            deselectPiece(false);
-//                            currentPiece = newPiece;
-//                            selectPiece(game);
-//                        }
-//                        else{
-//                            System.out.println("inside internal else");
-//                            killPiece(square);
-//                        }
-//                    }
-//                }
+                //Clicked on the queen - DELETED!
                 // Clicked on square
                 if(target.toString().equals("Square")){
                     Square square = (Square) target;
@@ -106,7 +79,7 @@ public class Game {
                         }
                         // Selecting other piece of same color || Killing a piece
                         else{
-                            System.out.println("inside else of square");
+//                            System.out.println("inside else of square");
                             if(currentPiece.color.equals(newPiece.color)){
                                 System.out.println("inside internal if of square");
                                 deselectPiece(false);
@@ -122,10 +95,22 @@ public class Game {
                     }
                     // Dropping a piece on blank square
                     else{
-                        System.out.println("Dropping a piece on blank square");
+                        //removing the blockingSquares from possibleMoves
+                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
+                        //removing the blockingSquares from possibleMoves
+                        for(point p : blockingSquares){
+                            String squareString = "Square"+p.getX()+p.getY();
+                            if(currentPiece.possibleMoves.contains(squareString)){
+                                currentPiece.possibleMoves.remove(squareString);
+                            }
+                        }
+                        System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
                         dropPiece(square);
-                        System.out.println("dropped piece in square" +square.getX() + " " + square.getY());
-                        //knight clicked on empty square, afterwards move the queen
+
+                        /**
+                         * The knight clicked on empty square, afterwards move the queen
+                         */
+
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
                         int[] knightPositions = new int[2];
@@ -143,9 +128,7 @@ public class Game {
                                     foundQueen = newQueen;
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
-                                    System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
-                                    System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
-
+//                                    System.out.println("newQueen possible moves in integers:\n"+possibleMovesInArrayOfTwo);
                                     ArrayList<Integer> randomMove = newQueen.getQueenRandomMove(possibleMovesInArrayOfTwo);
                                     ArrayList<Integer> bestMove = newQueen.getQueenBestMove(possibleMovesInArrayOfTwo,knightPositions);
                                     killPiece(queenSquare);

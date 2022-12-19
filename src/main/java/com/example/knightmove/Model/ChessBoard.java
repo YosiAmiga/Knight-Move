@@ -19,6 +19,9 @@ public class ChessBoard {
     public ArrayList<Square> getSquares() {
         return squares;
     }
+    public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> randomJunpSquaresLocations = new ArrayList<>();
+    public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
 
     public ChessBoard(GridPane chessBoard, String theme){
         this.chessBoard = chessBoard;
@@ -35,8 +38,13 @@ public class ChessBoard {
          *
          */
         ArrayList<point> BlockingSquaresLocations=createBlockingSquaresLocations();
+        this.blockingSquaresLocations = BlockingSquaresLocations;
+
         ArrayList<point> ForgettingSquaresLocations=createForgettingSquare();
+        this.forgettingSquaresLocations = ForgettingSquaresLocations;
+
         ArrayList<point>  RandomJumpSquaresLocations = createRandomJumpSquare();
+        this.randomJunpSquaresLocations = RandomJumpSquaresLocations;
 
 
 
@@ -56,6 +64,7 @@ public class ChessBoard {
             }
         }
         addPieces();
+        System.out.println("Locations of the blocking squares \n" + this.blockingSquaresLocations);
     }
 
     private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations){
@@ -179,11 +188,11 @@ public class ChessBoard {
                 point specialSquarePoint = new point(randX,randY);
                 ForgettingSquares.add(specialSquarePoint);
             }
-            System.out.println("current list length: "+ ForgettingSquares.size());
+//            System.out.println("current list length: "+ ForgettingSquares.size());
         }
 
         for(point p : ForgettingSquares){
-            System.out.println("point coords: " + p.x +", "+ p.y);
+            System.out.println("forgetting squares points: " + p.x +", "+ p.y);
         }
         return ForgettingSquares;
     }
@@ -198,11 +207,11 @@ public class ChessBoard {
                 point specialSquarePoint = new point(randX,randY);
                 RandomJumpSquares.add(specialSquarePoint);
             }
-            System.out.println("current list length: "+ RandomJumpSquares.size());
+//            System.out.println("random list length: "+ RandomJumpSquares.size());
         }
 
         for(point p : RandomJumpSquares){
-            System.out.println("point coords: " + p.x +", "+ p.y);
+            System.out.println("random jump square points: " + p.x +", "+ p.y);
         }
         return RandomJumpSquares;
     }
@@ -227,11 +236,11 @@ public class ChessBoard {
                 point specialSquarePoint = new point(randX,randY);
                 specialSquaresLocations.add(specialSquarePoint);
             }
-            System.out.println("current list length: "+ specialSquaresLocations.size());
+//            System.out.println("current list length: "+ specialSquaresLocations.size());
         }
 
         for(point p : specialSquaresLocations){
-            System.out.println("point coords: " + p.x +", "+ p.y);
+            System.out.println("blocking square points: " + p.x +", "+ p.y);
         }
         return specialSquaresLocations;
     }
