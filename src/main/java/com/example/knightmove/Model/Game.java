@@ -1,12 +1,15 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.controllers.GamePageController;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
+import javafx.geometry.Insets;
 import javafx.scene.effect.DropShadow;
+import javafx.scene.effect.Light;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
+
+import java.util.ArrayList;
 
 public class Game {
 
@@ -17,12 +20,36 @@ public class Game {
 
     public static int score;
 
+    ArrayList<Square> visitedSquares; // squares they already visited at.
+
+    public ArrayList<Square> getVisitedSquares() {
+        return visitedSquares;
+    }
+
+    public void resetVisitedSquares() {
+        for(Square square : visitedSquares){
+            if((square.getY()+square.getX())%2==0){
+                square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+            }else{
+                square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+        }
+        this.visitedSquares = new ArrayList<>();
+    }
+
+    public void addToVisitedSquares(Square sq){
+        if(sq != null){
+            this.visitedSquares.add(sq);
+        }
+    }
+
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
         score=0;
+        visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
     }
 
@@ -32,6 +59,37 @@ public class Game {
             public void handle(MouseEvent event) {
                 EventTarget target = event.getTarget();
 
+                //Clicked on the Knight
+                if(target.toString().equals("Knight")){
+                    Piece newPiece = (Piece) target;
+                    Square square = (Square) newPiece.getParent();
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    addToVisitedSquares(square);
+                    System.out.println("Knight possible moves:\n"+newPiece.possibleMoves);
+                     // Selecting a new piece
+                    if(currentPiece == null){
+                        currentPiece = newPiece;
+                        if(!currentPiece.getColor().equals(currentPlayer)) {
+                            currentPiece = null;
+                            return;
+                        }
+                        selectPiece(game);
+                    }
+                    // Selecting other piece of same color || Killing a piece
+                    else{
+                        if(currentPiece.color.equals(newPiece.color)){
+                            System.out.println("inside internal if of knight");
+                            deselectPiece(false);
+                            currentPiece = newPiece;
+                            selectPiece(game);
+                        }
+                        else{
+                            killPiece(square);
+                        }
+                    }
+
+                }
+                //Clicked on the queen - DELETED!
                 // Clicked on square
                 if(target.toString().equals("Square")){
                     Square square = (Square) target;
@@ -40,7 +98,6 @@ public class Game {
                         // Selecting a new piece
                         if(currentPiece == null){
                             currentPiece = newPiece;
-//                            currentPiece.getAllPossibleMoves();
                             if(!currentPiece.getColor().equals(currentPlayer)){
                                 currentPiece = null;
                                 return;
@@ -49,13 +106,15 @@ public class Game {
                         }
                         // Selecting other piece of same color || Killing a piece
                         else{
+//                            System.out.println("inside else of square");
                             if(currentPiece.color.equals(newPiece.color)){
+                                System.out.println("inside internal if of square");
                                 deselectPiece(false);
                                 currentPiece = newPiece;
-//                                currentPiece.getAllPossibleMoves();
                                 selectPiece(game);
                             }
                             else{
+                                System.out.println("inside internal else of square");
                                 killPiece(square);
                             }
                         }
@@ -63,68 +122,69 @@ public class Game {
                     }
                     // Dropping a piece on blank square
                     else{
+                        //removing the blockingSquares from possibleMoves
+                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
+                        //removing the blockingSquares from possibleMoves
+                        for(point p : blockingSquares){
+                            String squareString = "Square"+p.getX()+p.getY();
+                            if(currentPiece.possibleMoves.contains(squareString)){
+                                currentPiece.possibleMoves.remove(squareString);
+                            }
+                        }
+                        System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
+                        if(currentPiece.toString().equals("Knight")){
+                            square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                            addToVisitedSquares(square);
+                        }
                         dropPiece(square);
-                    }
-                }
-                // Clicked on piece
-                else{
-                    if(currentPiece instanceof Queen){
-                        // random movement
-                        System.out.println("queen player pressed");
-                        Piece newPiece = (Piece) target;
-                        Square square = (Square) newPiece.getParent();
-                        // Selecting a new piece
-                        if(currentPiece == null){
-                            currentPiece = newPiece;
-                            if(!currentPiece.getColor().equals(currentPlayer)){
-                                currentPiece = null;
-                                return;
-                            }
-                            selectPiece(game);
-                        }
-                        // Selecting other piece of same color || Killing a piece
-                        else{
-                            if(currentPiece.color.equals(newPiece.color)){
-                                deselectPiece(false);
-                                currentPiece = newPiece;
-                                selectPiece(game);
-                            }
-                            else{
-                                killPiece(square);
-                            }
+                        for(Square s : getVisitedSquares()){
+                            System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
                         }
 
+                        /**
+                         * The knight clicked on empty square, afterwards move the queen
+                         */
 
+                        int queenNextPositionX = -1;
+                        int queenNextPositionY = -1;
+                        int[] knightPositions = new int[2];
+                        knightPositions[0] = square.getX();
+                        knightPositions[1] = square.getY();
+                        Piece foundQueen = null;
+                        for(Square sq : cb.getSquares()) {
 
-                    }
-                    else{
-                        System.out.println("knight player pressed");
-                        Piece newPiece = (Piece) target;
-                        Square square = (Square) newPiece.getParent();
-                        // Selecting a new piece
-                        if(currentPiece == null){
-                            currentPiece = newPiece;
-                            if(!currentPiece.getColor().equals(currentPlayer)) {
-                                currentPiece = null;
-                                return;
+                            if(sq.getChildren().size() > 0){
+                                String pieceName = String.valueOf(sq.getChildren().get(0));
+                                if(pieceName.equals("Queen")){
+                                    Piece queen = (Piece) sq.getChildren().get(0);
+                                    Square queenSquare = (Square) queen.getParent();
+                                    Queen newQueen = (Queen) queen;
+                                    currentPiece = newQueen;
+                                    foundQueen = newQueen;
+                                    ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
+                                    ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
+//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
+                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
+                                    killPiece(queenSquare);
+                                    //Doing Random/Smart movement (with Manhattan Distance) for Queen
+                                    queenNextPositionX = movesSelector.get(0);
+                                    queenNextPositionY = movesSelector.get(1);
+
+                                }
                             }
-                            selectPiece(game);
+
                         }
-                        // Selecting other piece of same color || Killing a piece
-                        else{
-                            if(currentPiece.color.equals(newPiece.color)){
-                                deselectPiece(false);
-                                currentPiece = newPiece;
-                                selectPiece(game);
-                            }
-                            else{
-                                killPiece(square);
+                        if(foundQueen!= null){
+                            currentPiece = foundQueen;
+                        }
+                        for(Square sq : cb.getSquares()){
+                            if(sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null){
+                                currentPiece = foundQueen;
+                                dropPiece(sq);
                             }
                         }
 
                     }
-
-
                 }
             }
         });
@@ -153,7 +213,7 @@ public class Game {
 
     private void dropPiece(Square square){
         if(!currentPiece.possibleMoves.contains(square.name)) return;
-
+        System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -162,7 +222,7 @@ public class Game {
         currentPiece.posX = square.x;
         currentPiece.posY = square.y;
         deselectPiece(true);
-        GamePageController.createQuestionPopUp();
+//        GamePageController.createQuestionPopUp();
     }
 
     private void killPiece(Square square){
@@ -170,8 +230,7 @@ public class Game {
 
         Piece killedPiece = (Piece) square.getChildren().get(0);
         if(killedPiece.type.equals("King")) this.game = false;
-
-
+        System.out.println("move from square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().remove(0);
         square.getChildren().add(currentPiece);
@@ -182,4 +241,5 @@ public class Game {
         currentPiece.posY = square.y;
         deselectPiece(true);
     }
+
 }

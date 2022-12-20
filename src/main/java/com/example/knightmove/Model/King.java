@@ -16,7 +16,7 @@ public class King extends Piece{
     }
 
     @Override
-    public void getAllPossibleMoves() {
+    public ArrayList<String> getAllPossibleMoves() {
         /**
          * King can move by the following logic:
          *
@@ -47,6 +47,7 @@ public class King extends Piece{
 
             }
         }
+        return this.possibleMoves;
     }
     public void showAllPossibleMoves() {}; // need to implement
 

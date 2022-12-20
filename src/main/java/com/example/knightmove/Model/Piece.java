@@ -18,6 +18,22 @@ public abstract class Piece extends ImageView {
     int posX, posY;
     ArrayList<String> possibleMoves;
 
+    public int getPosX() {
+        return posX;
+    }
+
+    public void setPosX(int posX) {
+        this.posX = posX;
+    }
+
+    public int getPosY() {
+        return posY;
+    }
+
+    public void setPosY(int posY) {
+        this.posY = posY;
+    }
+
     public Piece(String color, int posX, int posY){
         this.color = color;
         this.posX = posX;
@@ -49,34 +65,25 @@ public abstract class Piece extends ImageView {
 
     }
 
-    public abstract void getAllPossibleMoves();
+    public abstract ArrayList<String> getAllPossibleMoves();
 
     public void showAllPossibleMoves(boolean val){
         if(val){
             Glow glow = new Glow();
-            glow.setLevel(0.3);
+            glow.setLevel(1);
+
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
                 square.setEffect(glow);
-
                 Piece piece = getPieceByName(move);
                 if(piece == null) continue;
-                if(piece.type.equals("King")){
-                    square.setBorder(new Border(new BorderStroke(Color.DARKRED,
-                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.5))));
-                }
-                else{
-                    square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                            BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(1.2))));
-                }
             }
         }
         else{
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
                 square.setEffect(null);
-                square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+
             }
         }
     }
