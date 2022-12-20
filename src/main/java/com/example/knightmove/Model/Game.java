@@ -2,10 +2,11 @@ package com.example.knightmove.Model;
 
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
+import javafx.geometry.Insets;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.effect.Light;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
@@ -19,12 +20,36 @@ public class Game {
 
     public static int score;
 
+    ArrayList<Square> visitedSquares; // squares they already visited at.
+
+    public ArrayList<Square> getVisitedSquares() {
+        return visitedSquares;
+    }
+
+    public void resetVisitedSquares() {
+        for(Square square : visitedSquares){
+            if((square.getY()+square.getX())%2==0){
+                square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+            }else{
+                square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+        }
+        this.visitedSquares = new ArrayList<>();
+    }
+
+    public void addToVisitedSquares(Square sq){
+        if(sq != null){
+            this.visitedSquares.add(sq);
+        }
+    }
+
     public Game(GridPane chessBoard, String theme){
         cb = new ChessBoard(chessBoard, theme);
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
         score=0;
+        visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
     }
 
@@ -38,6 +63,8 @@ public class Game {
                 if(target.toString().equals("Knight")){
                     Piece newPiece = (Piece) target;
                     Square square = (Square) newPiece.getParent();
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    addToVisitedSquares(square);
                     System.out.println("Knight possible moves:\n"+newPiece.possibleMoves);
                      // Selecting a new piece
                     if(currentPiece == null){
@@ -105,7 +132,14 @@ public class Game {
                             }
                         }
                         System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
+                        if(currentPiece.toString().equals("Knight")){
+                            square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                            addToVisitedSquares(square);
+                        }
                         dropPiece(square);
+                        for(Square s : getVisitedSquares()){
+                            System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
+                        }
 
                         /**
                          * The knight clicked on empty square, afterwards move the queen
@@ -118,6 +152,7 @@ public class Game {
                         knightPositions[1] = square.getY();
                         Piece foundQueen = null;
                         for(Square sq : cb.getSquares()) {
+
                             if(sq.getChildren().size() > 0){
                                 String pieceName = String.valueOf(sq.getChildren().get(0));
                                 if(pieceName.equals("Queen")){

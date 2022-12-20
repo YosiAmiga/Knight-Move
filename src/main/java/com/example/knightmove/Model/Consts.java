@@ -61,6 +61,7 @@ public class Consts {
     public static  Color colorBlockingSquare = Color.web("#FF0000");
     public static  Color colorRandomJumpSquare = Color.web("#9ACD32");
     public static  Color colorForgettingSquare = Color.web("#9dacff");
+    public static  Color colorVisitedSquare = Color.web("#808080");
 
 
 }

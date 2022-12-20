@@ -20,9 +20,10 @@ public class ChessBoard {
         return squares;
     }
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
-    public ArrayList<point> randomJunpSquaresLocations = new ArrayList<>();
+    public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
 
+    public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
     public ChessBoard(GridPane chessBoard, String theme){
         this.chessBoard = chessBoard;
         this.theme = theme;
@@ -44,7 +45,7 @@ public class ChessBoard {
         this.forgettingSquaresLocations = ForgettingSquaresLocations;
 
         ArrayList<point>  RandomJumpSquaresLocations = createRandomJumpSquare();
-        this.randomJunpSquaresLocations = RandomJumpSquaresLocations;
+        this.randomJumpSquaresLocations = RandomJumpSquaresLocations;
 
 
 
