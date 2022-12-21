@@ -91,10 +91,25 @@ public class Square extends StackPane {
         return false;
 
     }
+    public boolean checkIfQuestionSquare( ArrayList<point> questionSquaresCoords){
+        /**
+         * given a point (x,y) and the list of special locations of squares
+         * return true if (x,y) is a special square location
+         */
+        for(point p : questionSquaresCoords){
+            if(p.x == this.x && p.y == this.y){
+                return true; // that's a special square
+            }
+        }
+
+        // not a Question square if we return false
+        return false;
+
+    }
 
 
     public List<Object>  checkIfSquareIsSpecial(ArrayList<point> blockingSquaresCoords
-            ,ArrayList<point> randomSquaresCoords, ArrayList<point> jumpSquaresCoords){
+            ,ArrayList<point> randomSquaresCoords, ArrayList<point> jumpSquaresCoords, ArrayList<point> questionSquaresCoords){
         /**
          * INPUT: square object
          * OUTPUT: Array size 2 --> [ifSpecialSquare: boolean, typeOfSquare: String]
@@ -115,6 +130,13 @@ public class Square extends StackPane {
         else if(checkIfJumpSquare( blockingSquaresCoords)){
             squareSummary.add(true);
             squareSummary.add("blocking");
+            return squareSummary;
+
+        }
+
+        else if(checkIfQuestionSquare( questionSquaresCoords)){
+            squareSummary.add(true);
+            squareSummary.add("question");
             return squareSummary;
 
         }

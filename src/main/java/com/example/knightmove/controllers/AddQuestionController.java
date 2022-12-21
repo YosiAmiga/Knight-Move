@@ -81,9 +81,7 @@ public class AddQuestionController implements Initializable {
             if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
                 throw new NotAllFieldsFullException();
             Integer correctAnswer;
-//            if(Ans1.getText()==Ans2.getText() ||Ans1.getText()==Ans3.getText() ||Ans1.getText()==Ans4.getText() || Ans2.getText()==Ans3.getText() ||Ans2.getText()==Ans4.getText() ||Ans3.getText()==Ans4.getText()){
-//                throw new SameValueException();
-//            }
+
             answers.add(Ans1.getText());
             answers.add(Ans2.getText());
             answers.add(Ans3.getText());
