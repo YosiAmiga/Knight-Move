@@ -1,5 +1,6 @@
 package com.example.knightmove.controllers;
 import com.example.knightmove.Exceptions.NotAllFieldsFullException;
+import com.example.knightmove.Exceptions.SameValueException;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
@@ -19,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class AddQuestionController implements Initializable {
     private Stage stage;
@@ -75,13 +77,23 @@ public class AddQuestionController implements Initializable {
     void EnterAddQuestion(ActionEvent event) throws IOException, NotAllFieldsFullException {
         ArrayList<String> answers = new ArrayList<>();
         try{
+
             if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
                 throw new NotAllFieldsFullException();
             Integer correctAnswer;
+//            if(Ans1.getText()==Ans2.getText() ||Ans1.getText()==Ans3.getText() ||Ans1.getText()==Ans4.getText() || Ans2.getText()==Ans3.getText() ||Ans2.getText()==Ans4.getText() ||Ans3.getText()==Ans4.getText()){
+//                throw new SameValueException();
+//            }
             answers.add(Ans1.getText());
             answers.add(Ans2.getText());
             answers.add(Ans3.getText());
             answers.add(Ans4.getText());
+
+            //checking there is no duplicate answers
+            Set<String> set = new HashSet<String>(answers);
+            if(set.size() < answers.size()){
+                throw new SameValueException();
+            }
             //checking for the correct answer marked by user
             if (OptOne.isSelected()){
                 correctAnswer = 1;
@@ -95,15 +107,20 @@ public class AddQuestionController implements Initializable {
             else{
                 correctAnswer = 4;
             }
+
             Question q = new Question(Question.getText(),answers,correctAnswer, Level.getValue(), "Panda"); //creating new question
             if (HelloApplication.s.addQuestion(q)){ //adding question to the questions hashset
                 Json.updateJson(); //updating the json file
             }
 
+            AlertBox.display("Added", "Successfully Added");
+
         } catch (NotAllFieldsFullException e){
             AlertBox.display("ERROR" , e.getMessage());
+        } catch (SameValueException e) {
+            AlertBox.display("ERROR" , e.getMessage());
         }
-        AlertBox.display("Added", "Successfully Added");
+
 
 
     }

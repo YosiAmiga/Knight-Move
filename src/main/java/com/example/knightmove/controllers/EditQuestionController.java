@@ -1,6 +1,7 @@
 package com.example.knightmove.controllers;
 
 import com.example.knightmove.Exceptions.NotAllFieldsFullException;
+import com.example.knightmove.Exceptions.SameValueException;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
@@ -17,7 +18,9 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.ResourceBundle;
+import java.util.Set;
 
 public class EditQuestionController implements Initializable {
     @FXML
@@ -80,6 +83,7 @@ public class EditQuestionController implements Initializable {
     }
     public void EnterAddQuestion(ActionEvent event) throws NotAllFieldsFullException {
         try{
+            System.out.println("HIIIIIIII");
             ArrayList<String> answers = new ArrayList<>();
             if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
                 throw new NotAllFieldsFullException();
@@ -88,6 +92,11 @@ public class EditQuestionController implements Initializable {
             answers.add(Ans2.getText());
             answers.add(Ans3.getText());
             answers.add(Ans4.getText());
+            //checking there is no duplicate answers
+            Set<String> set = new HashSet<String>(answers);
+            if(set.size() < answers.size()){
+                throw new SameValueException();
+            }
             //checking for the correct answer marked by user
             if (OptOne.isSelected()){
                 correctAnswer = 1;
@@ -106,10 +115,15 @@ public class EditQuestionController implements Initializable {
                 System.out.println("UPDATED");
                 Json.updateJson(); //updating the json file
             }
-        } catch (NotAllFieldsFullException e) {
+
+            AlertBox.display("Added", "Successfully Edited");
+
+        } catch (NotAllFieldsFullException | SameValueException e) {
             AlertBox.display("ERROR" , e.getMessage());
         }
-        AlertBox.display("Added", "Successfully Edited");
+
+
+
 
     }
 
