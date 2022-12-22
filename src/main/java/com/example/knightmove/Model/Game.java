@@ -1,6 +1,5 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.controllers.GamePageController;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.geometry.Insets;
@@ -12,7 +11,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-/*public class Game {
+public class Game {
 
     public static Piece currentPiece;
     public static String currentPlayer;
@@ -144,14 +143,6 @@ import java.util.ArrayList;
                         if(currentPiece.toString().equals("Knight")){
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             addToVisitedSquares(square);
-                            if(getVisitedSquares().contains(currentPiece))
-                            {
-                                Game.score-=1;
-                            }
-                            else{
-                                Game.score+=1;
-                            }
-                            System.out.println("Your score is " + Game.score);
                         }
                         dropPiece(square);
                         for(Square s : getVisitedSquares()){
@@ -160,7 +151,7 @@ import java.util.ArrayList;
 
                         /**
                          * The knight clicked on empty square, afterwards move the queen
-
+                         */
 
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
@@ -259,4 +250,4 @@ import java.util.ArrayList;
         deselectPiece(true);
     }
 
-*/
+}

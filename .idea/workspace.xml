@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="create the different types of squares on the board">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/GamePage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +42,14 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RESET_MODE" value="MIXED" />
+  </component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="recentNewPullRequestHead">
+      <RepoCoordinatesHolder>
+        <option name="owner" value="YosiAmiga" />
+        <option name="repository" value="Knight-Move" />
+      </RepoCoordinatesHolder>
+    </option>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -339,7 +350,14 @@
       <option name="project" value="LOCAL" />
       <updated>1671711492669</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="create the different types of squares on the board">
+      <created>1671715490381</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1671715490381</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -381,7 +399,8 @@
     <MESSAGE value="print possible moves" />
     <MESSAGE value="added section for queen moves and for kmight moves  and added print each time one selected" />
     <MESSAGE value="create the different types of squares" />
-    <option name="LAST_COMMIT_MESSAGE" value="create the different types of squares" />
+    <MESSAGE value="create the different types of squares on the board" />
+    <option name="LAST_COMMIT_MESSAGE" value="create the different types of squares on the board" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
