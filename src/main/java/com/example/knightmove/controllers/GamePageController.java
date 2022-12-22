@@ -47,7 +47,8 @@ public class GamePageController {
     private Parent root;
 
     private Timeline timeline = new Timeline();
-
+    public static boolean isGameOver =false;
+    public point knightCurrentPosition;
     private int startTimeSec;
 
     public GamePageController() throws IOException, ParseException {
@@ -63,11 +64,13 @@ public class GamePageController {
         score=0;
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
+        knightCurrentPosition = new point(0,0);
 
         startTimeSec = 60; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                checkIsGameOver();
                 startTimeSec--;
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
@@ -340,6 +343,8 @@ public class GamePageController {
                         int[] knightPositions = new int[2];
                         knightPositions[0] = square.getX();
                         knightPositions[1] = square.getY();
+                        knightCurrentPosition.setX(square.getX());
+                        knightCurrentPosition.setY(square.getY());
                         Piece foundQueen = null;
                         for (Square sq : cb.getSquares()) {
 
@@ -370,7 +375,10 @@ public class GamePageController {
                         for (Square sq : cb.getSquares()) {
                             if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
                                 currentPiece = foundQueen;
+                                point queenCurrentPosition = new point(sq.getX(), sq.getY());
                                 dropPiece(sq);
+                                queenEatKnight(knightCurrentPosition,queenCurrentPosition);
+
                             }
                         }
 
@@ -431,5 +439,31 @@ public class GamePageController {
         currentPiece.setPosX(square.getX());
         currentPiece.setPosY(square.getY());
         deselectPiece(true);
+    }
+
+    public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
+        System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
+
+        if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
+                knightCurrentPosition.getY()== queenCurrentPosition.getY()){
+            isGameOver = true;
+        }
+    }
+
+    public void checkIsGameOver() {
+        System.out.println("isGameOver " + isGameOver);
+        if(isGameOver){
+            try {
+                root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+            stage = (Stage) mainPane.getScene().getWindow();
+            stage.setTitle("Game Over");
+            scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setUserData(currentScore);
+            stage.show();
+        }
     }
 }
