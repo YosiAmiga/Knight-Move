@@ -27,8 +27,10 @@ import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.concurrent.ThreadLocalRandom;
@@ -421,7 +423,6 @@ public class GamePageController {
         deselectPiece(true);
  //       GamePageController.createQuestionPopUp();
         updateScore();
-
     }
 
     private void killPiece(Square square){
@@ -454,10 +455,13 @@ public class GamePageController {
         System.out.println("isGameOver " + isGameOver);
         if(isGameOver){
             try {
-                root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
+                //root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
+                URL url = new File("src/main/View/com/example/knightmove/EndGamePage.fxml").toURI().toURL();
+                root = FXMLLoader.load(url);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+
             stage = (Stage) mainPane.getScene().getWindow();
             stage.setTitle("Game Over");
             scene = new Scene(root);

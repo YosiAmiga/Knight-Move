@@ -24,7 +24,7 @@
             <Font size="26.0" />
          </font>
       </Text>
-      <Text fx:id="CurrentScoreText1" layoutX="22.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:" wrappingWidth="67.04296875000006">
+      <Text fx:id="CurrentLevelText" layoutX="22.0" layoutY="54.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:" wrappingWidth="67.04296875000006">
          <font>
             <Font size="23.0" />
          </font>
