@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="create the different types of squares">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="create the different types of squares on the board">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/BlockSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/BlockSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ForgetSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ForgetSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,11 +61,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Git.Branch.Popup.ShowAllRemotes": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
