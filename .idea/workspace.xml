@@ -5,24 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="create the different types of squares">
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Json.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/King.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/King.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Knight.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Piece.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Piece.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Queen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Question.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Question.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/QuestionsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/Questions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/Questions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/BlockSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/BlockSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ForgetSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ForgetSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,16 +65,11 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">
-    <property name="Downloaded.Files.Path.Enabled" value="false" />
-    <property name="Repository.Attach.Annotations" value="false" />
-    <property name="Repository.Attach.JavaDocs" value="false" />
-    <property name="Repository.Attach.Sources" value="false" />
-    <property name="project.structure.last.edited" value="Libraries" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.33793104" />
-    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
-  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Git.Branch.Popup.ShowAllRemotes": "true"
+  }
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
@@ -354,7 +336,14 @@
       <option name="project" value="LOCAL" />
       <updated>1670579251048</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="create the different types of squares">
+      <created>1671711492669</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1671711492669</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -379,7 +368,6 @@
         </entry>
       </map>
     </option>
-    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Questions screens" />
