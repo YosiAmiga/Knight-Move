@@ -5,4 +5,12 @@ public class RandomSquare extends Square{
         super(x, y);
         this.type="Random";
     }
+    @Override
+    public String toString() {
+        String status;
+        if(this.occupied) status = "Occupied";
+        else status = "Not occupied";
+//        return "Square" + this.x + this.y + " - " + status;
+        return "Random";
+    }
 }

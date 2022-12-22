@@ -1,13 +1,9 @@
 package com.example.knightmove.controllers;
 
 import com.example.knightmove.HelloApplication;
-import com.example.knightmove.Model.*;
-import javafx.event.EventTarget;
-import javafx.geometry.Insets;
+import com.example.knightmove.Model.Question;
 import javafx.scene.control.ButtonType;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -21,13 +17,13 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
-import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
@@ -56,6 +52,7 @@ public class GamePageController {
     public GamePageController() throws IOException, ParseException {
     }
 
+
     public void initialize() {
 
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
@@ -76,6 +73,7 @@ public class GamePageController {
                 startTimeSec--;
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
+
 
                 if (timeToChangeLevel) {
                     timeline.stop();
@@ -112,6 +110,7 @@ public class GamePageController {
             }
         }));
     }
+
 
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
@@ -213,6 +212,49 @@ public class GamePageController {
             System.out.println("Game.score " + GamePageController.score);
         }
     }
+
+    public static void questionPopUp(Integer level){
+        HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
+        Question theQuestion = null;
+        int size = questionsByLevel.size();
+        int randomNumber = new Random().nextInt(size);
+        int i = 0;
+        //get random question
+        for (Question q : questionsByLevel) {
+            if (i == randomNumber)
+                theQuestion=q;
+            i++;
+        }
+        // create an Alert object
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"", new ButtonType(theQuestion.getAnswers().get(0)),new ButtonType(theQuestion.getAnswers().get(1)),new ButtonType(theQuestion.getAnswers().get(2)),new ButtonType(theQuestion.getAnswers().get(3)));
+        alert.setHeaderText(theQuestion.getQuestion());
+        // set the alert's message to the first question
+        alert.setContentText("Select your answer:");
+        // show the alert and get the user's response
+        ButtonType response = alert.showAndWait().orElse(null);
+        String playerSelectedAnswer = response.getText();
+
+        Alert correctAnswer = new Alert(Alert.AlertType.INFORMATION);
+        correctAnswer.setTitle("Correct Answer");
+        correctAnswer.setHeaderText("Correct Answer");
+        correctAnswer.setContentText("Congratulations, that is the correct answer.");
+
+        Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
+        wrongAnswer.setTitle("Wrong Answer");
+        wrongAnswer.setHeaderText("Wrong Answer");
+        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: "+ theQuestion.getRightAnswer());
+
+        // check the user's response
+        if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
+            correctAnswer.showAndWait();
+            Game.score += level;
+            System.out.println("Game.score " + Game.score);
+        }else {
+            wrongAnswer.showAndWait();
+            Game.score -= (level+1);
+            wrongAnswer.close();
+            System.out.println("Game.score " + Game.score);
+        }
     // Game Class
     public static Piece currentPiece;
     public static String currentPlayer;
@@ -470,4 +512,5 @@ public class GamePageController {
             stage.show();
         }
     }
+}
 }

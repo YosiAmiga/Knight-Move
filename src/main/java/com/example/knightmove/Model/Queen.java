@@ -4,6 +4,7 @@ import com.example.knightmove.controllers.GamePageController;
 
 import java.util.ArrayList;
 
+
 public class Queen extends Piece {
     public Queen(String color, int posX, int posY){
         super(color, posX, posY);
@@ -17,12 +18,19 @@ public class Queen extends Piece {
         // TODO: change hard coded parts to enumerations
         int x = this.posX;
         int y = this.posY;
+        Square s = new Square();
+
         String name;
 
         this.possibleMoves = new ArrayList<>();
 
         for (int i = x - 1; i >= 0; i--) {
-            name = "Square" + i + y;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&y==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + y;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -31,7 +39,12 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1; i < Consts.SQUARES_IN_COLUMN; i++) {
-            name = "Square" + i + y;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&y==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + y;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -40,7 +53,12 @@ public class Queen extends Piece {
         }
 
         for (int j = y - 1; j >= 0; j--) {
-            name = "Square" + x + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(x==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + x + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -49,7 +67,12 @@ public class Queen extends Piece {
         }
 
         for (int j = y + 1; j < Consts.SQUARES_IN_COLUMN; j++) {
-            name = "Square" + x + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(x==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + x + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -58,7 +81,12 @@ public class Queen extends Piece {
         }
 
         for (int i = x - 1, j = y + 1; i >= 0 && j < Consts.SQUARES_IN_COLUMN; i--, j++) {
-            name = "Square" + i + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -67,7 +95,12 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1, j = y + 1; i < Consts.SQUARES_IN_COLUMN && j < Consts.SQUARES_IN_COLUMN; i++, j++) {
-            name = "Square" + i + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -76,7 +109,12 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1, j = y - 1; i < Consts.SQUARES_IN_ROW && j >= 0; i++, j--) {
-            name = "Square" + i + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -85,7 +123,12 @@ public class Queen extends Piece {
         }
 
         for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
-            name = "Square" + i + j;
+            for(Square ss: Game.cb.getSquares()){
+                if(i==ss.getX()&&j==ss.getY()){
+                    s=ss;
+                }
+            }
+            name = s.getType() + i + j;
 //            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
@@ -127,12 +170,8 @@ public class Queen extends Piece {
             if (distance < minDistance) {
                 minDistance = distance;
                 bestMove = move;
-                if(bestMove.get(0) == knightPositions[0] && bestMove.get(1) == knightPositions[1]){
-                    System.out.println("Queen can eat Knight!");
-                }
             }
         }
-
 
         return bestMove;
     }
@@ -141,7 +180,7 @@ public class Queen extends Piece {
     public static ArrayList<ArrayList<Integer>> convertMovesToIntArrays(ArrayList<String> moves) {
         ArrayList<ArrayList<Integer>> intArrays = new ArrayList<>(moves.size());
         for (String move : moves) {
-            String[] parts = move.split("Square");
+            String[] parts = move.split("Normal|Random|Block|Question|Jump|Forget");
             int row = Integer.parseInt(parts[1].substring(0, 1));
             int col = Integer.parseInt(parts[1].substring(1, 2));
             ArrayList<Integer> coord = new ArrayList<>(2);

@@ -14,6 +14,9 @@ public class SquareFactory {
         if (SquareType.equalsIgnoreCase("BLOCKSQUARE")) {
             return new BlockSquare(x, y);
         }
+        if (SquareType.equalsIgnoreCase("QUESTIONSQUARE")) {
+            return new QuestionSquare(x, y);
+        }
         return null;
     }
 }

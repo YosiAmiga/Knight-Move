@@ -14,6 +14,10 @@ public class Square extends StackPane {
 
     String color;
 
+    public Square() {
+
+    }
+
     public int getX() {
         return x;
     }
@@ -28,6 +32,14 @@ public class Square extends StackPane {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Square(int x, int y){
@@ -92,6 +104,21 @@ public class Square extends StackPane {
         return false;
 
     }
+    public boolean checkIfQuestionSquare( ArrayList<point> questionSquaresCoords){
+        /**
+         * given a point (x,y) and the list of special locations of squares
+         * return true if (x,y) is a special square location
+         */
+        for(point p : questionSquaresCoords){
+            if(p.x == this.x && p.y == this.y){
+                return true; // that's a special square
+            }
+        }
+
+        // not a Question square if we return false
+        return false;
+
+    }
 
 
     public List<Object>  checkIfSquareIsSpecial(ArrayList<point> blockingSquaresCoords
@@ -120,6 +147,13 @@ public class Square extends StackPane {
 
         }
 
+        else if(checkIfQuestionSquare( questionSquaresCoords)){
+            squareSummary.add(true);
+            squareSummary.add("question");
+            return squareSummary;
+
+        }
+
         squareSummary.add(false);
         squareSummary.add("Regular");
         return squareSummary;
@@ -138,4 +172,6 @@ public class Square extends StackPane {
     public int hashCode() {
         return Objects.hash(x, y);
     }
+
+
 }
