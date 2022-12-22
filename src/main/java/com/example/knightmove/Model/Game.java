@@ -11,7 +11,7 @@ import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
-public class Game  {
+public class Game   {
 
     public static Piece currentPiece;
     public static String currentPlayer;
