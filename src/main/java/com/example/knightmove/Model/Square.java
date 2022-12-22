@@ -13,6 +13,10 @@ public class Square extends StackPane {
 
     String color;
 
+    public Square() {
+
+    }
+
     public int getX() {
         return x;
     }
@@ -27,6 +31,14 @@ public class Square extends StackPane {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public Square(int x, int y){
@@ -146,6 +158,7 @@ public class Square extends StackPane {
         return squareSummary;
 
     }
+
 
 
 

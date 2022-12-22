@@ -236,6 +236,7 @@ public class GamePageController {
         }else {
             wrongAnswer.showAndWait();
             Game.score -= (level+1);
+            wrongAnswer.close();
             System.out.println("Game.score " + Game.score);
         }
 

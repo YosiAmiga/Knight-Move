@@ -89,10 +89,18 @@ public class Game {
                     }
 
                 }
+//                Square dana = (Square) target;
+//                System.out.println("THE TARGET CLICK IS "+ dana.getX() + dana.getY());
+                if(target.toString().equals("Question")){
+                    System.out.println("HIIIIII!! QUESTION SQUARE");
+                }
                 //Clicked on the queen - DELETED!
                 // Clicked on square
                 if(target.toString().equals("Square")){
                     Square square = (Square) target;
+                    if(square.toString().equals("Question")){
+                        System.out.println("HIIIIII!! QUESTION SQUARE");
+                    }
                     if(square.occupied ){
                         Piece newPiece = (Piece) square.getChildren().get(0);
                         // Selecting a new piece

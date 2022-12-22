@@ -32,6 +32,13 @@ public class ChessBoard {
         makeBoard(this.chessBoard, theme);
     }
 
+    public ArrayList<point> getQuestionSquaresLocations() {
+        return questionSquaresLocations;
+    }
+
+    public void setQuestionSquaresLocations(ArrayList<point> questionSquaresLocations) {
+        this.questionSquaresLocations = questionSquaresLocations;
+    }
 
     private void makeBoard(GridPane chessBoard, String theme){
         /**
@@ -55,11 +62,26 @@ public class ChessBoard {
 
         for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
             for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
-                Square square = new Square(i,j);
-                square.setName("Square" + i + j);
+                Square square = new Square();
+                point point = new point(i,j);
+                if(BlockingSquaresLocations.contains(point)){
+                     square = new BlockSquare(i, j);
+                }
+                else if(ForgettingSquaresLocations.contains(point)){
+                     square = new ForgetSquare(i,j);
+                }
+                else if(RandomJumpSquaresLocations.contains(point)){
+                     square = new RandomSquare(i,j);
+                }
+                else if(questionSquaresLocations.contains(point)){
+                     square = new QuestionSquare(i,j);
+                }
+                else{
+                     square = new Square(i,j);
+                }
+                square.setName(square.getType() + i + j);
                 square.setPrefHeight(Consts.SQUARE_SIZE);
                 square.setPrefWidth(Consts.SQUARE_SIZE);
-
                 // NOTE: BoardStroke args (colurOfLinesBetweenSquares, typeOfLineBetweenSquares - could be dotted or full line)
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
                         BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
