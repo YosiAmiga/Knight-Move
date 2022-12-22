@@ -1,5 +1,6 @@
 package com.example.knightmove.Model;
 
+import com.sun.javafx.UnmodifiableArrayList;
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.geometry.Insets;
@@ -17,6 +18,8 @@ public class Game {
     public static String currentPlayer;
     public static ChessBoard cb;
     private boolean game;
+    public static int level = 2 ;
+
 
     public static int score;
 
@@ -163,12 +166,27 @@ public class Game {
                                     foundQueen = newQueen;
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
-//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
-                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
-                                    killPiece(queenSquare);
-                                    //Doing Random/Smart movement (with Manhattan Distance) for Queen
-                                    queenNextPositionX = movesSelector.get(0);
-                                    queenNextPositionY = movesSelector.get(1);
+                                    System.out.println("Current level is: " + Game.level + "*******");
+                                    if(Game.level == 1 || Game.level == 2){
+                                        System.out.println("Performing random strategy**********");
+                                        ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
+                                        killPiece(queenSquare);
+                                        //Doing Random/Smart movement (with Manhattan Distance) for Queen
+                                        queenNextPositionX = movesSelector.get(0);
+                                        queenNextPositionY = movesSelector.get(1);
+                                    }
+                                    else if(Game.level == 3 || Game.level == 4){
+                                        System.out.println("Performing smart strategy**********");
+                                        ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
+                                        killPiece(queenSquare);
+                                        //Doing Random/Smart movement (with Manhattan Distance) for Queen
+                                        queenNextPositionX = movesSelector.get(0);
+                                        queenNextPositionY = movesSelector.get(1);
+
+                                    }
+
+
+
 
                                 }
                             }

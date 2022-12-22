@@ -15,15 +15,15 @@ public class ChessBoard {
     GridPane chessBoard;
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
+    public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
+    public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
+
 
     public ArrayList<Square> getSquares() {
         return squares;
     }
-    public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
-    public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
-    public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
-
-    public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
     public ChessBoard(GridPane chessBoard, String theme){
         this.chessBoard = chessBoard;
         this.theme = theme;
@@ -59,7 +59,7 @@ public class ChessBoard {
                 // NOTE: BoardStroke args (colurOfLinesBetweenSquares, typeOfLineBetweenSquares - could be dotted or full line)
                 square.setBorder(new Border(new BorderStroke(Color.BLACK,
                         BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
-                setTheme(square, theme, i, j,BlockingSquaresLocations,ForgettingSquaresLocations,RandomJumpSquaresLocations);
+                setTheme(square, theme, i, j,BlockingSquaresLocations,ForgettingSquaresLocations,RandomJumpSquaresLocations,false);
                 chessBoard.add(square, i, j, 1, 1);
                 squares.add(square);
             }
@@ -68,7 +68,7 @@ public class ChessBoard {
         System.out.println("Locations of the blocking squares \n" + this.blockingSquaresLocations);
     }
 
-    private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations){
+    private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations,boolean resetBoard){
         point currentPoint = new point(i,j);
 //        Color color1 = Color.web("#ffffff00");
 //        Color color2 = Color.web("#ffffff00");
@@ -105,25 +105,26 @@ public class ChessBoard {
             }
         }
 
+        if(!resetBoard){ // if we don't want to reset the board colors
+            for(point p : BlockingSquaresLocations){
+                if(currentPoint.x == p.x && currentPoint.y == p.y){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorBlockingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+            }
+            for(point p : ForgettingSquaresLocations){
+                if(currentPoint.x == p.x && currentPoint.y == p.y){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+            }
+            for(point p : RandomJumpSquaresLocations){
+                if(currentPoint.x == p.x && currentPoint.y == p.y){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+            }
 
-        for(point p : BlockingSquaresLocations){
-            if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorBlockingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
-            }
-        }
-
-        for(point p : ForgettingSquaresLocations){
-            if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
-            }
-        }
-        for(point p : RandomJumpSquaresLocations){
-            if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
-            }
         }
 
 
@@ -244,6 +245,31 @@ public class ChessBoard {
             System.out.println("blocking square points: " + p.x +", "+ p.y);
         }
         return specialSquaresLocations;
+    }
+
+    public Square returnSquareObject(int i, int j){
+        for(Square s : this.squares){
+            if(s.x == i && s.y == j){
+                return s;
+            }
+        }
+        return null;
+    }
+
+    private void removeSpecialSquaresForNewLevel(){
+        /**
+         * change the colors to default
+         */
+
+        for(int i = 0 ; i < Consts.SQUARES_IN_ROW; i++){
+            for(int j = 0 ; j < Consts.SQUARES_IN_COLUMN ; j++){
+                Square square = returnSquareObject( i,  j);
+
+                setTheme(square, theme, i, j,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,true);
+
+            }
+        }
+
     }
 
 
