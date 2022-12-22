@@ -1,6 +1,7 @@
 package com.example.knightmove.Model;
 
 
+import com.example.knightmove.controllers.GamePageController;
 import javafx.event.EventHandler;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
@@ -13,10 +14,10 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Piece extends ImageView {
-    String type;
+    public String type;
     String color;
     int posX, posY;
-    ArrayList<String> possibleMoves;
+    public ArrayList<String> possibleMoves;
 
     public int getPosX() {
         return posX;
@@ -89,7 +90,7 @@ public abstract class Piece extends ImageView {
     }
 
     public Square getSquareByName(String name){
-        for(Square square : Game.cb.squares){
+        for(Square square : GamePageController.cb.squares){
             if(square.name.equals(name)){
                 return square;
             }
@@ -98,7 +99,7 @@ public abstract class Piece extends ImageView {
     }
 
     public Piece getPieceByName(String name){
-        for(Square square : Game.cb.squares){
+        for(Square square : GamePageController.cb.squares){
             if(square.getChildren().size() == 0) continue;
 
             if(square.name.equals(name))

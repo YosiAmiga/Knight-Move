@@ -1,7 +1,7 @@
 package com.example.knightmove.controllers;
 
 import com.example.knightmove.HelloApplication;
-import com.example.knightmove.Model.Game;
+//import com.example.knightmove.Model.Game;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,7 +36,7 @@ public class EndGameController {
     private String score;
 
     public void initialize() {
-        earnPointLabel.setText("You earn " + Game.score + " points");
+        earnPointLabel.setText("You earn " + GamePageController.score + " points");
 
     }
     public void returnToAppIntroPage(ActionEvent event) throws IOException {

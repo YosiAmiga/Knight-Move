@@ -12,7 +12,7 @@ import java.util.Random;
 
 public class ChessBoard {
 
-    GridPane chessBoard;
+    public GridPane chessBoard;
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
 

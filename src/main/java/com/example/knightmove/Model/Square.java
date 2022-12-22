@@ -3,12 +3,13 @@ package com.example.knightmove.Model;
 import javafx.scene.layout.StackPane;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class Square extends StackPane {
 
     int x,y;
-    boolean occupied;
-    String name;
+    public boolean occupied;
+    public String name;
     String type;
 
     String color;
@@ -125,6 +126,16 @@ public class Square extends StackPane {
 
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Square square = (Square) o;
+        return x == square.x && y == square.y;
+    }
 
-
+    @Override
+    public int hashCode() {
+        return Objects.hash(x, y);
+    }
 }

@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        URL url = new File("src/main/View/com/example/knightmove/LogInKnightMove.fxml").toURI().toURL();
+        URL url = new File("src/main/View/com/example/knightmove/GamePage.fxml").toURI().toURL();
         Parent root = FXMLLoader.load(url);
         Scene scene = new Scene(root, 600, 600);
         stage.setTitle("Team Panda");
