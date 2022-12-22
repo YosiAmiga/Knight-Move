@@ -25,7 +25,7 @@ public class Queen extends Piece {
         this.possibleMoves = new ArrayList<>();
 
         for (int i = x - 1; i >= 0; i--) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&y==ss.getY()){
                     s=ss;
                 }
@@ -39,7 +39,7 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1; i < Consts.SQUARES_IN_COLUMN; i++) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&y==ss.getY()){
                     s=ss;
                 }
@@ -53,7 +53,7 @@ public class Queen extends Piece {
         }
 
         for (int j = y - 1; j >= 0; j--) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(x==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }
@@ -67,7 +67,7 @@ public class Queen extends Piece {
         }
 
         for (int j = y + 1; j < Consts.SQUARES_IN_COLUMN; j++) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(x==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }
@@ -81,7 +81,7 @@ public class Queen extends Piece {
         }
 
         for (int i = x - 1, j = y + 1; i >= 0 && j < Consts.SQUARES_IN_COLUMN; i--, j++) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }
@@ -95,7 +95,7 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1, j = y + 1; i < Consts.SQUARES_IN_COLUMN && j < Consts.SQUARES_IN_COLUMN; i++, j++) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }
@@ -109,7 +109,7 @@ public class Queen extends Piece {
         }
 
         for (int i = x + 1, j = y - 1; i < Consts.SQUARES_IN_ROW && j >= 0; i++, j--) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }
@@ -123,7 +123,7 @@ public class Queen extends Piece {
         }
 
         for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
-            for(Square ss: Game.cb.getSquares()){
+            for(Square ss: GamePageController.cb.getSquares()){
                 if(i==ss.getX()&&j==ss.getY()){
                     s=ss;
                 }

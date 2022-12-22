@@ -23,7 +23,7 @@ public class Knight extends Piece{
         int x = this.posX;
         int y = this.posY;
         Square s = new Square();
-        for (Square ss: Game.cb.getSquares()){
+        for (Square ss: GamePageController.cb.getSquares()){
             if(x==ss.getX()&&y==ss.getY()){
                 s=ss;
             }

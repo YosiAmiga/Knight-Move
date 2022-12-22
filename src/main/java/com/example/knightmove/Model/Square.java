@@ -121,12 +121,12 @@ public class Square extends StackPane {
     }
 
 
-    public List<Object>  checkIfSquareIsSpecial(ArrayList<point> blockingSquaresCoords
+   /* public List<Object>  checkIfSquareIsSpecial(ArrayList<point> blockingSquaresCoords
             ,ArrayList<point> randomSquaresCoords, ArrayList<point> jumpSquaresCoords){
         /**
          * INPUT: square object
          * OUTPUT: Array size 2 --> [ifSpecialSquare: boolean, typeOfSquare: String]
-         */
+
         List<Object> squareSummary = new ArrayList<Object>();
         if(checkIfBlockingSquare( this,blockingSquaresCoords)){
             squareSummary.add(true);
@@ -147,18 +147,18 @@ public class Square extends StackPane {
 
         }
 
-        else if(checkIfQuestionSquare( questionSquaresCoords)){
+        else if(checkIfQuestionSquare(questionSquaresCoords)){
             squareSummary.add(true);
             squareSummary.add("question");
             return squareSummary;
 
         }
-
         squareSummary.add(false);
         squareSummary.add("Regular");
         return squareSummary;
 
     }
+    */
 
     @Override
     public boolean equals(Object o) {

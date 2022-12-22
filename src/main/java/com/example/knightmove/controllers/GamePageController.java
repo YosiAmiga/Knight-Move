@@ -1,9 +1,13 @@
 package com.example.knightmove.controllers;
 
 import com.example.knightmove.HelloApplication;
-import com.example.knightmove.Model.Question;
+import com.example.knightmove.Model.*;
+import javafx.event.EventTarget;
+import javafx.geometry.Insets;
 import javafx.scene.control.ButtonType;
-import javafx.scene.layout.Pane;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.stage.Modality;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
@@ -17,18 +21,19 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 // import the required classes
 import org.json.simple.JSONArray;
@@ -48,6 +53,15 @@ public class GamePageController {
     public static boolean isGameOver =false;
     public point knightCurrentPosition;
     private int startTimeSec;
+
+    public static Piece currentPiece;
+    public static String currentPlayer;
+    public static ChessBoard cb;
+    private boolean game;
+
+    public static int score;
+
+    ArrayList<Square> visitedSquares; // squares they already visited at.
 
     public GamePageController() throws IOException, ParseException {
     }
@@ -213,7 +227,7 @@ public class GamePageController {
         }
     }
 
-    public static void questionPopUp(Integer level){
+    public static void questionPopUp(Integer level) {
         HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
         Question theQuestion = null;
         int size = questionsByLevel.size();
@@ -222,11 +236,11 @@ public class GamePageController {
         //get random question
         for (Question q : questionsByLevel) {
             if (i == randomNumber)
-                theQuestion=q;
+                theQuestion = q;
             i++;
         }
         // create an Alert object
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"", new ButtonType(theQuestion.getAnswers().get(0)),new ButtonType(theQuestion.getAnswers().get(1)),new ButtonType(theQuestion.getAnswers().get(2)),new ButtonType(theQuestion.getAnswers().get(3)));
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
         // set the alert's message to the first question
         alert.setContentText("Select your answer:");
@@ -242,29 +256,21 @@ public class GamePageController {
         Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
         wrongAnswer.setTitle("Wrong Answer");
         wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: "+ theQuestion.getRightAnswer());
+        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: " + theQuestion.getRightAnswer());
 
         // check the user's response
         if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
             correctAnswer.showAndWait();
-            Game.score += level;
-            System.out.println("Game.score " + Game.score);
-        }else {
+            GamePageController.score += level;
+            System.out.println("Game.score " + GamePageController.score);
+        } else {
             wrongAnswer.showAndWait();
-            Game.score -= (level+1);
+            GamePageController.score -= (level + 1);
             wrongAnswer.close();
-            System.out.println("Game.score " + Game.score);
+            System.out.println("Game.score " + GamePageController.score);
         }
+    }
     // Game Class
-    public static Piece currentPiece;
-    public static String currentPlayer;
-    public static ChessBoard cb;
-    private boolean game;
-
-    public static int score;
-
-    ArrayList<Square> visitedSquares; // squares they already visited at.
-
     public ArrayList<Square> getVisitedSquares() {
         return visitedSquares;
     }
@@ -512,5 +518,4 @@ public class GamePageController {
             stage.show();
         }
     }
-}
 }
