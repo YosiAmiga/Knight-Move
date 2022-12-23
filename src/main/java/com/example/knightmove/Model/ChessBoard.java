@@ -215,7 +215,7 @@ public class ChessBoard {
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(ForgettingSquares, randX, randY)){
+            if((randX!=0 && randY!=0)&&!checkIfPointExist(ForgettingSquares, randX, randY)&&!checkIfPointExist(randomJumpSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)&&!checkIfPointExist(questionSquaresLocations, randX, randY)){
                 point specialSquarePoint = new point(randX,randY);
                 ForgettingSquares.add(specialSquarePoint);
             }
@@ -234,7 +234,7 @@ public class ChessBoard {
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(RandomJumpSquares, randX, randY)){
+            if((randX!=0 && randY!=0)&&!checkIfPointExist(RandomJumpSquares, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)&&!checkIfPointExist(questionSquaresLocations, randX, randY)){
                 point specialSquarePoint = new point(randX,randY);
                 RandomJumpSquares.add(specialSquarePoint);
             }
@@ -263,7 +263,7 @@ public class ChessBoard {
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(specialSquaresLocations, randX, randY)){
+            if((randX!=0 && randY!=0)&&!checkIfPointExist(specialSquaresLocations, randX, randY)&&!checkIfPointExist(randomJumpSquaresLocations,randX,randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(questionSquaresLocations, randX, randY)){
                 point specialSquarePoint = new point(randX,randY);
                 specialSquaresLocations.add(specialSquarePoint);
             }
@@ -283,7 +283,7 @@ public class ChessBoard {
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
-            if(!checkIfPointExist(QuestionsSquares, randX, randY)){
+            if((randX!=0 && randY!=0)&&!checkIfPointExist(QuestionsSquares, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)&&!checkIfPointExist(randomJumpSquaresLocations, randX, randY)){
                 point specialSquarePoint = new point(randX,randY);
                 QuestionsSquares.add(specialSquarePoint);
             }
