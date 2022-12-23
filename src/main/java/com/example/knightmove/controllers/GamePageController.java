@@ -469,7 +469,6 @@ public class GamePageController {
         currentPiece.setPosX(square.getX());
         currentPiece.setPosY(square.getY());
         deselectPiece(true);
- //       GamePageController.createQuestionPopUp();
         updateScore();
     }
 
@@ -483,11 +482,15 @@ public class GamePageController {
         square.getChildren().remove(0);
         square.getChildren().add(currentPiece);
         square.occupied = true;
+        if(square instanceof QuestionSquare){
+            System.out.println("QUESTION SQUARE!!!!");
+        }
         initialSquare.getChildren().removeAll();
         initialSquare.occupied = false;
         currentPiece.setPosX(square.getX());
         currentPiece.setPosY(square.getY());
         deselectPiece(true);
+
     }
 
     public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){

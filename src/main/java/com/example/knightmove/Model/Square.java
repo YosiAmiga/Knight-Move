@@ -42,6 +42,10 @@ public class Square extends StackPane {
         this.type = type;
     }
 
+    public String getName() {
+        return name;
+    }
+
     public Square(int x, int y){
         this.x = x;
         this.y = y;

@@ -22,7 +22,6 @@ public class ChessBoard {
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
     public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
-
     public ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
     public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
@@ -62,7 +61,7 @@ public class ChessBoard {
 
         for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
             for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
-                Square square = new Square();
+                Square square;
                 point point = new point(i,j);
                 if(BlockingSquaresLocations.contains(point)){
                      square = new BlockSquare(i, j);
@@ -91,7 +90,6 @@ public class ChessBoard {
             }
         }
         addPieces();
-        System.out.println("Locations of the blocking squares \n" + this.blockingSquaresLocations);
     }
 
     private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations, ArrayList<point> QuestionSquaresLocations){

@@ -78,7 +78,7 @@ public class AddQuestionController implements Initializable {
         ArrayList<String> answers = new ArrayList<>();
         try{
 
-            if (Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
+            if (Ans1.getText().equals(" ")||Ans2.getText().equals(" ")|| Ans3.getText().equals(" ")|| Ans4.getText().equals(" ")||Question.getText().equals(" ")||Level.getSelectionModel().isEmpty()||Question.getText().isEmpty()||Ans1.getText().isEmpty()||Ans2.getText().isEmpty()||Ans3.getText().isEmpty()||Ans4.getText().isEmpty()||Answer.getSelectedToggle().isSelected()==false)
                 throw new NotAllFieldsFullException();
             Integer correctAnswer;
 
