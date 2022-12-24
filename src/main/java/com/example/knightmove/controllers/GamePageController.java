@@ -466,6 +466,7 @@ public class GamePageController {
         if(square.getType()=="Question")
         {
             randnewSpecialSquare(square);
+            System.out.println(GamePageController.cb.squares);
         }
     }
 

@@ -297,6 +297,7 @@ public class ChessBoard {
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
         
         point ques_point = null;
+        Square change_sqaure=null;
         for(point p : this.questionSquaresLocations){
             if(p.getX() == x && p.getY()==y)
             {
@@ -321,17 +322,18 @@ public class ChessBoard {
                 point specialSquarePoint = new point(randX,randY);
                 this.questionSquaresLocations.add(specialSquarePoint);
                 System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
-                Square change_sqaure=null;
+                Square remove_sqr=null;
                 for(Square sqr : this.squares){
                     if(sqr.x==specialSquarePoint.x && sqr.y==specialSquarePoint.y)
                     {
-                        change_sqaure = sqr;
-                        sqr.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
+                        remove_sqr = sqr;
+                        change_sqaure = new QuestionSquare(sqr.x,sqr.y);
+                        change_sqaure.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
                         setTheme(sqr, theme, sqr.x, sqr.y,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,questionSquaresLocations);
                     }
                 }
-                this.squares.add(this.squares.indexOf(change_sqaure),new QuestionSquare(change_sqaure.x, change_sqaure.y));
-
+                this.squares.add(change_sqaure);
+                this.squares.remove(remove_sqr);
             }
         }
     }
