@@ -320,7 +320,8 @@ public class GamePageController {
                 }
                 //Clicked on the queen - DELETED!
                 // Clicked on square
-                if (target.toString().equals("Square")) {
+                if (target.toString().equals("Square") || target.toString().equals("Random") ||
+                        target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
@@ -359,7 +360,8 @@ public class GamePageController {
                                 currentPiece.possibleMoves.remove(squareString);
                             }
                         }
-                        //System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
+
+                        System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
                         if (currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);

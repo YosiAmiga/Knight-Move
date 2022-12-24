@@ -49,7 +49,6 @@ public class Knight extends Piece{
             }
             moves.add(pos_sqr.getType() + String.valueOf(newX) + String.valueOf(newY));
         }
-        System.out.println(moves);
         for(String move : moves){
             if(getSquareByName(move) != null){
                 if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
