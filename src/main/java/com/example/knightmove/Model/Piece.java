@@ -72,7 +72,6 @@ public abstract class Piece extends ImageView {
         if(val){
             Glow glow = new Glow();
             glow.setLevel(1);
-
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
                 square.setEffect(glow);
@@ -84,7 +83,6 @@ public abstract class Piece extends ImageView {
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
                 square.setEffect(null);
-
             }
         }
     }

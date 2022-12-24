@@ -40,10 +40,16 @@ public class Knight extends Piece{
             int newY = y + yOffsets[i];
             newX = (newX + 8) % 8;
             newY = (newY + 8) % 8;
+            Square pos_sqr = new Square();
             // Add the possible move to the list
-            moves.add(s.getType() + String.valueOf(newX) + String.valueOf(newY));
+            for (Square ss: GamePageController.cb.getSquares()){
+                if(newX==ss.getX()&&newY==ss.getY()){
+                    pos_sqr=ss;
+                }
+            }
+            moves.add(pos_sqr.getType() + String.valueOf(newX) + String.valueOf(newY));
         }
-
+        System.out.println(moves);
         for(String move : moves){
             if(getSquareByName(move) != null){
                 if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
@@ -51,6 +57,5 @@ public class Knight extends Piece{
             }
         }
         return this.possibleMoves;
-
     }
 }
