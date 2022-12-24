@@ -80,8 +80,10 @@ public abstract class Piece extends ImageView {
             }
         }
         else{
+            System.out.println(possibleMoves);
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
+                System.out.println(square);
                 square.setEffect(null);
             }
         }

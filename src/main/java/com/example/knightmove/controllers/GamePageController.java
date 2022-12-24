@@ -186,7 +186,7 @@ public class GamePageController {
         }
         Integer correctAnswerNumber = questionObject.getCorrectAnswer();
         String correctAnswerStringByIndex = answers.get(correctAnswerNumber-1);
-        
+
         // create an Alert object
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",answersOptions.get(0),answersOptions.get(1),answersOptions.get(2),answersOptions.get(3));
         alert.setHeaderText(questionNameToPopUp);
@@ -308,7 +308,7 @@ public class GamePageController {
                     // Selecting other piece of same color || Killing a piece
                     else {
                         if (currentPiece.getColor().equals(newPiece.getColor())) {
-                          // System.out.println("inside internal if of knight");
+                            // System.out.println("inside internal if of knight");
                             deselectPiece(false);
                             currentPiece = newPiece;
                             selectPiece(game);
@@ -320,7 +320,8 @@ public class GamePageController {
                 }
                 //Clicked on the queen - DELETED!
                 // Clicked on square
-                if (target.toString().equals("Square")) {
+                if (target.toString().equals("Square") || target.toString().equals("Random") ||
+                        target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
@@ -359,7 +360,8 @@ public class GamePageController {
                                 currentPiece.possibleMoves.remove(squareString);
                             }
                         }
-                        //System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
+
+                     //   System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
                         if (currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);
@@ -372,7 +374,7 @@ public class GamePageController {
                         }
                         addToVisitedSquares(square);
                         for(Square s : getVisitedSquares()){
-                            System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
+                  //          System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
                         }
 
                         /**
@@ -451,7 +453,7 @@ public class GamePageController {
 
     private void dropPiece(Square square){
         if(!currentPiece.possibleMoves.contains(square.name)) return;
-        System.out.println("move to square " + square.name);
+       // System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -461,6 +463,10 @@ public class GamePageController {
         currentPiece.setPosY(square.getY());
         deselectPiece(true);
         updateScore();
+        if(square.getType()=="Question")
+        {
+            randnewSpecialSquare(square);
+        }
     }
 
     private void killPiece(Square square){
@@ -468,7 +474,7 @@ public class GamePageController {
 
         Piece killedPiece = (Piece) square.getChildren().get(0);
         if(killedPiece.type.equals("King")) this.game = false;
-       // System.out.println("move from square " + square.name);
+        // System.out.println("move from square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().remove(0);
         square.getChildren().add(currentPiece);
@@ -511,6 +517,18 @@ public class GamePageController {
             stage.setScene(scene);
             stage.setUserData(currentScore);
             stage.show();
+
+        }
+    }
+    public void randnewSpecialSquare(Square square)
+    {
+        if(square.getType() == "Question")
+        {
+            //System.out.println(GamePageController.cb.questionSquaresLocations);
+            //System.out.println("---------------");
+            GamePageController.cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), this.visitedSquares);
+            //System.out.println(GamePageController.cb.questionSquaresLocations);
+           // System.out.println("---------------");
 
         }
     }

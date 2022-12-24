@@ -18,7 +18,7 @@ public class HelloApplication extends Application {
 
     @Override
     public void start(Stage stage) throws IOException {
-        Parent root = FXMLLoader.load(HelloApplication.class.getResource("LoginKnightMove.fxml"));
+        Parent root = FXMLLoader.load(HelloApplication.class.getResource("GamePage.fxml"));
         Scene scene = new Scene(root, 600, 600);
         stage.setTitle("Team Panda");
         stage.setFullScreen(true); // set full screen
