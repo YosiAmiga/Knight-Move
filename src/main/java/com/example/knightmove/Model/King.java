@@ -1,5 +1,6 @@
 package com.example.knightmove.Model;
 
+import com.example.knightmove.controllers.GamePageController;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -41,7 +42,7 @@ public class King extends Piece{
 
         for(String move : moves){
             if(getSquareByName(move) != null){
-                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(Game.currentPlayer)) continue;
+                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
 
                 possibleMoves.add(move);
 

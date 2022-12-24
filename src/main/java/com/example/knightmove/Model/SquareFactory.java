@@ -5,6 +5,9 @@ public class SquareFactory {
         if (SquareType == null) {
             return null;
         }
+        if (SquareType.equalsIgnoreCase("REGULARSQAURE")) {
+            return new Square(x, y);
+        }
         if (SquareType.equalsIgnoreCase("RANDOMSQUARE")) {
             return new RandomSquare(x, y);
         }
@@ -13,6 +16,9 @@ public class SquareFactory {
         }
         if (SquareType.equalsIgnoreCase("BLOCKSQUARE")) {
             return new BlockSquare(x, y);
+        }
+        if (SquareType.equalsIgnoreCase("QUESTIONSQUARE")) {
+            return new QuestionSquare(x, y);
         }
         return null;
     }
