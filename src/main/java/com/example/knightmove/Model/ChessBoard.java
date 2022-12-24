@@ -23,7 +23,7 @@ public class ChessBoard {
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
     public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
-    public ArrayList<point> questionSquaresLocations = new ArrayList<>();
+    public static ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
     public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
     public ChessBoard(GridPane chessBoard, String theme){
@@ -155,7 +155,6 @@ public class ChessBoard {
             }
         }
 
-
         if((i+j)%2==0){
 
             square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -165,6 +164,7 @@ public class ChessBoard {
         }
 
     }
+
 
     private void addPiece(Square square, Piece piece){
         square.getChildren().add(piece);
@@ -293,18 +293,18 @@ public class ChessBoard {
         }
         return QuestionsSquares;
     }
-
-    public static boolean replaceSquare(Square s1, Square s2){
+        public static void replaceSquare(Square s1, Square s2){
         Integer i=0;
-        for (Square p:getSquares()){
-            if(p.getX()==s1.getX()&&p.getY()==s1.getY()){
-                break;
+        for(Square s : getSquares()){
+            if(s.equals(s1)){
+                s2.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                getSquares().set(i,s2);
             }
             i++;
         }
-        getSquares().set(i,s2);
-        return true;
     }
+
+
 
 //    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
 //        Integer i=0;

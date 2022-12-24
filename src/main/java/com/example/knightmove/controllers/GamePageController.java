@@ -226,18 +226,9 @@ public class GamePageController {
         System.out.println("QUESTIONS BY LEVEL"+ list);
 
         Question theQuestion = null;
-//        int size = questionsByLevel.size();
-//        System.out.println("THW SIZE IS: "+ size);
-          int rnd = new Random().nextInt(questionsByLevel.size());
-          theQuestion = list.get(rnd);
-//        int randomNumber = new Random().nextInt(size);
-//        int i = 0;
-//        //get random question
-//        for (Question q : questionsByLevel) {
-//            if (i == randomNumber)
-//                theQuestion = q;
-//            i++;
-//        }
+        int rnd = new Random().nextInt(questionsByLevel.size());
+        theQuestion = list.get(rnd);
+
         // create an Alert object
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
@@ -268,8 +259,31 @@ public class GamePageController {
             wrongAnswer.close();
             System.out.println("Game.score " + GamePageController.score);
         }
-
     }
+//    public static void replaceSquare(Square s1, Square s2){
+//        Integer i=0;
+//        for (Square p:(cb.getSquares())){
+//            if(p.getX()==s1.getX()&&p.getY()==s1.getY()){
+//                s2.setBackground(new Background(new BackgroundFill(Consts.colorQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//                cb.getSquares().set(i,s2);
+//            }
+//            i++;
+//        }
+//
+//    }
+//    public static void paintSquare(Square square){
+//        if(square instanceof QuestionSquare){
+//            square.setBackground(new Background(new BackgroundFill(Consts.colorQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//        }
+//        else if(square instanceof RandomSquare){
+//            square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//
+//        }
+//        else if (square instanceof ForgetSquare){
+//            square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//        }
+//    }
+
     // Game Class
     public ArrayList<Square> getVisitedSquares() {
         return visitedSquares;
@@ -333,9 +347,12 @@ public class GamePageController {
                     Square square = (Square) target;
                     if(target.toString().equals("Question")){
                         point p= new point(square.getX(), square.getY());
-                            Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-                            System.out.println(" The level is "+ level);
-                            questionPopUp(level);
+                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+                        questionPopUp(level);
+//                        QuestionSquare q = new QuestionSquare(5,5);
+//                        Square s = new Square(5,5);
+//                        cb.replaceSquare(s,q);
+
                     }
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
@@ -443,6 +460,7 @@ public class GamePageController {
             }
         });
     }
+
     private void selectPiece(boolean game){
         if(!game){
             currentPiece = null;
