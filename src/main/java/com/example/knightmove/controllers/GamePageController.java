@@ -2,46 +2,37 @@ package com.example.knightmove.controllers;
 
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.*;
-import javafx.event.EventTarget;
-import javafx.geometry.Insets;
-import javafx.scene.control.ButtonType;
-import javafx.scene.effect.DropShadow;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.stage.Modality;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.event.EventTarget;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
-import javafx.stage.Popup;
 import javafx.stage.Stage;
 import javafx.util.Duration;
+import org.json.simple.parser.ParseException;
 
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
-// import the required classes
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
+
 import static com.example.knightmove.Model.Json.readFromJSON;
-import static java.lang.System.exit;
 
 public class GamePageController {
 
@@ -180,7 +171,7 @@ public class GamePageController {
     private Label currentTimeText;
 
     public static void createQuestionPopUp(){
-        HashSet<Question> allQuestionsInJSON= readFromJSON();
+        HashSet<Question> allQuestionsInJSON= Json.readFromJSON();
         // convert the HashSet to an array
         Object[] array = allQuestionsInJSON.toArray();
         // get a random questions from the array
@@ -505,10 +496,11 @@ public class GamePageController {
     public void checkIsGameOver() {
         System.out.println("isGameOver " + isGameOver);
         if(isGameOver){
+            GamePageController.isGameOver=false; //for new game
             try {
-                //root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
-                URL url = new File("src/main/View/com/example/knightmove/EndGamePage.fxml").toURI().toURL();
-                root = FXMLLoader.load(url);
+                root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
+                //URL url = new File("src/main/View/com/example/knightmove/EndGamePage.fxml").toURI().toURL();
+                //root = FXMLLoader.load(url);
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -519,6 +511,7 @@ public class GamePageController {
             stage.setScene(scene);
             stage.setUserData(currentScore);
             stage.show();
+
         }
     }
 }
