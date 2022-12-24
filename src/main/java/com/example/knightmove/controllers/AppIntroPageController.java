@@ -36,6 +36,7 @@ public class AppIntroPageController implements Initializable {
 
 
     public void switchToGamePage(ActionEvent event) throws IOException {
+        EndGameController.userName = userName;
         root = FXMLLoader.load(HelloApplication.class.getResource("GamePage.fxml"));
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
