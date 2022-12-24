@@ -29,6 +29,7 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -220,16 +221,23 @@ public class GamePageController {
 
     public static void questionPopUp(Integer level) {
         HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
+
+        List<Question> list = new ArrayList<>(questionsByLevel);
+        System.out.println("QUESTIONS BY LEVEL"+ list);
+
         Question theQuestion = null;
-        int size = questionsByLevel.size();
-        int randomNumber = new Random().nextInt(size);
-        int i = 0;
-        //get random question
-        for (Question q : questionsByLevel) {
-            if (i == randomNumber)
-                theQuestion = q;
-            i++;
-        }
+//        int size = questionsByLevel.size();
+//        System.out.println("THW SIZE IS: "+ size);
+          int rnd = new Random().nextInt(questionsByLevel.size());
+          theQuestion = list.get(rnd);
+//        int randomNumber = new Random().nextInt(size);
+//        int i = 0;
+//        //get random question
+//        for (Question q : questionsByLevel) {
+//            if (i == randomNumber)
+//                theQuestion = q;
+//            i++;
+//        }
         // create an Alert object
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
@@ -260,6 +268,7 @@ public class GamePageController {
             wrongAnswer.close();
             System.out.println("Game.score " + GamePageController.score);
         }
+
     }
     // Game Class
     public ArrayList<Square> getVisitedSquares() {
@@ -295,7 +304,7 @@ public class GamePageController {
                     Square square = (Square) newPiece.getParent();
                     square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                     //addToVisitedSquares(square);
-                    //System.out.println("Knight possible moves:\n" + newPiece.possibleMoves);
+                    System.out.println("Knight possible moves:\n" + newPiece.possibleMoves);
                     // Selecting a new piece
                     if (currentPiece == null) {
                         currentPiece = newPiece;
@@ -320,8 +329,14 @@ public class GamePageController {
                 }
                 //Clicked on the queen - DELETED!
                 // Clicked on square
-                if (target.toString().equals("Square")) {
+                if (target.toString().equals("Square") || target.toString().equals("Random") || target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
+                    if(target.toString().equals("Question")){
+                        point p= new point(square.getX(), square.getY());
+                            Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+                            System.out.println(" The level is "+ level);
+                            questionPopUp(level);
+                    }
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
                         // Selecting a new piece
@@ -354,7 +369,7 @@ public class GamePageController {
                         ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
                         for (point p : blockingSquares) {
-                            String squareString = "Square" + p.getX() + p.getY();
+                            String squareString = "Block" + p.getX() + p.getY();
                             if (currentPiece.possibleMoves.contains(squareString)) {
                                 currentPiece.possibleMoves.remove(squareString);
                             }
@@ -514,4 +529,17 @@ public class GamePageController {
 
         }
     }
+
+    public Integer getLevelByThePostion(ArrayList<point> a,point point){
+        Integer l=1;
+        for (point p:a){
+            if (p.equals(point)){
+                return l;
+            }
+            l++;
+        }
+        return l;
+    }
+
+
 }

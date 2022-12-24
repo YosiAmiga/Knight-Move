@@ -13,10 +13,11 @@ import java.util.Random;
 public class ChessBoard {
 
     public GridPane chessBoard;
-    String theme;
-    public ArrayList<Square> squares = new ArrayList<>();
 
-    public ArrayList<Square> getSquares() {
+    String theme;
+    public static ArrayList<Square> squares = new ArrayList<>();
+
+    public static ArrayList<Square> getSquares() {
         return squares;
     }
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
@@ -293,25 +294,37 @@ public class ChessBoard {
         return QuestionsSquares;
     }
 
-    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
+    public static boolean replaceSquare(Square s1, Square s2){
         Integer i=0;
-        for (point p:points){
-            if(p.equals(point)){
+        for (Square p:getSquares()){
+            if(p.getX()==s1.getX()&&p.getY()==s1.getY()){
                 break;
             }
             i++;
         }
-        switch (i){
-            case 0:
-                return 1;
-
-            case 1:
-                return 2;
-            case 2:
-                return 3;
-        }
-        return 0;
+        getSquares().set(i,s2);
+        return true;
     }
+
+//    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
+//        Integer i=0;
+//        for (point p:points){
+//            if(p.equals(point)){
+//                break;
+//            }
+//            i++;
+//        }
+//        switch (i){
+//            case 0:
+//                return 1;
+//
+//            case 1:
+//                return 2;
+//            case 2:
+//                return 3;
+//        }
+//        return 0;
+//    }
 
 }
 
