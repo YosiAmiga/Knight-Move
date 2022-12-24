@@ -7,7 +7,7 @@ module com.example.knightmove {
     requires java.sql;
     requires json.simple;
     requires javafx.base;
-    requires junit;
+//    requires junit;
 //    requires hamcrest.core;
 
 

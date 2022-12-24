@@ -10,6 +10,8 @@ public class Consts {
     public static final String databasePath = "jdbc:ucanaccess://src//DB//Knight_Move_DB.accdb";
     public static final String ADD_NEW_PLAYER =
             "{ call ADD_NEW_PLAYER(?) }";
+    public static final String ADD_NEW_PLAYER_SCORE =
+            "{ call ADD_NEW_PLAYER_SCORE(?,?) }";
     public static final String GET_ALL_PLAYERS =
             "SELECT * FROM Players_tbl";
     public static final String GET_ALL_GAME_HISTORY =
@@ -62,6 +64,8 @@ public class Consts {
     public static  Color colorRandomJumpSquare = Color.web("#9ACD32");
     public static  Color colorForgettingSquare = Color.web("#9dacff");
     public static  Color colorVisitedSquare = Color.web("#808080");
+
+    public static  Color colorQuestionSquare = Color.web("#FACC2E");
 
 
 }

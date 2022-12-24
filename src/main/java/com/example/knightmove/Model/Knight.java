@@ -1,5 +1,6 @@
 package com.example.knightmove.Model;
 
+import com.example.knightmove.controllers.GamePageController;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
@@ -21,6 +22,13 @@ public class Knight extends Piece{
     public ArrayList<String> getAllPossibleMoves() { // possible moves should take count of visitedSquares arrayList & players level {will be discessed by the course team later}
         int x = this.posX;
         int y = this.posY;
+        Square s = new Square();
+        for (Square ss: GamePageController.cb.getSquares()){
+            if(x==ss.getX()&&y==ss.getY()){
+                s=ss;
+            }
+        }
+
         // Define the x and y offsets for the possible knight moves
         int[] xOffsets = {2, 2, 1, 1, -1, -1, -2, -2};
         int[] yOffsets = {1, -1, 2, -2, 2, -2, 1, -1};
@@ -32,17 +40,22 @@ public class Knight extends Piece{
             int newY = y + yOffsets[i];
             newX = (newX + 8) % 8;
             newY = (newY + 8) % 8;
+            Square pos_sqr = new Square();
             // Add the possible move to the list
-            moves.add("Square" + String.valueOf(newX) + String.valueOf(newY));
+            for (Square ss: GamePageController.cb.getSquares()){
+                if(newX==ss.getX()&&newY==ss.getY()){
+                    pos_sqr=ss;
+                }
+            }
+            moves.add(pos_sqr.getType() + String.valueOf(newX) + String.valueOf(newY));
         }
-
+        System.out.println(moves);
         for(String move : moves){
             if(getSquareByName(move) != null){
-                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(Game.currentPlayer)) continue;
+                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
                 possibleMoves.add(move);
             }
         }
         return this.possibleMoves;
-
     }
 }

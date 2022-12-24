@@ -55,16 +55,6 @@ public class SysData {
     }
 
 
-    public Question getQuestionById(Question q){
-        for (Question u:questions){
-            if (u.getId()==q.getId())
-                return u;
-        }
-        return null;
-    }
-
-
-
     public HashSet<Question> getQuestionsByLevel(Integer level){ //grouping the questions by levels
         HashSet <Question> questionsByLevel = new HashSet<>();
         for (Question q: questions){

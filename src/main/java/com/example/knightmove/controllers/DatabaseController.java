@@ -112,6 +112,22 @@ public class DatabaseController implements Initializable {
     @FXML
     private TableColumn<GameHistory,Integer> scoreColumn;
 
+    public void addPlayerAndScore(String nickname, int score) throws SQLException {
+        try{
+            //establish connection
+            Connection con = DriverManager.getConnection(Consts.databasePath);
+            //create the statement
+            PreparedStatement stmt = con.prepareStatement(Consts.ADD_NEW_PLAYER_SCORE);
+            stmt.setString(1, nickname);
+            stmt.setInt(2, score);
+            //execute sql query
+            stmt.executeUpdate();
+            return;
+        }catch (Exception e){
+            e.printStackTrace();
+            return;
+        }
+    }
 
     public int deleteAllGameHistory() {
         try (
