@@ -303,6 +303,45 @@ public class ChessBoard {
             i++;
         }
     }
+    public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
+        //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
+
+        point ques_point = null;
+        int i=0,place=0;
+        for(point p : this.questionSquaresLocations){
+            if(p.getX() == x && p.getY()==y)
+            {
+                ques_point = p;
+            }
+        }
+//        this.questionSquaresLocations.remove(ques_point);
+        while(this.questionSquaresLocations.size() <5){
+            Random rand = new Random();
+            int randX = rand.nextInt(7); // random x value in range of (0,7)
+            int randY = rand.nextInt(7);// random y value in range of (0,7)
+            boolean existinVisited = false;
+            for(Square sqr :visitedSqaure)
+            {
+                if(sqr.x==x && sqr.y==y)
+                {
+                    existinVisited=true;
+                }
+            }
+            if(!checkIfPointExist(questionSquaresLocations, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)
+                    &&!checkIfPointExist(randomJumpSquaresLocations, randX, randY) && !existinVisited){
+                point specialSquarePoint = new point(randX,randY);
+                this.questionSquaresLocations.add(specialSquarePoint);
+                System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
+                for(Square sqr : this.squares){
+                    if(sqr.x==specialSquarePoint.x && sqr.y==specialSquarePoint.y)
+                    {
+                        sqr.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
+                        setTheme(sqr, theme, sqr.x, sqr.y,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,questionSquaresLocations);
+                        this.squares.add(this.squares.indexOf(sqr),new QuestionSquare(sqr.x, sqr.y));
+                    }
+                }
+            }
+}
 
 
 
@@ -326,5 +365,5 @@ public class ChessBoard {
 //        return 0;
 //    }
 
-}
+}}
 

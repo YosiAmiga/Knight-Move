@@ -232,6 +232,7 @@ public class GamePageController {
         // create an Alert object
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
+        alert.setTitle("Level: "+ theQuestion.getLevel());
         // set the alert's message to the first question
         alert.setContentText("Select your answer:");
         // show the alert and get the user's response
@@ -246,18 +247,16 @@ public class GamePageController {
         Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
         wrongAnswer.setTitle("Wrong Answer");
         wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: " + theQuestion.getRightAnswer());
+        wrongAnswer.setContentText("The right Answer is: " + theQuestion.getRightAnswer());
 
         // check the user's response
         if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
             correctAnswer.showAndWait();
-            GamePageController.score += level;
-            System.out.println("Game.score " + GamePageController.score);
+            GamePageController.score += theQuestion.getLevel();
         } else {
             wrongAnswer.showAndWait();
-            GamePageController.score -= (level + 1);
+            GamePageController.score -= (theQuestion.getLevel() + 1);
             wrongAnswer.close();
-            System.out.println("Game.score " + GamePageController.score);
         }
     }
 //    public static void replaceSquare(Square s1, Square s2){
@@ -349,10 +348,17 @@ public class GamePageController {
                         point p= new point(square.getX(), square.getY());
                         Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
                         questionPopUp(level);
+                        cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), visitedSquares);
 //                        QuestionSquare q = new QuestionSquare(5,5);
 //                        Square s = new Square(5,5);
 //                        cb.replaceSquare(s,q);
 
+                    }
+                    if(target.toString().equals("Random")){
+                        AlertBox.display("Random","You will be transformed to another square");
+                    }
+                    if(target.toString().equals("Forget")){
+                        AlertBox.display("Forget","Go back 3 moves");
                     }
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
@@ -558,6 +564,7 @@ public class GamePageController {
         }
         return l;
     }
+
 
 
 }
