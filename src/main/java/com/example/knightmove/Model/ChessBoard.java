@@ -58,25 +58,25 @@ public class ChessBoard {
         ArrayList<point>  questionSquaresLocations = createQuestionSquare();
         this.questionSquaresLocations = questionSquaresLocations;
 
-
+        SquareFactory squarefactory = new SquareFactory();
         for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
             for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
                 Square square;
                 point point = new point(i,j);
                 if(BlockingSquaresLocations.contains(point)){
-                     square = new BlockSquare(i, j);
+                     square = squarefactory.getSquare("BLOCKSQUARE",i,j);
                 }
                 else if(ForgettingSquaresLocations.contains(point)){
-                     square = new ForgetSquare(i,j);
+                     square = squarefactory.getSquare("FORGETSQUARE",i,j);
                 }
                 else if(RandomJumpSquaresLocations.contains(point)){
-                     square = new RandomSquare(i,j);
+                     square = squarefactory.getSquare("RANDOMSQUARE",i,j);
                 }
                 else if(questionSquaresLocations.contains(point)){
-                     square = new QuestionSquare(i,j);
+                     square = squarefactory.getSquare("QUESTIONSQUARE",i,j);
                 }
                 else{
-                     square = new Square(i,j);
+                     square = squarefactory.getSquare("REGULARSQAURE",i,j);
                 }
                 square.setName(square.getType() + i + j);
                 square.setPrefHeight(Consts.SQUARE_SIZE);
