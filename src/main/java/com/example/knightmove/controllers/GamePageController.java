@@ -51,6 +51,7 @@ public class GamePageController {
     private boolean game;
 
     public static int score;
+    public static String queenMovement = "random";
 
     ArrayList<Square> visitedSquares; // squares they already visited at.
 
@@ -85,8 +86,10 @@ public class GamePageController {
                     startTimeSec = 60;
                     if (currentLevelText.getText().equals("1")) {
                         currentScore.setText(Integer.toString(GamePageController.score));
+                        queenMovement = "random";
                         currentLevelText.setText("2");
                     } else if (currentLevelText.getText().equals("2")) {
+                        queenMovement = "smart";
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
                         GamePageController.score+=105;
@@ -400,7 +403,7 @@ public class GamePageController {
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
 //                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
-                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
+                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements(queenMovement, possibleMovesInArrayOfTwo, knightPositions);
                                     killPiece(queenSquare);
                                     //Doing Random/Smart movement (with Manhattan Distance) for Queen
                                     queenNextPositionX = movesSelector.get(0);
