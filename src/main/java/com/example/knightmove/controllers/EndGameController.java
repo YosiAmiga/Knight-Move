@@ -14,9 +14,10 @@ import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.sql.SQLException;
 
 public class EndGameController {
-
+    DatabaseController dbc = new DatabaseController();
     @FXML
     private Label earnPointLabel;
 
@@ -28,16 +29,16 @@ public class EndGameController {
 
     @FXML
     private Label textLabel;
-
+    static String userName;
     private Stage stage;
     private Scene scene;
     private Parent root;
 
     private String score;
 
-    public void initialize() {
-        earnPointLabel.setText("You earn " + GamePageController.score + " points");
-
+    public void initialize() throws SQLException {
+        earnPointLabel.setText(userName+", You earned " + GamePageController.score + " points");
+        dbc.addPlayerAndScore(userName, GamePageController.score);
     }
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
