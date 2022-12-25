@@ -13,17 +13,16 @@ import java.util.Random;
 public class ChessBoard {
 
     public GridPane chessBoard;
-
     String theme;
-    public static ArrayList<Square> squares = new ArrayList<>();
+    public ArrayList<Square> squares = new ArrayList<>();
 
-    public static ArrayList<Square> getSquares() {
+    public ArrayList<Square> getSquares() {
         return squares;
     }
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
     public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
-    public static ArrayList<point> questionSquaresLocations = new ArrayList<>();
+    public ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
     public ArrayList<point> occupiedSquaresLocations = new ArrayList<>();
     public ChessBoard(GridPane chessBoard, String theme){
@@ -155,6 +154,7 @@ public class ChessBoard {
             }
         }
 
+
         if((i+j)%2==0){
 
             square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -164,7 +164,6 @@ public class ChessBoard {
         }
 
     }
-
 
     private void addPiece(Square square, Piece piece){
         square.getChildren().add(piece);
@@ -293,77 +292,26 @@ public class ChessBoard {
         }
         return QuestionsSquares;
     }
-        public static void replaceSquare(Square s1, Square s2){
+
+    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
         Integer i=0;
-        for(Square s : getSquares()){
-            if(s.equals(s1)){
-                s2.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                getSquares().set(i,s2);
+        for (point p:points){
+            if(p.equals(point)){
+                break;
             }
             i++;
         }
-    }
-    public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
-        //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
+        switch (i){
+            case 0:
+                return 1;
 
-        point ques_point = null;
-        int i=0,place=0;
-        for(point p : this.questionSquaresLocations){
-            if(p.getX() == x && p.getY()==y)
-            {
-                ques_point = p;
-            }
+            case 1:
+                return 2;
+            case 2:
+                return 3;
         }
-//        this.questionSquaresLocations.remove(ques_point);
-        while(this.questionSquaresLocations.size() <5){
-            Random rand = new Random();
-            int randX = rand.nextInt(7); // random x value in range of (0,7)
-            int randY = rand.nextInt(7);// random y value in range of (0,7)
-            boolean existinVisited = false;
-            for(Square sqr :visitedSqaure)
-            {
-                if(sqr.x==x && sqr.y==y)
-                {
-                    existinVisited=true;
-                }
-            }
-            if(!checkIfPointExist(questionSquaresLocations, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)
-                    &&!checkIfPointExist(randomJumpSquaresLocations, randX, randY) && !existinVisited){
-                point specialSquarePoint = new point(randX,randY);
-                this.questionSquaresLocations.add(specialSquarePoint);
-                System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
-                for(Square sqr : this.squares){
-                    if(sqr.x==specialSquarePoint.x && sqr.y==specialSquarePoint.y)
-                    {
-                        sqr.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
-                        setTheme(sqr, theme, sqr.x, sqr.y,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,questionSquaresLocations);
-                        this.squares.add(this.squares.indexOf(sqr),new QuestionSquare(sqr.x, sqr.y));
-                    }
-                }
-            }
+        return 0;
+    }
+
 }
-
-
-
-//    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
-//        Integer i=0;
-//        for (point p:points){
-//            if(p.equals(point)){
-//                break;
-//            }
-//            i++;
-//        }
-//        switch (i){
-//            case 0:
-//                return 1;
-//
-//            case 1:
-//                return 2;
-//            case 2:
-//                return 3;
-//        }
-//        return 0;
-//    }
-
-}}
 

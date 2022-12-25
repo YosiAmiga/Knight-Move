@@ -29,7 +29,6 @@ import org.json.simple.parser.ParseException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -221,18 +220,19 @@ public class GamePageController {
 
     public static void questionPopUp(Integer level) {
         HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
-
-        List<Question> list = new ArrayList<>(questionsByLevel);
-        System.out.println("QUESTIONS BY LEVEL"+ list);
-
         Question theQuestion = null;
-        int rnd = new Random().nextInt(questionsByLevel.size());
-        theQuestion = list.get(rnd);
-
+        int size = questionsByLevel.size();
+        int randomNumber = new Random().nextInt(size);
+        int i = 0;
+        //get random question
+        for (Question q : questionsByLevel) {
+            if (i == randomNumber)
+                theQuestion = q;
+            i++;
+        }
         // create an Alert object
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
-        alert.setTitle("Level: "+ theQuestion.getLevel());
         // set the alert's message to the first question
         alert.setContentText("Select your answer:");
         // show the alert and get the user's response
@@ -247,42 +247,20 @@ public class GamePageController {
         Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
         wrongAnswer.setTitle("Wrong Answer");
         wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("The right Answer is: " + theQuestion.getRightAnswer());
+        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: " + theQuestion.getRightAnswer());
 
         // check the user's response
         if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
             correctAnswer.showAndWait();
-            GamePageController.score += theQuestion.getLevel();
+            GamePageController.score += level;
+            System.out.println("Game.score " + GamePageController.score);
         } else {
             wrongAnswer.showAndWait();
-            GamePageController.score -= (theQuestion.getLevel() + 1);
+            GamePageController.score -= (level + 1);
             wrongAnswer.close();
+            System.out.println("Game.score " + GamePageController.score);
         }
     }
-//    public static void replaceSquare(Square s1, Square s2){
-//        Integer i=0;
-//        for (Square p:(cb.getSquares())){
-//            if(p.getX()==s1.getX()&&p.getY()==s1.getY()){
-//                s2.setBackground(new Background(new BackgroundFill(Consts.colorQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-//                cb.getSquares().set(i,s2);
-//            }
-//            i++;
-//        }
-//
-//    }
-//    public static void paintSquare(Square square){
-//        if(square instanceof QuestionSquare){
-//            square.setBackground(new Background(new BackgroundFill(Consts.colorQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-//        }
-//        else if(square instanceof RandomSquare){
-//            square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-//
-//        }
-//        else if (square instanceof ForgetSquare){
-//            square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-//        }
-//    }
-
     // Game Class
     public ArrayList<Square> getVisitedSquares() {
         return visitedSquares;
@@ -317,7 +295,7 @@ public class GamePageController {
                     Square square = (Square) newPiece.getParent();
                     square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                     //addToVisitedSquares(square);
-                    System.out.println("Knight possible moves:\n" + newPiece.possibleMoves);
+                    //System.out.println("Knight possible moves:\n" + newPiece.possibleMoves);
                     // Selecting a new piece
                     if (currentPiece == null) {
                         currentPiece = newPiece;
@@ -342,24 +320,8 @@ public class GamePageController {
                 }
                 //Clicked on the queen - DELETED!
                 // Clicked on square
-                if (target.toString().equals("Square") || target.toString().equals("Random") || target.toString().equals("Forget") || target.toString().equals("Question")){
+                if (target.toString().equals("Square")) {
                     Square square = (Square) target;
-                    if(target.toString().equals("Question")){
-                        point p= new point(square.getX(), square.getY());
-                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-                        questionPopUp(level);
-                        cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), visitedSquares);
-//                        QuestionSquare q = new QuestionSquare(5,5);
-//                        Square s = new Square(5,5);
-//                        cb.replaceSquare(s,q);
-
-                    }
-                    if(target.toString().equals("Random")){
-                        AlertBox.display("Random","You will be transformed to another square");
-                    }
-                    if(target.toString().equals("Forget")){
-                        AlertBox.display("Forget","Go back 3 moves");
-                    }
                     if (square.occupied) {
                         Piece newPiece = (Piece) square.getChildren().get(0);
                         // Selecting a new piece
@@ -392,7 +354,7 @@ public class GamePageController {
                         ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
                         for (point p : blockingSquares) {
-                            String squareString = "Block" + p.getX() + p.getY();
+                            String squareString = "Square" + p.getX() + p.getY();
                             if (currentPiece.possibleMoves.contains(squareString)) {
                                 currentPiece.possibleMoves.remove(squareString);
                             }
@@ -466,7 +428,6 @@ public class GamePageController {
             }
         });
     }
-
     private void selectPiece(boolean game){
         if(!game){
             currentPiece = null;
@@ -553,18 +514,4 @@ public class GamePageController {
 
         }
     }
-
-    public Integer getLevelByThePostion(ArrayList<point> a,point point){
-        Integer l=1;
-        for (point p:a){
-            if (p.equals(point)){
-                return l;
-            }
-            l++;
-        }
-        return l;
-    }
-
-
-
 }

@@ -22,6 +22,12 @@ public class Knight extends Piece{
     public ArrayList<String> getAllPossibleMoves() { // possible moves should take count of visitedSquares arrayList & players level {will be discessed by the course team later}
         int x = this.posX;
         int y = this.posY;
+        Square s = new Square();
+        for (Square ss: GamePageController.cb.getSquares()){
+            if(x==ss.getX()&&y==ss.getY()){
+                s=ss;
+            }
+        }
 
         // Define the x and y offsets for the possible knight moves
         int[] xOffsets = {2, 2, 1, 1, -1, -1, -2, -2};
@@ -43,7 +49,7 @@ public class Knight extends Piece{
             }
             moves.add(pos_sqr.getType() + String.valueOf(newX) + String.valueOf(newY));
         }
-
+        System.out.println(moves);
         for(String move : moves){
             if(getSquareByName(move) != null){
                 if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
@@ -51,5 +57,5 @@ public class Knight extends Piece{
             }
         }
         return this.possibleMoves;
-}
+    }
 }
