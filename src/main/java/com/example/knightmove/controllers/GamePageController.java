@@ -339,31 +339,32 @@ public class GamePageController {
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
-                    if (square.occupied) {
-                        Piece newPiece = (Piece) square.getChildren().get(0);
-                        // Selecting a new piece
-                        if (currentPiece == null) {
-                            currentPiece = newPiece;
-                            if (!currentPiece.getColor().equals(currentPlayer)) {
-                                currentPiece = null;
-                                return;
-                            }
-                            selectPiece(game);
-                        }
-                        // Selecting other piece of same color || Killing a piece
-                        else {
-//                            System.out.println("inside else of square");
-                            if (currentPiece.getColor().equals(newPiece.getColor())) {
-                                System.out.println("inside internal if of square");
-                                deselectPiece(false);
+                    if(!currentPiece.getAllPossibleMoves().contains(square.getName())) {
+                        if (square.occupied) {
+                            Piece newPiece = (Piece) square.getChildren().get(0);
+                            // Selecting a new piece
+                            if (currentPiece == null) {
                                 currentPiece = newPiece;
+                                if (!currentPiece.getColor().equals(currentPlayer)) {
+                                    currentPiece = null;
+                                    return;
+                                }
                                 selectPiece(game);
-                            } else {
-                                System.out.println("inside internal else of square");
-                                killPiece(square);
+                            }
+                            // Selecting other piece of same color || Killing a piece
+                            else {
+//                            System.out.println("inside else of square");
+                                if (currentPiece.getColor().equals(newPiece.getColor())) {
+                                    System.out.println("inside internal if of square");
+                                    deselectPiece(false);
+                                    currentPiece = newPiece;
+                                    selectPiece(game);
+                                } else {
+                                    System.out.println("inside internal else of square");
+                                    killPiece(square);
+                                }
                             }
                         }
-
                     }
                     // Dropping a piece on blank square
                     else {
@@ -439,7 +440,6 @@ public class GamePageController {
                                 point queenCurrentPosition = new point(sq.getX(), sq.getY());
                                 dropPiece(sq);
                                 queenEatKnight(knightCurrentPosition,queenCurrentPosition);
-
                             }
                         }
 
@@ -453,7 +453,6 @@ public class GamePageController {
             currentPiece = null;
             return;
         }
-
         DropShadow borderGlow = new DropShadow();
         borderGlow.setColor(Color.BLACK);
         borderGlow.setOffsetX(0f);
@@ -536,9 +535,9 @@ public class GamePageController {
             stage.setScene(scene);
             stage.setUserData(currentScore);
             stage.show();
-
         }
     }
+
     public void randnewSpecialSquare(Square square)
     {
         if(square.getType() == "Question")
