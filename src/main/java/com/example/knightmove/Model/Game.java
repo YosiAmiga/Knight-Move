@@ -44,7 +44,7 @@ public class Game {
     }
 
     public Game(GridPane chessBoard, String theme){
-        cb = new ChessBoard(chessBoard, theme);
+        cb = new ChessBoard(chessBoard, theme,0,0,3,0);
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;

@@ -4,12 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="creating squares only in allowed position">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="rnd and create question sqaure after jump">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/EditQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/EditQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Game.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Knight.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Knight.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -29,6 +28,9 @@
       </list>
     </option>
   </component>
+  <component name="Git.Merge.Settings">
+    <option name="BRANCH" value="Naor-FixJump" />
+  </component>
   <component name="Git.Pull.Settings">
     <option name="OPTIONS">
       <set>
@@ -36,10 +38,13 @@
       </set>
     </option>
   </component>
+  <component name="Git.Rebase.Settings">
+    <option name="NEW_BASE" value="master" />
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Naor-FixJump" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -96,7 +101,7 @@
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
+  <component name="RunManager">
     <configuration name="CreateJsonFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.CreateJsonFile" />
       <module name="Knight-Move" />
@@ -195,11 +200,11 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Unnamed" />
-        <item itemvalue="Application.Json" />
-        <item itemvalue="Application.JsonEntity" />
-        <item itemvalue="Application.CreateJsonFile" />
         <item itemvalue="JUnit.All in Knight-Move" />
+        <item itemvalue="Application.Unnamed" />
+        <item itemvalue="Application.CreateJsonFile" />
+        <item itemvalue="Application.JsonEntity" />
+        <item itemvalue="Application.Json" />
       </list>
     </recent_temporary>
   </component>
@@ -373,7 +378,21 @@
       <option name="project" value="LOCAL" />
       <updated>1671802641579</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL‎-00024" summary="rnd and create question sqaure after jump">
+      <created>1671903320773</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL‎-00024" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1671903320773</updated>
+    </task>
+    <task id="LOCAL‎-00025" summary="rnd and create question sqaure after jump">
+      <created>1671905518575</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL‎-00025" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1671905518575</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -428,17 +447,8 @@
     <MESSAGE value="create the different types of squares on the board" />
     <MESSAGE value="Naor and dana Merge and errors fix" />
     <MESSAGE value="creating squares only in allowed position" />
-    <option name="LAST_COMMIT_MESSAGE" value="creating squares only in allowed position" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <breakpoint enabled="true" type="java-exception">
-          <properties class="java.lang.RuntimeException" package="java.lang" />
-          <option name="timeStamp" value="1" />
-        </breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
+    <MESSAGE value="rnd and create question sqaure after jump" />
+    <option name="LAST_COMMIT_MESSAGE" value="rnd and create question sqaure after jump" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

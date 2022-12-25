@@ -50,6 +50,8 @@ public class GamePageController {
     public static ChessBoard cb;
     private boolean game;
 
+    public static int level=1;
+
     public static int score;
 
     ArrayList<Square> visitedSquares; // squares they already visited at.
@@ -61,7 +63,11 @@ public class GamePageController {
     public void initialize() {
 
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
-        cb = new ChessBoard(chessBoard, "Sandcastle");
+
+        if(GamePageController.level==1)
+        {
+            cb = new ChessBoard(chessBoard, "Sandcastle",0,0,3,3);
+        }
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
@@ -70,7 +76,7 @@ public class GamePageController {
         addEventHandlers(cb.chessBoard);
         knightCurrentPosition = new point(0,0);
 
-        startTimeSec = 60; // Change to 60!
+        startTimeSec = 5; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -79,18 +85,20 @@ public class GamePageController {
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
 
-
                 if (timeToChangeLevel) {
                     timeline.stop();
-                    startTimeSec = 60;
+                    startTimeSec = 5;
                     if (currentLevelText.getText().equals("1")) {
-                        currentScore.setText(Integer.toString(GamePageController.score));
+                        GamePageController.level++;
+                        changeLevel(2);
                         currentLevelText.setText("2");
                     } else if (currentLevelText.getText().equals("2")) {
+                        GamePageController.level++;
+                        changeLevel(3);
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
-                        GamePageController.score+=105;
-                        currentScore.setText(Integer.toString(GamePageController.score));
+                        GamePageController.level++;
+                        changeLevel(4);
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
                         currentLevelText.setText("End");
@@ -130,7 +138,7 @@ public class GamePageController {
         this.currentScore.setText(Integer.toString(GamePageController.score));
     }
     public void newLevel(ActionEvent event) {
-        startTimeSec = 60; // Change to 60!
+        startTimeSec = 5; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -214,6 +222,10 @@ public class GamePageController {
         }else {
             wrongAnswer.showAndWait();
             GamePageController.score -= (questionLevel+1);
+            if(GamePageController.score<0)
+            {
+                GamePageController.score=0;
+            }
             System.out.println("Game.score " + GamePageController.score);
         }
     }
@@ -257,6 +269,10 @@ public class GamePageController {
         } else {
             wrongAnswer.showAndWait();
             GamePageController.score -= (level + 1);
+            if(GamePageController.score<0)
+            {
+                GamePageController.score=0;
+            }
             wrongAnswer.close();
             System.out.println("Game.score " + GamePageController.score);
         }
@@ -369,6 +385,9 @@ public class GamePageController {
                         dropPiece(square);
                         if (visitedSquares.contains(square)) {
                             GamePageController.score--;
+                            if(GamePageController.score<0){
+                                GamePageController.score=0;
+                            }
                         } else {
                             GamePageController.score++;
                         }
@@ -380,7 +399,6 @@ public class GamePageController {
                         /**
                          * The knight clicked on empty square, afterwards move the queen
                          */
-
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
                         int[] knightPositions = new int[2];
@@ -531,6 +549,21 @@ public class GamePageController {
             //System.out.println(GamePageController.cb.questionSquaresLocations);
            // System.out.println("---------------");
 
+        }
+    }
+    public void changeLevel(int level)
+    {
+        if(level==2)
+        {
+            cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
+        }
+        if(level==3)
+        {
+            cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
+        }
+        if(level==4)
+        {
+            cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
         }
     }
 }
