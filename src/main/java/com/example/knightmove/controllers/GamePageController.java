@@ -78,6 +78,7 @@ public class GamePageController {
         this.game = true;
         score=0;
         visitedSquares = new ArrayList<>();
+        cb.chessBoard.setDisable(true);
         addEventHandlers(cb.chessBoard);
         knightCurrentPosition = new point(0,0);
         startTimeSec = 15; // Change to 60!
@@ -151,6 +152,7 @@ public class GamePageController {
         this.currentScore.setText(Integer.toString(GamePageController.score));
     }
     public void newLevel(ActionEvent event) {
+        cb.chessBoard.setDisable(false);
         GamePageController.gameStart=true;
         startTimeSec = 15; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
