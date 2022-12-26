@@ -66,6 +66,9 @@ public class Consts {
     public static  Color colorVisitedSquare = Color.web("#808080");
 
     public static  Color colorQuestionSquare = Color.web("#FACC2E");
+    public static Color colorEasyQuestionSquare = Color.WHITE;
+    public static Color colorMediumQuestionSquare = Color.YELLOW;
+    public static Color colorHardQuestionSquare = Color.RED;
 
 
 }
