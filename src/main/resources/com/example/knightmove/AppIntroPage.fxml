@@ -22,6 +22,6 @@
       </Text>
       <Button layoutX="29.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnToLoginPage" text="Go Back" />
       <Button layoutX="274.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToDatabasePage" text="DB tables" />
-      <Button layoutX="482.0" layoutY="351.0" mnemonicParsing="false" onAction="#QuestionPage" text="Edit Questions" />
+      <Button fx:id="questionButton" layoutX="482.0" layoutY="351.0" mnemonicParsing="false" onAction="#QuestionPage" text="Edit Questions" />
    </children>
 </AnchorPane>
