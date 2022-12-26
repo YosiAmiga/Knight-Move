@@ -10,6 +10,8 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -29,16 +31,27 @@ public class EndGameController {
 
     @FXML
     private Label textLabel;
+
+    @FXML
+    private ImageView medalPicture;
     static String userName;
     private Stage stage;
     private Scene scene;
     private Parent root;
+
 
     private String score;
 
     public void initialize() throws SQLException {
         earnPointLabel.setText(userName+", You earned " + GamePageController.score + " points");
         dbc.addPlayerAndScore(userName, GamePageController.score);
+        if(GamePageController.score>=200)
+        {
+            String theme1Url = String.valueOf(getClass().getResource("/picture/medal.png"));
+            Image image = new Image(theme1Url);
+            medalPicture.setImage(image);
+        }
+        GamePageController.level=1;
     }
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
