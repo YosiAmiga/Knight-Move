@@ -57,6 +57,7 @@ public class GamePageController {
     public static int level=1;
 
     public static int score;
+    public static String queenMovement = "random";
 
     ArrayList<Square> visitedSquares; // squares they already visited at.
 
@@ -79,7 +80,7 @@ public class GamePageController {
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
         knightCurrentPosition = new point(0,0);
-        startTimeSec = 5; // Change to 60!
+        startTimeSec = 15; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -97,11 +98,13 @@ public class GamePageController {
 
                 if (timeToChangeLevel) {
                     timeline.stop();
-                    startTimeSec = 5;
+                    startTimeSec = 15;
+                    queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
                         changeLevel(2);
                         currentLevelText.setText("2");
+                        queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
                         GamePageController.level++;
                         changeLevel(3);
@@ -149,7 +152,7 @@ public class GamePageController {
     }
     public void newLevel(ActionEvent event) {
         GamePageController.gameStart=true;
-        startTimeSec = 5; // Change to 60!
+        startTimeSec = 15; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -432,7 +435,7 @@ public class GamePageController {
                                     ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
 //                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
-                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("smart", possibleMovesInArrayOfTwo, knightPositions);
+                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements(queenMovement, possibleMovesInArrayOfTwo, knightPositions);
                                     killPiece(queenSquare);
                                     //Doing Random/Smart movement (with Manhattan Distance) for Queen
                                     queenNextPositionX = movesSelector.get(0);
