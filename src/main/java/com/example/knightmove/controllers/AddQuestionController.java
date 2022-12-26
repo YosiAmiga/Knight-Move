@@ -5,7 +5,10 @@ import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
 import com.example.knightmove.Model.SysData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -40,6 +43,10 @@ public class AddQuestionController implements Initializable {
     private RadioButton OptThree;
 
     @FXML
+    private PieChart pieChart;
+
+
+    @FXML
     private RadioButton OptTwo;
     @FXML
     private TextField Ans1;
@@ -67,9 +74,16 @@ public class AddQuestionController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-    Level.getItems().add(1);
-    Level.getItems().add(2);
-    Level.getItems().add(3);
+        Level.getItems().add(1);
+        Level.getItems().add(2);
+        Level.getItems().add(3);
+        ObservableList<PieChart.Data> pieCharData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Easy",HelloApplication.s.getQuestionsByLevel(1).size()),
+                        new PieChart.Data("Medium", HelloApplication.s.getQuestionsByLevel(2).size()),
+                        new PieChart.Data("Hard",HelloApplication.s.getQuestionsByLevel(3).size())
+                );
+        pieChart.getData().addAll(pieCharData);
     }
 
 
@@ -112,6 +126,7 @@ public class AddQuestionController implements Initializable {
             }
 
             AlertBox.display("Added", "Successfully Added");
+            updatePieChart();
 
         } catch (NotAllFieldsFullException e){
             AlertBox.display("ERROR" , e.getMessage());
@@ -119,7 +134,15 @@ public class AddQuestionController implements Initializable {
             AlertBox.display("ERROR" , e.getMessage());
         }
 
+    }
 
-
+    public void updatePieChart(){
+        ObservableList<PieChart.Data> pieCharData =
+                FXCollections.observableArrayList(
+                        new PieChart.Data("Easy",HelloApplication.s.getQuestionsByLevel(1).size()),
+                        new PieChart.Data("Medium", HelloApplication.s.getQuestionsByLevel(2).size()),
+                        new PieChart.Data("Hard",HelloApplication.s.getQuestionsByLevel(3).size())
+                );
+        pieChart.getData().setAll(pieCharData);
     }
 }

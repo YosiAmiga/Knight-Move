@@ -28,10 +28,20 @@ public class AppIntroPageController implements Initializable {
     private Button PlayButton;
 
     @FXML
+    private Button questionButton;
+
+    @FXML
     public Text userLoginText;
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLoginText.setText(userName);
+        if(!userName.equals("Yosi")&&!userName.equals("Naor")&&!userName.equals("Itay")&&!userName.equals("Dana")&&!userName.equals("Tsvika")){
+            questionButton.setVisible(false);
+        }
+        else {
+            questionButton.setVisible(true);
+        }
+
     }
 
 
@@ -41,7 +51,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true); // set full screen
+//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -50,7 +60,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true); // set full screen
+//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -59,7 +69,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true); // set full screen
+//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -68,7 +78,7 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-        stage.setFullScreen(true); // set full screen
+//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
