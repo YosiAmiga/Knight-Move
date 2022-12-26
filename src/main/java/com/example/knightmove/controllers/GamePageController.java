@@ -260,7 +260,7 @@ public class GamePageController {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
         alert.setHeaderText(theQuestion.getQuestion());
         // set the alert's message to the first question
-        alert.setContentText("Select your answer:");
+        alert.setContentText("Level: " + theQuestion.getLevel());
         // show the alert and get the user's response
         ButtonType response = alert.showAndWait().orElse(null);
         String playerSelectedAnswer = response.getText();
@@ -273,7 +273,7 @@ public class GamePageController {
         Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
         wrongAnswer.setTitle("Wrong Answer");
         wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: " + theQuestion.getRightAnswer());
+        wrongAnswer.setContentText("The right Answer is: " + theQuestion.getRightAnswer());
 
         // check the user's response
         if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
@@ -283,10 +283,6 @@ public class GamePageController {
         } else {
             wrongAnswer.showAndWait();
             GamePageController.score -= (level + 1);
-            if(GamePageController.score<0)
-            {
-                GamePageController.score=0;
-            }
             wrongAnswer.close();
             System.out.println("Game.score " + GamePageController.score);
         }
@@ -353,6 +349,18 @@ public class GamePageController {
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
+                    if(target.toString().equals("Question")){
+                        point p= new point(square.getX(), square.getY());
+                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+                        questionPopUp(level);
+                    }
+                    if(target.toString().equals("Random")){
+                        AlertBox.display("RandomSquare", "You will be forward to another square");
+                    }
+                    if(target.toString().equals("Forget")){
+                        AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
+                    }
+
                     if(currentPiece!=null && !currentPiece.getAllPossibleMoves().contains(square.getName())) {
                         if (square.occupied) {
                             Piece newPiece = (Piece) square.getChildren().get(0);
@@ -576,5 +584,17 @@ public class GamePageController {
             cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
         }
         knightCurrentPosition = new point(0,0);
+    }
+
+
+    public static Integer getLevelByThePostion(ArrayList<point> a,point point){
+        Integer l=1;
+        for (point p:a){
+            if (p.equals(point)){
+                return l;
+            }
+            l++;
+        }
+        return l;
     }
 }

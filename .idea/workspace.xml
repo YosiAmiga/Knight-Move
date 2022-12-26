@@ -6,7 +6,16 @@
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="add function that create new board for any level">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Questions.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AppIntroPageController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,7 +50,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Dana" />
+        <entry key="$PROJECT_DIR$" value="Dana_Merge" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,6 +71,7 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
+        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -98,7 +108,7 @@
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Json">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="CreateJsonFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.CreateJsonFile" />
       <module name="Knight-Move" />
@@ -197,8 +207,8 @@
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.All in Knight-Move" />
         <item itemvalue="Application.Unnamed" />
+        <item itemvalue="JUnit.All in Knight-Move" />
         <item itemvalue="Application.CreateJsonFile" />
         <item itemvalue="Application.JsonEntity" />
         <item itemvalue="Application.Json" />
@@ -455,5 +465,8 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Knight_Move$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1672056162685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>

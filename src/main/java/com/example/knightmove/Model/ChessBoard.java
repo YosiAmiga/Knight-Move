@@ -289,7 +289,7 @@ public class ChessBoard {
     }
     public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
-        
+        Boolean succes = false;
         point ques_point = null;
         Square change_sqaure=null;
         for(point p : this.questionSquaresLocations){
@@ -298,8 +298,10 @@ public class ChessBoard {
                 ques_point = p;
             }
         }
-        this.questionSquaresLocations.remove(ques_point);
-        while(this.questionSquaresLocations.size() < 3){
+        Integer questionLevel = GamePageController.getLevelByThePostion(questionSquaresLocations, ques_point);
+        Integer index = questionLevel - 1; //we save the points in array list with corresponding to their level, and arrays start with 0 index
+
+        while(!succes){
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
@@ -314,7 +316,8 @@ public class ChessBoard {
             if(!checkIfPointExist(questionSquaresLocations, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)
                     &&!checkIfPointExist(randomJumpSquaresLocations, randX, randY) && !existinVisited){
                 point specialSquarePoint = new point(randX,randY);
-                this.questionSquaresLocations.add(specialSquarePoint);
+                this.questionSquaresLocations.set(index,specialSquarePoint);
+
                 System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
                 Square remove_sqr=null;
                 for(Square sqr : this.squares){
@@ -328,29 +331,11 @@ public class ChessBoard {
                 }
                 this.squares.add(change_sqaure);
                 this.squares.remove(remove_sqr);
+                succes = true;
             }
         }
     }
 
-    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
-        Integer i=0;
-        for (point p:points){
-            if(p.equals(point)){
-                break;
-            }
-            i++;
-        }
-        switch (i){
-            case 0:
-                return 1;
-
-            case 1:
-                return 2;
-            case 2:
-                return 3;
-        }
-        return 0;
-    }
 
 }
 
