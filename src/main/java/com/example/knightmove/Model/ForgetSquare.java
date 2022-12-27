@@ -7,10 +7,6 @@ public class ForgetSquare extends Square{
     }
     @Override
     public String toString() {
-        String status;
-        if(this.occupied) status = "Occupied";
-        else status = "Not occupied";
-//        return "Square" + this.x + this.y + " - " + status;
-        return "Forget";
+        return "Forget square data: x=" + this.x + " y=" + this.y;
     }
 }
