@@ -14,17 +14,14 @@ public class ChessBoard {
 
     public GridPane chessBoard;
     String theme;
-    public ArrayList<Square> squares = new ArrayList<>();
+    public ArrayList<Square> squares = new ArrayList<>(); // all squares in the board
 
-    public ArrayList<Square> getSquares() {
-        return squares;
-    }
     public ArrayList<Point> forgettingSquaresLocations = new ArrayList<>();
     public ArrayList<Point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<Point> blockingSquaresLocations = new ArrayList<>();
     public ArrayList<Point> questionSquaresLocations = new ArrayList<>();
 
-    public ArrayList<Point> occupiedSquaresLocations = new ArrayList<>();
+    // get the number of special squares each level and build the board
     public ChessBoard(GridPane chessBoard, String theme,int num_block,int num_forget,int num_rand,int num_ques ){
         this.chessBoard = chessBoard;
         this.theme = theme;
@@ -33,6 +30,10 @@ public class ChessBoard {
 
     public ArrayList<Point> getQuestionSquaresLocations() {
         return questionSquaresLocations;
+    }
+
+    public ArrayList<Square> getSquares() {
+        return squares;
     }
 
     public void setQuestionSquaresLocations(ArrayList<Point> questionSquaresLocations) {
@@ -90,9 +91,10 @@ public class ChessBoard {
                 squares.add(square);
             }
         }
-        addPieces();
+        addPieces(); // add the king/queen and knight
     }
 
+    // change the theme of the square
     private void setTheme(Square square, String theme, int i, int j, ArrayList<Point> BlockingSquaresLocations, ArrayList<Point> ForgettingSquaresLocations, ArrayList<Point> RandomJumpSquaresLocations, ArrayList<Point> QuestionSquaresLocations){
         Point currentPoint = new Point(i,j);
 //        Color color1 = Color.web("#ffffff00");
@@ -160,6 +162,11 @@ public class ChessBoard {
         }
     }
 
+    /**
+     * add piece to square
+     * @param square
+     * @param piece
+     */
     private void addPiece(Square square, Piece piece){
         square.getChildren().add(piece);
         square.occupied = true;
@@ -187,20 +194,12 @@ public class ChessBoard {
         }
 
     }
-    private void specialSquareMessege(Point currentPosition , ArrayList<Point> specialSquaresLocations){
-        for(Point p : specialSquaresLocations){
-            if(currentPosition.equals(p)){
-                Alert al = new Alert(Alert.AlertType.ERROR);
-                al.setContentText("GAME ENDED!");
-                al.setHeaderText("GAME ENDED!");
-                al.setTitle("GAME ENDED!");
-                al.setResizable(false);
-                al.showAndWait();;
-            }
-        }
 
-    }
-
+    /**
+     * create num squares of forgetting square
+     * @param number_of_square
+     * @return
+     */
     public ArrayList<Point> createForgettingSquare(int number_of_square){
         ArrayList<Point> ForgettingSquares = new ArrayList<Point>();
         while(ForgettingSquares.size() < number_of_square){
@@ -220,6 +219,11 @@ public class ChessBoard {
         return ForgettingSquares;
     }
 
+    /**
+     * create num squares of random square
+     * @param number_of_square
+     * @return
+     */
     public ArrayList<Point> createRandomJumpSquare(int number_of_square){
         ArrayList<Point> RandomJumpSquares = new ArrayList<Point>();
         while(RandomJumpSquares.size() <number_of_square){
@@ -239,7 +243,13 @@ public class ChessBoard {
         return RandomJumpSquares;
     }
 
-
+    /**
+     * check if the point exist on the board
+     * @param specialSquaresLocations
+     * @param randX
+     * @param randY
+     * @return
+     */
     private boolean checkIfPointExist(ArrayList<Point> specialSquaresLocations, int randX, int randY){
         for(Point p : specialSquaresLocations){
             if(p.x == randX && p.y == randY){
@@ -249,6 +259,11 @@ public class ChessBoard {
         return false;
     }
 
+    /**
+     * create num squares of blocking square
+     * @param number_of_square
+     * @return
+     */
     private ArrayList<Point> createBlockingSquaresLocations(int number_of_square){
         ArrayList<Point> specialSquaresLocations = new ArrayList<Point>();
         while(specialSquaresLocations.size() <number_of_square){
@@ -268,6 +283,11 @@ public class ChessBoard {
         return specialSquaresLocations;
     }
 
+    /**
+     * create num squares of questions square
+     * @param number_of_square
+     * @return
+     */
     public ArrayList<Point> createQuestionSquare(int number_of_square){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
         ArrayList<Point> QuestionsSquares = new ArrayList<Point>();
@@ -286,6 +306,13 @@ public class ChessBoard {
         }
         return QuestionsSquares;
     }
+
+    /**
+     * rand new question square in unvisited place
+     * @param x -of square
+     * @param y -of square
+     * @param visitedSqaure - all visited square
+     */
     public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
         
@@ -350,6 +377,22 @@ public class ChessBoard {
         }
         return 0;
     }
+
+    /*
+    private void specialSquareMessege(Point currentPosition , ArrayList<Point> specialSquaresLocations){
+        for(Point p : specialSquaresLocations){
+            if(currentPosition.equals(p)){
+                Alert al = new Alert(Alert.AlertType.ERROR);
+                al.setContentText("GAME ENDED!");
+                al.setHeaderText("GAME ENDED!");
+                al.setTitle("GAME ENDED!");
+                al.setResizable(false);
+                al.showAndWait();;
+            }
+        }
+
+    }
+     */
 
 }
 

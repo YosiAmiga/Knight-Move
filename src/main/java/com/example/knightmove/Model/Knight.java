@@ -50,7 +50,7 @@ public class Knight extends Piece{
         }
         for(String move : moves){
             if(getSquareByName(move) != null){
-                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
+                if(getSquareByName(move).occupied) continue;
                 possibleMoves.add(move);
             }
         }
