@@ -176,26 +176,6 @@ public class Queen extends Piece {
         return bestMove;
     }
 
-
-    public static ArrayList<ArrayList<Integer>> convertMovesToIntArrays(ArrayList<String> moves) {
-        ArrayList<ArrayList<Integer>> intArrays = new ArrayList<>(moves.size());
-        for (String move : moves) {
-            String[] parts = move.split("Normal|Random|Block|Question|Jump|Forget");
-            int row = Integer.parseInt(parts[1].substring(0, 1));
-            int col = Integer.parseInt(parts[1].substring(1, 2));
-            ArrayList<Integer> coord = new ArrayList<>(2);
-            coord.add(row);
-            coord.add(col);
-            intArrays.add(coord);
-        }
-        return intArrays;
-    }
-
-    private static int getManhattanDistance(int[] pos1, int[] pos2) {
-        return Math.abs(pos1[0] - pos2[0]) + Math.abs(pos1[1] - pos2[1]);
-    }
-
-
     public ArrayList<Integer> selectQueenMovements(String movementName, ArrayList<ArrayList<Integer>> possibleMoves, int[] knightPositions){
         if(movementName.equals("random")){
             return getQueenRandomMove(possibleMoves);

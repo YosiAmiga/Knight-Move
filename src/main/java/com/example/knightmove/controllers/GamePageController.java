@@ -26,15 +26,9 @@ import javafx.stage.Stage;
 import javafx.util.Duration;
 import org.json.simple.parser.ParseException;
 
-import java.io.File;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.Random;
+import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
-
-import static com.example.knightmove.Model.Json.readFromJSON;
 
 public class GamePageController {
 
@@ -44,7 +38,7 @@ public class GamePageController {
 
     private Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
-    public point knightCurrentPosition;
+    public Point knightCurrentPosition;
     private int startTimeSec;
 
     public static boolean gameStart=false;
@@ -54,10 +48,40 @@ public class GamePageController {
     public static ChessBoard cb;
     private boolean game;
 
-    public static int level=1;
+    public static int level=1; // current level in the game
 
-    public static int score;
+    public static int king_speed; // control king speed
+
+    public static int score; // score of the player
     public static String queenMovement = "random";
+
+
+    @FXML
+    private Text CurrentTurnText;
+
+    @FXML
+    private Text CurrentScoreText;
+
+    @FXML
+    public Label currentScore;
+    @FXML
+    private Text timeText;
+
+    @FXML
+    GridPane chessBoard;
+
+    @FXML
+    private ImageView boardCurrentStateImage;
+
+    @FXML
+    private Pane mainPane;
+
+    @FXML
+    private Label currentLevelText;
+
+    @FXML
+    private Label currentTimeText;
+
 
     ArrayList<Square> visitedSquares; // squares they already visited at.
 
@@ -69,48 +93,66 @@ public class GamePageController {
 
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
 
-        if(GamePageController.level==1)
-        {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,0,3,3);
+        if (GamePageController.level == 1) {
+            cb = new ChessBoard(chessBoard, "Sandcastle", 0, 0, 3, 3);
         }
         currentPiece = null;
         currentPlayer = "black";
         this.game = true;
-        score=0;
+        score = 0;
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
-        knightCurrentPosition = new point(0,0);
-        startTimeSec = 15; // Change to 60!
+        knightCurrentPosition = new Point(0, 0);
+        if (GamePageController.level == 3) {
+            startTimeSec = 60; // Change to 60!
+        } else{
+            startTimeSec = 2; // Change to 60!
+          }
+        GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
                     checkIsGameOver();
+                    if(GamePageController.level==3 || GamePageController.level==4) {
+                        if(startTimeSec % GamePageController.king_speed ==0) {
+                            moveKing(new Square(knightCurrentPosition.getX(), knightCurrentPosition.getY()));
+                        }
+                    }
+                   change_king_speed(startTimeSec);
+
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                //delete this!!
-                GamePageController.score+=250;
-                //delete this!!
                 startTimeSec--;
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
 
                 if (timeToChangeLevel) {
                     timeline.stop();
-                    startTimeSec = 15;
+                    if (GamePageController.level == 2) {
+                        startTimeSec = 60; // Change to 60!
+                    } else{
+                        startTimeSec = 2; // Change to 60!
+                    }
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
+                        GamePageController.score=0;
+                        updateScore();
                         changeLevel(2);
                         currentLevelText.setText("2");
                         queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
                         GamePageController.level++;
+                        GamePageController.score=0;
+                        updateScore();
                         changeLevel(3);
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
                         GamePageController.level++;
+                        GamePageController.score=0;
+                        updateScore();
                         changeLevel(4);
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
@@ -139,11 +181,34 @@ public class GamePageController {
 
 
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
+        GamePageController.level=1;
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+    public void change_king_speed(int second)
+    {
+        if(startTimeSec==50)
+        {
+            System.out.println(GamePageController.king_speed);
+            GamePageController.king_speed--;
+        }
+        if(startTimeSec==40)
+        {
+            GamePageController.king_speed--;
+        }
+        if(startTimeSec==30)
+        {
+            GamePageController.king_speed--;
+        }
+        if(startTimeSec==20) // every second
+        {
+            System.out.println(GamePageController.king_speed);
+            GamePageController.king_speed--;
+        }
+
     }
 
     public void updateScore()
@@ -152,7 +217,7 @@ public class GamePageController {
     }
     public void newLevel(ActionEvent event) {
         GamePageController.gameStart=true;
-        startTimeSec = 15; // Change to 60!
+        startTimeSec = 2; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -165,32 +230,6 @@ public class GamePageController {
         }));
         timeline.playFromStart();
     }
-
-    @FXML
-    private Text CurrentTurnText;
-
-    @FXML
-    private Text CurrentScoreText;
-
-    @FXML
-    public Label currentScore;
-    @FXML
-    private Text timeText;
-
-    @FXML
-    GridPane chessBoard;
-
-    @FXML
-    private ImageView boardCurrentStateImage;
-
-    @FXML
-    private Pane mainPane;
-
-    @FXML
-    private Label currentLevelText;
-
-    @FXML
-    private Label currentTimeText;
 
     public static void createQuestionPopUp(){
         HashSet<Question> allQuestionsInJSON= Json.readFromJSON();
@@ -383,9 +422,9 @@ public class GamePageController {
                     // Dropping a piece on blank square
                     else {
                         //removing the blockingSquares from possibleMoves
-                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
+                        ArrayList<Point> blockingSquares = new ArrayList<Point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
-                        for (point p : blockingSquares) {
+                        for (Point p : blockingSquares) {
                             String squareString = "Square" + p.getX() + p.getY();
                             if (currentPiece.possibleMoves.contains(squareString)) {
                                 currentPiece.possibleMoves.remove(squareString);
@@ -393,7 +432,7 @@ public class GamePageController {
                         }
 
                      //   System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
-                        if (currentPiece.toString().equals("Knight")) {
+                        if (currentPiece!=null && currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);
                         }
@@ -451,17 +490,67 @@ public class GamePageController {
                         for (Square sq : cb.getSquares()) {
                             if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
                                 currentPiece = foundQueen;
-                                point queenCurrentPosition = new point(sq.getX(), sq.getY());
+                                Point queenCurrentPosition = new Point(sq.getX(), sq.getY());
                                 dropPiece(sq);
-                                queenEatKnight(knightCurrentPosition,queenCurrentPosition);
+                                queenEatKnight(knightCurrentPosition, queenCurrentPosition);
                             }
                         }
-
                     }
                 }
             }
         });
     }
+    public void moveKing(Square square) {
+        Piece now_piece = GamePageController.currentPiece;
+        int kingNextPositionX = -1;
+        int kingNextPositionY = -1;
+        int[] knightPositions = new int[2];
+        knightPositions[0] = square.getX();
+        knightPositions[1] = square.getY();
+        knightCurrentPosition.setX(square.getX());
+        knightCurrentPosition.setY(square.getY());
+
+        King foundKing=null;
+        for (Square sq : cb.getSquares()) {
+            if (sq.getChildren().size() > 0) {
+                String pieceName = String.valueOf(sq.getChildren().get(0));
+                if (pieceName.equals("King")) {
+                    Piece king = (Piece) sq.getChildren().get(0);
+                    Square kingSquare = (Square) king.getParent();
+                    King newKing = (King) king;
+                    currentPiece = newKing;
+                    foundKing = newKing;
+                    ArrayList<String> possibleMoves = newKing.getAllPossibleMoves();
+                    System.out.println(possibleMoves);
+                    ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newKing.convertMovesToIntArrays(newKing.getAllPossibleMoves());
+                    ArrayList<Integer> movesSelector = newKing.getKingBestMove(possibleMovesInArrayOfTwo, knightPositions);
+                    killPiece(kingSquare);
+                    kingNextPositionX = movesSelector.get(0);
+                    kingNextPositionY = movesSelector.get(1);
+                    System.out.println("king next:" + kingNextPositionX + kingNextPositionY);
+                }
+            }
+        }
+
+        Point kingCurrentPosition = null;
+        Square temp = null;
+        for (Square sq : cb.getSquares()) {
+            if (sq.getX() == kingNextPositionX && sq.getY() == kingNextPositionY) {
+                currentPiece = foundKing;
+                kingCurrentPosition = new Point(sq.getX(), sq.getY());
+                temp = sq;
+                kingEatKnight(knightCurrentPosition,kingCurrentPosition);
+            }
+            GamePageController.currentPiece = now_piece;
+        }
+        if(temp!=null) {
+            currentPiece = foundKing;
+            dropPiece(temp);
+            GamePageController.currentPiece = now_piece;
+        }
+    }
+
+
     private void selectPiece(boolean game){
         if(!game){
             currentPiece = null;
@@ -483,7 +572,7 @@ public class GamePageController {
     }
 
     private void dropPiece(Square square){
-        if(!currentPiece.possibleMoves.contains(square.name)) return;
+        if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
        // System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
@@ -522,11 +611,18 @@ public class GamePageController {
 
     }
 
-    public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
+    public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
         System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
 
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
+            isGameOver = true;
+        }
+    }
+
+    public void kingEatKnight(Point knightCurrentPosition, Point kingCurrentPosition){
+        if(knightCurrentPosition.getX()== kingCurrentPosition.getX() &&
+                knightCurrentPosition.getY()== kingCurrentPosition.getY()){
             isGameOver = true;
         }
     }
@@ -569,12 +665,15 @@ public class GamePageController {
         }
         if(level==3)
         {
+            GamePageController.king_speed=5;
             cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
         }
         if(level==4)
         {
+            GamePageController.king_speed=5;
             cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
         }
-        knightCurrentPosition = new point(0,0);
+        knightCurrentPosition = new Point(0,0);
+        currentPiece=null; // the user need to select the knigth in the beginning
     }
 }

@@ -4,6 +4,8 @@ import com.example.knightmove.controllers.GamePageController;
 import javafx.scene.image.Image;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class King extends Piece{
     String gameGoal = "Hit the horse";
@@ -22,34 +24,46 @@ public class King extends Piece{
          * King can move by the following logic:
          *
          */
-
-        float currentSpeed = this.speed; // should take count of the speed changes in possible moves
+        //float currentSpeed = this.speed; // should take count of the speed changes in possible moves
         int x = this.posX;
         int y = this.posY;
+        Square s = new Square();
+        String name;
         ArrayList<String> moves = new ArrayList<>();
         this.possibleMoves = new ArrayList<>();
+        ArrayList<String> possible_types = new ArrayList<String>(Arrays.asList(new String[] {"Normal","Random","Forget","Question"}));
 
-        // Possible moves of King
-        moves.add("Square" + (x) + (y-1));
-        moves.add("Square" + (x+1) + (y-1));
-        moves.add("Square" + (x+1) + (y));
-        moves.add("Square" + (x+1) + (y+1));
-        moves.add("Square" + (x) + (y+1));
-        moves.add("Square" + (x-1) + (y+1));
-        moves.add("Square" + (x-1) + (y));
-        moves.add("Square" + (x-1) + (y-1));
-
-
+        for(String type : possible_types) {
+            moves.add(type + (x) + (y - 1));
+            moves.add(type + (x + 1) + (y - 1));
+            moves.add(type + (x + 1) + (y));
+            moves.add(type + (x + 1) + (y + 1));
+            moves.add(type + (x) + (y + 1));
+            moves.add(type + (x - 1) + (y + 1));
+            moves.add(type + (x - 1) + (y));
+            moves.add(type + (x - 1) + (y - 1));
+        }
         for(String move : moves){
             if(getSquareByName(move) != null){
-                if(getSquareByName(move).occupied && getPieceByName(move).getColor().equals(GamePageController.currentPlayer)) continue;
-
+                System.out.println(move);
                 possibleMoves.add(move);
-
             }
         }
         return this.possibleMoves;
     }
-    public void showAllPossibleMoves() {}; // need to implement
 
+    public static ArrayList<Integer> getKingBestMove(ArrayList<ArrayList<Integer>> possibleMoves, int[] knightPositions) {
+        int minDistance = Integer.MAX_VALUE;
+        ArrayList<Integer> bestMove = null;
+
+        for (ArrayList<Integer> move : possibleMoves) {
+            int[] intMove = new int[] { move.get(0), move.get(1) };
+            int distance = getManhattanDistance(intMove, knightPositions);
+            if (distance < minDistance) {
+                minDistance = distance;
+                bestMove = move;
+            }
+        }
+        return bestMove;
+    }
 }
