@@ -1,31 +1,29 @@
 package com.example.knightmove.Model;
 import org.junit.Assert;
-import org.junit.jupiter.api.Test;
 import static org.junit.Assert.assertTrue;
-import static org.junit.jupiter.api.Assertions.*;
 
 class pointTest {
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     void setX() {
         point p = new point(2,3);
         assertTrue(p.x == 2);
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     void setY() {
         point p = new point(2,3);
         assertTrue(p.y == 3);
     }
 
-    @org.junit.jupiter.api.Test
+    @org.junit.Test
     void testEquals(Object o) {
         point firstPoint = new point(2,3);
         assertTrue(firstPoint.equals(new point(2,3)));
     }
 
-    @org.junit.jupiter.api.Test
-    void testToString() {
+    @org.junit.Test
+    static void testToString() {
         point p = new point(2,3); // you didn't supply the object, so I guessed
         String expected = "point{" +
                 "x=" + p.x +
@@ -33,5 +31,10 @@ class pointTest {
                 '}'; // put the expected value here
 
         Assert.assertEquals(expected, p.toString());
+    }
+
+
+    public static void main(String[] args) {
+        pointTest.testToString();
     }
 }
