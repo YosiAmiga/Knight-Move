@@ -336,6 +336,25 @@ public class ChessBoard {
         }
     }
 
+    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
+        Integer i=0;
+        for (point p:points){
+            if(p.equals(point)){
+                break;
+            }
+            i++;
+        }
+        switch (i){
+            case 0:
+                return 1;
+
+            case 1:
+                return 2;
+            case 2:
+                return 3;
+        }
+        return 0;
+    }
 
 }
 
