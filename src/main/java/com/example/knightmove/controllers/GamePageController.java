@@ -354,12 +354,26 @@ public class GamePageController {
                     if(target.toString().equals("Question")){
                         point p= new point(square.getX(), square.getY());
                         Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-                        questionPopUp(level);
+                        questionPopUp(level); // pops up a question window
                     }
-                    if(target.toString().equals("Random")){
-                        AlertBox.display("RandomSquare", "You will be forward to another square");
+                    else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
+                        // Need to pass the piece to a random new location.
+                        square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
+                        addToVisitedSquares(square);
+                        ArrayList<String> possibleMovesForRandom = currentPiece.getAllPossibleMoves();
+                        if(possibleMovesForRandom != null){
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+possibleMovesForRandom.get(0));
+                            int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(6));
+                            int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(7));
+                            System.out.println("*****************\n MOVED TO " + xPositionRandom + " ," + yPositionRandom);
+                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
+                            square.setX(xPositionRandom);
+                            square.setY(yPositionRandom);
+//                            System.out.println("this is the square to string after changing: &&&&&&&&&&&&\n x= "+ square.getX() + "y="+square.getY());
+                        }
+//                        AlertBox.display("RandomSquare", "You will be forward to another square");
                     }
-                    if(target.toString().equals("Forget")){
+                    else if(target.toString().equals("Forget")){
                         AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
                     }
 
@@ -407,7 +421,14 @@ public class GamePageController {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);
                         }
+
+
+                        System.out.println("&&&&&&&&&&&&&&&&&& Droppoing the square to location: &&&&&&&&&&&&&&&&&&\n" + square.getX()+","+square.getY());
                         dropPiece(square);
+
+
+
+
                         if (visitedSquares.contains(square)) {
                             GamePageController.score--;
                             if(GamePageController.score<0){
@@ -494,7 +515,7 @@ public class GamePageController {
 
     private void dropPiece(Square square){
         if(!currentPiece.possibleMoves.contains(square.name)) return;
-       // System.out.println("move to square " + square.name);
+//        System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -509,6 +530,8 @@ public class GamePageController {
             randnewSpecialSquare(square);
             System.out.println(GamePageController.cb.squares);
         }
+        System.out.println("********* DROPPED THE PIECE");
+
     }
 
     private void killPiece(Square square){
@@ -587,7 +610,6 @@ public class GamePageController {
         }
         knightCurrentPosition = new point(0,0);
     }
-
 
     public static Integer getLevelByThePostion(ArrayList<point> a,point point){
         Integer l=1;
