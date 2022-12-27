@@ -48,6 +48,7 @@ public class Consts {
 //    public static final float KNIGHT_INIT_SPEED = 10;
 //    public static final float QUEEN_INIT_SPEED = 10;
 
+    public static final String currentPlayer="black";
     /**
      * ------------------------------------ squares amounts for each type
      */

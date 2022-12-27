@@ -1,4 +1,4 @@
-package com.example.knightmove.Model;
+/*package com.example.knightmove.Model;
 
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
@@ -150,7 +150,7 @@ public class Game {
 
                         /**
                          * The knight clicked on empty square, afterwards move the queen
-                         */
+
 
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
@@ -250,3 +250,4 @@ public class Game {
     }
 
 }
+*/

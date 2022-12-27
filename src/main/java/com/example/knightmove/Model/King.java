@@ -18,6 +18,10 @@ public class King extends Piece{
         setImage();
     }
 
+    /**
+     * get possible move of the king
+     * @return
+     */
     @Override
     public ArrayList<String> getAllPossibleMoves() {
         /**
@@ -52,6 +56,12 @@ public class King extends Piece{
         return this.possibleMoves;
     }
 
+    /**
+     * return king best move = The square closest to the knight
+     * @param possibleMoves - all king possible move
+     * @param knightPositions - knight current point
+     * @return
+     */
     public static ArrayList<Integer> getKingBestMove(ArrayList<ArrayList<Integer>> possibleMoves, int[] knightPositions) {
         int minDistance = Integer.MAX_VALUE;
         ArrayList<Integer> bestMove = null;
