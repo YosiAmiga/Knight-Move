@@ -5,19 +5,19 @@ import static org.junit.Assert.assertTrue;
 class pointTest {
 
     @org.junit.Test
-    void setX() {
+    static void setX() {
         point p = new point(2,3);
         assertTrue(p.x == 2);
     }
 
     @org.junit.Test
-    void setY() {
+    static void setY() {
         point p = new point(2,3);
-        assertTrue(p.y == 3);
+        assertTrue(p.y == 5);
     }
 
     @org.junit.Test
-    void testEquals(Object o) {
+    static void testEquals(Object o) {
         point firstPoint = new point(2,3);
         assertTrue(firstPoint.equals(new point(2,3)));
     }
@@ -36,5 +36,6 @@ class pointTest {
 
     public static void main(String[] args) {
         pointTest.testToString();
+        pointTest.setY(); // will throw an exception!
     }
 }
