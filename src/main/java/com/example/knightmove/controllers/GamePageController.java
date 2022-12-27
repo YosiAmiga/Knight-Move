@@ -361,14 +361,25 @@ public class GamePageController {
                         square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
                         addToVisitedSquares(square);
                         ArrayList<String> possibleMovesForRandom = currentPiece.getAllPossibleMoves();
+
+
                         if(possibleMovesForRandom != null){
                             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+possibleMovesForRandom.get(0));
                             int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(6));
                             int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(7));
                             System.out.println("*****************\n MOVED TO " + xPositionRandom + " ," + yPositionRandom);
-                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
-                            square.setX(xPositionRandom);
-                            square.setY(yPositionRandom);
+//                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
+//                            Square randomSquare = cb.squares.
+                            for(Square s : cb.getSquares()){
+                                if(s.getX() == xPositionRandom && s.getY() == yPositionRandom){
+                                    System.out.println("\n\nfound the piece to jump to on the board \n\n");
+                                    square = s;
+                                }
+                            }
+//                            square.setX(xPositionRandom);
+//                            square.setY(yPositionRandom);
+
+
 //                            System.out.println("this is the square to string after changing: &&&&&&&&&&&&\n x= "+ square.getX() + "y="+square.getY());
                         }
 //                        AlertBox.display("RandomSquare", "You will be forward to another square");
@@ -393,7 +404,6 @@ public class GamePageController {
                             else {
 //                            System.out.println("inside else of square");
                                 if (currentPiece.getColor().equals(newPiece.getColor())) {
-                                    System.out.println("inside internal if of square");
                                     deselectPiece(false);
                                     currentPiece = newPiece;
                                     selectPiece(game);
@@ -404,7 +414,7 @@ public class GamePageController {
                             }
                         }
                     }
-                    // Dropping a piece on blank square
+                    // Dropping a piece on each square wich is not BLOCKED!
                     else {
                         //removing the blockingSquares from possibleMoves
                         ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
