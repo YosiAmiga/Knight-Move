@@ -2,10 +2,10 @@ package com.example.knightmove.Model;
 
 import java.util.Objects;
 
-public class Point {
+public class point {
     int x;
     int y;
-    public Point(int x, int y) {
+    public point(int x, int y) {
         this.x = x;
         this.y = y;
     }
@@ -32,7 +32,7 @@ public class Point {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Point point = (Point) o;
+        point point = (com.example.knightmove.Model.point) o;
 
         if (x != point.x) return false;
         return y == point.y;

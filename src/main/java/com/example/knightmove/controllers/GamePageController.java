@@ -547,7 +547,7 @@ public class GamePageController {
         for (Square sq : cb.getSquares()) {
             if (sq.getX() == kingNextPositionX && sq.getY() == kingNextPositionY) {
                 currentPiece = foundKing;
-                kingCurrentPosition = new Point(sq.getX(), sq.getY());
+                kingCurrentPosition = new point(sq.getX(), sq.getY());
                 temp = sq;
                 kingEatKnight(knightCurrentPosition,kingCurrentPosition);
             }
@@ -641,7 +641,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param queenCurrentPosition
      */
-    public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
+    public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
             isGameOver = true;

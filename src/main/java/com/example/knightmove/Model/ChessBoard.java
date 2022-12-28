@@ -16,26 +16,26 @@ public class ChessBoard {
     String theme;
     public ArrayList<Square> squares = new ArrayList<>();
 
-    public ArrayList<Square> getSquares() {
-        return squares;
-    }
-    public ArrayList<Point> forgettingSquaresLocations = new ArrayList<>();
-    public ArrayList<Point> randomJumpSquaresLocations = new ArrayList<>();
-    public ArrayList<Point> blockingSquaresLocations = new ArrayList<>();
-    public ArrayList<Point> questionSquaresLocations = new ArrayList<>();
+    public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
+    public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
+    public ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
-    public ArrayList<Point> occupiedSquaresLocations = new ArrayList<>();
     public ChessBoard(GridPane chessBoard, String theme,int num_block,int num_forget,int num_rand,int num_ques ){
         this.chessBoard = chessBoard;
         this.theme = theme;
         makeBoard(this.chessBoard, theme,num_block,num_forget,num_rand,num_ques);
     }
 
-    public ArrayList<Point> getQuestionSquaresLocations() {
+    public ArrayList<point> getQuestionSquaresLocations() {
         return questionSquaresLocations;
     }
 
-    public void setQuestionSquaresLocations(ArrayList<Point> questionSquaresLocations) {
+    public ArrayList<Square> getSquares() {
+        return squares;
+    }
+
+    public void setQuestionSquaresLocations(ArrayList<point> questionSquaresLocations) {
         this.questionSquaresLocations = questionSquaresLocations;
     }
 
@@ -47,23 +47,23 @@ public class ChessBoard {
          *
          */
         chessBoard.getChildren().clear();
-        ArrayList<Point> BlockingSquaresLocations=createBlockingSquaresLocations(num_block);
+        ArrayList<point> BlockingSquaresLocations=createBlockingSquaresLocations(num_block);
         this.blockingSquaresLocations = BlockingSquaresLocations;
 
-        ArrayList<Point> ForgettingSquaresLocations=createForgettingSquare(num_forget);
+        ArrayList<point> ForgettingSquaresLocations=createForgettingSquare(num_forget);
         this.forgettingSquaresLocations = ForgettingSquaresLocations;
 
-        ArrayList<Point>  RandomJumpSquaresLocations = createRandomJumpSquare(num_rand);
+        ArrayList<point>  RandomJumpSquaresLocations = createRandomJumpSquare(num_rand);
         this.randomJumpSquaresLocations = RandomJumpSquaresLocations;
 
-        ArrayList<Point>  questionSquaresLocations = createQuestionSquare(num_ques);
+        ArrayList<point>  questionSquaresLocations = createQuestionSquare(num_ques);
         this.questionSquaresLocations = questionSquaresLocations;
 
         SquareFactory squarefactory = new SquareFactory();
         for(int i=0; i<Consts.SQUARES_IN_ROW; i++){
             for(int j=0; j<Consts.SQUARES_IN_COLUMN; j++){
                 Square square;
-                Point point = new Point(i,j);
+                point point = new point(i,j);
                 if(BlockingSquaresLocations.contains(point)){
                      square = squarefactory.getSquare("BLOCKSQUARE",i,j);
                 }
@@ -93,7 +93,8 @@ public class ChessBoard {
         addPieces(); // add the king/queen and knight
     }
 
-    private void setTheme(Square square, String theme, int i, int j,ArrayList<point> BlockingSquaresLocations,ArrayList<point> ForgettingSquaresLocations,ArrayList<point> RandomJumpSquaresLocations, ArrayList<point> QuestionSquaresLocations){
+    // change the theme of the square
+    private void setTheme(Square square, String theme, int i, int j, ArrayList<point> BlockingSquaresLocations, ArrayList<point> ForgettingSquaresLocations, ArrayList<point> RandomJumpSquaresLocations, ArrayList<point> QuestionSquaresLocations){
         point currentPoint = new point(i,j);
 //        Color color1 = Color.web("#ffffff00");
 //        Color color2 = Color.web("#ffffff00");
@@ -233,7 +234,6 @@ public class ChessBoard {
      * @param number_of_square
      * @return
      */
-
     public ArrayList<point> createRandomJumpSquare(int number_of_square){
         ArrayList<point> RandomJumpSquares = new ArrayList<point>();
         while(RandomJumpSquares.size() <number_of_square){
@@ -260,8 +260,7 @@ public class ChessBoard {
      * @param randY
      * @return
      */
-
-    private boolean checkIfPointExist(ArrayList<point> specialSquaresLocations,int randX,int randY){
+    private boolean checkIfPointExist(ArrayList<point> specialSquaresLocations, int randX, int randY){
         for(point p : specialSquaresLocations){
             if(p.x == randX && p.y == randY){
                 return true;
@@ -270,11 +269,11 @@ public class ChessBoard {
         return false;
     }
 
-        /**
-         * create num squares of blocking square
-         * @param number_of_square
-         * @return
-         */
+    /**
+     * create num squares of blocking square
+     * @param number_of_square
+     * @return
+     */
     private ArrayList<point> createBlockingSquaresLocations(int number_of_square){
         ArrayList<point> specialSquaresLocations = new ArrayList<point>();
         while(specialSquaresLocations.size() <number_of_square){
@@ -294,12 +293,12 @@ public class ChessBoard {
         return specialSquaresLocations;
     }
 
-    public ArrayList<point> createQuestionSquare(int number_of_square){
     /**
      * create num squares of questions square
      * @param number_of_square
      * @return
      */
+    public ArrayList<point> createQuestionSquare(int number_of_square){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
         ArrayList<point> QuestionsSquares = new ArrayList<point>();
         while(QuestionsSquares.size() <number_of_square){
@@ -326,7 +325,7 @@ public class ChessBoard {
      */
     public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
-        Boolean succes = false;
+        
         point ques_point = null;
         Square change_sqaure=null;
         for(point p : this.questionSquaresLocations){
@@ -353,8 +352,7 @@ public class ChessBoard {
             if(!checkIfPointExist(questionSquaresLocations, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)
                     &&!checkIfPointExist(randomJumpSquaresLocations, randX, randY) && !existinVisited){
                 point specialSquarePoint = new point(randX,randY);
-                this.questionSquaresLocations.set(index,specialSquarePoint);
-
+                this.questionSquaresLocations.add(specialSquarePoint);
                 System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
                 Square remove_sqr=null;
                 for(Square sqr : this.squares){
