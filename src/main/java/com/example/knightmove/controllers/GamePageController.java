@@ -96,6 +96,7 @@ public class GamePageController {
         score = 0; // new score
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
+        cb.chessBoard.setDisable(true);
         knightCurrentPosition = new point(0, 0); // start point of knight
 
         // deleteeeee!!!!
@@ -207,7 +208,7 @@ public class GamePageController {
 
     // when click on start game btn
     public void startGame(ActionEvent event) {
-
+        cb.chessBoard.setDisable(false);
         startTimeSec = 20;// Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
@@ -716,4 +717,14 @@ public class GamePageController {
         this.visitedSquares = new ArrayList<>();
     }
      */
+    public static Integer getLevelByThePostion(ArrayList<point> a,point point){
+        Integer l=1;
+        for (point p:a){
+            if (p.equals(point)){
+                return l;
+            }
+            l++;
+        }
+        return l;
+    }
 }

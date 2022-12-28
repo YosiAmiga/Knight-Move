@@ -61,12 +61,15 @@ public class Consts {
      */
     public static  Color color1 = Color.web("#ffffff00");
     public static  Color color2 = Color.web("#ffffff00");
-    public static  Color colorBlockingSquare = Color.web("#FF0000");
+    public static  Color colorBlockingSquare = Color.BLACK;
     public static  Color colorRandomJumpSquare = Color.web("#9ACD32");
     public static  Color colorForgettingSquare = Color.web("#9dacff");
     public static  Color colorVisitedSquare = Color.web("#808080");
 
     public static  Color colorQuestionSquare = Color.web("#FACC2E");
+    public static Color colorEasyQuestionSquare = Color.WHITE;
+    public static Color colorMediumQuestionSquare = Color.YELLOW;
+    public static Color colorHardQuestionSquare = Color.RED;
 
 
 }

@@ -150,8 +150,19 @@ public class ChessBoard {
         }
         for(point p : QuestionSquaresLocations){
             if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
+                Integer level = GamePageController.getLevelByThePostion(questionSquaresLocations, p);
+                if(level==1){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorEasyQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+                else if(level==2){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorMediumQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+                else if(level==3){
+                    square.setBackground(new Background(new BackgroundFill(Consts.colorHardQuestionSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
             }
         }
         if((i+j)%2==0){
