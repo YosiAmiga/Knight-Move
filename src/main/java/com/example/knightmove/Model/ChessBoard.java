@@ -7,7 +7,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
-import java.lang.Math;
 import java.util.Random;
 
 
@@ -67,19 +66,19 @@ public class ChessBoard {
                 Square square;
                 point point = new point(i,j);
                 if(BlockingSquaresLocations.contains(point)){
-                     square = squarefactory.getSquare("BLOCKSQUARE",i,j);
+                    square = squarefactory.getSquare("BLOCKSQUARE",i,j);
                 }
                 else if(ForgettingSquaresLocations.contains(point)){
-                     square = squarefactory.getSquare("FORGETSQUARE",i,j);
+                    square = squarefactory.getSquare("FORGETSQUARE",i,j);
                 }
                 else if(RandomJumpSquaresLocations.contains(point)){
-                     square = squarefactory.getSquare("RANDOMSQUARE",i,j);
+                    square = squarefactory.getSquare("RANDOMSQUARE",i,j);
                 }
                 else if(questionSquaresLocations.contains(point)){
-                     square = squarefactory.getSquare("QUESTIONSQUARE",i,j);
+                    square = squarefactory.getSquare("QUESTIONSQUARE",i,j);
                 }
                 else{
-                     square = squarefactory.getSquare("REGULARSQAURE",i,j);
+                    square = squarefactory.getSquare("REGULARSQAURE",i,j);
                 }
                 square.setName(square.getType() + i + j);
                 square.setPrefHeight(Consts.SQUARE_SIZE);
@@ -185,7 +184,7 @@ public class ChessBoard {
             }
             // set queen init location
             else if((GamePageController.level==1 || GamePageController.level==2) && square.x == Consts.QUEEN_INIT_LOCATION_X && square.y == Consts.QUEEN_INIT_LOCATION_Y){
-                 addPiece(square, new Queen("black", square.x, square.y));
+                addPiece(square, new Queen("black", square.x, square.y));
             }
             // set king init location
             else if((GamePageController.level==3 || GamePageController.level==4) && square.x == Consts.KING_INIT_LOCATION_X && square.y == Consts.KING_INIT_LOCATION_Y){
@@ -316,7 +315,7 @@ public class ChessBoard {
      */
     public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
-        
+
         point ques_point = null;
         Square change_sqaure=null;
         for(point p : this.questionSquaresLocations){
@@ -325,10 +324,8 @@ public class ChessBoard {
                 ques_point = p;
             }
         }
-        Integer questionLevel = GamePageController.getLevelByThePostion(questionSquaresLocations, ques_point);
-        Integer index = questionLevel - 1; //we save the points in array list with corresponding to their level, and arrays start with 0 index
-
-        while(!succes){
+        this.questionSquaresLocations.remove(ques_point);
+        while(this.questionSquaresLocations.size() < 3){
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
@@ -357,29 +354,8 @@ public class ChessBoard {
                 }
                 this.squares.add(change_sqaure);
                 this.squares.remove(remove_sqr);
-                succes = true;
             }
         }
-    }
-
-    private static Integer getQuestionLevelByIndex(ArrayList<point> Points, point point){
-        Integer i=0;
-        for (com.example.knightmove.Model.point p: Points){
-            if(p.equals(point)){
-                break;
-            }
-            i++;
-        }
-        switch (i){
-            case 0:
-                return 1;
-
-            case 1:
-                return 2;
-            case 2:
-                return 3;
-        }
-        return 0;
     }
 
     /*
