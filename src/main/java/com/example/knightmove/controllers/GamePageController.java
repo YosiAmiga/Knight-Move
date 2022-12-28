@@ -94,6 +94,7 @@ public class GamePageController {
         currentPiece = null;
         this.game = true; // start game
         score = 0; // new score
+        GamePageController.score+=20;
         visitedSquares = new ArrayList<>();
         cb.chessBoard.setDisable(true);
         addEventHandlers(cb.chessBoard);
@@ -712,33 +713,41 @@ public class GamePageController {
      * @param level - the next level
      */
     public void changeLevel(int level) throws IOException {
-        if(level==2 && GamePageController.score>=15)
+        if(level==2)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
+            if(GamePageController.score>=15) {
+                cb = new ChessBoard(chessBoard, "Sandcastle", 0, 3, 0, 3);
+            }
+            else{
+                // score <15 --> Game Over
+                isGameOver=true;
+                checkIsGameOver();
+            }
         }
-        else { // score <15 --> Game Over
-            isGameOver=true;
-            checkIsGameOver();
-        }
-        if(level==3 && GamePageController.score>=30)
+        if(level==3)
         {
-            GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
+            if(GamePageController.score>=30) {
+                cb = new ChessBoard(chessBoard, "Sandcastle", 0, 3, 0, 3);
+            }
+            else{
+                // score <30 --> Game Over
+                isGameOver=true;
+                checkIsGameOver();
+            }
         }
-        else { // score <30 --> Game Over
-            isGameOver=true;
-            checkIsGameOver();
-        }
-        if(level==4 && GamePageController.score>=45)
+        if(level==4)
         {
-            GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
-        }
-        else { // score <45 --> Game Over
-            isGameOver=true;
-            checkIsGameOver();
+            if(GamePageController.score>=45) {
+                cb = new ChessBoard(chessBoard, "Sandcastle", 0, 3, 0, 3);
+            }
+            else{
+                // score <45 --> Game Over
+                isGameOver=true;
+                checkIsGameOver();
+            }
         }
         knightCurrentPosition = new Point(0,0);
+        visitedSquares = new ArrayList<>();
         currentPiece=null; // the user need to select the knigth in the beginning
     }
 
