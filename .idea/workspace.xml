@@ -41,7 +41,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Dana" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -187,9 +187,9 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Json" />
-      <item itemvalue="Application.JsonEntity" />
       <item itemvalue="Application.CreateJsonFile" />
+      <item itemvalue="Application.JsonEntity" />
+      <item itemvalue="Application.Json" />
       <item itemvalue="Application.Unnamed" />
       <item itemvalue="JAR Application.AppJar" />
       <item itemvalue="JUnit.All in Knight-Move" />
@@ -455,5 +455,8 @@
       </path>
     </expand>
     <select />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Knight_Move$Unnamed.ic" NAME="Unnamed Coverage Results" MODIFIED="1672056162685" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" />
   </component>
 </project>
