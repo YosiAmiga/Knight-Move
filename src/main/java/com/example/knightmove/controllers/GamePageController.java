@@ -38,7 +38,7 @@ public class GamePageController {
 
     private Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
-    public Point knightCurrentPosition; // point of knight
+    public point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
 
     public static Piece currentPiece; // piece playing (king/queen/knight)
@@ -97,7 +97,7 @@ public class GamePageController {
         GamePageController.score+=20;
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
-        knightCurrentPosition = new Point(0, 0); // start point of knight
+        knightCurrentPosition = new point(0, 0); // start point of knight
 
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
@@ -419,9 +419,9 @@ public class GamePageController {
                     // Dropping a piece on blank square
                     else {
                         //removing the blockingSquares from possibleMoves
-                        ArrayList<Point> blockingSquares = new ArrayList<Point>(cb.blockingSquaresLocations);
+                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
-                        for (Point p : blockingSquares) {
+                        for (point p : blockingSquares) {
                             String squareString = "Square" + p.getX() + p.getY();
                             if (currentPiece.possibleMoves.contains(squareString)) {
                                 currentPiece.possibleMoves.remove(squareString);
@@ -487,7 +487,7 @@ public class GamePageController {
                         for (Square sq : cb.getSquares()) {
                             if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
                                 currentPiece = foundQueen;
-                                Point queenCurrentPosition = new Point(sq.getX(), sq.getY());
+                                point queenCurrentPosition = new point(sq.getX(), sq.getY());
                                 dropPiece(sq);
                                 queenEatKnight(knightCurrentPosition, queenCurrentPosition);
                             }
@@ -533,13 +533,13 @@ public class GamePageController {
             }
         }
 
-        Point kingCurrentPosition = null;
+        point kingCurrentPosition = null;
         Square temp = null;
         // move the display of the king
         for (Square sq : cb.getSquares()) {
             if (sq.getX() == kingNextPositionX && sq.getY() == kingNextPositionY) {
                 currentPiece = foundKing;
-                kingCurrentPosition = new Point(sq.getX(), sq.getY());
+                kingCurrentPosition = new point(sq.getX(), sq.getY());
                 temp = sq;
                 kingEatKnight(knightCurrentPosition,kingCurrentPosition);
             }
@@ -633,7 +633,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param queenCurrentPosition
      */
-    public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
+    public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
             isGameOver = true;
@@ -645,7 +645,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param kingCurrentPosition
      */
-    public void kingEatKnight(Point knightCurrentPosition, Point kingCurrentPosition){
+    public void kingEatKnight(point knightCurrentPosition, point kingCurrentPosition){
         if(knightCurrentPosition.getX()== kingCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== kingCurrentPosition.getY()){
             isGameOver = true;
@@ -728,7 +728,7 @@ public class GamePageController {
                 checkIsGameOver();
             }
         }
-        knightCurrentPosition = new Point(0,0);
+        knightCurrentPosition = new point(0,0);
         visitedSquares = new ArrayList<>();
         currentPiece=null; // the user need to select the knigth in the beginning
     }
