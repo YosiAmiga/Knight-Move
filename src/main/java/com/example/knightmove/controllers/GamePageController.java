@@ -634,8 +634,6 @@ public class GamePageController {
      * @param queenCurrentPosition
      */
     public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
-        System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
-
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
             isGameOver = true;
