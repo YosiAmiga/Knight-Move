@@ -701,7 +701,7 @@ public class GamePageController {
         }
         knightCurrentPosition = new point(0,0);
         currentPiece=null; // the user need to select the knigth in the beginning
-        this.visitedSquares=null;
+        visitedSquares = new ArrayList<>();
     }
 
     /*
