@@ -96,16 +96,9 @@ public class GamePageController {
         score = 0; // new score
         GamePageController.score+=20;
         visitedSquares = new ArrayList<>();
-        cb.chessBoard.setDisable(true);
         addEventHandlers(cb.chessBoard);
         knightCurrentPosition = new point(0, 0); // start point of knight
 
-        // deleteeeee!!!!
-        if (GamePageController.level == 3) {
-            startTimeSec = 2; // Change to 60!
-        } else{
-            startTimeSec = 2; // Change to 60!
-        }
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
             @Override
@@ -648,9 +641,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param queenCurrentPosition
      */
-    public void queenEatKnight(point knightCurrentPosition, Point queenCurrentPosition){
-        System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
-
+    public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
             isGameOver = true;
@@ -746,7 +737,7 @@ public class GamePageController {
                 checkIsGameOver();
             }
         }
-        knightCurrentPosition = new Point(0,0);
+        knightCurrentPosition = new point(0,0);
         visitedSquares = new ArrayList<>();
         currentPiece=null; // the user need to select the knigth in the beginning
     }
