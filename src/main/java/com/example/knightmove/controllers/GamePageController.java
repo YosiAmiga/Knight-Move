@@ -305,6 +305,7 @@ public class GamePageController {
 //                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
 //                        questionPopUp(level);
 //                    }
+
                     if(target.toString().equals("Random")){
                         AlertBox.display("RandomSquare", "You will be forward to another square");
                     }
@@ -357,6 +358,7 @@ public class GamePageController {
                             //addToVisitedSquares(square);
                         }
                         dropPiece(square);
+
                         if (visitedSquares.contains(square)) {
                             GamePageController.score--;
                             if(GamePageController.score<0){
@@ -458,9 +460,7 @@ public class GamePageController {
             point p= new point(square.getX(), square.getY());
             Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
             questionPopUp(level);
-            cb.removeAndCreateQuestionSquare(p.getX(),p.getY(), this.visitedSquares);
-//            randnewSpecialSquare(square);
-            System.out.println(GamePageController.cb.squares);
+            cb.removeAndCreateQuestionSquare2(p.getX(),p.getY(), this.visitedSquares);
         }
     }
 
@@ -512,18 +512,7 @@ public class GamePageController {
             stage.show();
         }
     }
-    public void randnewSpecialSquare(Square square)
-    {
-        if(square.getType() == "Question")
-        {
-            //System.out.println(GamePageController.cb.questionSquaresLocations);
-            //System.out.println("---------------");
-            GamePageController.cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), this.visitedSquares);
-            //System.out.println(GamePageController.cb.questionSquaresLocations);
-           // System.out.println("---------------");
 
-        }
-    }
     public void changeLevel(int level)
     {
         if(level==2)
