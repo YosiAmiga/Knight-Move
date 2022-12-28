@@ -194,59 +194,7 @@ public class GamePageController {
     @FXML
     private Label currentTimeText;
 
-    public static void createQuestionPopUp(){
-        HashSet<Question> allQuestionsInJSON= Json.readFromJSON();
-        // convert the HashSet to an array
-        Object[] array = allQuestionsInJSON.toArray();
-        // get a random questions from the array
-        Object randomQuestion = array[ThreadLocalRandom.current().nextInt(array.length)];
-        Question questionObject = (Question) randomQuestion;
-        String questionNameToPopUp = questionObject.getQuestion();
-        Integer questionLevel = questionObject.getLevel();
-        ArrayList<String> answers = questionObject.getAnswers();
-        ArrayList<ButtonType> answersOptions = new ArrayList<>();
-        for(String answer : answers){
-            answersOptions.add(new ButtonType(answer));
-        }
-        Integer correctAnswerNumber = questionObject.getCorrectAnswer();
-        String correctAnswerStringByIndex = answers.get(correctAnswerNumber-1);
-
-        // create an Alert object
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",answersOptions.get(0),answersOptions.get(1),answersOptions.get(2),answersOptions.get(3));
-        alert.setHeaderText(questionNameToPopUp);
-        // set the alert's message to the first question
-        alert.setContentText("Select your answer:");
-        // show the alert and get the user's response
-        ButtonType response = alert.showAndWait().orElse(null);
-        String playerSelectedAnswer = response.getText();
-
-        Alert correctAnswer = new Alert(Alert.AlertType.INFORMATION);
-        correctAnswer.setTitle("Correct Answer");
-        correctAnswer.setHeaderText("Correct Answer");
-        correctAnswer.setContentText("Congratulations, that is the correct answer.");
-
-        Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
-        wrongAnswer.setTitle("Wrong Answer");
-        wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. Please try again.");
-
-        // check the user's response
-        if (playerSelectedAnswer.equals(correctAnswerStringByIndex)) {
-            correctAnswer.showAndWait();
-            GamePageController.score += questionLevel;
-            System.out.println("Game.score " + GamePageController.score);
-        }else {
-            wrongAnswer.showAndWait();
-            GamePageController.score -= (questionLevel+1);
-            if(GamePageController.score<0)
-            {
-                GamePageController.score=0;
-            }
-            System.out.println("Game.score " + GamePageController.score);
-        }
-    }
-
-    public static void questionPopUp(Integer level) {
+    public static void questionPopUp(Integer level){
         HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
         Question theQuestion = null;
         int size = questionsByLevel.size();
@@ -289,6 +237,7 @@ public class GamePageController {
             System.out.println("Game.score " + GamePageController.score);
         }
     }
+
     // Game Class
     public ArrayList<Square> getVisitedSquares() {
         return visitedSquares;
@@ -351,11 +300,11 @@ public class GamePageController {
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
-                    if(target.toString().equals("Question")){
-                        point p= new point(square.getX(), square.getY());
-                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-                        questionPopUp(level);
-                    }
+//                    if(target.toString().equals("Question")){
+//                        point p= new point(square.getX(), square.getY());
+//                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+//                        questionPopUp(level);
+//                    }
                     if(target.toString().equals("Random")){
                         AlertBox.display("RandomSquare", "You will be forward to another square");
                     }
@@ -506,7 +455,11 @@ public class GamePageController {
         updateScore();
         if(square.getType()=="Question")
         {
-            randnewSpecialSquare(square);
+            point p= new point(square.getX(), square.getY());
+            Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+            questionPopUp(level);
+            cb.removeAndCreateQuestionSquare(p.getX(),p.getY(), this.visitedSquares);
+//            randnewSpecialSquare(square);
             System.out.println(GamePageController.cb.squares);
         }
     }
