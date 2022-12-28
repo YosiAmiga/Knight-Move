@@ -381,6 +381,7 @@ public class GamePageController {
                     }
 
                 }
+                //Clicked on the queen - DELETED!
                 // Clicked on square
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
@@ -500,6 +501,7 @@ public class GamePageController {
                                 queenEatKnight(knightCurrentPosition, queenCurrentPosition);
                             }
                         }
+
                     }
                 }
             }
@@ -642,6 +644,8 @@ public class GamePageController {
      * @param queenCurrentPosition
      */
     public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
+        System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
+
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
             isGameOver = true;
@@ -674,7 +678,6 @@ public class GamePageController {
                 throw new RuntimeException(e);
             }
             stage = (Stage) mainPane.getScene().getWindow();
-            //stage.setTitle("Game Over");
             scene = new Scene(root);
             stage.setScene(scene);
             stage.setUserData(currentScore);
@@ -753,6 +756,19 @@ public class GamePageController {
         }
         return l;
     }
+
+    /*
+    public void resetVisitedSquares() {
+        for(Square square : visitedSquares){
+            if((square.getY()+square.getX())%2==0){
+                square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+            }else{
+                square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+        }
+        this.visitedSquares = new ArrayList<>();
+    }
+     */
 
     /*
     public void resetVisitedSquares() {

@@ -7,6 +7,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;
 import java.util.ArrayList;
+import java.lang.Math;
 import java.util.Random;
 
 
@@ -14,13 +15,14 @@ public class ChessBoard {
 
     public GridPane chessBoard;
     String theme;
-    public ArrayList<Square> squares = new ArrayList<>();
+    public ArrayList<Square> squares = new ArrayList<>(); // all squares in the board
 
     public ArrayList<point> forgettingSquaresLocations = new ArrayList<>();
     public ArrayList<point> randomJumpSquaresLocations = new ArrayList<>();
     public ArrayList<point> blockingSquaresLocations = new ArrayList<>();
     public ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
+    // get the number of special squares each level and build the board
     public ChessBoard(GridPane chessBoard, String theme,int num_block,int num_forget,int num_rand,int num_ques ){
         this.chessBoard = chessBoard;
         this.theme = theme;
@@ -193,17 +195,6 @@ public class ChessBoard {
         }
 
     }
-    private void specialSquareMessege(point currentPosition , ArrayList<point> specialSquaresLocations){
-        for(point p : specialSquaresLocations){
-            if(currentPosition.equals(p)){
-                Alert al = new Alert(Alert.AlertType.ERROR);
-                al.setContentText("GAME ENDED!");
-                al.setHeaderText("GAME ENDED!");
-                al.setTitle("GAME ENDED!");
-                al.setResizable(false);
-                al.showAndWait();;
-            }
-        }
 
     /**
      * create num squares of forgetting square
@@ -371,9 +362,9 @@ public class ChessBoard {
         }
     }
 
-    private static Integer getQuestionLevelByIndex(ArrayList<point> points,point point){
+    private static Integer getQuestionLevelByIndex(ArrayList<point> Points, point point){
         Integer i=0;
-        for (point p:points){
+        for (com.example.knightmove.Model.point p: Points){
             if(p.equals(point)){
                 break;
             }
