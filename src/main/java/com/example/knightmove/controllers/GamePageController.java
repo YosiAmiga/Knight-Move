@@ -365,8 +365,9 @@ public class GamePageController {
 
                         if(possibleMovesForRandom != null){
                             System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+possibleMovesForRandom.get(0));
-                            int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(6));
-                            int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(1).charAt(7));
+                            int randomIDX =getRandomNumber(0,possibleMovesForRandom.size());
+                            int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(6));
+                            int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(7));
                             System.out.println("*****************\n MOVED TO " + xPositionRandom + " ," + yPositionRandom);
 //                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
 //                            Square randomSquare = cb.squares.
@@ -620,7 +621,9 @@ public class GamePageController {
         }
         knightCurrentPosition = new point(0,0);
     }
-
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
     public static Integer getLevelByThePostion(ArrayList<point> a,point point){
         Integer l=1;
         for (point p:a){
