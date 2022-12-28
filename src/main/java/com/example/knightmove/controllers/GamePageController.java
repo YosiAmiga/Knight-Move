@@ -98,12 +98,6 @@ public class GamePageController {
         addEventHandlers(cb.chessBoard);
         knightCurrentPosition = new Point(0, 0); // start point of knight
 
-        // deleteeeee!!!!
-        if (GamePageController.level == 3) {
-            startTimeSec = 2; // Change to 60!
-        } else{
-            startTimeSec = 2; // Change to 60!
-        }
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
             @Override
@@ -125,22 +119,34 @@ public class GamePageController {
                 if (timeToChangeLevel) {
                     timeline.stop();
                     if (GamePageController.level == 2) {
-                        startTimeSec = 2; // Change to 60!
+                        startTimeSec = 15; // Change to 60!
                     } else{
-                        startTimeSec = 2; // Change to 60!
+                        startTimeSec = 15; // Change to 60!
                     }
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
-                        changeLevel(++GamePageController.level); // change level
+                        try {
+                            changeLevel(++GamePageController.level); // change level
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         updateScore();
                         currentLevelText.setText("2");
                         queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
-                        changeLevel(++GamePageController.level); // change level
+                        try {
+                            changeLevel(++GamePageController.level); // change level
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         updateScore();
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
-                        changeLevel(++GamePageController.level); // change level
+                        try {
+                            changeLevel(++GamePageController.level); // change level
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         updateScore();
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
@@ -214,7 +220,7 @@ public class GamePageController {
     // when click on start game btn
     public void startGame(ActionEvent event) {
 
-        startTimeSec = 2; // Change to 60!
+        startTimeSec = 15; // Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -578,7 +584,7 @@ public class GamePageController {
      * @param square where to move the piece (king/queen/knight)
      */
     private void dropPiece(Square square){
-        if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
+        if(currentPiece==null || !currentPiece.possibleMoves.contains(square.name)) return;
        // System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
@@ -689,25 +695,35 @@ public class GamePageController {
      * change the level and create new board
      * @param level - the next level
      */
-    public void changeLevel(int level)
-    {
-        if(level==2)
+    public void changeLevel(int level) throws IOException {
+        if(level==2 && GamePageController.score>=15)
         {
             cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
         }
-        if(level==3)
+        else { // score <15 --> Game Over
+            isGameOver=true;
+            checkIsGameOver();
+        }
+        if(level==3 && GamePageController.score>=30)
         {
             GamePageController.king_speed=5;
             cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
         }
-        if(level==4)
+        else { // score <30 --> Game Over
+            isGameOver=true;
+            checkIsGameOver();
+        }
+        if(level==4 && GamePageController.score>=45)
         {
             GamePageController.king_speed=5;
             cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
         }
+        else { // score <45 --> Game Over
+            isGameOver=true;
+            checkIsGameOver();
+        }
         knightCurrentPosition = new Point(0,0);
         currentPiece=null; // the user need to select the knigth in the beginning
-        GamePageController.score=0;
     }
 
     /*
