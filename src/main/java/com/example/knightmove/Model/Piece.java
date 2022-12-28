@@ -68,6 +68,10 @@ public abstract class Piece extends ImageView {
 
     public abstract ArrayList<String> getAllPossibleMoves();
 
+    /**
+     * show all possible move's of the piece
+     * @param val - show or hide
+     */
     public void showAllPossibleMoves(boolean val){
         if(val){
             Glow glow = new Glow();
@@ -80,7 +84,6 @@ public abstract class Piece extends ImageView {
             }
         }
         else{
-            System.out.println(possibleMoves);
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
                 square.setEffect(null);
@@ -88,6 +91,11 @@ public abstract class Piece extends ImageView {
         }
     }
 
+    /**
+     * get name and return the square
+     * @param name - like "Normal43"
+     * @return
+     */
     public Square getSquareByName(String name){
         for(Square square : GamePageController.cb.squares){
             if(square.name.equals(name)){
@@ -97,6 +105,11 @@ public abstract class Piece extends ImageView {
         return null;
     }
 
+    /**
+     * return the piece by name
+     * @param name - king/queen/knight
+     * @return
+     */
     public Piece getPieceByName(String name){
         for(Square square : GamePageController.cb.squares){
             if(square.getChildren().size() == 0) continue;
@@ -113,10 +126,34 @@ public abstract class Piece extends ImageView {
         return (int) ((Math.random() * (max - min)) + min);
     }
 
+    // used in king and queen best move function
+    public static int getManhattanDistance(int[] pos1, int[] pos2) {
+        return Math.abs(pos1[0] - pos2[0]) + Math.abs(pos1[1] - pos2[1]);
+    }
+
+    // recive moves and change them to x+y array
+    public static ArrayList<ArrayList<Integer>> convertMovesToIntArrays(ArrayList<String> moves) {
+        ArrayList<ArrayList<Integer>> intArrays = new ArrayList<>(moves.size());
+        for (String move : moves) {
+            String[] parts = move.split("Normal|Random|Block|Question|Jump|Forget");
+            int row = Integer.parseInt(parts[1].substring(0, 1));
+            int col = Integer.parseInt(parts[1].substring(1, 2));
+            ArrayList<Integer> coord = new ArrayList<>(2);
+            coord.add(row);
+            coord.add(col);
+            intArrays.add(coord);
+        }
+        return intArrays;
+    }
+    @Override
+    public String toString() {
+        return this.type;
+    }
+    /*
     public ArrayList getRandomPieceLocation(){
         /**
          * return a random location for a square
-         */
+
         ArrayList<Integer> randomSquareLocation = new  ArrayList<Integer>();
         int randonXvalue = getRandomNumber(0,Consts.SQUARES_IN_ROW);
         int randonYvalue = getRandomNumber(0,Consts.SQUARES_IN_ROW);
@@ -124,10 +161,5 @@ public abstract class Piece extends ImageView {
         randomSquareLocation.add(randonYvalue);
         return randomSquareLocation;
     }
-
-    @Override
-    public String toString() {
-        return this.type;
-    }
-
+    */
 }

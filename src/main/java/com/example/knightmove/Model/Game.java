@@ -1,10 +1,9 @@
-package com.example.knightmove.Model;
+/*package com.example.knightmove.Model;
 
 import javafx.event.EventHandler;
 import javafx.event.EventTarget;
 import javafx.geometry.Insets;
 import javafx.scene.effect.DropShadow;
-import javafx.scene.effect.Light;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -131,9 +130,9 @@ public class Game {
                     // Dropping a piece on blank square
                     else{
                         //removing the blockingSquares from possibleMoves
-                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
+                        ArrayList<Point> blockingSquares = new ArrayList<Point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
-                        for(point p : blockingSquares){
+                        for(Point p : blockingSquares){
                             String squareString = "Square"+p.getX()+p.getY();
                             if(currentPiece.possibleMoves.contains(squareString)){
                                 currentPiece.possibleMoves.remove(squareString);
@@ -151,7 +150,7 @@ public class Game {
 
                         /**
                          * The knight clicked on empty square, afterwards move the queen
-                         */
+
 
                         int queenNextPositionX = -1;
                         int queenNextPositionY = -1;
@@ -251,3 +250,4 @@ public class Game {
     }
 
 }
+*/
