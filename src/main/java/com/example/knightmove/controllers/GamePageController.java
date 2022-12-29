@@ -377,6 +377,41 @@ public class GamePageController {
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
+                    if(target.toString().equals("Question")){
+                        point p= new point(square.getX(), square.getY());
+                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+                        questionPopUp(level); // pops up a question window
+                    }
+                    else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
+                        // Need to pass the piece to a random new location.
+                        square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
+                        addToVisitedSquares(square);
+                        ArrayList<String> possibleMovesForRandom = currentPiece.getAllPossibleMoves();
+
+
+                        if(possibleMovesForRandom != null){
+                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+possibleMovesForRandom.get(0));
+                            int randomIDX =getRandomNumber(0,possibleMovesForRandom.size()-1);
+                            int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(6));
+                            int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(7));
+                            System.out.println("*****************\n MOVED TO " + xPositionRandom + " ," + yPositionRandom);
+//                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
+//                            Square randomSquare = cb.squares.
+                            for(Square s : cb.getSquares()){
+                                if(s.getX() == xPositionRandom && s.getY() == yPositionRandom){
+                                    System.out.println("\n\nfound the piece to jump to on the board \n\n");
+                                    square = s;
+                                }
+                            }
+                        }
+
+                    }
+                    else if(target.toString().equals("Forget")) {
+                        AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
+                    }
+
+
+
                     if(currentPiece!=null && !currentPiece.getAllPossibleMoves().contains(square.getName())) {
                         if (square.occupied) {
                             Piece newPiece = (Piece) square.getChildren().get(0);
@@ -727,4 +762,76 @@ public class GamePageController {
         }
         return l;
     }
+
+    public void deleteLastThreeSteps(){
+        if(getVisitedSquares().size() > 3){
+            int lastStep = getVisitedSquares().size() - 1;
+            System.out.println("Last three steps are:\n" +
+                    getVisitedSquares().get(lastStep).getX()+getVisitedSquares().get(lastStep).getY() +"\n"
+                    + getVisitedSquares().get(lastStep-1).getX()+getVisitedSquares().get(lastStep-1).getY() + "\n"
+                    + getVisitedSquares().get(lastStep-2).getX()+getVisitedSquares().get(lastStep-2).getY() + "\n" );
+            visitedSquares.remove(getVisitedSquares().get(lastStep));
+            visitedSquares.remove(getVisitedSquares().get(lastStep-1));
+            visitedSquares.remove(getVisitedSquares().get(lastStep-2));
+            for(Square square : getVisitedSquares()){
+                if((square.getY()+square.getX())%2==0){
+                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+                }else{
+                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+            }
+            for(Square s : cb.getSquares()){
+                for(point p : cb.forgettingSquaresLocations){
+                    if(s.getX() == p.getX() && s.getY() == p.getY()){
+                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                        return;
+                    }
+                }
+            }
+//            System.out.println("Score: before\n" + GamePageController.score);
+//            if(lastPoints.size() > 3){
+//                int i=3;
+//                while (i>=0){
+//                    GamePageController.score -= lastPoints.pop();
+//                }
+//            }
+//            System.out.println("Score: after\n" + GamePageController.score);
+
+        }
+        else{
+            int lessThanThreeSteps = getVisitedSquares().size() - 1;
+            while(lessThanThreeSteps > 0){
+                visitedSquares.remove(getVisitedSquares().get(lessThanThreeSteps));
+                lessThanThreeSteps--;
+            }
+            for(Square square : getVisitedSquares()){
+                if((square.getY()+square.getX())%2==0){
+                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+                }else{
+                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+            }
+            for(Square s : cb.getSquares()){
+                for(point p : cb.forgettingSquaresLocations){
+                    if(s.getX() == p.getX() && s.getY() == p.getY()){
+                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                        return;
+                    }
+                }
+            }
+
+//            System.out.println("Score: before\n" + GamePageController.score);
+//            if(lastPoints.size() > 3){
+//                int i=3;
+//                while (i>=0){
+//                    GamePageController.score -= lastPoints.pop();
+//                }
+//            }
+//            System.out.println("Score: after\n" + GamePageController.score);
+        }
+    }
+    public int getRandomNumber(int min, int max) {
+        return (int) ((Math.random() * (max - min)) + min);
+    }
+
 }
