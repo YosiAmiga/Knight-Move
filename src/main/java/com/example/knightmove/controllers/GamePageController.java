@@ -52,7 +52,10 @@ public class GamePageController {
 
     public static int score; // score of the player
     public static String queenMovement = "random"; // random move of queen
-
+    String themeLevel1 = "Sandcastle";
+    String themeLevel2 = "Marine";
+    String themeLevel3 = "Coral";
+    String themeLevel4 = "Emerald";
     @FXML
     private Text CurrentTurnText;
 
@@ -89,7 +92,7 @@ public class GamePageController {
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
 
         if (GamePageController.level == 1) {
-            cb = new ChessBoard(chessBoard, "Sandcastle", 0, 0, 3, 3);
+            cb = new ChessBoard(chessBoard, themeLevel1, 0, 0, 3, 3);
         }
         currentPiece = null;
         this.game = true; // start game
@@ -737,7 +740,7 @@ public class GamePageController {
                 isGameOver=true;
                 checkIsGameOver();
             }
-            else{ cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3); }
+            else{ cb = new ChessBoard(chessBoard, themeLevel2,0,3,0,3); }
         }
         if(level==3)
         {
@@ -746,7 +749,7 @@ public class GamePageController {
                 isGameOver=true;
                 checkIsGameOver();
             }
-            else {cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3); }
+            else {cb = new ChessBoard(chessBoard, themeLevel3,0,2,2,3); }
         }
         if(level==4)
         {
@@ -755,7 +758,7 @@ public class GamePageController {
                 isGameOver=true;
                 checkIsGameOver();
             }
-            else {cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);}
+            else {cb = new ChessBoard(chessBoard, themeLevel4,8,0,0,3);}
         }
         knightCurrentPosition = new point(0,0);
         this.visitedSquares=new ArrayList<>();
