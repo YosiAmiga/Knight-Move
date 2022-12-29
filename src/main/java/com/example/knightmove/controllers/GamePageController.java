@@ -132,19 +132,23 @@ public class GamePageController {
                     }
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
+                        visitedSquares.clear();
                         changeLevel(++GamePageController.level); // change level
                         updateScore();
                         currentLevelText.setText("2");
                         queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
+                        visitedSquares.clear();
                         changeLevel(++GamePageController.level); // change level
                         updateScore();
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
+                        visitedSquares.clear();
                         changeLevel(++GamePageController.level); // change level
                         updateScore();
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
+                        visitedSquares.clear();
                         currentLevelText.setText("End");
                         timeline.stop();
                         isGameOver = true; // game over
@@ -408,6 +412,7 @@ public class GamePageController {
                     }
                     else if(target.toString().equals("Forget")) {
                         AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
+                        deleteLastThreeSteps();
                     }
 
 
@@ -622,7 +627,6 @@ public class GamePageController {
         if(square.getType()=="Question")
         {
             randnewSpecialSquare(square);
-            System.out.println(GamePageController.cb.squares);
         }
     }
 
@@ -641,7 +645,6 @@ public class GamePageController {
         square.getChildren().add(currentPiece);
         square.occupied = true;
         if(square instanceof QuestionSquare){
-            System.out.println("QUESTION SQUARE!!!!");
         }
         initialSquare.getChildren().removeAll();
         initialSquare.occupied = false;
@@ -657,7 +660,6 @@ public class GamePageController {
      * @param queenCurrentPosition
      */
     public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
-        System.out.println("queenEatKnight " + knightCurrentPosition + " " + queenCurrentPosition);
 
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
@@ -682,7 +684,6 @@ public class GamePageController {
      * @throws IOException
      */
     public void checkIsGameOver() throws IOException {
-        System.out.println("isGameOver " + isGameOver);
         if(isGameOver){
             GamePageController.isGameOver=false; //for new game
             try {
@@ -764,16 +765,21 @@ public class GamePageController {
     }
 
     public void deleteLastThreeSteps(){
-        if(getVisitedSquares().size() > 3){
-            int lastStep = getVisitedSquares().size() - 1;
-            System.out.println("Last three steps are:\n" +
-                    getVisitedSquares().get(lastStep).getX()+getVisitedSquares().get(lastStep).getY() +"\n"
-                    + getVisitedSquares().get(lastStep-1).getX()+getVisitedSquares().get(lastStep-1).getY() + "\n"
-                    + getVisitedSquares().get(lastStep-2).getX()+getVisitedSquares().get(lastStep-2).getY() + "\n" );
-            visitedSquares.remove(getVisitedSquares().get(lastStep));
-            visitedSquares.remove(getVisitedSquares().get(lastStep-1));
-            visitedSquares.remove(getVisitedSquares().get(lastStep-2));
-            for(Square square : getVisitedSquares()){
+        System.out.println("visitedSquares.size() " + visitedSquares.size());
+
+        ArrayList<Square> rePaintSquares = new ArrayList<>();
+        if(visitedSquares.size() > 3){
+            int lastStep = visitedSquares.size() - 1;
+            rePaintSquares.add(visitedSquares.get(lastStep));
+            rePaintSquares.add(visitedSquares.get(lastStep-1));
+            rePaintSquares.add(visitedSquares.get(lastStep-2));
+            System.out.println("visitedSquares before " + visitedSquares);
+            visitedSquares.remove(visitedSquares.get(lastStep));
+            visitedSquares.remove(visitedSquares.get(lastStep-1));
+            visitedSquares.remove(visitedSquares.get(lastStep-2));
+            System.out.println("visitedSquares after " + visitedSquares);
+
+            for(Square square : rePaintSquares){
                 if((square.getY()+square.getX())%2==0){
                     square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
                 }else{
