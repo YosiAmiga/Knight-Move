@@ -6,13 +6,13 @@ public class PieceFactory {
             return null;
         }
         if (PieceType.equalsIgnoreCase("KING")) {
-            return new King("Black",7,7,1);
+            return new King("black",Consts.KING_INIT_LOCATION_X,Consts.KING_INIT_LOCATION_Y,Consts.KING_INIT_SPEED);
         }
         if (PieceType.equalsIgnoreCase("QUEEN")) {
-            return new Queen("Black",7, 7);
+            return new Queen("black",Consts.QUEEN_INIT_LOCATION_X, Consts.QUEEN_INIT_LOCATION_Y);
         }
         if (PieceType.equalsIgnoreCase("KNIGHT")) {
-            return new Knight("Black",1, 1);
+            return new Knight("black",Consts.KNIGHT_INIT_LOCATION_X, Consts.KNIGHT_INIT_LOCATION_Y);
         }
         return null;
     }

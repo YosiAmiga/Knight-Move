@@ -184,6 +184,7 @@ public class ChessBoard {
     }
 
     private void addPieces(){
+        PieceFactory piece_create = new PieceFactory();
         /**
          * Add pieces to their init location: pre-defined. (check out Const.java for enumerates).
          */
@@ -191,15 +192,18 @@ public class ChessBoard {
             if(square.occupied) continue;
             // set horse init location
             if(square.x == Consts.KNIGHT_INIT_LOCATION_X && square.y == Consts.KNIGHT_INIT_LOCATION_Y){
-                addPiece(square, new Knight("black", square.x, square.y));
+                //addPiece(square, new Knight("black", square.x, square.y));
+                addPiece(square,piece_create.getPiece("Knight"));
             }
             // set queen init location
             else if((GamePageController.level==1 || GamePageController.level==2) && square.x == Consts.QUEEN_INIT_LOCATION_X && square.y == Consts.QUEEN_INIT_LOCATION_Y){
-                addPiece(square, new Queen("black", square.x, square.y));
+                 //addPiece(square, new Queen("black", square.x, square.y));
+                 addPiece(square,piece_create.getPiece("Queen"));
             }
             // set king init location
             else if((GamePageController.level==3 || GamePageController.level==4) && square.x == Consts.KING_INIT_LOCATION_X && square.y == Consts.KING_INIT_LOCATION_Y){
-                addPiece(square, new King("black", square.x, square.y,Consts.KING_INIT_SPEED));
+                //addPiece(square, new King("black", square.x, square.y,Consts.KING_INIT_SPEED));
+                addPiece(square,piece_create.getPiece("King"));
             }
 
         }

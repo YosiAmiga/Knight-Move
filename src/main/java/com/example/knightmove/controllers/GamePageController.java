@@ -120,8 +120,9 @@ public class GamePageController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                startTimeSec--; // countdown
 
+                startTimeSec--;
+                boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
                 if (timeToChangeLevel) {
                     timeline.stop();
@@ -132,20 +133,35 @@ public class GamePageController {
                     }
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
+                        GamePageController.level++;
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
                         updateScore();
+                        try {
+                            changeLevel(2);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("2");
                         queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
+                        GamePageController.level++;
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
                         updateScore();
+                        try {
+                            changeLevel(3);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
+                        GamePageController.level++;
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
                         updateScore();
+                        try {
+                            changeLevel(4);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
                         visitedSquares.clear();
@@ -209,8 +225,6 @@ public class GamePageController {
     {
         this.currentScore.setText(Integer.toString(GamePageController.score));
     }
-
-    // when click on start game btn
     public void startGame(ActionEvent event) {
         cb.chessBoard.setDisable(false);
         startTimeSec = 20;// Change to 60!
@@ -715,30 +729,37 @@ public class GamePageController {
 
         }
     }
-
-    /**
-     * change the level and create new board
-     * @param level - the next level
-     */
-    public void changeLevel(int level)
-    {
+    public void changeLevel(int level) throws IOException {
         if(level==2)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
+            if(GamePageController.score<15)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else{ cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3); }
         }
         if(level==3)
         {
-            GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
+            if(GamePageController.score<30)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else {cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3); }
         }
         if(level==4)
         {
-            GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
+            if(GamePageController.score<45)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else {cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);}
         }
         knightCurrentPosition = new point(0,0);
-        currentPiece=null; // the user need to select the knigth in the beginning
-        visitedSquares = new ArrayList<>();
+        this.visitedSquares=new ArrayList<>();
+        currentPiece=null;
     }
 
     /*
