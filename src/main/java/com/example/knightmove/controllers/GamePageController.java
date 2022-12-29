@@ -830,8 +830,4 @@ public class GamePageController {
 //            System.out.println("Score: after\n" + GamePageController.score);
         }
     }
-    public int getRandomNumber(int min, int max) {
-        return (int) ((Math.random() * (max - min)) + min);
-    }
-
 }
