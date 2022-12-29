@@ -312,48 +312,23 @@ public class GamePageController {
     public static void questionPopUp(Integer level) {
         HashSet<Question> questionsByLevel = HelloApplication.s.getQuestionsByLevel(level);
         Question theQuestion = null;
+        int randomNumber;
         int size = questionsByLevel.size();
-        int randomNumber = new Random().nextInt(size);
-        int i = 0;
-        //get random question
-        for (Question q : questionsByLevel) {
-            if (i == randomNumber)
-                theQuestion = q;
-            i++;
+        if (size==0){
+            randomNumber = new Random().nextInt(1);
+            System.out.println(" ");
         }
-        // create an Alert object
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "", new ButtonType(theQuestion.getAnswers().get(0)), new ButtonType(theQuestion.getAnswers().get(1)), new ButtonType(theQuestion.getAnswers().get(2)), new ButtonType(theQuestion.getAnswers().get(3)));
-        alert.setHeaderText(theQuestion.getQuestion());
-        // set the alert's message to the first question
-        alert.setContentText("Select your answer:");
-        // show the alert and get the user's response
-        ButtonType response = alert.showAndWait().orElse(null);
-        String playerSelectedAnswer = response.getText();
-
-        Alert correctAnswer = new Alert(Alert.AlertType.INFORMATION);
-        correctAnswer.setTitle("Correct Answer");
-        correctAnswer.setHeaderText("Correct Answer");
-        correctAnswer.setContentText("Congratulations, that is the correct answer.");
-
-        Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
-        wrongAnswer.setTitle("Wrong Answer");
-        wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. The right one is: " + theQuestion.getRightAnswer());
-
-        // check the user's response
-        if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
-            correctAnswer.showAndWait();
-            GamePageController.score += level;
-            System.out.println("Game.score " + GamePageController.score);
-        } else {
-            wrongAnswer.showAndWait();
-            GamePageController.score -= (level + 1);
-            if(GamePageController.score<0)
-            {
-                GamePageController.score=0;
+        else {
+            randomNumber = new Random().nextInt(size);
+            int i = 0;
+            //get random question
+            for (Question q : questionsByLevel) {
+                if (i == randomNumber)
+                    theQuestion = q;
+                i++;
             }
-            wrongAnswer.close();
-            System.out.println("Game.score " + GamePageController.score);
+            //display the question
+            ConfrimBox.displayQuestion(theQuestion);
         }
     }
 
@@ -411,9 +386,9 @@ public class GamePageController {
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
                     if(target.toString().equals("Question")){
-                        point p= new point(square.getX(), square.getY());
-                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-                        questionPopUp(level); // pops up a question window
+//                        point p= new point(square.getX(), square.getY());
+//                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+//                        questionPopUp(level); // pops up a question window
                     }
                     else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
                         // Need to pass the piece to a random new location.
@@ -656,7 +631,11 @@ public class GamePageController {
         updateScore();
         if(square.getType()=="Question" && currentPieceName.equals("Knight"))
         {
-            randnewSpecialSquare(square);
+            point p= new point(square.getX(), square.getY());
+            Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
+            questionPopUp(level); // pops up a question window
+            cb.removeAndCreateQuestionSquare(square.getX(),square.getY(),this.visitedSquares);
+//            randnewSpecialSquare(square);
         }
     }
 

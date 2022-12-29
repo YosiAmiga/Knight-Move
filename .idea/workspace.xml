@@ -6,6 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="add queen/king eat knight test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +109,20 @@
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.HelloApplication">
+    <configuration name="HelloApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
+      <module name="Knight-Move" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.knightmove.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="EatKnightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
       <extension name="coverage">
@@ -117,22 +134,6 @@
       <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
       <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.EatKnightTest" />
       <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EatKnightTest.QueenEatKnightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="Knight-Move" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.example.knightmove.controllers.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.EatKnightTest" />
-      <option name="METHOD_NAME" value="QueenEatKnightTest" />
-      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -218,9 +219,9 @@
       <method v="2" />
     </configuration>
     <list>
+      <item itemvalue="Application.HelloApplication" />
       <item itemvalue="JAR Application.AppJar" />
       <item itemvalue="JUnit.EatKnightTest" />
-      <item itemvalue="JUnit.EatKnightTest.QueenEatKnightTest" />
       <item itemvalue="JUnit.questionTest" />
       <item itemvalue="JUnit.questionTest.getterSetterTest" />
       <item itemvalue="JUnit.questionTest.getterSetterTest (1)" />
@@ -228,11 +229,11 @@
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.HelloApplication" />
         <item itemvalue="JUnit.EatKnightTest" />
         <item itemvalue="JUnit.questionTest" />
         <item itemvalue="JUnit.questionTest.getterSetterTest (1)" />
         <item itemvalue="JUnit.questionTest.getterSetterTest" />
-        <item itemvalue="JUnit.EatKnightTest.QueenEatKnightTest" />
       </list>
     </recent_temporary>
   </component>
