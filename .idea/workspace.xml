@@ -4,18 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="add function that create new board for any level">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="add queen/king eat knight test">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Questions.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/Questions.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AddQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/AppIntroPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/GamePageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/LogInController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,7 +40,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Dana_Merge" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -71,7 +61,6 @@
     <option name="generalSettings">
       <MavenGeneralSettings>
         <option name="mavenHome" value="Use Maven wrapper" />
-        <option name="useMavenConfig" value="true" />
       </MavenGeneralSettings>
     </option>
   </component>
@@ -88,7 +77,15 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Naor/Desktop/Knight-Move&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33459002&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -108,57 +105,81 @@
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.Unnamed">
-    <configuration name="CreateJsonFile" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.CreateJsonFile" />
+  <component name="RunManager">
+    <configuration name="EatKnightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="PATTERN" value="com.example.knightmove.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.EatKnightTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Json" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.Json" />
+    <configuration name="EatKnightTest.QueenEatKnightTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="PATTERN" value="com.example.knightmove.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.EatKnightTest" />
+      <option name="METHOD_NAME" value="QueenEatKnightTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="JsonEntity" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.Model.JsonEntity" />
+    <configuration name="questionTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.knightmove.Model.*" />
+          <option name="PATTERN" value="com.example.knightmove.controllers.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.questionTest" />
+      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Unnamed" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.HelloApplication" />
+    <configuration name="questionTest.getterSetterTest (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.knightmove.controllers.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.example.knightmove.controllers" />
+      <option name="MAIN_CLASS_NAME" value="com.example.knightmove.controllers.questionTest" />
+      <option name="METHOD_NAME" value="getterSetterTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in Knight-Move" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="questionTest.getterSetterTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="Knight-Move" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="java.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="java" />
+      <option name="MAIN_CLASS_NAME" value="java.questionTest" />
+      <option name="METHOD_NAME" value="getterSetterTest" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -197,21 +218,21 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.Json" />
-      <item itemvalue="Application.JsonEntity" />
-      <item itemvalue="Application.CreateJsonFile" />
-      <item itemvalue="Application.Unnamed" />
       <item itemvalue="JAR Application.AppJar" />
-      <item itemvalue="JUnit.All in Knight-Move" />
+      <item itemvalue="JUnit.EatKnightTest" />
+      <item itemvalue="JUnit.EatKnightTest.QueenEatKnightTest" />
+      <item itemvalue="JUnit.questionTest" />
+      <item itemvalue="JUnit.questionTest.getterSetterTest" />
+      <item itemvalue="JUnit.questionTest.getterSetterTest (1)" />
       <item itemvalue="Maven.Knight-Move [install,clean,package]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.Unnamed" />
-        <item itemvalue="JUnit.All in Knight-Move" />
-        <item itemvalue="Application.CreateJsonFile" />
-        <item itemvalue="Application.JsonEntity" />
-        <item itemvalue="Application.Json" />
+        <item itemvalue="JUnit.EatKnightTest" />
+        <item itemvalue="JUnit.questionTest" />
+        <item itemvalue="JUnit.questionTest.getterSetterTest (1)" />
+        <item itemvalue="JUnit.questionTest.getterSetterTest" />
+        <item itemvalue="JUnit.EatKnightTest.QueenEatKnightTest" />
       </list>
     </recent_temporary>
   </component>
@@ -399,7 +420,21 @@
       <option name="project" value="LOCAL‎" />
       <updated>1671905518575</updated>
     </task>
-    <option name="localTasksCounter" value="26" />
+    <task id="LOCAL‎-00026" summary="try king move, and rename point to Point">
+      <created>1672150782474</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL‎-00026" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1672150782474</updated>
+    </task>
+    <task id="LOCAL‎-00027" summary="add queen/king eat knight test">
+      <created>1672229749413</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL‎-00027" />
+      <option name="project" value="LOCAL‎" />
+      <updated>1672229749413</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -455,7 +490,9 @@
     <MESSAGE value="Naor and dana Merge and errors fix" />
     <MESSAGE value="creating squares only in allowed position" />
     <MESSAGE value="rnd and create question sqaure after jump" />
-    <option name="LAST_COMMIT_MESSAGE" value="rnd and create question sqaure after jump" />
+    <MESSAGE value="try king move, and rename point to Point" />
+    <MESSAGE value="add queen/king eat knight test" />
+    <option name="LAST_COMMIT_MESSAGE" value="add queen/king eat knight test" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

@@ -1,7 +1,6 @@
 package com.example.knightmove.Model;
 
 public class PieceFactory {
-    // The constracot paramter of King,Knight,Queen will change
     public Piece getPiece(String PieceType) {
         if (PieceType == null) {
             return null;
