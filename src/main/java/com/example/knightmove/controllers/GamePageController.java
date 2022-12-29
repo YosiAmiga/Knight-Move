@@ -32,7 +32,11 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GamePageController {
+    public static ArrayList<Integer> pointsPerMove;
 
+    public static void addToPoints(Integer currentPoint){
+        pointsPerMove.add(currentPoint);
+    }
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -98,6 +102,7 @@ public class GamePageController {
         currentPiece = null;
         this.game = true; // start game
         score = 0; // new score
+        pointsPerMove = new ArrayList<>();
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
         cb.chessBoard.setDisable(true);
@@ -146,7 +151,7 @@ public class GamePageController {
                             throw new RuntimeException(e);
                         }
                         currentLevelText.setText("2");
-                        queenMovement = "smart";
+                        queenMovement = "random";
                     } else if (currentLevelText.getText().equals("2")) {
                         GamePageController.level++;
                         visitedSquares.clear();
@@ -297,15 +302,15 @@ public class GamePageController {
         if (playerSelectedAnswer.equals(correctAnswerStringByIndex)) {
             correctAnswer.showAndWait();
             GamePageController.score += questionLevel;
-            System.out.println("Game.score " + GamePageController.score);
+            addToPoints(level);
         }else {
             wrongAnswer.showAndWait();
             GamePageController.score -= (questionLevel+1);
+            addToPoints(-(level+1));
             if(GamePageController.score<0)
             {
                 GamePageController.score=0;
             }
-            System.out.println("Game.score " + GamePageController.score);
         }
     }
 
@@ -316,7 +321,6 @@ public class GamePageController {
         int size = questionsByLevel.size();
         if (size==0){
             randomNumber = new Random().nextInt(1);
-            System.out.println(" ");
         }
         else {
             randomNumber = new Random().nextInt(size);
@@ -342,7 +346,7 @@ public class GamePageController {
      */
     public void addToVisitedSquares(Square sq){
         if(sq != null){
-            if(!visitedSquares.contains(sq))
+//            if(!visitedSquares.contains(sq))
                 this.visitedSquares.add(sq);
         }
     }
@@ -358,7 +362,6 @@ public class GamePageController {
                     Square square = (Square) newPiece.getParent();
                     square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                     //addToVisitedSquares(square);
-                    //System.out.println("Knight possible moves:\n" + newPiece.possibleMoves);
                     // Selecting a new piece
                     if (currentPiece == null) {
                         currentPiece = newPiece;
@@ -371,7 +374,6 @@ public class GamePageController {
                     // Selecting other piece of same color || Killing a piece
                     else {
                         if (currentPiece.getColor().equals(newPiece.getColor())) {
-                            // System.out.println("inside internal if of knight");
                             deselectPiece(false);
                             currentPiece = newPiece;
                             selectPiece(game);
@@ -398,16 +400,13 @@ public class GamePageController {
 
 
                         if(possibleMovesForRandom != null){
-                            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"+possibleMovesForRandom.get(0));
                             int randomIDX =getRandomNumber(0,possibleMovesForRandom.size()-1);
                             int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(6));
                             int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(7));
-                            System.out.println("*****************\n MOVED TO " + xPositionRandom + " ," + yPositionRandom);
 //                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
 //                            Square randomSquare = cb.squares.
                             for(Square s : cb.getSquares()){
                                 if(s.getX() == xPositionRandom && s.getY() == yPositionRandom){
-                                    System.out.println("\n\nfound the piece to jump to on the board \n\n");
                                     square = s;
                                 }
                             }
@@ -415,7 +414,6 @@ public class GamePageController {
 
                     }
                     else if(target.toString().equals("Forget")) {
-                        AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
                         deleteLastThreeSteps();
                     }
 
@@ -435,14 +433,11 @@ public class GamePageController {
                             }
                             // Selecting other piece of same color || Killing a piece
                             else {
-//                            System.out.println("inside else of square");
                                 if (currentPiece.getColor().equals(newPiece.getColor())) {
-                                    System.out.println("inside internal if of square");
                                     deselectPiece(false);
                                     currentPiece = newPiece;
                                     selectPiece(game);
                                 } else {
-                                    System.out.println("inside internal else of square");
                                     killPiece(square);
                                 }
                             }
@@ -460,7 +455,6 @@ public class GamePageController {
                             }
                         }
 
-                        //   System.out.println("currentPiece moves after drop:\n " + currentPiece.possibleMoves);
                         if (currentPiece!=null && currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);
@@ -468,11 +462,13 @@ public class GamePageController {
                         dropPiece(square);
                         if (visitedSquares.contains(square)) {
                             GamePageController.score--;
+                            addToPoints(-1);
                             if(GamePageController.score<0){
                                 GamePageController.score=0;
                             }
                         } else {
                             GamePageController.score++;
+                            addToPoints(1);
                         }
                         addToVisitedSquares(square);
                         for(Square s : getVisitedSquares()){
@@ -555,7 +551,6 @@ public class GamePageController {
                     currentPiece = newKing; // change currentPiece to the king and return in the end to knight
                     foundKing = newKing;
                     ArrayList<String> possibleMoves = newKing.getAllPossibleMoves();
-                    System.out.println(possibleMoves);
                     ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newKing.convertMovesToIntArrays(newKing.getAllPossibleMoves());
                     ArrayList<Integer> movesSelector = newKing.getKingBestMove(possibleMovesInArrayOfTwo, knightPositions);
                     killPiece(kingSquare);
@@ -618,7 +613,6 @@ public class GamePageController {
      */
     private void dropPiece(Square square){
         if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
-        // System.out.println("move to square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -648,7 +642,6 @@ public class GamePageController {
 
         Piece killedPiece = (Piece) square.getChildren().get(0);
         if(killedPiece.type.equals("King")) this.game = false;
-        // System.out.println("move from square " + square.name);
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().remove(0);
         square.getChildren().add(currentPiece);
@@ -693,6 +686,7 @@ public class GamePageController {
      * @throws IOException
      */
     public void checkIsGameOver() throws IOException {
+        System.out.println("pointsPerMove" + pointsPerMove);
         if(isGameOver){
             GamePageController.isGameOver=false; //for new game
             try {
@@ -716,18 +710,13 @@ public class GamePageController {
     {
         if(square.getType() == "Question")
         {
-            //System.out.println(GamePageController.cb.questionSquaresLocations);
-            //System.out.println("---------------");
             GamePageController.cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), this.visitedSquares);
-            //System.out.println(GamePageController.cb.questionSquaresLocations);
-            // System.out.println("---------------");
-
         }
     }
     public void changeLevel(int level) throws IOException {
         if(level==2)
         {
-            if(GamePageController.score<15)
+            if(GamePageController.score<0)
             {
                 isGameOver=true;
                 checkIsGameOver();
@@ -736,7 +725,7 @@ public class GamePageController {
         }
         if(level==3)
         {
-            if(GamePageController.score<30)
+            if(GamePageController.score<0)
             {
                 isGameOver=true;
                 checkIsGameOver();
@@ -781,75 +770,52 @@ public class GamePageController {
     }
 
     public void deleteLastThreeSteps(){
-        System.out.println("visitedSquares.size() " + visitedSquares.size());
-
         ArrayList<Square> rePaintSquares = new ArrayList<>();
         if(visitedSquares.size() > 3){
-            int lastStep = visitedSquares.size() - 1;
-            rePaintSquares.add(visitedSquares.get(lastStep));
-            rePaintSquares.add(visitedSquares.get(lastStep-1));
-            rePaintSquares.add(visitedSquares.get(lastStep-2));
-            System.out.println("visitedSquares before " + visitedSquares);
-            visitedSquares.remove(visitedSquares.get(lastStep));
-            visitedSquares.remove(visitedSquares.get(lastStep-1));
-            visitedSquares.remove(visitedSquares.get(lastStep-2));
-            System.out.println("visitedSquares after " + visitedSquares);
+            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
+            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
+            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
+            rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 1));
+            rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 2));
+            rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 3));
+            visitedSquares.remove(visitedSquares.size() - 1);
+            visitedSquares.remove(visitedSquares.size() - 1);
+            visitedSquares.remove(visitedSquares.size() - 1);
 
-            for(Square square : rePaintSquares){
-                if((square.getY()+square.getX())%2==0){
-                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
-                }else{
-                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
-                }
-            }
-            for(Square s : cb.getSquares()){
-                for(point p : cb.forgettingSquaresLocations){
-                    if(s.getX() == p.getX() && s.getY() == p.getY()){
-                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                        return;
-                    }
-                }
-            }
-//            System.out.println("Score: before\n" + GamePageController.score);
-//            if(lastPoints.size() > 3){
-//                int i=3;
-//                while (i>=0){
-//                    GamePageController.score -= lastPoints.pop();
-//                }
-//            }
-//            System.out.println("Score: after\n" + GamePageController.score);
-
+            //color back to original board color
+            rePaintBoardAfterForgettingSquares(rePaintSquares);
         }
         else{
-            int lessThanThreeSteps = getVisitedSquares().size() - 1;
-            while(lessThanThreeSteps > 0){
-                visitedSquares.remove(getVisitedSquares().get(lessThanThreeSteps));
-                lessThanThreeSteps--;
-            }
-            for(Square square : getVisitedSquares()){
-                if((square.getY()+square.getX())%2==0){
-                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
-                }else{
-                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
-                }
-            }
-            for(Square s : cb.getSquares()){
-                for(point p : cb.forgettingSquaresLocations){
-                    if(s.getX() == p.getX() && s.getY() == p.getY()){
-                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                        return;
-                    }
-                }
+            int lessThanThreeStepsIndex = getVisitedSquares().size() - 1;
+
+            while(lessThanThreeStepsIndex >= 0){
+                GamePageController.score -= pointsPerMove.remove(lessThanThreeStepsIndex);
+                rePaintSquares.add(visitedSquares.get(lessThanThreeStepsIndex));
+                visitedSquares.remove(visitedSquares.size() - 1);
+                lessThanThreeStepsIndex--;
             }
 
-//            System.out.println("Score: before\n" + GamePageController.score);
-//            if(lastPoints.size() > 3){
-//                int i=3;
-//                while (i>=0){
-//                    GamePageController.score -= lastPoints.pop();
-//                }
-//            }
-//            System.out.println("Score: after\n" + GamePageController.score);
+            //color back to original board color
+            rePaintBoardAfterForgettingSquares(rePaintSquares);
+
+        }
+    }
+
+    public void rePaintBoardAfterForgettingSquares(ArrayList<Square> rePaintSquares){
+        for(Square square : rePaintSquares){
+            if((square.getY()+square.getX())%2==0){
+                square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+            }else{
+                square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+            }
+        }
+        for(Square s : cb.getSquares()){
+            for(point p : cb.forgettingSquaresLocations){
+                if(s.getX() == p.getX() && s.getY() == p.getY()){
+                    s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                    return;
+                }
+            }
         }
     }
     public int getRandomNumber(int min, int max) {

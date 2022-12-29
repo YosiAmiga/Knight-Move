@@ -66,23 +66,27 @@ public class ConfrimBox {
             if (Rightanswer.equals(Ans1.getText())){
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
+                GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
+                GamePageController.addToPoints(-(q.getLevel() + 1));
                 window.close();
             }
         });
         Ans2.setOnAction(e->{
             if (Rightanswer.equals(Ans2.getText())){
                 correctAnswer.showAndWait();
+                GamePageController.addToPoints(q.getLevel());
                 GamePageController.score += q.getLevel();
                 window.close();
             }
             else {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
+                GamePageController.addToPoints(-(q.getLevel() + 1));
                 window.close();
             }
         });
@@ -90,11 +94,13 @@ public class ConfrimBox {
             if (Rightanswer.equals(Ans3.getText())){
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
+                GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
+                GamePageController.addToPoints(-(q.getLevel() + 1));
                 window.close();
             }
         });
@@ -102,11 +108,13 @@ public class ConfrimBox {
             if (Rightanswer.equals(Ans4.getText())){
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
+                GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
+                GamePageController.addToPoints(-(q.getLevel() + 1));
                 window.close();
             }
         });
