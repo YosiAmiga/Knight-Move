@@ -59,8 +59,8 @@ public class Consts {
     /**
      * ------------------------------------- board color constants
      */
-    public static  Color color1 = Color.web("#ffffff00");
-    public static  Color color2 = Color.web("#ffffff00");
+    public static  Color color1 = Color.web("#e4c16f");
+    public static  Color color2 = Color.web("#b88b4a");
     public static  Color colorBlockingSquare = Color.BLACK;
     public static  Color colorRandomJumpSquare = Color.web("#9ACD32");
     public static  Color colorForgettingSquare = Color.web("#9dacff");
