@@ -39,7 +39,7 @@
             <Font size="19.0" />
          </font>
       </Label>
-      <Button fx:id="startLevelBtn" layoutX="30.0" layoutY="429.0" mnemonicParsing="false" onAction="#newLevel" prefHeight="28.0" prefWidth="90.0" text="Start Game" />
+      <Button fx:id="startLevelBtn" layoutX="30.0" layoutY="429.0" mnemonicParsing="false" onAction="#startGame" prefHeight="28.0" prefWidth="90.0" text="Start Game" />
       <Label fx:id="currentScore" layoutX="133.0" layoutY="85.0" prefHeight="35.0" prefWidth="34.0" text="0">
          <font>
             <Font size="18.0" />

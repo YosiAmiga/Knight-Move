@@ -90,9 +90,7 @@ public class GamePageController {
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }
-                //delete this!!
-                GamePageController.score+=250;
-                //delete this!!
+
                 startTimeSec--;
                 boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
@@ -103,16 +101,28 @@ public class GamePageController {
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
-                        changeLevel(2);
+                        try {
+                            changeLevel(2);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("2");
                         queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
                         GamePageController.level++;
-                        changeLevel(3);
+                        try {
+                            changeLevel(3);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
                         GamePageController.level++;
-                        changeLevel(4);
+                        try {
+                            changeLevel(4);
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
                         currentLevelText.setText("End");
@@ -151,7 +161,7 @@ public class GamePageController {
     {
         this.currentScore.setText(Integer.toString(GamePageController.score));
     }
-    public void newLevel(ActionEvent event) {
+    public void startGame(ActionEvent event) {
         cb.chessBoard.setDisable(false);
         GamePageController.gameStart=true;
         startTimeSec = 15; // Change to 60!
@@ -571,21 +581,37 @@ public class GamePageController {
 
         }
     }
-    public void changeLevel(int level)
-    {
+    public void changeLevel(int level) throws IOException {
         if(level==2)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
+            if(GamePageController.score<15)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else{ cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3); }
         }
         if(level==3)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
+            if(GamePageController.score<30)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else {cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3); }
         }
         if(level==4)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
+            if(GamePageController.score<45)
+            {
+                isGameOver=true;
+                checkIsGameOver();
+            }
+            else {cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);}
         }
         knightCurrentPosition = new point(0,0);
+        this.visitedSquares=new ArrayList<>();
+        currentPiece=null;
     }
 
 
