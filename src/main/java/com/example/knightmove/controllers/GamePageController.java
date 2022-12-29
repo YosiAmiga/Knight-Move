@@ -639,9 +639,10 @@ public class GamePageController {
         initialSquare.occupied = false;
         currentPiece.setPosX(square.getX());
         currentPiece.setPosY(square.getY());
+        String currentPieceName = currentPiece.toString();
         deselectPiece(true);
         updateScore();
-        if(square.getType()=="Question")
+        if(square.getType()=="Question" && currentPieceName.equals("Knight"))
         {
             randnewSpecialSquare(square);
         }
