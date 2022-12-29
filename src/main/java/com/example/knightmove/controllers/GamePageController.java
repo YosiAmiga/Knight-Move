@@ -377,15 +377,10 @@ public class GamePageController {
                                     square = s;
                                 }
                             }
-//                            square.setX(xPositionRandom);
-//                            square.setY(yPositionRandom);
-
-
-//                            System.out.println("this is the square to string after changing: &&&&&&&&&&&&\n x= "+ square.getX() + "y="+square.getY());
                         }
-//                        AlertBox.display("RandomSquare", "You will be forward to another square");
+
                     }
-                    else if(target.toString().equals("Forget")){
+                    else if(target.toString().equals("Forget")) {
                         AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
                     }
 
