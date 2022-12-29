@@ -42,9 +42,10 @@ public class ConfrimBox {
         Stage window = new Stage ();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setMinWidth(250);
-        window.setTitle("Question");
+        window.setTitle("Question Level " + q.getLevel());
         Label label = new Label ();
         label.setText(q.getQuestion());
+
         Button Ans1 = new Button (q.getAnswers().get(0));
         Button Ans2 = new Button (q.getAnswers().get(1));
         Button Ans3 = new Button (q.getAnswers().get(2));
@@ -110,7 +111,7 @@ public class ConfrimBox {
             }
         });
 
-        VBox layout = new VBox (10);
+        VBox layout = new VBox (15);
         layout.getChildren().addAll(label, Ans1, Ans2, Ans3, Ans4);
         layout.setAlignment(Pos.CENTER);
         Scene scene = new Scene (layout);
