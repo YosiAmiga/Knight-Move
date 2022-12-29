@@ -14,6 +14,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -195,6 +196,17 @@ public class GamePageController {
         stage.setScene(scene);
         stage.show();
     }
+
+    public void showGameRulesPopUp(ActionEvent event) throws IOException {
+        Stage popUpStage = new Stage();
+        popUpStage.setScene(new Scene(FXMLLoader.load(HelloApplication.class.getResource("GameRulesPagePopUp.fxml"))));
+        popUpStage.setWidth(850);
+        popUpStage.setHeight(550);
+        popUpStage.setX(100);
+        popUpStage.setY(100);
+        popUpStage.show();
+    }
+
 
     /**
      * change the king speed by (60 % king_speed) every 10 second
