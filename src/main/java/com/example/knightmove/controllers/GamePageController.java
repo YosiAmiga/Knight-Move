@@ -727,4 +727,72 @@ public class GamePageController {
         }
         return l;
     }
+
+    public void deleteLastThreeSteps(){
+        if(getVisitedSquares().size() > 3){
+            int lastStep = getVisitedSquares().size() - 1;
+            System.out.println("Last three steps are:\n" +
+                    getVisitedSquares().get(lastStep).getX()+getVisitedSquares().get(lastStep).getY() +"\n"
+                    + getVisitedSquares().get(lastStep-1).getX()+getVisitedSquares().get(lastStep-1).getY() + "\n"
+                    + getVisitedSquares().get(lastStep-2).getX()+getVisitedSquares().get(lastStep-2).getY() + "\n" );
+            visitedSquares.remove(getVisitedSquares().get(lastStep));
+            visitedSquares.remove(getVisitedSquares().get(lastStep-1));
+            visitedSquares.remove(getVisitedSquares().get(lastStep-2));
+            for(Square square : getVisitedSquares()){
+                if((square.getY()+square.getX())%2==0){
+                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+                }else{
+                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+            }
+            for(Square s : cb.getSquares()){
+                for(point p : cb.forgettingSquaresLocations){
+                    if(s.getX() == p.getX() && s.getY() == p.getY()){
+                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                        return;
+                    }
+                }
+            }
+//            System.out.println("Score: before\n" + GamePageController.score);
+//            if(lastPoints.size() > 3){
+//                int i=3;
+//                while (i>=0){
+//                    GamePageController.score -= lastPoints.pop();
+//                }
+//            }
+//            System.out.println("Score: after\n" + GamePageController.score);
+
+        }
+        else{
+            int lessThanThreeSteps = getVisitedSquares().size() - 1;
+            while(lessThanThreeSteps > 0){
+                visitedSquares.remove(getVisitedSquares().get(lessThanThreeSteps));
+                lessThanThreeSteps--;
+            }
+            for(Square square : getVisitedSquares()){
+                if((square.getY()+square.getX())%2==0){
+                    square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
+                }else{
+                    square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
+                }
+            }
+            for(Square s : cb.getSquares()){
+                for(point p : cb.forgettingSquaresLocations){
+                    if(s.getX() == p.getX() && s.getY() == p.getY()){
+                        s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+                        return;
+                    }
+                }
+            }
+
+//            System.out.println("Score: before\n" + GamePageController.score);
+//            if(lastPoints.size() > 3){
+//                int i=3;
+//                while (i>=0){
+//                    GamePageController.score -= lastPoints.pop();
+//                }
+//            }
+//            System.out.println("Score: after\n" + GamePageController.score);
+        }
+    }
 }
