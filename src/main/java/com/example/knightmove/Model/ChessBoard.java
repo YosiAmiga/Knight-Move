@@ -331,63 +331,60 @@ public class ChessBoard {
     public void removeAndCreateQuestionSquare(int x,int y, ArrayList<Square> visitedSqaure){
         //create sorted arraylist according to the question level. for example: in array[0] - there is the location for an easy question
 
-        point ques_point = null;
+        point ques_point = new point(x,y);
         Square change_sqaure=null;
-        for(point p : this.questionSquaresLocations){
-            if(p.getX() == x && p.getY()==y)
-            {
-                ques_point = p;
-            }
-        }
-        this.questionSquaresLocations.remove(ques_point);
-        while(this.questionSquaresLocations.size() < 3){
+        Boolean success = false;
+
+        while(!success){
             Random rand = new Random();
             int randX = rand.nextInt(7); // random x value in range of (0,7)
             int randY = rand.nextInt(7);// random y value in range of (0,7)
             boolean existinVisited = false;
-            for(Square sqr :visitedSqaure)
-            {
-                if(sqr.x==x && sqr.y==y)
-                {
-                    existinVisited=true;
-                }
+            if (visitedSqaure.contains(new Square(randX,randY))){ //checking if the point is already grey - visited
+                existinVisited=true;
             }
+//            for(Square sqr :visitedSqaure)
+//            {
+//                if(sqr.x==x && sqr.y==y)
+//                {
+//                    existinVisited=true;
+//                }
+//            }
             if(!checkIfPointExist(questionSquaresLocations, randX, randY)&&!checkIfPointExist(forgettingSquaresLocations,randX,randY)&&!checkIfPointExist(blockingSquaresLocations,randX,randY)
                     &&!checkIfPointExist(randomJumpSquaresLocations, randX, randY) && !existinVisited){
                 point specialSquarePoint = new point(randX,randY);
-                this.questionSquaresLocations.add(specialSquarePoint);
+                Integer questionLevel = GamePageController.getLevelByThePostion(this.questionSquaresLocations, ques_point);
+                int index = questionLevel -1; //we save the points in array list with corresponding to their level, and arrays start with 0 index
+                System.out.println("the question level: " + questionLevel);
+                System.out.println("index " + index);
+                this.questionSquaresLocations.set(index,specialSquarePoint);
+
                 System.out.println("new Question square points: " + specialSquarePoint.x +", "+ specialSquarePoint.y);
                 Square remove_sqr=null;
                 for(Square sqr : this.squares){
+                    if (sqr.getX()==ques_point.getX()&&sqr.getY()==ques_point.getY()){
+                        sqr.setType("Normal");
+                        sqr.setName("Normal"+sqr.getX()+sqr.getY());
+                    }
                     if(sqr.x==specialSquarePoint.x && sqr.y==specialSquarePoint.y)
                     {
-                        remove_sqr = sqr;
-                        change_sqaure = new QuestionSquare(sqr.x,sqr.y);
-                        change_sqaure.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
-                        setTheme(sqr, theme, sqr.x, sqr.y,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,questionSquaresLocations);
+                        sqr.setType("Question");
+                        sqr.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
+//                        remove_sqr = sqr;
+//                        change_sqaure = new QuestionSquare(sqr.x,sqr.y);
+//                        change_sqaure.setName("Question" + specialSquarePoint.x + specialSquarePoint.y);
+                        setTheme(sqr, theme, sqr.x, sqr.y,this.blockingSquaresLocations,this.forgettingSquaresLocations,this.randomJumpSquaresLocations,this.questionSquaresLocations);
                     }
                 }
-                this.squares.add(change_sqaure);
-                this.squares.remove(remove_sqr);
+//                this.squares.add(change_sqaure);
+//                this.squares.remove(remove_sqr);
+                success=true;
             }
+
         }
     }
 
-    /*
-    private void specialSquareMessege(Point currentPosition , ArrayList<Point> specialSquaresLocations){
-        for(Point p : specialSquaresLocations){
-            if(currentPosition.equals(p)){
-                Alert al = new Alert(Alert.AlertType.ERROR);
-                al.setContentText("GAME ENDED!");
-                al.setHeaderText("GAME ENDED!");
-                al.setTitle("GAME ENDED!");
-                al.setResizable(false);
-                al.showAndWait();;
-            }
-        }
 
-    }
-     */
 
 }
 
