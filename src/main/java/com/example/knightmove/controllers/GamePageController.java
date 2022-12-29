@@ -85,11 +85,15 @@ public class GamePageController {
     }
 
     public void initialize() {
+        String themeLevel1 = "Sandcastle";
+        String themeLevel2 = "Marine";
+        String themeLevel3 = "Coral";
 
-        // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
 
+
+        // Themes are Coral, Dusk, Wheat, Marine theme
         if (GamePageController.level == 1) {
-            cb = new ChessBoard(chessBoard, "Sandcastle", 0, 0, 3, 3);
+            cb = new ChessBoard(chessBoard, themeLevel1, 0, 0, 3, 3);
         }
         currentPiece = null;
         this.game = true; // start game
@@ -133,18 +137,18 @@ public class GamePageController {
                     queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
+                        changeLevel(++GamePageController.level,themeLevel1); // change level
                         updateScore();
                         currentLevelText.setText("2");
-                        queenMovement = "smart";
+                        queenMovement = "random";
                     } else if (currentLevelText.getText().equals("2")) {
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
+                        changeLevel(++GamePageController.level,themeLevel2); // change level
                         updateScore();
                         currentLevelText.setText("3");
                     } else if (currentLevelText.getText().equals("3")) {
                         visitedSquares.clear();
-                        changeLevel(++GamePageController.level); // change level
+                        changeLevel(++GamePageController.level,themeLevel3); // change level
                         updateScore();
                         currentLevelText.setText("4");
                     } else if (currentLevelText.getText().equals("4")) {
@@ -411,7 +415,7 @@ public class GamePageController {
 
                     }
                     else if(target.toString().equals("Forget")) {
-                        AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
+//                        AlertBox.display("ForgetSquare", "You will go 3 moves backwards");
                         deleteLastThreeSteps();
                     }
 
@@ -720,21 +724,21 @@ public class GamePageController {
      * change the level and create new board
      * @param level - the next level
      */
-    public void changeLevel(int level)
+    public void changeLevel(int level,String theme)
     {
         if(level==2)
         {
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,3,0,3);
+            cb = new ChessBoard(chessBoard, theme,0,3,0,3);
         }
         if(level==3)
         {
             GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",0,2,2,3);
+            cb = new ChessBoard(chessBoard, theme,0,2,2,3);
         }
         if(level==4)
         {
             GamePageController.king_speed=5;
-            cb = new ChessBoard(chessBoard, "Sandcastle",8,0,0,3);
+            cb = new ChessBoard(chessBoard, theme,8,0,0,3);
         }
         knightCurrentPosition = new point(0,0);
         currentPiece=null; // the user need to select the knigth in the beginning
@@ -768,15 +772,16 @@ public class GamePageController {
         System.out.println("visitedSquares.size() " + visitedSquares.size());
 
         ArrayList<Square> rePaintSquares = new ArrayList<>();
-        if(visitedSquares.size() > 3){
+        if(visitedSquares.size() > 4){
             int lastStep = visitedSquares.size() - 1;
-            rePaintSquares.add(visitedSquares.get(lastStep));
             rePaintSquares.add(visitedSquares.get(lastStep-1));
             rePaintSquares.add(visitedSquares.get(lastStep-2));
+            rePaintSquares.add(visitedSquares.get(lastStep-3));
             System.out.println("visitedSquares before " + visitedSquares);
-            visitedSquares.remove(visitedSquares.get(lastStep));
             visitedSquares.remove(visitedSquares.get(lastStep-1));
             visitedSquares.remove(visitedSquares.get(lastStep-2));
+            visitedSquares.remove(visitedSquares.get(lastStep-3));
+
             System.out.println("visitedSquares after " + visitedSquares);
 
             for(Square square : rePaintSquares){

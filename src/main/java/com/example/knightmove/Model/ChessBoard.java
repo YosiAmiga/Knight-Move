@@ -22,7 +22,7 @@ public class ChessBoard {
     public ArrayList<point> questionSquaresLocations = new ArrayList<>();
 
     // get the number of special squares each level and build the board
-    public ChessBoard(GridPane chessBoard, String theme,int num_block,int num_forget,int num_rand,int num_ques ){
+    public ChessBoard(GridPane chessBoard,String theme,int num_block,int num_forget,int num_rand,int num_ques ){
         this.chessBoard = chessBoard;
         this.theme = theme;
         makeBoard(this.chessBoard, theme,num_block,num_forget,num_rand,num_ques);
