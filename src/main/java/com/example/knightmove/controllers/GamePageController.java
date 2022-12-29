@@ -32,7 +32,8 @@ import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class GamePageController {
-
+    static Stack<Integer> stackOfPointsPerMove;
+    public static ArrayList<Integer> pointsPerMove;
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -344,10 +345,12 @@ public class GamePageController {
         if (playerSelectedAnswer.equals(theQuestion.getRightAnswer())) {
             correctAnswer.showAndWait();
             GamePageController.score += level;
+            GamePageController.pointsPerMove.add(level);
             System.out.println("Game.score " + GamePageController.score);
         } else {
             wrongAnswer.showAndWait();
             GamePageController.score -= (level + 1);
+            GamePageController.pointsPerMove.add(-(level+1));
             if(GamePageController.score<0)
             {
                 GamePageController.score=0;
@@ -493,6 +496,7 @@ public class GamePageController {
                         dropPiece(square);
                         if (visitedSquares.contains(square)) {
                             GamePageController.score--;
+                            GamePageController.pointsPerMove.add(-1);
                             if(GamePageController.score<0){
                                 GamePageController.score=0;
                             }
@@ -815,7 +819,15 @@ public class GamePageController {
             visitedSquares.remove(visitedSquares.get(lastStep-1));
             visitedSquares.remove(visitedSquares.get(lastStep-2));
             System.out.println("visitedSquares after " + visitedSquares);
+            System.out.println("Score: before\n" + GamePageController.score);
 
+            if(GamePageController.pointsPerMove.size() > 3){
+                int i=3;
+                while (i>=0){
+                    GamePageController.score -= GamePageController.pointsPerMove.remove(pointsPerMove.size()-1);
+                }
+            }
+            System.out.println("Score: after stack check\n" + GamePageController.score);
             for(Square square : rePaintSquares){
                 if((square.getY()+square.getX())%2==0){
                     square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
@@ -826,19 +838,13 @@ public class GamePageController {
             for(Square s : cb.getSquares()){
                 for(point p : cb.forgettingSquaresLocations){
                     if(s.getX() == p.getX() && s.getY() == p.getY()){
+                        System.out.println("recreate new forget square: before\n");
                         s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                         return;
                     }
                 }
             }
 //            System.out.println("Score: before\n" + GamePageController.score);
-//            if(lastPoints.size() > 3){
-//                int i=3;
-//                while (i>=0){
-//                    GamePageController.score -= lastPoints.pop();
-//                }
-//            }
-//            System.out.println("Score: after\n" + GamePageController.score);
 
         }
         else{
@@ -863,14 +869,17 @@ public class GamePageController {
                 }
             }
 
-//            System.out.println("Score: before\n" + GamePageController.score);
-//            if(lastPoints.size() > 3){
-//                int i=3;
-//                while (i>=0){
+            System.out.println("Score: before\n" + GamePageController.score);
+            if(GamePageController.pointsPerMove.size() > 3){
+                int i=3;
+                while (i>=0){
 //                    GamePageController.score -= lastPoints.pop();
-//                }
+                    GamePageController.score -= GamePageController.pointsPerMove.remove(pointsPerMove.size()-1);
 //            }
 //            System.out.println("Score: after\n" + GamePageController.score);
+                }
+            }
+            System.out.println("Score: after\n" + GamePageController.score);
         }
     }
     public int getRandomNumber(int min, int max) {
