@@ -15,7 +15,7 @@
                </font>
             </Label>
             <Button fx:id="returnButton" layoutX="236.0" layoutY="227.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" prefHeight="30.0" prefWidth="75.0" text="Return" />
-            <Label layoutX="85.0" layoutY="39.0" text="End Game:" textFill="#c71212" textOverrun="CLIP">
+            <Label layoutX="138.0" layoutY="61.0" text="End Game" textFill="#c71212" textOverrun="CLIP">
                <font>
                   <Font name="Arial Bold" size="47.0" />
                </font></Label>

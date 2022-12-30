@@ -2,6 +2,7 @@ package com.example.knightmove.controllers;
 
 import com.example.knightmove.Model.point;
 import org.json.simple.parser.ParseException;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -38,5 +39,10 @@ public class EatKnightTest {
     public void KingNotEatKnightTest() throws IOException, ParseException {
         game.kingEatKnight(new point(0,2),new point(1,0));
         assertEquals(GamePageController.isGameOver,false);
+    }
+
+    @After
+    public void After() throws IOException, ParseException {
+        this.game=null;
     }
 }

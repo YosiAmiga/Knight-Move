@@ -716,7 +716,7 @@ public class GamePageController {
     public void changeLevel(int level) throws IOException {
         if(level==2)
         {
-            if(GamePageController.score<0)
+            if(GamePageController.score<15)
             {
                 isGameOver=true;
                 checkIsGameOver();
@@ -725,7 +725,7 @@ public class GamePageController {
         }
         if(level==3)
         {
-            if(GamePageController.score<0)
+            if(GamePageController.score<30)
             {
                 isGameOver=true;
                 checkIsGameOver();
