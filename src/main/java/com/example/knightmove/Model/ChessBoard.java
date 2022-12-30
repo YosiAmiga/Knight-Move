@@ -1,8 +1,7 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.controllers.GamePageController;
+import com.example.knightmove.Controllers.GamePageController;
 import javafx.geometry.Insets;
-import javafx.scene.control.Alert;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.layout.GridPane;

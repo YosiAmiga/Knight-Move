@@ -1,6 +1,6 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.controllers.GamePageController;
+import com.example.knightmove.Controllers.GamePageController;
 
 import java.util.ArrayList;
 

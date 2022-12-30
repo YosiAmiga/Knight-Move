@@ -1,6 +1,5 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 import com.example.knightmove.Exceptions.NeedToChoseQuestionException;
-import com.example.knightmove.Exceptions.NotAllFieldsFullException;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
@@ -15,7 +14,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import java.io.IOException;

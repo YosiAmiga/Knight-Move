@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 
 import com.example.knightmove.Exceptions.NotAllFieldsFullException;
 import com.example.knightmove.Exceptions.SameValueException;

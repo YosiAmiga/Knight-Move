@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 
 import com.example.knightmove.HelloApplication;
 //import com.example.knightmove.Model.Game;
@@ -40,6 +40,7 @@ public class EndGameController {
     private Parent root;
 
 
+
     private String score;
 
     public void initialize() throws SQLException {
@@ -60,6 +61,18 @@ public class EndGameController {
         stage.setScene(scene);
         stage.show();
     }
+    public ImageView getImageView(){ return this.medalPicture;}
 
+    /**
+     * for test checking
+     * @return if the player got medal
+     */
+    public boolean gotMedal(){
+        if(GamePageController.score >=200)
+        {
+            return true;
+        }
+        return false;
+    }
 }
 

@@ -1,10 +1,9 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 import com.example.knightmove.Exceptions.NotAllFieldsFullException;
 import com.example.knightmove.Exceptions.SameValueException;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Json;
 import com.example.knightmove.Model.Question;
-import com.example.knightmove.Model.SysData;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;

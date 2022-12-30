@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Consts;
 import com.example.knightmove.Model.GameHistory;

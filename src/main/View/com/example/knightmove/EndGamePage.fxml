@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<AnchorPane prefHeight="439.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.controllers.EndGameController">
+<AnchorPane prefHeight="439.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.EndGameController">
    <children>
       <Pane layoutX="64.0" layoutY="47.0" prefHeight="333.0" prefWidth="532.0">
          <children>

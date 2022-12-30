@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.*;
@@ -14,7 +14,6 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;

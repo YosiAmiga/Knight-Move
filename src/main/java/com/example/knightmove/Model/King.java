@@ -1,11 +1,7 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.controllers.GamePageController;
-import javafx.scene.image.Image;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
 public class King extends Piece{
     String gameGoal = "Hit the horse";

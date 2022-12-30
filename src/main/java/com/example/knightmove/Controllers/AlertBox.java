@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 
 import javafx.geometry.Pos;
 import javafx.scene.Scene;

@@ -1,4 +1,4 @@
-package com.example.knightmove.controllers;
+package com.example.knightmove.Controllers;
 
 import com.example.knightmove.Model.Question;
 import org.json.simple.parser.ParseException;
