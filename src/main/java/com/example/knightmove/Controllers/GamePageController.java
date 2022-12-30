@@ -42,7 +42,7 @@ public class GamePageController {
 
     private Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
-    public point knightCurrentPosition; // point of knight
+    public Point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
 
     public static Piece currentPiece; // piece playing (king/queen/knight)
@@ -105,7 +105,7 @@ public class GamePageController {
         visitedSquares = new ArrayList<>();
         addEventHandlers(cb.chessBoard);
         cb.chessBoard.setDisable(true);
-        knightCurrentPosition = new point(0, 0); // start point of knight
+        knightCurrentPosition = new Point(0, 0); // start point of knight
 
         // deleteeeee!!!!
         if (GamePageController.level == 3) {
@@ -445,9 +445,9 @@ public class GamePageController {
                     // Dropping a piece on blank square
                     else {
                         //removing the blockingSquares from possibleMoves
-                        ArrayList<point> blockingSquares = new ArrayList<point>(cb.blockingSquaresLocations);
+                        ArrayList<Point> blockingSquares = new ArrayList<Point>(cb.blockingSquaresLocations);
                         //removing the blockingSquares from possibleMoves
-                        for (point p : blockingSquares) {
+                        for (Point p : blockingSquares) {
                             String squareString = "Square" + p.getX() + p.getY();
                             if (currentPiece.possibleMoves.contains(squareString)) {
                                 currentPiece.possibleMoves.remove(squareString);
@@ -514,7 +514,7 @@ public class GamePageController {
                         for (Square sq : cb.getSquares()) {
                             if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
                                 currentPiece = foundQueen;
-                                point queenCurrentPosition = new point(sq.getX(), sq.getY());
+                                Point queenCurrentPosition = new Point(sq.getX(), sq.getY());
                                 dropPiece(sq);
                                 queenEatKnight(knightCurrentPosition, queenCurrentPosition);
                             }
@@ -559,13 +559,13 @@ public class GamePageController {
             }
         }
 
-        point kingCurrentPosition = null;
+        Point kingCurrentPosition = null;
         Square temp = null;
         // move the display of the king
         for (Square sq : cb.getSquares()) {
             if (sq.getX() == kingNextPositionX && sq.getY() == kingNextPositionY) {
                 currentPiece = foundKing;
-                kingCurrentPosition = new point(sq.getX(), sq.getY());
+                kingCurrentPosition = new Point(sq.getX(), sq.getY());
                 temp = sq;
                 kingEatKnight(knightCurrentPosition,kingCurrentPosition);
             }
@@ -612,6 +612,7 @@ public class GamePageController {
      */
     private void dropPiece(Square square){
         if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
+        if(currentPiece==null) return; //fix bug
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -624,7 +625,7 @@ public class GamePageController {
         updateScore();
         if(square.getType()=="Question" && currentPieceName.equals("Knight"))
         {
-            point p= new point(square.getX(), square.getY());
+            Point p= new Point(square.getX(), square.getY());
             Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
             questionPopUp(level); // pops up a question window
             cb.removeAndCreateQuestionSquare(square.getX(),square.getY(),this.visitedSquares);
@@ -660,7 +661,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param queenCurrentPosition
      */
-    public void queenEatKnight(point knightCurrentPosition, point queenCurrentPosition){
+    public void queenEatKnight(Point knightCurrentPosition, Point queenCurrentPosition){
 
         if(knightCurrentPosition.getX()== queenCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== queenCurrentPosition.getY()){
@@ -673,7 +674,7 @@ public class GamePageController {
      * @param knightCurrentPosition
      * @param kingCurrentPosition
      */
-    public void kingEatKnight(point knightCurrentPosition, point kingCurrentPosition){
+    public void kingEatKnight(Point knightCurrentPosition, Point kingCurrentPosition){
         if(knightCurrentPosition.getX()== kingCurrentPosition.getX() &&
                 knightCurrentPosition.getY()== kingCurrentPosition.getY()){
             isGameOver = true;
@@ -740,7 +741,7 @@ public class GamePageController {
             }
             else {cb = new ChessBoard(chessBoard, themeLevel4,8,0,0,3);}
         }
-        knightCurrentPosition = new point(0,0);
+        knightCurrentPosition = new Point(0,0);
         this.visitedSquares=new ArrayList<>();
         currentPiece=null;
     }
@@ -757,9 +758,9 @@ public class GamePageController {
         this.visitedSquares = new ArrayList<>();
     }
      */
-    public static Integer getLevelByThePostion(ArrayList<point> a,point point){
+    public static Integer getLevelByThePostion(ArrayList<Point> a, Point point){
         Integer l=1;
-        for (point p:a){
+        for (Point p:a){
             if (p.equals(point)){
                 return l;
             }
@@ -809,7 +810,7 @@ public class GamePageController {
             }
         }
         for(Square s : cb.getSquares()){
-            for(point p : cb.forgettingSquaresLocations){
+            for(Point p : cb.forgettingSquaresLocations){
                 if(s.getX() == p.getX() && s.getY() == p.getY()){
                     s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                     return;

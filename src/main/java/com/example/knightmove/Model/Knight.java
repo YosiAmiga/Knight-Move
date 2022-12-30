@@ -6,8 +6,8 @@ import java.util.ArrayList;
 
 public class Knight extends Piece{
     String goal = "get max points by moving on squares and answering Questions. can't get back to square already visited";
-    point currentLocation = new point(Consts.KNIGHT_INIT_LOCATION_X,Consts.KNIGHT_INIT_LOCATION_Y);
-    ArrayList<point> visitedSquares; // squares the knight already visited at.
+    Point currentLocation = new Point(Consts.KNIGHT_INIT_LOCATION_X,Consts.KNIGHT_INIT_LOCATION_Y);
+    ArrayList<Point> visitedSquares; // squares the knight already visited at.
 
 
 
