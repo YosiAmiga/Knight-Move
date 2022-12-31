@@ -582,6 +582,7 @@ public class GamePageController {
      * @param game if the game is playing
      */
     private void selectPiece(boolean game){
+        clickPieceSound();
         if(!game){
             currentPiece = null;
             return;
@@ -686,6 +687,7 @@ public class GamePageController {
     public void checkIsGameOver() throws IOException {
         System.out.println("pointsPerMove" + pointsPerMove);
         if(isGameOver){
+            gameOverSound();
             queenMovement = "random";
             GamePageController.isGameOver=false; //for new game
             try {
@@ -715,6 +717,7 @@ public class GamePageController {
     public void changeLevel(int level) throws IOException {
         if(level==2)
         {
+            newLevelSound();
             if(GamePageController.score<15)
             {
                 isGameOver=true;
@@ -724,6 +727,7 @@ public class GamePageController {
         }
         if(level==3)
         {
+            newLevelSound();
             if(GamePageController.score<30)
             {
                 isGameOver=true;
@@ -733,6 +737,7 @@ public class GamePageController {
         }
         if(level==4)
         {
+            newLevelSound();
             if(GamePageController.score<45)
             {
                 isGameOver=true;
@@ -823,6 +828,48 @@ public class GamePageController {
     public int getRandomNumber(int min, int max) {
         return (int) ((Math.random() * (max - min)) + min);
     }
+    public static void badSound() {
+        Sound s = new Sound();
+        try {
+            s.errorSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
+    public static void goodSound() {
+        Sound s = new Sound();
+        try {
+            s.successSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+
+    public static void gameOverSound() {
+        Sound s = new Sound();
+        try {
+            s.gameOverSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+
+    public static void newLevelSound() {
+        Sound s = new Sound();
+        try {
+            s.newLevelSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
+    public static void clickPieceSound() {
+        Sound s = new Sound();
+        try {
+            s.clickSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
 }

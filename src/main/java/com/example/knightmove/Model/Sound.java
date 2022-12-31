@@ -14,6 +14,8 @@ public class Sound {
     private final static String programOn = "src\\main\\java\\com\\example\\knightmove\\sounds\\programOn.wav";
     private final static String login = "src\\main\\java\\com\\example\\knightmove\\sounds\\loginOK.wav";
     private final static String exit = "src\\main\\java\\com\\example\\knightmove\\sounds\\exit.wav";
+    private final static String gameOver = "src\\main\\java\\com\\example\\knightmove\\sounds\\gameOver.wav";
+    private final static String newLevel = "src\\main\\java\\com\\example\\knightmove\\sounds\\newLevel.wav";
 
 
     public void exitSound() throws Exception{
@@ -67,6 +69,36 @@ public class Sound {
     }
 
     public void addSound() throws Exception{
+        File yourFile = new File(toggleButton);
+        AudioInputStream stream = AudioSystem.getAudioInputStream(yourFile);
+        AudioFormat format = stream.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip clip = (Clip) AudioSystem.getLine(info);
+        clip.open(stream);
+        clip.start();
+    }
+
+    public void gameOverSound() throws Exception{
+        File yourFile = new File(gameOver);
+        AudioInputStream stream = AudioSystem.getAudioInputStream(yourFile);
+        AudioFormat format = stream.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip clip = (Clip) AudioSystem.getLine(info);
+        clip.open(stream);
+        clip.start();
+    }
+
+    public void newLevelSound() throws Exception{
+        File yourFile = new File(newLevel);
+        AudioInputStream stream = AudioSystem.getAudioInputStream(yourFile);
+        AudioFormat format = stream.getFormat();
+        DataLine.Info info = new DataLine.Info(Clip.class, format);
+        Clip clip = (Clip) AudioSystem.getLine(info);
+        clip.open(stream);
+        clip.start();
+    }
+
+    public void clickSound() throws Exception{
         File yourFile = new File(toggleButton);
         AudioInputStream stream = AudioSystem.getAudioInputStream(yourFile);
         AudioFormat format = stream.getFormat();
