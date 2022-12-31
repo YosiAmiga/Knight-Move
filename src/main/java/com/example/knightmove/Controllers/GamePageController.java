@@ -40,7 +40,7 @@ public class GamePageController {
     private Scene scene;
     private Parent root;
 
-    private Timeline timeline = new Timeline();
+    static  Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
     public Point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
@@ -331,6 +331,7 @@ public class GamePageController {
             }
             //display the question
             ConfrimBox.displayQuestion(theQuestion);
+            GamePageController.timeline.play();
         }
     }
 
