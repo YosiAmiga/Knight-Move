@@ -1,7 +1,6 @@
 package com.example.knightmove.Model;
 
-import com.example.knightmove.HelloApplication;
-import com.example.knightmove.controllers.QuestionsController;
+import com.example.knightmove.Controllers.QuestionsController;
 
 import java.util.HashSet;
 
