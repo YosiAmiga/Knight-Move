@@ -7,7 +7,7 @@ import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
 import javax.sound.sampled.DataLine;
-public class Sounds {
+public class Sound {
     private final static String badSound = "src\\main\\java\\com\\example\\knightmove\\sounds\\error.wav";
     private final static String goodSound = "src\\main\\java\\com\\example\\knightmove\\sounds\\success.wav";
     private final static String toggleButton = "src\\main\\java\\com\\example\\knightmove\\sounds\\toggle.wav";
@@ -79,7 +79,7 @@ public class Sounds {
 
 
     public void badSound() {
-        Sounds s = new Sounds();
+        Sound s = new Sound();
         try {
             s.errorSound();
         } catch (Exception e2) {
@@ -88,7 +88,7 @@ public class Sounds {
     }
 
     public void goodSound() {
-        Sounds s = new Sounds();
+        Sound s = new Sound();
         try {
             s.successSound();
         } catch (Exception e2) {

@@ -1,7 +1,7 @@
 package com.example.knightmove.Controllers;
 
 import com.example.knightmove.Model.Question;
-import com.example.knightmove.Model.Sounds;
+import com.example.knightmove.Model.Sound;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -136,7 +136,7 @@ public class ConfrimBox {
         window.showAndWait();
     }
     public static void badSound() {
-        Sounds s = new Sounds();
+        Sound s = new Sound();
         try {
             s.errorSound();
         } catch (Exception e2) {
@@ -145,7 +145,7 @@ public class ConfrimBox {
     }
 
     public static void goodSound() {
-        Sounds s = new Sounds();
+        Sound s = new Sound();
         try {
             s.successSound();
         } catch (Exception e2) {

@@ -139,7 +139,6 @@ public class GamePageController {
                     } else{
                         startTimeSec = 20; // Change to 60!
                     }
-                    queenMovement = "random";
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
                         visitedSquares.clear();
@@ -150,7 +149,7 @@ public class GamePageController {
                             throw new RuntimeException(e);
                         }
                         currentLevelText.setText("2");
-                        queenMovement = "random";
+                        queenMovement = "smart";
                     } else if (currentLevelText.getText().equals("2")) {
                         GamePageController.level++;
                         visitedSquares.clear();
@@ -687,6 +686,7 @@ public class GamePageController {
     public void checkIsGameOver() throws IOException {
         System.out.println("pointsPerMove" + pointsPerMove);
         if(isGameOver){
+            queenMovement = "random";
             GamePageController.isGameOver=false; //for new game
             try {
                 root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
@@ -770,10 +770,13 @@ public class GamePageController {
 
     public void deleteLastThreeSteps(){
         ArrayList<Square> rePaintSquares = new ArrayList<>();
+        int firstPoint = pointsPerMove.remove(pointsPerMove.size() -1);
+        int secondPoint = pointsPerMove.remove(pointsPerMove.size() -1);
+        int thirdPoint = pointsPerMove.remove(pointsPerMove.size() -1);
         if(visitedSquares.size() > 3){
-            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
-            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
-            GamePageController.score -= pointsPerMove.remove(pointsPerMove.size() -1);
+            GamePageController.score -= firstPoint;
+            GamePageController.score -= secondPoint;
+            GamePageController.score -= thirdPoint;
             rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 1));
             rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 2));
             rePaintSquares.add(visitedSquares.get(visitedSquares.size() - 3));
