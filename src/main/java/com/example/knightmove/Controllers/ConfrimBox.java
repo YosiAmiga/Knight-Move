@@ -1,6 +1,7 @@
 package com.example.knightmove.Controllers;
 
 import com.example.knightmove.Model.Question;
+import com.example.knightmove.Model.Sound;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
@@ -64,12 +65,14 @@ public class ConfrimBox {
 
         Ans1.setOnAction(e->{
             if (Rightanswer.equals(Ans1.getText())){
+                goodSound();
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
                 GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
+                badSound();
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
@@ -78,12 +81,14 @@ public class ConfrimBox {
         });
         Ans2.setOnAction(e->{
             if (Rightanswer.equals(Ans2.getText())){
+                goodSound();
                 correctAnswer.showAndWait();
                 GamePageController.addToPoints(q.getLevel());
                 GamePageController.score += q.getLevel();
                 window.close();
             }
             else {
+                badSound();
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
@@ -92,12 +97,14 @@ public class ConfrimBox {
         });
         Ans3.setOnAction(e->{
             if (Rightanswer.equals(Ans3.getText())){
+                goodSound();
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
                 GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
+                badSound();
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
@@ -106,12 +113,14 @@ public class ConfrimBox {
         });
         Ans4.setOnAction(e->{
             if (Rightanswer.equals(Ans4.getText())){
+                goodSound();
                 correctAnswer.showAndWait();
                 GamePageController.score += q.getLevel();
                 GamePageController.addToPoints(q.getLevel());
                 window.close();
             }
             else {
+                badSound();
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
@@ -126,6 +135,22 @@ public class ConfrimBox {
         window.setScene(scene);
         window.showAndWait();
     }
+    public static void badSound() {
+        Sound s = new Sound();
+        try {
+            s.errorSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
+    public static void goodSound() {
+        Sound s = new Sound();
+        try {
+            s.successSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
 }

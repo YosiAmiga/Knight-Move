@@ -1,6 +1,7 @@
 package com.example.knightmove.Controllers;
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.Player;
+import com.example.knightmove.Model.Sound;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -113,6 +114,7 @@ public class LogInController {
     }
 
     public void failLogin() {
+        badSound();
         Alert al = new Alert(Alert.AlertType.ERROR);
         al.setContentText("Failed to add new user with nickname: " + userNameTextField.getText() + "Change it!");
         al.setHeaderText("Could not add user to system!");
@@ -121,6 +123,7 @@ public class LogInController {
         al.showAndWait();
     }
     public void failLoginCheckboxUnselected() {
+        badSound();
         Alert al = new Alert(Alert.AlertType.ERROR);
         al.setContentText("Please select the check box if you are a new user!");
         al.setHeaderText("Checkbox Unselected!");
@@ -129,6 +132,7 @@ public class LogInController {
         al.showAndWait();
     }
     public void successAdded() {
+        goodSound();
         Alert al = new Alert(Alert.AlertType.INFORMATION);
         al.setContentText(userNameTextField.getText()+" Added Successfully! Moving to App intro page");
         al.setHeaderText("Success");
@@ -138,6 +142,7 @@ public class LogInController {
     }
 
     public void successLogin() {
+        goodSound();
         Alert al = new Alert(Alert.AlertType.INFORMATION);
         al.setContentText(" Welcome back! "+userNameTextField.getText()+" Moving to App intro page");
         al.setHeaderText("Success");
@@ -145,6 +150,22 @@ public class LogInController {
         al.setResizable(false);
         al.showAndWait();
     }
+    public static void badSound() {
+        Sound s = new Sound();
+        try {
+            s.errorSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
+    public static void goodSound() {
+        Sound s = new Sound();
+        try {
+            s.successSound();
+        } catch (Exception e2) {
+            e2.printStackTrace();
+        }
+    }
 
 }
