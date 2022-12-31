@@ -6,8 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Fixed new Question square">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +39,19 @@
     <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
