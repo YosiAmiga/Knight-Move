@@ -135,18 +135,18 @@ public class ChessBoard {
             }
         }
 
-        for(Point p : ForgettingSquaresLocations){
-            if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
-            }
-        }
-        for(Point p : RandomJumpSquaresLocations){
-            if(currentPoint.x == p.x && currentPoint.y == p.y){
-                square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                return;
-            }
-        }
+//        for(Point p : ForgettingSquaresLocations){
+//            if(currentPoint.x == p.x && currentPoint.y == p.y){
+//                square.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//                return;
+//            }
+//        }
+//        for(Point p : RandomJumpSquaresLocations){
+//            if(currentPoint.x == p.x && currentPoint.y == p.y){
+//                square.setBackground(new Background(new BackgroundFill(Consts.colorRandomJumpSquare, CornerRadii.EMPTY, Insets.EMPTY)));
+//                return;
+//            }
+//        }
         for(Point p : QuestionSquaresLocations){
             if(currentPoint.x == p.x && currentPoint.y == p.y){
                 Integer level = GamePageController.getLevelByThePostion(questionSquaresLocations, p);
@@ -252,7 +252,7 @@ public class ChessBoard {
         }
 
         for(Point p : RandomJumpSquares){
-            System.out.println("random jump square points: " + p.x +", "+ p.y);
+//            System.out.println("random jump square points: " + p.x +", "+ p.y);
         }
         return RandomJumpSquares;
     }

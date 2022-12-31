@@ -685,7 +685,7 @@ public class GamePageController {
      * @throws IOException
      */
     public void checkIsGameOver() throws IOException {
-        System.out.println("pointsPerMove" + pointsPerMove);
+//        System.out.println("pointsPerMove" + pointsPerMove);
         if(isGameOver){
             gameOverSound();
             queenMovement = "random";
@@ -814,14 +814,6 @@ public class GamePageController {
                 square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
             }else{
                 square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-        }
-        for(Square s : cb.getSquares()){
-            for(Point p : cb.forgettingSquaresLocations){
-                if(s.getX() == p.getX() && s.getY() == p.getY()){
-                    s.setBackground(new Background(new BackgroundFill(Consts.colorForgettingSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                    return;
-                }
             }
         }
     }
