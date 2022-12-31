@@ -1,16 +1,13 @@
 package com.example.knightmove.Model;
 
 
-import com.example.knightmove.controllers.GamePageController;
+import com.example.knightmove.Controllers.GamePageController;
 import javafx.event.EventHandler;
 import javafx.scene.effect.Glow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
 
-import java.io.IOException;
 import java.util.ArrayList;
 
 public abstract class Piece extends ImageView {
