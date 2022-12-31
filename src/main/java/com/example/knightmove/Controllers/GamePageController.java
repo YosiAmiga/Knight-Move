@@ -612,7 +612,6 @@ public class GamePageController {
      */
     private void dropPiece(Square square){
         if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
-        if(currentPiece==null) return; //fix bug
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
