@@ -392,6 +392,7 @@ public class GamePageController {
                     }
                     else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
                         // Need to pass the piece to a random new location.
+                        AlertBox.display("Random Square", "You will jump to a random square");
                         square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
                         addToVisitedSquares(square);
                         ArrayList<String> possibleMovesForRandom = currentPiece.getAllPossibleMoves();
@@ -412,6 +413,7 @@ public class GamePageController {
 
                     }
                     else if(target.toString().equals("Forget")) {
+                        AlertBox.display("Forget Square", "Your last 3 steps will be reverted");
                         deleteLastThreeSteps();
                     }
 
