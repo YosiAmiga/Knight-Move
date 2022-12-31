@@ -109,9 +109,9 @@ public class GamePageController {
 
         // deleteeeee!!!!
         if (GamePageController.level == 3) {
-            startTimeSec = 20; // Change to 60!
+            startTimeSec = 60; // Change to 60!
         } else{
-            startTimeSec = 20; // Change to 60!
+            startTimeSec = 60; // Change to 60!
         }
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
@@ -135,9 +135,9 @@ public class GamePageController {
                 if (timeToChangeLevel) {
                     timeline.stop();
                     if (GamePageController.level == 2) {
-                        startTimeSec = 20; // Change to 60!
+                        startTimeSec = 60; // Change to 60!
                     } else{
-                        startTimeSec = 20; // Change to 60!
+                        startTimeSec = 60; // Change to 60!
                     }
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
@@ -245,7 +245,7 @@ public class GamePageController {
     }
     public void startGame(ActionEvent event) {
         cb.chessBoard.setDisable(false);
-        startTimeSec = 20;// Change to 60!
+        startTimeSec = 60;// Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
