@@ -4,25 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Fixed new Question square">
-      <change afterPath="$PROJECT_DIR$/src/main/View/Style.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template2.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameHistoryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameHistoryPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/LogInKnightMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/LogInKnightMove.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/DatabaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" afterDir="false" />
-    </list>
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="design + score cant be under zero in sys data + edit question fix!" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -467,7 +449,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672325865505</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="design + score cant be under zero in sys data + edit question fix!">
+      <created>1672643258786</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1672643258786</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -526,7 +515,8 @@
     <MESSAGE value="try king move, and rename point to Point" />
     <MESSAGE value="add queen/king eat knight test" />
     <MESSAGE value="Fixed new Question square" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed new Question square" />
+    <MESSAGE value="design + score cant be under zero in sys data + edit question fix!" />
+    <option name="LAST_COMMIT_MESSAGE" value="design + score cant be under zero in sys data + edit question fix!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>
