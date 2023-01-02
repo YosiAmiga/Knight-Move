@@ -82,11 +82,10 @@ public class ChessBoard {
                 square.setName(square.getType() + i + j);
                 square.setPrefHeight(Consts.SQUARE_SIZE);
                 square.setPrefWidth(Consts.SQUARE_SIZE);
-                // NOTE: BoardStroke args (colurOfLinesBetweenSquares, typeOfLineBetweenSquares - could be dotted or full line)
-                square.setBorder(new Border(new BorderStroke(Color.BLACK,
-                        BorderStrokeStyle.DOTTED, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+                square.setBorder(new Border(new BorderStroke(Color.WHITE,
+                        BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
                 setTheme(square, theme, i, j,BlockingSquaresLocations,ForgettingSquaresLocations,RandomJumpSquaresLocations,questionSquaresLocations);
-                chessBoard.add(square, i, j, 1, 1);
+                chessBoard.add(square, i, j);
                 squares.add(square);
             }
         }

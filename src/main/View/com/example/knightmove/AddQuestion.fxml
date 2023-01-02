@@ -8,64 +8,71 @@
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="474.0" prefWidth="799.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.AddQuestionController">
+<AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.AddQuestionController">
    <children>
-      <Text layoutX="525.0" layoutY="56.0" strokeType="OUTSIDE" strokeWidth="0.0" text="הוספת שאלה">
+      <ImageView fitHeight="188.0" fitWidth="200.0" layoutX="-48.0" layoutY="424.0">
+         <image>
+            <Image url="@../../../picture/icon_knight.png" />
+         </image>
+      </ImageView>
+      <Text layoutX="493.0" layoutY="74.0" strokeType="OUTSIDE" strokeWidth="0.0" text="הוספת שאלה">
          <font>
             <Font size="39.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="Level" layoutX="524.0" layoutY="97.0" prefWidth="150.0" />
-      <Text layoutX="721.0" layoutY="113.0" strokeType="OUTSIDE" strokeWidth="0.0" text="רמה:">
+      <ChoiceBox fx:id="Level" layoutX="488.0" layoutY="138.0" prefWidth="150.0" />
+      <Text layoutX="685.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="רמה:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="704.0" layoutY="158.0" strokeType="OUTSIDE" strokeWidth="0.0" text="השאלה:">
+      <Text layoutX="668.0" layoutY="199.0" strokeType="OUTSIDE" strokeWidth="0.0" text="השאלה:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <TextField fx:id="Ans1" layoutX="500.0" layoutY="285.0" />
-      <TextArea fx:id="Question" layoutX="440.0" layoutY="145.0" prefHeight="93.0" prefWidth="235.0" />
-      <TextField fx:id="Ans4" layoutX="500.0" layoutY="421.0" />
-      <TextField fx:id="Ans3" layoutX="500.0" layoutY="371.0" />
-      <TextField fx:id="Ans2" layoutX="500.0" layoutY="326.0" />
-      <Text layoutX="668.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 1:">
+      <TextField fx:id="Ans1" layoutX="464.0" layoutY="326.0" />
+      <TextArea fx:id="Question" layoutX="404.0" layoutY="186.0" prefHeight="93.0" prefWidth="235.0" />
+      <TextField fx:id="Ans4" layoutX="464.0" layoutY="462.0" />
+      <TextField fx:id="Ans3" layoutX="464.0" layoutY="412.0" />
+      <TextField fx:id="Ans2" layoutX="464.0" layoutY="367.0" />
+      <Text layoutX="632.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 1:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="666.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 2:">
+      <Text layoutX="630.0" layoutY="386.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 2:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="666.0" layoutY="390.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 3:">
+      <Text layoutX="630.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 3:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Text layoutX="666.0" layoutY="440.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 4:">
+      <Text layoutX="630.0" layoutY="481.0" strokeType="OUTSIDE" strokeWidth="0.0" text="אפשרות 4:">
          <font>
             <Font size="18.0" />
          </font>
       </Text>
-      <Button layoutX="121.0" layoutY="407.0" mnemonicParsing="false" onAction="#EnterAddQuestion" prefHeight="52.0" prefWidth="97.0" text="הוספה" />
-      <Button layoutX="41.0" layoutY="429.0" mnemonicParsing="false" onAction="#BackPage" text="חזרה" />
-      <Label layoutX="612.0" layoutY="252.0" text="יש לסמן ליד התשובה הנכונה" />
-      <RadioButton fx:id="OptOne" layoutX="461.0" layoutY="289.0" mnemonicParsing="false">
+      <Button id="but" layoutX="528.0" layoutY="523.0" mnemonicParsing="false" onAction="#EnterAddQuestion" prefHeight="52.0" prefWidth="97.0" stylesheets="@../../../Style.css" text="הוספה" />
+      <Button id="but" layoutX="29.0" layoutY="549.0" mnemonicParsing="false" onAction="#BackPage" stylesheets="@../../../Style.css" text="חזרה" />
+      <Label layoutX="576.0" layoutY="293.0" text="יש לסמן ליד התשובה הנכונה" />
+      <RadioButton fx:id="OptOne" layoutX="425.0" layoutY="330.0" mnemonicParsing="false">
          <toggleGroup>
             <ToggleGroup fx:id="Answer" />
          </toggleGroup>
       </RadioButton>
-      <RadioButton fx:id="OptTwo" layoutX="461.0" layoutY="330.0" mnemonicParsing="false" toggleGroup="$Answer" />
-      <RadioButton fx:id="OptThree" layoutX="461.0" layoutY="375.0" mnemonicParsing="false" toggleGroup="$Answer" />
-      <RadioButton fx:id="OptFour" layoutX="460.0" layoutY="422.0" mnemonicParsing="false" toggleGroup="$Answer" />
-      <PieChart fx:id="pieChart" layoutX="41.0" layoutY="66.0" prefHeight="292.0" prefWidth="351.0" />
+      <RadioButton fx:id="OptTwo" layoutX="425.0" layoutY="371.0" mnemonicParsing="false" toggleGroup="$Answer" />
+      <RadioButton fx:id="OptThree" layoutX="425.0" layoutY="416.0" mnemonicParsing="false" toggleGroup="$Answer" />
+      <RadioButton fx:id="OptFour" layoutX="424.0" layoutY="463.0" mnemonicParsing="false" toggleGroup="$Answer" />
+      <PieChart fx:id="pieChart" layoutX="51.0" layoutY="135.0" prefHeight="292.0" prefWidth="351.0" />
    </children>
 </AnchorPane>

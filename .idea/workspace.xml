@@ -4,10 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Fixed new Question square">
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="design + score cant be under zero in sys data + edit question fix!">
+      <change afterPath="$PROJECT_DIR$/src/main/View/picture/icon_knight.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/Style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPage.fxml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AddQuestionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,6 +60,19 @@
     <option name="NEW_BASE" value="master" />
   </component>
   <component name="Git.Settings">
+    <excluded-from-favorite>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/master" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </excluded-from-favorite>
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
@@ -77,34 +110,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
-    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
-    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
-    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Naor/Desktop/Knight-Move&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.33459002&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Downloaded.Files.Path.Enabled": "false",
+    "Git.Branch.Popup.ShowAllRemotes": "true",
+    "Repository.Attach.Annotations": "false",
+    "Repository.Attach.JavaDocs": "false",
+    "Repository.Attach.Sources": "false",
+    "last_opened_file_path": "C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/View/picture",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.33459002"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\View\picture" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\java\com\example\knightmove\controllers" />
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\View\picture" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\View" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
-      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources" />
-      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HelloApplication">
@@ -440,7 +474,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672325865505</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="design + score cant be under zero in sys data + edit question fix!">
+      <created>1672643258786</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1672643258786</updated>
+    </task>
+    <task id="LOCAL-00030" summary="design + score cant be under zero in sys data + edit question fix!">
+      <created>1672643782958</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1672643782958</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -499,7 +547,8 @@
     <MESSAGE value="try king move, and rename point to Point" />
     <MESSAGE value="add queen/king eat knight test" />
     <MESSAGE value="Fixed new Question square" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed new Question square" />
+    <MESSAGE value="design + score cant be under zero in sys data + edit question fix!" />
+    <option name="LAST_COMMIT_MESSAGE" value="design + score cant be under zero in sys data + edit question fix!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

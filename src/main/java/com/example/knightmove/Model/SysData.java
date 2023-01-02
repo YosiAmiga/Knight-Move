@@ -47,7 +47,6 @@ public class SysData {
                     question.setCorrectAnswer(eq.getCorrectAnswer());
                     return true;
                 }
-                return false;
             }
         }
          return false;

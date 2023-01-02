@@ -8,8 +8,10 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class ConfrimBox {
     static Boolean answer;
@@ -43,26 +45,31 @@ public class ConfrimBox {
         GamePageController.timeline.stop();
         Stage window = new Stage ();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setMinWidth(250);
+        window.setWidth(500);
+        window.setHeight(450);
+//        window.setMinWidth(250);
         window.setTitle("Question Level " + q.getLevel());
+        window.initStyle(StageStyle.UTILITY);
         Label label = new Label ();
         label.setText(q.getQuestion());
-
+        label.setFont(new Font(23.0));
         Button Ans1 = new Button (q.getAnswers().get(0));
         Button Ans2 = new Button (q.getAnswers().get(1));
         Button Ans3 = new Button (q.getAnswers().get(2));
         Button Ans4 = new Button (q.getAnswers().get(3));
         String Rightanswer = q.getRightAnswer();
-
+        Ans1.setStyle("-fx-background-color: #628fbd; -fx-border-color: grey; -fx-border-radius: 5;");
+        Ans2.setStyle("-fx-background-color: #628fbd; -fx-border-color: grey; -fx-border-radius: 5;");
+        Ans3.setStyle("-fx-background-color: #628fbd; -fx-border-color: grey; -fx-border-radius: 5;");
+        Ans4.setStyle("-fx-background-color: #628fbd; -fx-border-color: grey; -fx-border-radius: 5;");
         Alert correctAnswer = new Alert(Alert.AlertType.INFORMATION);
         correctAnswer.setTitle("Correct Answer");
-        correctAnswer.setHeaderText("Correct Answer");
-        correctAnswer.setContentText("Congratulations, that is the correct answer.");
+        correctAnswer.setHeaderText("Congratulations, that is the correct answer.");
 
         Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
         wrongAnswer.setTitle("Wrong Answer");
-        wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("The right Answer is: " + q.getRightAnswer());
+        wrongAnswer.setHeaderText("The right Answer is: " + Rightanswer);
+
 
         Ans1.setOnAction(e->{
             if (Rightanswer.equals(Ans1.getText())){
@@ -77,6 +84,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -93,6 +103,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -109,6 +122,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -125,6 +141,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
