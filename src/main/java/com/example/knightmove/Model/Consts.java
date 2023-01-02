@@ -18,7 +18,7 @@ public class Consts {
             "SELECT * FROM Game_History_tbl";
     public static final String DELETE_ALL_GAME_HISTORY =
             "DELETE FROM Game_History_tbl";
-    public static final int SQUARE_SIZE = 50;
+    public static final int SQUARE_SIZE = 58;
 
     public static final int SQUARES_IN_ROW = 8;
     public static final int SQUARES_IN_COLUMN = 8;
@@ -70,7 +70,6 @@ public class Consts {
     public static Color colorEasyQuestionSquare = Color.WHITE;
     public static Color colorMediumQuestionSquare = Color.YELLOW;
     public static Color colorHardQuestionSquare = Color.RED;
-
 
 }
 

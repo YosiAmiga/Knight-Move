@@ -203,8 +203,6 @@ public class GamePageController {
     public void showGameRulesPopUp(ActionEvent event) throws IOException {
         Stage popUpStage = new Stage();
         popUpStage.setScene(new Scene(FXMLLoader.load(HelloApplication.class.getResource("GameRulesPagePopUp.fxml"))));
-        popUpStage.setWidth(850);
-        popUpStage.setHeight(550);
         popUpStage.setX(100);
         popUpStage.setY(100);
         popUpStage.show();
@@ -691,13 +689,13 @@ public class GamePageController {
      * @throws IOException
      */
     public void checkIsGameOver() throws IOException {
-//        System.out.println("pointsPerMove" + pointsPerMove);
         if(isGameOver){
             gameOverSound();
             queenMovement = "random";
             GamePageController.isGameOver=false; //for new game
             try {
                 root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
+                timeline.stop();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -709,17 +707,7 @@ public class GamePageController {
         }
     }
 
-    /**
-     * remove question square and rnd new question square
-     * @param square - the question square we click on
-     */
-    public void randnewSpecialSquare(Square square)
-    {
-        if(square.getType() == "Question")
-        {
-            GamePageController.cb.removeAndCreateQuestionSquare(square.getX(), square.getY(), this.visitedSquares);
-        }
-    }
+
     public void changeLevel(int level) throws IOException {
         if(level==2)
         {
@@ -756,19 +744,8 @@ public class GamePageController {
         currentPiece=null;
     }
 
-    /*
-    public void resetVisitedSquares() {
-        for(Square square : visitedSquares){
-            if((square.getY()+square.getX())%2==0){
-                square.setBackground(new Background(new BackgroundFill(Consts.color1, CornerRadii.EMPTY, Insets.EMPTY)));
-            }else{
-                square.setBackground(new Background(new BackgroundFill(Consts.color2, CornerRadii.EMPTY, Insets.EMPTY)));
-            }
-        }
-        this.visitedSquares = new ArrayList<>();
-    }
-     */
-    public static Integer getLevelByThePostion(ArrayList<Point> a, Point point){
+
+    public static Integer getLevelByThePostion(ArrayList<Point> a, Point point){ //get a po
         Integer l=1;
         for (Point p:a){
             if (p.equals(point)){

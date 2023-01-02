@@ -6,69 +6,69 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="497.0" prefWidth="813.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.GameRulesController">
+<AnchorPane prefHeight="500.0" prefWidth="820.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.GameRulesController">
    <children>
-      <ImageView fitHeight="522.0" fitWidth="833.0" layoutX="-9.0" layoutY="-20.0">
+      <ImageView fitHeight="188.0" fitWidth="200.0" layoutX="-44.0" layoutY="311.0">
          <image>
-            <Image url="@../../../picture/template3.jpg" />
+            <Image url="@../../../picture/icon_knight.png" />
          </image>
       </ImageView>
-      <Text layoutX="572.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="חוקי המשחק:" underline="true">
+      <Text layoutX="572.0" layoutY="55.0" strokeType="OUTSIDE" strokeWidth="0.0" text="חוקי המשחק" underline="true">
          <font>
             <Font name="System Bold" size="38.0" />
          </font>
       </Text>
-      <Text layoutX="138.0" layoutY="110.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. מטרתכם היא לצבור כמות מקסימלית של נקודות באמצעות מעבר עם הפרש על המשבצות בזמן הקצוב">
+      <Text layoutX="142.0" layoutY="98.0" strokeType="OUTSIDE" strokeWidth="0.0" text="1. מטרתכם היא לצבור כמות מקסימלית של נקודות באמצעות מעבר עם הפרש על המשבצות בזמן הקצוב">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="28.0" layoutY="146.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. תנועתו של הפרש משלבת ישר ואלכסון; שתי משבצות באחד הכיוונים (אופק או אנכי) ולאחר מכן משבצת אחת בכיוון ניצב">
+      <Text layoutX="32.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="2. תנועתו של הפרש משלבת ישר ואלכסון; שתי משבצות באחד הכיוונים (אופק או אנכי) ולאחר מכן משבצת אחת בכיוון ניצב">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="147.0" layoutY="183.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. המשחק יתבצע בתורות כאשר מולך המחשב משחק כמלכה, וכאשר הוא משחק כמלך, הוא נע לפי זמן.">
+      <Text layoutX="154.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="3. המשחק יתבצע בתורות כאשר מולך המחשב משחק כמלכה, וכאשר הוא משחק כמלך, הוא נע לפי זמן">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="474.0" layoutY="254.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. כאשר הפרש מתנגש באחד הכלים, המשחק נגמר.">
+      <Text layoutX="479.0" layoutY="243.0" strokeType="OUTSIDE" strokeWidth="0.0" text="5. כאשר הפרש מתנגש באחד הכלים, המשחק נגמר">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="48.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. על המשבצות יהיו מפוזרות שאלות ברמות שונות, עליכם לענות עליהן במידה ותדרכו עליהן. לכל רמת קושי צבע משלה:">
+      <Text layoutX="48.0" layoutY="281.0" strokeType="OUTSIDE" strokeWidth="0.0" text="6. על המשבצות יהיו מפוזרות שאלות ברמות שונות, עליכם לענות עליהן במידה ותדרכו עליהן. לכל רמת קושי צבע משלה:">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="455.0" layoutY="380.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת קפיצה אקראית- שינוי מיקום למשבצת אחרת.">
+      <Text layoutX="461.0" layoutY="381.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת קפיצה אקראית- שינוי מיקום למשבצת אחרת">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="532.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="דריכה על משבצת מבוקרת תוריד נקודה.">
+      <Text layoutX="550.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="דריכה על משבצת מבוקרת תוריד נקודה">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="83.0" layoutY="478.0" strokeType="OUTSIDE" strokeWidth="0.0" text="*הלוח מאפשר תנועה סיבובית- יציאה בקצה אחד שלו וכניסה בשני.">
+      <Text layoutX="101.0" layoutY="476.0" strokeType="OUTSIDE" strokeWidth="0.0" text="הלוח מאפשר תנועה סיבובית- יציאה בקצה אחד שלו וכניסה בשני">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="191.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת שוכחת- שלושת הצעדכים האחרונים שלך נמחקים. לאחר נחיתה עליה המשבצת תיעלם.">
+      <Text layoutX="194.0" layoutY="406.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת שוכחת- שלושת הצעדכים האחרונים שלך נמחקים. לאחר נחיתה עליה המשבצת תיעלם">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="556.0" layoutY="446.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת חסומה- לא ניתן לעמוד עליה.">
+      <Text layoutX="567.0" layoutY="433.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצת חסומה- לא ניתן לעמוד עליה">
          <font>
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="160.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. שלב 1 - מלכה נעה רנדומלית. שלב 2 - מלכה נעה בצורה חכמה. שלב 3&amp;4 - מלך נע במהירות גדלה.">
+      <Text layoutX="167.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="4. שלב 1 - מלכה נעה רנדומלית. שלב 2 - מלכה נעה בצורה חכמה. שלב 3&amp;4 - מלך נע במהירות גדלה">
          <font>
             <Font size="15.0" />
          </font>
@@ -78,22 +78,22 @@
             <Font size="15.0" />
          </font>
       </Text>
-      <Text layoutX="688.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה קלה בלבן">
+      <Text layoutX="549.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה קלה בלבן">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="512.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה בינונית בצהוב">
+      <Text layoutX="373.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה בינונית בצהוב">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="346.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה קשה באדום">
+      <Text layoutX="207.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="שאלה קשה באדום">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>
       </Text>
-      <Text layoutX="667.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצות מיוחדות:" underline="true">
+      <Text layoutX="677.0" layoutY="353.0" strokeType="OUTSIDE" strokeWidth="0.0" text="משבצות מיוחדות:" underline="true">
          <font>
             <Font name="System Bold" size="16.0" />
          </font>

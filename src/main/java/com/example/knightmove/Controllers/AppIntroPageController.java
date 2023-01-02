@@ -14,6 +14,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 public class AppIntroPageController implements Initializable {
@@ -32,10 +33,12 @@ public class AppIntroPageController implements Initializable {
 
     @FXML
     public Text userLoginText;
+
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         userLoginText.setText(userName);
-        if(!userName.equals("Yosi")&&!userName.equals("Naor")&&!userName.equals("Itay")&&!userName.equals("Dana")&&!userName.equals("Tsvika")){
+        if(!userName.equals("Yosi")&&!userName.equals("Naor")&&!userName.equals("Itay")&&!userName.equals("Dana")&&!userName.equals("Tsvika")&&!userName.equals("Nareed")&&!userName.equals("Misa")){
+            //only the project's members and course faculty can access the "Questions" section
             questionButton.setVisible(false);
         }
         else {
@@ -44,6 +47,7 @@ public class AppIntroPageController implements Initializable {
 
     }
 
+    //all the followings are actions events for user's choice
 
     public void switchToGamePage(ActionEvent event) throws IOException {
         EndGameController.userName = userName;
@@ -51,7 +55,6 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -68,7 +71,6 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 
@@ -77,7 +79,6 @@ public class AppIntroPageController implements Initializable {
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
-//        stage.setFullScreen(true); // set full screen
         stage.show();
     }
 

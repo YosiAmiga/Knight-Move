@@ -15,9 +15,9 @@
 
 <AnchorPane prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.EditQuestionController">
     <children>
-      <ImageView fitHeight="623.0" fitWidth="762.0" layoutY="-14.0">
+      <ImageView fitHeight="164.0" fitWidth="174.0" layoutX="-40.0" layoutY="436.0">
          <image>
-            <Image url="@../../../picture/template3.jpg" />
+            <Image url="@../../../picture/icon_knight.png" />
          </image>
       </ImageView>
         <Text layoutX="500.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="עריכת שאלה">
@@ -62,7 +62,7 @@
             </font>
         </Text>
         <Button id="but" layoutX="534.0" layoutY="506.0" mnemonicParsing="false" onAction="#EnterAddQuestion" prefHeight="52.0" prefWidth="97.0" stylesheets="@../../../Style.css" text="אישור" />
-        <Button id="but" layoutX="24.0" layoutY="558.0" mnemonicParsing="false" onAction="#BackPage" stylesheets="@../../../Style.css" text="חזרה" />
+        <Button id="but" layoutX="23.0" layoutY="548.0" mnemonicParsing="false" onAction="#BackPage" stylesheets="@../../../Style.css" text="חזרה" />
         <Label layoutX="568.0" layoutY="265.0" text="יש לסמן ליד התשובה הנכונה" />
         <RadioButton fx:id="OptOne" layoutX="417.0" layoutY="302.0" mnemonicParsing="false">
             <toggleGroup>

@@ -32,8 +32,7 @@
                         <TableView fx:id="EasyTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
                               <TableColumn fx:id="easyAnsCol" prefWidth="322.0" text="תשובה" />
-                              <TableColumn fx:id="easyQuestionCol" prefWidth="339.0" text="שאלה" />
-                              <TableColumn fx:id="EasyNumCol" minWidth="0.0" prefWidth="51.0" text="#" />
+                              <TableColumn fx:id="easyQuestionCol" prefWidth="390.0" text="שאלה" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -46,8 +45,7 @@
                         <TableView fx:id="MedTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
                               <TableColumn fx:id="medAnsCol" prefWidth="322.0" text="תשובה" />
-                              <TableColumn fx:id="medQuestionCol" prefWidth="339.0" text="שאלה" />
-                              <TableColumn minWidth="0.0" prefWidth="51.0" text="#" />
+                              <TableColumn fx:id="medQuestionCol" prefWidth="390.0" text="שאלה" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
@@ -60,8 +58,7 @@
                         <TableView fx:id="HardTable" prefHeight="340.0" prefWidth="713.0">
                            <columns>
                               <TableColumn fx:id="hardAnsCol" prefWidth="322.0" text="תשובה" />
-                              <TableColumn fx:id="hardQuesCol" prefWidth="339.0" text="שאלה" />
-                              <TableColumn minWidth="0.0" prefWidth="51.0" text="#" />
+                              <TableColumn fx:id="hardQuesCol" prefWidth="390.0" text="שאלה" />
                            </columns>
                         </TableView>
                      </children></AnchorPane>
