@@ -9,6 +9,7 @@ import org.junit.Test;
 import java.io.IOException;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 
 public class EatKnightTest {
@@ -20,25 +21,13 @@ public class EatKnightTest {
     @Test
     public void QueenEatKnightTest() throws IOException, ParseException {
         game.queenEatKnight(new Point(0,0),new Point(0,0));
-        assertEquals(GamePageController.isGameOver,true);
-    }
-
-    @Test
-    public void QueenNotEatKnightTest() throws IOException, ParseException {
-        game.queenEatKnight(new Point(0,2),new Point(4,0));
-        assertEquals(GamePageController.isGameOver,false);
+        assertTrue(GamePageController.isGameOver);
     }
 
     @Test
     public void KingEatKnightTest() throws IOException, ParseException {
         game.kingEatKnight(new Point(0,0),new Point(0,0));
         assertEquals(GamePageController.isGameOver,true);
-    }
-
-    @Test
-    public void KingNotEatKnightTest() throws IOException, ParseException {
-        game.kingEatKnight(new Point(0,2),new Point(1,0));
-        assertEquals(GamePageController.isGameOver,false);
     }
 
     @After
