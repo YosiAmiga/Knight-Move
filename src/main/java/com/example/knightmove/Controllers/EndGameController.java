@@ -26,8 +26,6 @@ public class EndGameController {
     @FXML
     private Pane endGamepopup;
 
-    @FXML
-    private Button returnButton;
 
     @FXML
     private Label textLabel;
@@ -54,13 +52,7 @@ public class EndGameController {
         }
         GamePageController.level=1;
     }
-    public void returnToAppIntroPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-        stage.show();
-    }
+
     public ImageView getImageView(){ return this.medalPicture;}
 
     /**

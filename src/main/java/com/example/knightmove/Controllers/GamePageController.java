@@ -2,6 +2,7 @@ package com.example.knightmove.Controllers;
 
 import com.example.knightmove.HelloApplication;
 import com.example.knightmove.Model.*;
+import javafx.animation.Animation;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.event.ActionEvent;
@@ -14,6 +15,7 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
@@ -40,10 +42,14 @@ public class GamePageController {
     private Scene scene;
     private Parent root;
 
+    @FXML
+    private Button startLevelBtn;
     static  Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
     public Point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
+
+
 
     public static Piece currentPiece; // piece playing (king/queen/knight)
 
@@ -60,11 +66,6 @@ public class GamePageController {
     String themeLevel2 = "Marine";
     String themeLevel3 = "Coral";
     String themeLevel4 = "Emerald";
-    @FXML
-    private Text CurrentTurnText;
-
-    @FXML
-    private Text CurrentScoreText;
 
     @FXML
     public Label currentScore;
@@ -92,9 +93,14 @@ public class GamePageController {
     }
 
     public void initialize() {
+        GamePageController.isGameOver=false; //for new game
+        startLevelBtn.setDisable(false);
+        currentScore.setText("0");
+        currentLevelText.setText("1");
 
         // Themes are Coral, Dusk, Wheat, Marine, Emerald, Sandcastle
-
+        startTimeSec=60;
+        timeline.stop();
         if (GamePageController.level == 1) {
             cb = new ChessBoard(chessBoard, themeLevel1, 0, 0, 3, 3);
         }
@@ -193,6 +199,8 @@ public class GamePageController {
     // return to main panel from the game
     public void returnToAppIntroPage(ActionEvent event) throws IOException {
         GamePageController.level=1;
+        GamePageController.timeline.stop();
+        GamePageController.timeline.getKeyFrames().clear();
         root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
         stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -242,72 +250,29 @@ public class GamePageController {
         this.currentScore.setText(Integer.toString(GamePageController.score));
     }
     public void startGame(ActionEvent event) {
+        startLevelBtn.setDisable(true);
         cb.chessBoard.setDisable(false);
+
         startTimeSec = 60;// Change to 60!
-        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                startTimeSec--;
-                boolean isSecondsZero = startTimeSec == 0;
-                boolean timeToChangeLevel = startTimeSec == 0;
-
-                currentTimeText.setText(String.format("%02d sec", startTimeSec));
-            }
-        }));
+        timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), evt ->updateTime()));
+        currentTimeText.setText(String.format("%02d sec", startTimeSec));
+//            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
+//                @Override
+//                public void handle(ActionEvent event) {
+//                    startTimeSec--;
+//                    boolean isSecondsZero = startTimeSec == 0;
+//                    boolean timeToChangeLevel = startTimeSec == 0;
+//
+//                    currentTimeText.setText(String.format("%02d sec", startTimeSec));
+//                }
+//            }));
         timeline.playFromStart();
+
     }
-
-    //display question when click on question square
-    public static void createQuestionPopUp(){
-        HashSet<Question> allQuestionsInJSON= Json.readFromJSON();
-        // convert the HashSet to an array
-        Object[] array = allQuestionsInJSON.toArray();
-        // get a random questions from the array
-        Object randomQuestion = array[ThreadLocalRandom.current().nextInt(array.length)];
-        Question questionObject = (Question) randomQuestion;
-        String questionNameToPopUp = questionObject.getQuestion();
-        Integer questionLevel = questionObject.getLevel();
-        ArrayList<String> answers = questionObject.getAnswers();
-        ArrayList<ButtonType> answersOptions = new ArrayList<>();
-        for(String answer : answers){
-            answersOptions.add(new ButtonType(answer));
-        }
-        Integer correctAnswerNumber = questionObject.getCorrectAnswer();
-        String correctAnswerStringByIndex = answers.get(correctAnswerNumber-1);
-
-        // create an Alert object
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,"",answersOptions.get(0),answersOptions.get(1),answersOptions.get(2),answersOptions.get(3));
-        alert.setHeaderText(questionNameToPopUp);
-        // set the alert's message to the first question
-        alert.setContentText("Select your answer:");
-        // show the alert and get the user's response
-        ButtonType response = alert.showAndWait().orElse(null);
-        String playerSelectedAnswer = response.getText();
-
-        Alert correctAnswer = new Alert(Alert.AlertType.INFORMATION);
-        correctAnswer.setTitle("Correct Answer");
-        correctAnswer.setHeaderText("Correct Answer");
-        correctAnswer.setContentText("Congratulations, that is the correct answer.");
-
-        Alert wrongAnswer = new Alert(Alert.AlertType.ERROR);
-        wrongAnswer.setTitle("Wrong Answer");
-        wrongAnswer.setHeaderText("Wrong Answer");
-        wrongAnswer.setContentText("Sorry, that is the wrong answer. Please try again.");
-
-        // check the user's response
-        if (playerSelectedAnswer.equals(correctAnswerStringByIndex)) {
-            correctAnswer.showAndWait();
-            GamePageController.score += questionLevel;
-            addToPoints(level);
-        }else {
-            wrongAnswer.showAndWait();
-            GamePageController.score -= (questionLevel+1);
-            addToPoints(-(level+1));
-            if(GamePageController.score<0)
-            {
-                GamePageController.score=0;
-            }
-        }
+    private void updateTime(){
+        startTimeSec--;
+        boolean isSecondsZero = startTimeSec == 0;
+        boolean timeToChangeLevel = startTimeSec == 0;
     }
 
     public static void questionPopUp(Integer level) {
@@ -693,6 +658,7 @@ public class GamePageController {
             gameOverSound();
             queenMovement = "random";
             GamePageController.isGameOver=false; //for new game
+
             try {
                 root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
                 timeline.stop();
@@ -716,6 +682,8 @@ public class GamePageController {
             {
                 isGameOver=true;
                 checkIsGameOver();
+                GamePageController.timeline.stop();
+
             }
             else{ cb = new ChessBoard(chessBoard, themeLevel2,0,3,0,3); }
         }
