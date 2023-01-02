@@ -5,8 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="Fixed new Question square">
+      <change afterPath="$PROJECT_DIR$/src/main/View/Style.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/View/picture/template3.jpg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameHistoryPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameHistoryPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/LogInKnightMove.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/LogInKnightMove.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/DatabaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/DatabaseController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/HelloApplication.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,11 +127,11 @@
       <recent name="C:\Users\97252\Desktop\Knight-Move\src\main\resources\com\example\knightmove" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\View\picture" />
+      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\View" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src" />
       <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove" />
-      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources" />
-      <recent name="C:\Users\danaz\OneDrive - University of Haifa\Documents\GitHub\Knight-Move\src\main\resources\com\example\knightmove\View" />
     </key>
   </component>
   <component name="RunManager" selected="Application.HelloApplication">

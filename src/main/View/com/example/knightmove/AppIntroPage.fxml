@@ -1,27 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="userNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.AppIntroPageController">
+<AnchorPane fx:id="userNameTextField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.AppIntroPageController">
    <children>
-      <Text fill="#0a721f" layoutX="117.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome: ">
+      <ImageView fitHeight="614.0" fitWidth="756.0" layoutY="-7.0">
+         <image>
+            <Image url="@../../../picture/template2.jpg" />
+         </image>
+      </ImageView>
+      <Text fill="WHITE" layoutX="19.0" layoutY="154.0" strokeType="OUTSIDE" strokeWidth="0.0" text="welcome, ">
          <font>
-            <Font size="47.0" />
+            <Font name="Candara" size="75.0" />
          </font>
       </Text>
-      <Text layoutX="275.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="let's play!" />
-      <Button fx:id="GameRulesButton" layoutX="166.0" layoutY="230.0" mnemonicParsing="false" onAction="#switchToGameRulesPage" prefHeight="25.0" prefWidth="127.0" text="Game rules" />
-      <Button fx:id="PlayButton" layoutX="336.0" layoutY="230.0" mnemonicParsing="false" onAction="#switchToGamePage" prefHeight="25.0" prefWidth="127.0" text="Play" />
-      <Text fx:id="userLoginText" layoutX="355.0" layoutY="92.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" wrappingWidth="143.60345458984375">
+      <Button id="but" fx:id="GameRulesButton" layoutX="161.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchToGameRulesPage" prefHeight="25.0" prefWidth="127.0" stylesheets="@../../../Style.css" text="Game rules" />
+      <Button id="but" fx:id="PlayButton" layoutX="436.0" layoutY="307.0" mnemonicParsing="false" onAction="#switchToGamePage" prefHeight="25.0" prefWidth="127.0" stylesheets="@../../../Style.css" text="Play" />
+      <Text fx:id="userLoginText" fill="WHITE" layoutX="336.0" layoutY="157.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Player" wrappingWidth="202.60345458984375">
          <font>
-            <Font size="47.0" />
+            <Font name="Candara" size="75.0" />
          </font>
       </Text>
-      <Button layoutX="29.0" layoutY="351.0" mnemonicParsing="false" onAction="#returnToLoginPage" text="Go Back" />
-      <Button layoutX="274.0" layoutY="295.0" mnemonicParsing="false" onAction="#goToDatabasePage" text="DB tables" />
-      <Button fx:id="questionButton" layoutX="482.0" layoutY="351.0" mnemonicParsing="false" onAction="#QuestionPage" text="Edit Questions" />
+      <Button id="but" layoutX="21.0" layoutY="546.0" mnemonicParsing="false" onAction="#returnToLoginPage" stylesheets="@../../../Style.css" text="Go Back" />
+      <Button id="but" layoutX="330.0" layoutY="406.0" mnemonicParsing="false" onAction="#goToDatabasePage" stylesheets="@../../../Style.css" text="DB tables" />
+      <Button id="but" fx:id="questionButton" layoutX="637.0" layoutY="546.0" mnemonicParsing="false" onAction="#QuestionPage" stylesheets="@../../../Style.css" text="Edit Questions" />
    </children>
 </AnchorPane>

@@ -76,6 +76,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -92,6 +95,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -108,6 +114,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });
@@ -124,6 +133,9 @@ public class ConfrimBox {
                 wrongAnswer.showAndWait();
                 GamePageController.score -= (q.getLevel() + 1);
                 GamePageController.addToPoints(-(q.getLevel() + 1));
+                if (GamePageController.score< 0){
+                    GamePageController.score=0;
+                }
                 window.close();
             }
         });

@@ -3,23 +3,30 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="501.0" prefWidth="745.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.DatabaseController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.DatabaseController">
     <children>
-        <TableView fx:id="playerTableView" layoutX="10.0" layoutY="10.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="131.0">
+      <ImageView fitHeight="600.0" fitWidth="764.0" layoutX="-10.0">
+         <image>
+            <Image url="@../../../picture/template2.jpg" />
+         </image>
+      </ImageView>
+        <TableView fx:id="playerTableView" layoutX="41.0" layoutY="88.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="361.0" prefWidth="131.0" stylesheets="@../../../Style.css">
             <columns>
                 <TableColumn fx:id="nickname" prefWidth="128.7999906539917" text="Nickname" />
             </columns>
         </TableView>
-        <Button layoutX="79.0" layoutY="447.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" text="Go Back" />
-        <TableView fx:id="scoreTableView" layoutX="215.0" layoutY="10.0" prefHeight="361.0" prefWidth="409.0">
+        <Button id="but" layoutX="23.0" layoutY="554.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" stylesheets="@../../../Style.css" text="Go Back" />
+        <TableView fx:id="scoreTableView" layoutX="274.0" layoutY="87.0" prefHeight="361.0" prefWidth="409.0" stylesheets="@../../../Style.css">
             <columns>
                 <TableColumn fx:id="gameHistoryIDColumn" prefWidth="70.40000915527344" text="GameID" />
                 <TableColumn fx:id="nicknameForGameHistoryColumn" prefWidth="174.39996337890625" text="Nickname" />
                 <TableColumn fx:id="scoreColumn" prefWidth="162.60003662109375" text="Score" />
             </columns>
         </TableView>
-        <Button layoutX="360.0" layoutY="380.0" mnemonicParsing="false" onAction="#deleteAllGameHistoryConfirmation" text="Clear Game History" />
+        <Button id="but" layoutX="404.0" layoutY="472.0" mnemonicParsing="false" onAction="#deleteAllGameHistoryConfirmation" stylesheets="@../../../Style.css" text="Clear Game History" />
     </children>
 </Pane>
