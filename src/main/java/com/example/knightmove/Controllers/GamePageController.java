@@ -40,7 +40,7 @@ public class GamePageController {
     private Scene scene;
     private Parent root;
 
-    private Timeline timeline = new Timeline();
+    static  Timeline timeline = new Timeline();
     public static boolean isGameOver =false;
     public Point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
@@ -109,9 +109,9 @@ public class GamePageController {
 
         // deleteeeee!!!!
         if (GamePageController.level == 3) {
-            startTimeSec = 20; // Change to 60!
+            startTimeSec = 60; // Change to 60!
         } else{
-            startTimeSec = 20; // Change to 60!
+            startTimeSec = 60; // Change to 60!
         }
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
@@ -135,9 +135,9 @@ public class GamePageController {
                 if (timeToChangeLevel) {
                     timeline.stop();
                     if (GamePageController.level == 2) {
-                        startTimeSec = 20; // Change to 60!
+                        startTimeSec = 60; // Change to 60!
                     } else{
-                        startTimeSec = 20; // Change to 60!
+                        startTimeSec = 60; // Change to 60!
                     }
                     if (currentLevelText.getText().equals("1")) {
                         GamePageController.level++;
@@ -245,7 +245,7 @@ public class GamePageController {
     }
     public void startGame(ActionEvent event) {
         cb.chessBoard.setDisable(false);
-        startTimeSec = 20;// Change to 60!
+        startTimeSec = 60;// Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
@@ -331,6 +331,7 @@ public class GamePageController {
             }
             //display the question
             ConfrimBox.displayQuestion(theQuestion);
+            GamePageController.timeline.play();
         }
     }
 
@@ -392,6 +393,7 @@ public class GamePageController {
                     }
                     else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
                         // Need to pass the piece to a random new location.
+                        AlertBox.display("Random Square", "You will jump to a random square");
                         square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
                         addToVisitedSquares(square);
                         ArrayList<String> possibleMovesForRandom = currentPiece.getAllPossibleMoves();
@@ -412,6 +414,7 @@ public class GamePageController {
 
                     }
                     else if(target.toString().equals("Forget")) {
+                        AlertBox.display("Forget Square", "Your last 3 steps will be reverted");
                         deleteLastThreeSteps();
                     }
 
@@ -453,69 +456,70 @@ public class GamePageController {
                             }
                         }
 
-                        if (currentPiece!=null && currentPiece.toString().equals("Knight")) {
+                        if (currentPiece != null && currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
                             //addToVisitedSquares(square);
                         }
-                        dropPiece(square);
-                        if (visitedSquares.contains(square)) {
-                            GamePageController.score--;
-                            addToPoints(-1);
-                            if(GamePageController.score<0){
-                                GamePageController.score=0;
-                            }
-                        } else {
-                            GamePageController.score++;
-                            addToPoints(1);
-                        }
-                        addToVisitedSquares(square);
-                        for(Square s : getVisitedSquares()){
-                            //          System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
-                        }
-
-                        /**
-                         * The knight clicked on empty square, afterwards move the queen
-                         */
-                        int queenNextPositionX = -1;
-                        int queenNextPositionY = -1;
-                        int[] knightPositions = new int[2];
-                        knightPositions[0] = square.getX();
-                        knightPositions[1] = square.getY();
-                        knightCurrentPosition.setX(square.getX());
-                        knightCurrentPosition.setY(square.getY());
-                        Piece foundQueen = null;
-                        for (Square sq : cb.getSquares()) {
-
-                            if (sq.getChildren().size() > 0) {
-                                String pieceName = String.valueOf(sq.getChildren().get(0));
-                                if (pieceName.equals("Queen")) {
-                                    Piece queen = (Piece) sq.getChildren().get(0);
-                                    Square queenSquare = (Square) queen.getParent();
-                                    Queen newQueen = (Queen) queen;
-                                    currentPiece = newQueen;
-                                    foundQueen = newQueen;
-                                    ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
-                                    ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
-//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
-                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements(queenMovement, possibleMovesInArrayOfTwo, knightPositions);
-                                    killPiece(queenSquare);
-                                    //Doing Random/Smart movement (with Manhattan Distance) for Queen
-                                    queenNextPositionX = movesSelector.get(0);
-                                    queenNextPositionY = movesSelector.get(1);
-
+                        if (dropPiece(square)) {
+                            if (visitedSquares.contains(square)) {
+                                GamePageController.score--;
+                                addToPoints(-1);
+                                if (GamePageController.score < 0) {
+                                    GamePageController.score = 0;
                                 }
+                            } else {
+                                GamePageController.score++;
+                                addToPoints(1);
+                            }
+                            addToVisitedSquares(square);
+                            for (Square s : getVisitedSquares()) {
+                                //          System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
                             }
 
-                        }
-                        if (foundQueen != null) {
-                            currentPiece = foundQueen;
-                        }
-                        for (Square sq : cb.getSquares()) {
-                            if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
+                            /**
+                             * The knight clicked on empty square, afterwards move the queen
+                             */
+                            int queenNextPositionX = -1;
+                            int queenNextPositionY = -1;
+                            int[] knightPositions = new int[2];
+                            knightPositions[0] = square.getX();
+                            knightPositions[1] = square.getY();
+                            knightCurrentPosition.setX(square.getX());
+                            knightCurrentPosition.setY(square.getY());
+                            Piece foundQueen = null;
+                            for (Square sq : cb.getSquares()) {
+
+                                if (sq.getChildren().size() > 0) {
+                                    String pieceName = String.valueOf(sq.getChildren().get(0));
+                                    if (pieceName.equals("Queen")) {
+                                        Piece queen = (Piece) sq.getChildren().get(0);
+                                        Square queenSquare = (Square) queen.getParent();
+                                        Queen newQueen = (Queen) queen;
+                                        currentPiece = newQueen;
+                                        foundQueen = newQueen;
+                                        ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
+                                        ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
+//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
+                                        ArrayList<Integer> movesSelector = newQueen.selectQueenMovements(queenMovement, possibleMovesInArrayOfTwo, knightPositions);
+                                        killPiece(queenSquare);
+                                        //Doing Random/Smart movement (with Manhattan Distance) for Queen
+                                        queenNextPositionX = movesSelector.get(0);
+                                        queenNextPositionY = movesSelector.get(1);
+
+                                    }
+                                }
+
+                            }
+                            if (foundQueen != null) {
                                 currentPiece = foundQueen;
-                                Point queenCurrentPosition = new Point(sq.getX(), sq.getY());
-                                dropPiece(sq);
-                                queenEatKnight(knightCurrentPosition, queenCurrentPosition);
+                            }
+                            for (Square sq : cb.getSquares()) {
+                                if (sq.getX() == queenNextPositionX && sq.getY() == queenNextPositionY && foundQueen != null) {
+                                    currentPiece = foundQueen;
+                                    Point queenCurrentPosition = new Point(sq.getX(), sq.getY());
+                                    dropPiece(sq);
+                                    queenEatKnight(knightCurrentPosition, queenCurrentPosition);
+                                }
                             }
                         }
                     }
@@ -610,8 +614,9 @@ public class GamePageController {
      * move piece to the square we recieve
      * @param square where to move the piece (king/queen/knight)
      */
-    private void dropPiece(Square square){
-        if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return;
+    private Boolean dropPiece(Square square){
+        if(currentPiece!=null && !currentPiece.possibleMoves.contains(square.name)) return false;
+        if(currentPiece==null) return false;
         Square initialSquare = (Square) currentPiece.getParent();
         square.getChildren().add(currentPiece);
         square.occupied = true;
@@ -630,6 +635,7 @@ public class GamePageController {
             cb.removeAndCreateQuestionSquare(square.getX(),square.getY(),this.visitedSquares);
 //            randnewSpecialSquare(square);
         }
+        return true;
     }
 
     /**
