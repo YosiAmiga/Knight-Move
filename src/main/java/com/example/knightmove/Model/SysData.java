@@ -40,7 +40,7 @@ public class SysData {
     public boolean editQuestion(Question eq){
         if (eq!=null){
             for (Question question: questions){
-                if (question.getId()== QuestionsController.selectedQuestion.getId()){
+                if (question.getId()== QuestionsController.selectedQuestion.getId()){ //get the question from the array
                     question.setQuestion(eq.getQuestion());
                     question.setAnswers(eq.getAnswers());
                     question.setLevel(eq.getLevel());

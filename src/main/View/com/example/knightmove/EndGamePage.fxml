@@ -19,6 +19,7 @@
             <Font name="Candara Bold" size="89.0" />
          </font>
       </Label>
-      <Button id="but" layoutX="31.0" layoutY="394.0" mnemonicParsing="false" onAction="#returnToGame" stylesheets="@../../../Style.css" text="Return" />
+      <Button id="but" layoutX="31.0" layoutY="394.0" mnemonicParsing="false" onAction="#returnToGame" stylesheets="@../../../Style.css" text="New Game" />
+      <Button id="but" layoutX="108.0" layoutY="394.0" mnemonicParsing="false" onAction="#mainPage" stylesheets="@../../../Style.css" text="Main page" />
    </children>
 </AnchorPane>

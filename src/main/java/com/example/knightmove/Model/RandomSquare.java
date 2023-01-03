@@ -10,7 +10,6 @@ public class RandomSquare extends Square{
         String status;
         if(this.occupied) status = "Occupied";
         else status = "Not occupied";
-//        return "Square" + this.x + this.y + " - " + status;
         return "Random";
     }
 }

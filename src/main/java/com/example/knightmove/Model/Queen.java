@@ -31,11 +31,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + y;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int i = x + 1; i < Consts.SQUARES_IN_COLUMN; i++) {
@@ -45,11 +43,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + y;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int j = y - 1; j >= 0; j--) {
@@ -59,11 +55,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + x + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int j = y + 1; j < Consts.SQUARES_IN_COLUMN; j++) {
@@ -73,11 +67,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + x + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int i = x - 1, j = y + 1; i >= 0 && j < Consts.SQUARES_IN_COLUMN; i--, j++) {
@@ -87,11 +79,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int i = x + 1, j = y + 1; i < Consts.SQUARES_IN_COLUMN && j < Consts.SQUARES_IN_COLUMN; i++, j++) {
@@ -101,11 +91,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int i = x + 1, j = y - 1; i < Consts.SQUARES_IN_ROW && j >= 0; i++, j--) {
@@ -115,11 +103,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
 
         for (int i = x - 1, j = y - 1; i >= 0 && j >= 0; i--, j--) {
@@ -129,11 +115,9 @@ public class Queen extends Piece {
                 }
             }
             name = s.getType() + i + j;
-//            if (getSquareByName(name).occupied && getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
 
             possibleMoves.add(name);
 
-//            if (getSquareByName(name).occupied && !getPieceByName(name).getColor().equals(Game.currentPlayer)) break;
         }
         return possibleMoves;
     }

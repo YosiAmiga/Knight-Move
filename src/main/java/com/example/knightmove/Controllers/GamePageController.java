@@ -49,8 +49,6 @@ public class GamePageController {
     public Point knightCurrentPosition; // point of knight
     private int startTimeSec; // the timer
 
-
-
     public static Piece currentPiece; // piece playing (king/queen/knight)
 
     public static ChessBoard cb;
@@ -146,7 +144,7 @@ public class GamePageController {
                         currentLevelText.setText("2");
                         startTimeSec=60;
                         queenMovement = "smart";
-                    } else if (currentLevelText.getText().equals("2") ){//&& GamePageController.score > 30) {
+                    } else if (currentLevelText.getText().equals("2")  && GamePageController.score > 30) {
                         GamePageController.level++;
                         visitedSquares.clear();
                         updateScore();
@@ -255,16 +253,6 @@ public class GamePageController {
         startTimeSec = 60;// Change to 60!
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), evt ->updateTime()));
         currentTimeText.setText(String.format("%02d sec", startTimeSec));
-//            timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() {
-//                @Override
-//                public void handle(ActionEvent event) {
-//                    startTimeSec--;
-//                    boolean isSecondsZero = startTimeSec == 0;
-//                    boolean timeToChangeLevel = startTimeSec == 0;
-//
-//                    currentTimeText.setText(String.format("%02d sec", startTimeSec));
-//                }
-//            }));
         timeline.playFromStart();
 
     }
@@ -348,12 +336,7 @@ public class GamePageController {
                 if (target.toString().equals("Square") || target.toString().equals("Random") ||
                         target.toString().equals("Forget") || target.toString().equals("Question")){
                     Square square = (Square) target;
-                    if(target.toString().equals("Question")){
-//                        point p= new point(square.getX(), square.getY());
-//                        Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
-//                        questionPopUp(level); // pops up a question window
-                    }
-                    else if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
+                    if(target.toString().equals("Random") && currentPiece.getAllPossibleMoves().contains(square.getName())){
                         // Need to pass the piece to a random new location.
                         AlertBox.display("Random Square", "You will jump to a random square");
                         square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY))); // mark as visited
@@ -365,8 +348,7 @@ public class GamePageController {
                             int randomIDX =getRandomNumber(0,possibleMovesForRandom.size()-1);
                             int xPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(6));
                             int yPositionRandom = Character.getNumericValue(possibleMovesForRandom.get(randomIDX).charAt(7));
-//                            Square squareRandom = new Square(xPositionRandom,yPositionRandom) ;
-//                            Square randomSquare = cb.squares.
+
                             for(Square s : cb.getSquares()){
                                 if(s.getX() == xPositionRandom && s.getY() == yPositionRandom){
                                     square = s;
@@ -420,7 +402,7 @@ public class GamePageController {
 
                         if (currentPiece != null && currentPiece.toString().equals("Knight")) {
                             square.setBackground(new Background(new BackgroundFill(Consts.colorVisitedSquare, CornerRadii.EMPTY, Insets.EMPTY)));
-                            //addToVisitedSquares(square);
+
                         }
                         if (dropPiece(square)) {
                             if (visitedSquares.contains(square)) {
@@ -435,7 +417,6 @@ public class GamePageController {
                             }
                             addToVisitedSquares(square);
                             for (Square s : getVisitedSquares()) {
-                                //          System.out.println("Visited Square:\n " + s.getX()+","+s.getY());
                             }
 
                             /**
@@ -461,10 +442,8 @@ public class GamePageController {
                                         foundQueen = newQueen;
                                         ArrayList<String> possibleMoves = newQueen.getAllPossibleMoves();
                                         ArrayList<ArrayList<Integer>> possibleMovesInArrayOfTwo = newQueen.convertMovesToIntArrays(newQueen.getAllPossibleMoves());
-//                                    ArrayList<Integer> movesSelector = newQueen.selectQueenMovements("random", possibleMovesInArrayOfTwo, knightPositions);
                                         ArrayList<Integer> movesSelector = newQueen.selectQueenMovements(queenMovement, possibleMovesInArrayOfTwo, knightPositions);
                                         killPiece(queenSquare);
-                                        //Doing Random/Smart movement (with Manhattan Distance) for Queen
                                         queenNextPositionX = movesSelector.get(0);
                                         queenNextPositionY = movesSelector.get(1);
 
@@ -595,7 +574,6 @@ public class GamePageController {
             Integer level = getLevelByThePostion(cb.getQuestionSquaresLocations(),p);
             questionPopUp(level); // pops up a question window
             cb.removeAndCreateQuestionSquare(square.getX(),square.getY(),this.visitedSquares);
-//            randnewSpecialSquare(square);
         }
         return true;
     }
@@ -657,13 +635,6 @@ public class GamePageController {
             GamePageController.timeline.getKeyFrames().clear();
             gameOverSound();
             queenMovement = "random";
-//            GamePageController.isGameOver=false; //for new game
-//            Stage popUpStage = new Stage();
-//            popUpStage.setScene(new Scene(FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"))));
-//            popUpStage.setX(125);
-//            popUpStage.setY(125);
-//            popUpStage.show();
-//            startLevelBtn.setDisable(true);
 
             try {
                 GamePageController.timeline.stop();
@@ -697,7 +668,7 @@ public class GamePageController {
         if(level==3)
         {
             newLevelSound();
-            if(GamePageController.score<10)
+            if(GamePageController.score<30)
             {
                 isGameOver=true;
                 checkIsGameOver();
