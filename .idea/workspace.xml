@@ -5,12 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="design + score cant be under zero in sys data + edit question fix!">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_12_49__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_02_01_2023_12_49__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/EndGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" afterDir="false" />
     </list>
@@ -473,7 +470,14 @@
       <option name="project" value="LOCAL" />
       <updated>1672643782958</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="design + score cant be under zero in sys data + edit question fix!">
+      <created>1672687572707</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1672687572707</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

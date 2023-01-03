@@ -113,16 +113,11 @@ public class GamePageController {
         cb.chessBoard.setDisable(true);
         knightCurrentPosition = new Point(0, 0); // start point of knight
 
-        // deleteeeee!!!!
-        if (GamePageController.level == 3) {
-            startTimeSec = 60; // Change to 60!
-        } else{
-            startTimeSec = 60; // Change to 60!
-        }
         GamePageController.king_speed=5; // help us control king speed
         timeline.getKeyFrames().add(new KeyFrame(Duration.seconds(1), new EventHandler<ActionEvent>() { // start timer
             @Override
             public void handle(ActionEvent event) {
+
                 try {
                     checkIsGameOver();
                     if(GamePageController.level==3 || GamePageController.level==4) { // change king speed in level 3 & 4
@@ -136,16 +131,10 @@ public class GamePageController {
                 }
 
                 startTimeSec--;
-                boolean isSecondsZero = startTimeSec == 0;
                 boolean timeToChangeLevel = startTimeSec == 0;
                 if (timeToChangeLevel) {
-                    timeline.stop();
-                    if (GamePageController.level == 2) {
-                        startTimeSec = 60; // Change to 60!
-                    } else{
-                        startTimeSec = 60; // Change to 60!
-                    }
-                    if (currentLevelText.getText().equals("1")) {
+
+                    if (currentLevelText.getText().equals("1") && GamePageController.score > 15) {
                         GamePageController.level++;
                         visitedSquares.clear();
                         updateScore();
@@ -155,8 +144,9 @@ public class GamePageController {
                             throw new RuntimeException(e);
                         }
                         currentLevelText.setText("2");
+                        startTimeSec=60;
                         queenMovement = "smart";
-                    } else if (currentLevelText.getText().equals("2")) {
+                    } else if (currentLevelText.getText().equals("2") ){//&& GamePageController.score > 30) {
                         GamePageController.level++;
                         visitedSquares.clear();
                         updateScore();
@@ -166,7 +156,8 @@ public class GamePageController {
                             throw new RuntimeException(e);
                         }
                         currentLevelText.setText("3");
-                    } else if (currentLevelText.getText().equals("3")) {
+                        startTimeSec=60;
+                    } else if (currentLevelText.getText().equals("3") && GamePageController.score > 45) {
                         GamePageController.level++;
                         visitedSquares.clear();
                         updateScore();
@@ -176,6 +167,7 @@ public class GamePageController {
                             throw new RuntimeException(e);
                         }
                         currentLevelText.setText("4");
+                        startTimeSec=60;
                     } else if (currentLevelText.getText().equals("4")) {
                         visitedSquares.clear();
                         currentLevelText.setText("End");
@@ -183,6 +175,13 @@ public class GamePageController {
                         isGameOver = true; // game over
                         try {
                             checkIsGameOver(); // end game
+                        } catch (IOException e) {
+                            throw new RuntimeException(e);
+                        }
+                    } else {
+                        GamePageController.isGameOver = true;
+                        try {
+                            checkIsGameOver();
                         } catch (IOException e) {
                             throw new RuntimeException(e);
                         }
@@ -655,21 +654,29 @@ public class GamePageController {
      */
     public void checkIsGameOver() throws IOException {
         if(isGameOver){
+            GamePageController.timeline.getKeyFrames().clear();
             gameOverSound();
             queenMovement = "random";
-            GamePageController.isGameOver=false; //for new game
+//            GamePageController.isGameOver=false; //for new game
+//            Stage popUpStage = new Stage();
+//            popUpStage.setScene(new Scene(FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"))));
+//            popUpStage.setX(125);
+//            popUpStage.setY(125);
+//            popUpStage.show();
+//            startLevelBtn.setDisable(true);
 
             try {
+                GamePageController.timeline.stop();
                 root = FXMLLoader.load(HelloApplication.class.getResource("EndGamePage.fxml"));
-                timeline.stop();
+                stage = (Stage) mainPane.getScene().getWindow();
+                scene = new Scene(root);
+                stage.setScene(scene);
+                stage.setUserData(currentScore);
+                stage.show();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
-            stage = (Stage) mainPane.getScene().getWindow();
-            scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setUserData(currentScore);
-            stage.show();
+
         }
     }
 
@@ -690,7 +697,7 @@ public class GamePageController {
         if(level==3)
         {
             newLevelSound();
-            if(GamePageController.score<30)
+            if(GamePageController.score<10)
             {
                 isGameOver=true;
                 checkIsGameOver();
