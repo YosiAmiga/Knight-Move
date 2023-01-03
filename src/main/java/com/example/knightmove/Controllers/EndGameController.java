@@ -24,15 +24,6 @@ public class EndGameController {
     private Label earnPointLabel;
 
     @FXML
-    private Pane endGamepopup;
-
-    @FXML
-    private Button returnButton;
-
-    @FXML
-    private Label textLabel;
-
-    @FXML
     private ImageView medalPicture;
     static String userName;
     private Stage stage;
@@ -46,6 +37,7 @@ public class EndGameController {
     public void initialize() throws SQLException {
         earnPointLabel.setText(userName+", You earned " + GamePageController.score + " points");
         dbc.addPlayerAndScore(userName, GamePageController.score);
+        GamePageController.timeline.getKeyFrames().clear();
         if(GamePageController.score>=200)
         {
             String theme1Url = String.valueOf(getClass().getResource("/picture/medal.png"));
@@ -54,14 +46,25 @@ public class EndGameController {
         }
         GamePageController.level=1;
     }
-    public void returnToAppIntroPage(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
-        stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+
+    @FXML
+    void returnToGame(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(HelloApplication.class.getResource("GamePage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-    public ImageView getImageView(){ return this.medalPicture;}
+
+    @FXML
+    void mainPage(ActionEvent event) throws IOException {
+        root = FXMLLoader.load(HelloApplication.class.getResource("AppIntroPage.fxml"));
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
 
     /**
      * for test checking

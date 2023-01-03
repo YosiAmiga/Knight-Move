@@ -4,30 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="design + score cant be under zero in sys data + edit question fix!">
-      <change afterPath="$PROJECT_DIR$/src/main/View/picture/icon_knight.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+    <list default="true" id="c66e0b17-3373-4aa6-ae7b-2c3120f6b6d2" name="Changes" comment="FINAL!">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" beforeDir="false" afterPath="$PROJECT_DIR$/src/DB/Knight_Move_DB.accdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Knight_Move_DB.accdb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/Style.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/Style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AddQuestion.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/AppIntroPage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EditQuestion.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/EndGamePage.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GamePage.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPage.fxml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/GameRulesPagePopUp.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/View/com/example/knightmove/Questions.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AddQuestionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AddQuestionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/AppIntroPageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/View/com/example/knightmove/hello-view.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/ConfrimBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/EndGameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/EndGameController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/GamePageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/HelloController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/LogInController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/LogInController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/QuestionsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Controllers/QuestionsController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/ChessBoard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Consts.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Queen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Queen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/QuestionSquare.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/RandomSquare.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/Square.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/knightmove/Model/SysData.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +34,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="Interface" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -110,19 +104,19 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Downloaded.Files.Path.Enabled": "false",
-    "Git.Branch.Popup.ShowAllRemotes": "true",
-    "Repository.Attach.Annotations": "false",
-    "Repository.Attach.JavaDocs": "false",
-    "Repository.Attach.Sources": "false",
-    "last_opened_file_path": "C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/View/picture",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.33459002"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Downloaded.Files.Path.Enabled&quot;: &quot;false&quot;,
+    &quot;Git.Branch.Popup.ShowAllRemotes&quot;: &quot;true&quot;,
+    &quot;Repository.Attach.Annotations&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.JavaDocs&quot;: &quot;false&quot;,
+    &quot;Repository.Attach.Sources&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/danaz/OneDrive - University of Haifa/Documents/GitHub/Knight-Move/src/main/View/picture&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.33459002&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.example.knightmove.controllers" />
@@ -488,7 +482,21 @@
       <option name="project" value="LOCAL" />
       <updated>1672643782958</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="design + score cant be under zero in sys data + edit question fix!">
+      <created>1672687572707</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1672687572707</updated>
+    </task>
+    <task id="LOCAL-00032" summary="FINAL!">
+      <created>1672739844394</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1672739844394</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -548,7 +556,8 @@
     <MESSAGE value="add queen/king eat knight test" />
     <MESSAGE value="Fixed new Question square" />
     <MESSAGE value="design + score cant be under zero in sys data + edit question fix!" />
-    <option name="LAST_COMMIT_MESSAGE" value="design + score cant be under zero in sys data + edit question fix!" />
+    <MESSAGE value="FINAL!" />
+    <option name="LAST_COMMIT_MESSAGE" value="FINAL!" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand>

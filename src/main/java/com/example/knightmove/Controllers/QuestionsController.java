@@ -61,7 +61,6 @@ public class QuestionsController implements Initializable {
 
     public static Question selectedQuestion;
 
-//    HashSet <Question> easy = new HashSet (HelloApplication.s.getQuestionsByLevel(1));
     ObservableList<Question> list = FXCollections.observableArrayList(HelloApplication.s.getQuestionsByLevel(1));
     ObservableList<Question> list2 = FXCollections.observableArrayList(HelloApplication.s.getQuestionsByLevel(2));
     ObservableList<Question> list3 = FXCollections.observableArrayList(HelloApplication.s.getQuestionsByLevel(3));
@@ -143,7 +142,7 @@ public class QuestionsController implements Initializable {
     }
 
     @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void initialize(URL url, ResourceBundle resourceBundle) { //show the questions according to their level in the table
                 easyQuestionCol.setCellValueFactory(new PropertyValueFactory<Question,String>("question"));
                 easyAnsCol.setCellValueFactory(new PropertyValueFactory<Question,String>("rightAnswer"));
                 EasyTable.setItems(list);

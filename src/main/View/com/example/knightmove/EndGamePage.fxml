@@ -8,7 +8,6 @@
 
 <AnchorPane prefHeight="439.0" prefWidth="721.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.EndGameController">
    <children>
-      <Button id="but" fx:id="returnButton" layoutX="31.0" layoutY="384.0" mnemonicParsing="false" onAction="#returnToAppIntroPage" prefHeight="30.0" prefWidth="75.0" stylesheets="@../../../Style.css" text="Return" />
       <Label fx:id="earnPointLabel" layoutX="90.0" layoutY="229.0" prefHeight="52.0" prefWidth="576.0">
          <font>
             <Font name="Candara Bold" size="44.0" />
@@ -20,5 +19,7 @@
             <Font name="Candara Bold" size="89.0" />
          </font>
       </Label>
+      <Button id="but" layoutX="31.0" layoutY="394.0" mnemonicParsing="false" onAction="#returnToGame" stylesheets="@../../../Style.css" text="New Game" />
+      <Button id="but" layoutX="108.0" layoutY="394.0" mnemonicParsing="false" onAction="#mainPage" stylesheets="@../../../Style.css" text="Main page" />
    </children>
 </AnchorPane>

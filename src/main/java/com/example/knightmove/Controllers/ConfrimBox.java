@@ -41,8 +41,8 @@ public class ConfrimBox {
 
         return answer;
     }
-    public static void displayQuestion(Question q) { //this method shows a confirmation box from the title and massage
-        GamePageController.timeline.stop();
+    public static void displayQuestion(Question q) { //this method shows the question
+        GamePageController.timeline.pause();
         Stage window = new Stage ();
         window.initModality(Modality.APPLICATION_MODAL);
         window.setWidth(500);
