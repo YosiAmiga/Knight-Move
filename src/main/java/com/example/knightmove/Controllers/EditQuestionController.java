@@ -120,9 +120,6 @@ public class EditQuestionController implements Initializable {
             AlertBox.display("ERROR" , e.getMessage());
         }
 
-
-
-
     }
 
     public void BackPage(ActionEvent event) throws IOException {

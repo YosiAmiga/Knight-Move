@@ -135,9 +135,8 @@ public class QuestionsController implements Initializable {
             }
             HelloApplication.s.removeQuestion(q);
             Json.updateJson();
+            AlertBox.display("REMOVE", "Successfully removed");
         }
-
-        AlertBox.display("REMOVE", "Successfully removed");
 
     }
 
