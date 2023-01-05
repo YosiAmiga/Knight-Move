@@ -111,32 +111,52 @@ public class QuestionsController implements Initializable {
 
     @FXML
     void deleteQuestion(ActionEvent event) {
-        Boolean answer = ConfrimBox.display("Confrimation", "Are you sure?"); //asking for confirmation
-        Question q = null;
-        if (answer == true) {
-
+        try{
             if (easyView.isSelected()){
-                int selectID = EasyTable.getSelectionModel().getSelectedIndex();
-                q = EasyTable.getSelectionModel().getSelectedItem();
-                EasyTable.getItems().remove(selectID);
+                selectedQuestion = EasyTable.getSelectionModel().getSelectedItem();
+
             }
             else if (medView.isSelected()){
-                int selectID = MedTable.getSelectionModel().getSelectedIndex();
-                q = MedTable.getSelectionModel().getSelectedItem();
-                MedTable.getItems().remove(selectID);
-
+                selectedQuestion = MedTable.getSelectionModel().getSelectedItem();
             }
 
-            else if(hardView.isSelected()){
-                int selectID = HardTable.getSelectionModel().getSelectedIndex();
-                q = HardTable.getSelectionModel().getSelectedItem();
-                HardTable.getItems().remove(selectID);
-
+            else {
+                selectedQuestion = HardTable.getSelectionModel().getSelectedItem();
             }
-            HelloApplication.s.removeQuestion(q);
-            Json.updateJson();
-            AlertBox.display("REMOVE", "Successfully removed");
-        }
+            if (selectedQuestion==null){
+                throw  new NeedToChoseQuestionException();
+            }
+
+            Boolean answer = ConfrimBox.display("Confrimation", "Are you sure?"); //asking for confirmation
+            Question q = null;
+            if (answer == true) {
+
+                if (easyView.isSelected()){
+                    int selectID = EasyTable.getSelectionModel().getSelectedIndex();
+                    q = EasyTable.getSelectionModel().getSelectedItem();
+                    EasyTable.getItems().remove(selectID);
+                }
+                else if (medView.isSelected()){
+                    int selectID = MedTable.getSelectionModel().getSelectedIndex();
+                    q = MedTable.getSelectionModel().getSelectedItem();
+                    MedTable.getItems().remove(selectID);
+
+                }
+
+                else if(hardView.isSelected()){
+                    int selectID = HardTable.getSelectionModel().getSelectedIndex();
+                    q = HardTable.getSelectionModel().getSelectedItem();
+                    HardTable.getItems().remove(selectID);
+
+                }
+                HelloApplication.s.removeQuestion(q);
+                Json.updateJson();
+                AlertBox.display("REMOVE", "Successfully removed");
+            }
+
+        } catch (NeedToChoseQuestionException e) {
+            AlertBox.display("ERROR" , e.getMessage());        }
+
 
     }
 

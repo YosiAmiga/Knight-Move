@@ -18,7 +18,7 @@ public class Consts {
             "SELECT * FROM Game_History_tbl";
     public static final String DELETE_ALL_GAME_HISTORY =
             "DELETE FROM Game_History_tbl";
-    public static final int SQUARE_SIZE = 58;
+    public static final int SQUARE_SIZE = 60;
 
     public static final int SQUARES_IN_ROW = 8;
     public static final int SQUARES_IN_COLUMN = 8;

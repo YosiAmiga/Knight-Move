@@ -3,10 +3,11 @@ package com.example.knightmove.Model;
 
 import com.example.knightmove.Controllers.GamePageController;
 import javafx.event.EventHandler;
-import javafx.scene.effect.Glow;
+import javafx.scene.effect.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 import java.util.ArrayList;
 
@@ -71,11 +72,18 @@ public abstract class Piece extends ImageView {
      */
     public void showAllPossibleMoves(boolean val){
         if(val){
-            Glow glow = new Glow();
-            glow.setLevel(1);
+
+            InnerShadow innerShadow= new InnerShadow();
+            innerShadow.setOffsetY(0f);
+            innerShadow.setOffsetX(0f);
+            innerShadow.setColor(Color.BLACK);
+            innerShadow.setWidth(25);
+            innerShadow.setHeight(25);
+
+
             for(String move : possibleMoves){
                 Square square = getSquareByName(move);
-                square.setEffect(glow);
+                square.setEffect(innerShadow);
                 Piece piece = getPieceByName(move);
                 if(piece == null) continue;
             }

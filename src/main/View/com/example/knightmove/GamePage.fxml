@@ -11,7 +11,7 @@
 
 <Pane fx:id="mainPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.knightmove.Controllers.GamePageController">
     <children>
-        <GridPane fx:id="chessBoard" alignment="CENTER" layoutX="179.0" layoutY="63.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="498.0" prefWidth="562.0">
+        <GridPane fx:id="chessBoard" alignment="CENTER" layoutX="180.0" layoutY="52.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="504.0" prefWidth="563.0">
             <columnConstraints>
                 <ColumnConstraints />
             </columnConstraints>

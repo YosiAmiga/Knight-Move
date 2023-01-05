@@ -45,9 +45,9 @@ public class ConfrimBox {
         GamePageController.timeline.pause();
         Stage window = new Stage ();
         window.initModality(Modality.APPLICATION_MODAL);
-        window.setWidth(500);
+        window.setWidth(550);
         window.setHeight(450);
-//        window.setMinWidth(250);
+
         window.setTitle("Question Level " + q.getLevel());
         window.initStyle(StageStyle.UTILITY);
         Label label = new Label ();
